@@ -6,12 +6,13 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:35:17 by djean             #+#    #+#             */
-/*   Updated: 2016/08/10 16:35:18 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/01 16:11:15 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "error_42.h"
 
+extern int		g_errno;
 int				g_errno;
 static char		*g_project_name;
 static char		**g_errlist;

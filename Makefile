@@ -1,6 +1,9 @@
 NAME = lib42.a
 CC ?= clang
-CFLAGS = -Wall -Werror -Wextra -pedantic -std=c99 -pedantic-errors -fno-strict-aliasing
+CFLAGS = -Wall -Werror -Wextra
+CFLAGS += -std=c99 -pedantic -pedantic-errors
+CFLAGS += -Weverything -Wno-missing-noreturn
+CFLAGS += -fno-strict-aliasing
 
 #Debug
 ifeq ($(DEBUG),yes)

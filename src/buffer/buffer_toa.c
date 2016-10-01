@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/09/14 19:11:37 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/01 16:10:54 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** Append the signed integer 'value' in base 'base' to the buffer
 */
 
-t_buffer	*buffer_stoa(t_buffer *b, long long value, int base)
+t_buffer	*buffer_stoa(t_buffer *b, long long value, unsigned base)
 {
 	char	*n;
 
@@ -30,7 +30,7 @@ t_buffer	*buffer_stoa(t_buffer *b, long long value, int base)
 ** Append the unsigned integer 'value' in base 'base' to the buffer
 */
 
-t_buffer	*buffer_utoa(t_buffer *b, unsigned long long value, int base)
+t_buffer	*buffer_utoa(t_buffer *b, unsigned long long value, unsigned base)
 {
 	char	*n;
 

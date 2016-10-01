@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/02 15:54:59 by djean             #+#    #+#             */
-/*   Updated: 2016/09/07 15:52:29 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/01 16:03:38 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,13 @@
 
 int		array_indexof(t_array *v, void *e)
 {
+	uintptr_t	index;
+
 	if (TARRAY_IN_RANGE(v, e))
-		return (((uintptr_t)e - (uintptr_t)v->data) / v->elem_size);
+	{
+		index = (uintptr_t)e - (uintptr_t)v->data;
+		index /= v->elem_size;
+		return ((int)index);
+	}
 	return (-1);
 }

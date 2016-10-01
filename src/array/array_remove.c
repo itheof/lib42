@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 19:35:29 by djean             #+#    #+#             */
-/*   Updated: 2016/09/27 16:18:41 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/01 16:05:38 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ void	*array_remove_elem(t_array *v, void *e)
 	index = array_indexof(v, e);
 	if (index == -1)
 		return (NULL);
-	return (array_remove(v, index, NULL));
+	return (array_remove(v, (size_t)index, NULL));
 }
