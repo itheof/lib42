@@ -32,7 +32,7 @@ CFLAGS += $(addprefix -I,$(INC_PATH))
 
 # Sources
 SRC_PATH = src
-SRC_SUBDIR = . array buffer memory stdlib string error
+SRC_SUBDIR = . array buffer memory stdlib string error pool
 vpath %.c $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
 SOURCES = main.c
 
@@ -88,6 +88,13 @@ SOURCES += test_strndup.c
 SOURCES += test_strchr.c
 SOURCES += test_strrchr.c
 SOURCES += test_strrev.c
+
+# Pool
+SOURCES += test_pool_macros.c
+SOURCES += test_pool_new.c
+SOURCES += test_pool_obtain.c
+SOURCES += test_pool_return.c
+SOURCES += test_pool_reset.c
 
 # Error
 SOURCES += test_error.c

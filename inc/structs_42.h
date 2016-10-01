@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/10/01 15:43:49 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/04 11:58:49 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,20 @@
 # define STRUCTS_42_H
 
 # include <stdlib.h>
+
+struct	s_chunk
+{
+	void	*next;
+	void	*head;
+};
+
+struct	s_pool
+{
+	struct s_chunk	*chunks_list;
+	void			*free_list;
+	size_t			chunk_capacity;
+	size_t			elem_size;
+};
 
 struct	s_buffer
 {

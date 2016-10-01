@@ -28,33 +28,15 @@ ifeq ($(SAN),yes)
 	CFLAGS += -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls
 endif
 
-# Headers
-INC_PATH = inc
+# General
 INC_FILES += lib42.h
 INC_FILES += typedefs_42.h
 INC_FILES += structs_42.h
 INC_FILES += macros_42.h
-INC_FILES += memory_42.h
-INC_FILES += stdlib_42.h
-INC_FILES += string_42.h
-INC_FILES += array_42.h
-INC_FILES += buffer_42.h
-INC_FILES += error_42.h
-
-HEADERS = $(INC_FILES:%.h=$(INC_PATH)/%.h)
-CFLAGS += $(addprefix -I,$(INC_PATH))
-
-# Sources
-SRC_PATH = src
-SRC_SUBDIR += array
-SRC_SUBDIR += string
-SRC_SUBDIR += stdlib
-SRC_SUBDIR += memory
-SRC_SUBDIR += buffer
-SRC_SUBDIR += error
-vpath %.c $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
 
 # Memory
+INC_FILES += memory_42.h
+SRC_SUBDIR += memory
 SOURCES += ft_memset.c
 SOURCES += ft_memalloc.c
 SOURCES += ft_memcpy.c
@@ -68,11 +50,15 @@ else
 endif
 
 # Stdlib
+INC_FILES += stdlib_42.h
+SRC_SUBDIR += stdlib
 SOURCES += ft_realloc.c
 SOURCES += ft_toa_base.c
 SOURCES += next_power2.c
 
 # Array
+INC_FILES += array_42.h
+SRC_SUBDIR += array
 SOURCES += array_new.c
 SOURCES += array_resize.c
 SOURCES += array_getset.c
@@ -89,6 +75,8 @@ SOURCES += array_strsplit.c
 SOURCES += array_iter.c
 
 # Buffer
+INC_FILES += buffer_42.h
+SRC_SUBDIR += buffer
 SOURCES += buffer_new.c
 SOURCES += buffer_dup.c
 SOURCES += buffer_cat.c
@@ -106,6 +94,8 @@ SOURCES += buffer_append.c
 SOURCES += buffer_iter.c
 
 # String
+INC_FILES += string_42.h
+SRC_SUBDIR += string
 SOURCES += ft_strlen.c
 SOURCES += ft_strdup.c
 SOURCES += ft_strsub.c
@@ -113,11 +103,28 @@ SOURCES += ft_strchr.c
 SOURCES += ft_strrchr.c
 SOURCES += ft_strrev.c
 
+# Pool
+INC_FILES += pool_42.h
+SRC_SUBDIR += pool
+SOURCES += pool_new.c
+SOURCES += pool_chunk.c
+SOURCES += pool_obtain.c
+SOURCES += pool_return.c
+SOURCES += pool_reset.c
+SOURCES += pool_destroy.c
+
 # Error
+INC_FILES += error_42.h
+SRC_SUBDIR += error
 SOURCES += ft_error.c
 SOURCES += ft_die.c
 
-# Objects
+# Generation
+INC_PATH = inc
+SRC_PATH = src
+HEADERS = $(INC_FILES:%.h=$(INC_PATH)/%.h)
+CFLAGS += $(addprefix -I,$(INC_PATH))
+vpath %.c $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
 OBJ_PATH = obj
 OBJECTS = $(addprefix $(OBJ_PATH)/, $(SOURCES:%.c=%.o))
 

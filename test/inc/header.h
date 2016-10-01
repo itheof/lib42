@@ -70,6 +70,13 @@ void	suite_strchr(void);
 void	suite_strrchr(void);
 void	suite_strrev(void);
 
+// Pool
+void	suite_pool_macros(void);
+void	suite_pool_new(void);
+void	suite_pool_obtain(void);
+void	suite_pool_return(void);
+void	suite_pool_reset(void);
+
 // Error
 void	suite_error(void);
 

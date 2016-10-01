@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib42.h                                            :+:      :+:    :+:   */
+/*   pool_return.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/02 12:48:07 by djean            ###   ########.fr       */
+/*   Created: 2016/10/02 12:02:50 by djean             #+#    #+#             */
+/*   Updated: 2016/10/04 11:06:38 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB42_H
-# define LIB42_H
+#include "pool_42.h"
 
-# include "macros_42.h"
-# include "typedefs_42.h"
-# include "structs_42.h"
-# include "stdlib_42.h"
-# include "memory_42.h"
-# include "string_42.h"
-# include "array_42.h"
-# include "buffer_42.h"
-# include "pool_42.h"
-# include "error_42.h"
+/*
+** Ajoute le '*node' comme nouvelle tete de la freelist
+** Aucune vérification n'est effectué pour savoir si le pointer '*node'
+** appartient bien au pool
+*/
 
-#endif
+void	pool_return(t_pool *p, void *node)
+{
+	*(void**)node = p->free_list;
+	p->free_list = node;
+}

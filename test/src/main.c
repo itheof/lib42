@@ -58,6 +58,13 @@ int	main(void)
 	// error
 	suite_error();
 
-	v_full_success("Test Lib42");
+	// pool
+	suite_pool_macros();
+	suite_pool_new();
+	suite_pool_obtain();
+	suite_pool_return();
+	suite_pool_reset();
+
+	v_full_success("Lib42");
 	return (0);
 }
