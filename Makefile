@@ -2,7 +2,7 @@ NAME = lib42.a
 CC ?= clang
 CFLAGS = -Wall -Werror -Wextra
 CFLAGS += -std=c99 -pedantic -pedantic-errors
-ifeq (readlink $(command -v $(CC)),clang)
+ifeq ($(shell readlink $(shell command -v $(CC))),clang)
 	CFLAGS += -Weverything -Wno-missing-noreturn
 endif
 CFLAGS += -fno-strict-aliasing
@@ -35,7 +35,6 @@ endif
 # INC_FILES += macros_42.h
 
 # Memory
-# INC_FILES += memory_42.h
 SRC_SUBDIR += memory
 SOURCES += ft_memset.c
 SOURCES += ft_memalloc.c
@@ -50,14 +49,12 @@ else
 endif
 
 # Stdlib
-# INC_FILES += stdlib_42.h
 SRC_SUBDIR += stdlib
 SOURCES += ft_realloc.c
 SOURCES += ft_toa_base.c
 SOURCES += next_power2.c
 
 # Array
-# INC_FILES += array_42.h
 SRC_SUBDIR += array
 SOURCES += array_new.c
 SOURCES += array_resize.c
@@ -75,7 +72,6 @@ SOURCES += array_strsplit.c
 SOURCES += array_iter.c
 
 # Buffer
-# INC_FILES += buffer_42.h
 SRC_SUBDIR += buffer
 SOURCES += buffer_new.c
 SOURCES += buffer_dup.c
@@ -94,7 +90,6 @@ SOURCES += buffer_append.c
 SOURCES += buffer_iter.c
 
 # String
-# INC_FILES += string_42.h
 SRC_SUBDIR += string
 SOURCES += ft_strlen.c
 SOURCES += ft_strdup.c
@@ -104,7 +99,6 @@ SOURCES += ft_strrchr.c
 SOURCES += ft_strrev.c
 
 # Pool
-# INC_FILES += pool_42.h
 SRC_SUBDIR += pool
 SOURCES += pool_new.c
 SOURCES += pool_chunk.c
@@ -114,7 +108,6 @@ SOURCES += pool_reset.c
 SOURCES += pool_destroy.c
 
 # Error
-# INC_FILES += error_42.h
 SRC_SUBDIR += error
 SOURCES += ft_error.c
 SOURCES += ft_die.c
@@ -122,7 +115,6 @@ SOURCES += ft_die.c
 # Generation
 INC_PATH = inc
 SRC_PATH = src
-# HEADERS = $(INC_FILES:%.h=$(INC_PATH)/%.h)
 CFLAGS += $(addprefix -I,$(INC_PATH))
 vpath %.c $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
 

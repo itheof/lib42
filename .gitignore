@@ -1,4 +1,5 @@
-.dep/
+# Makefile rules
+*.d
 
 # Object files
 *.o
