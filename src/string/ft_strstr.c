@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "string_42.h"
+#include <stdio.h> // delete
 
 char	*ft_strstr(const char *big, const char *little)
 {
@@ -22,12 +23,15 @@ char	*ft_strstr(const char *big, const char *little)
 	little_len = ft_strlen(little);
 	if (*little == '\0')
 		return ((char *)(uintptr_t)big);
-	i = 0;
-	while (i < big_len - little_len)
+	if (little_len <= big_len)
 	{
-		if (!ft_memcmp(big + i, little, little_len))
-			return ((char *)(uintptr_t)(big + i));
-		++i;
+		i = 0;
+		while (i <= big_len - little_len)
+		{
+			if (!ft_memcmp(big + i, little, little_len))
+				return ((char *)(uintptr_t)(big + i));
+			++i;
+		}
 	}
 	return (NULL);
 }

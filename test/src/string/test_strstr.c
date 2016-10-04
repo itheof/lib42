@@ -78,6 +78,48 @@ static void	test_04_strstr_NoChar(void)
 	VTS;
 }
 
+static void	test_05_strstr_LittleBiggerThanBig(void)
+{
+	char	*big = "Hello World!";
+	char	*little = "Hello Matrix World!";
+	char	*ret;
+	char	*valid;
+
+	ret = ft_strstr(big, little);
+	valid = strstr(big, little);
+	v_assert_ptr(valid, ==, ret);
+
+	VTS;
+}
+
+static void	test_06_strstr_LittleEqualBig(void)
+{
+	char	*big = "Hello World!";
+	char	*little = "Hello World!";
+	char	*ret;
+	char	*valid;
+
+	ret = ft_strstr(big, little);
+	valid = strstr(big, little);
+	v_assert_ptr(valid, ==, ret);
+
+	VTS;
+}
+
+static void	test_07_strstr_AlmostEqual(void)
+{
+	char	*big = "Hello World!";
+	char	*little = "Hello World ";
+	char	*ret;
+	char	*valid;
+
+	ret = ft_strstr(big, little);
+	valid = strstr(big, little);
+	v_assert_ptr(valid, ==, ret);
+
+	VTS;
+}
+
 void		suite_strstr(void)
 {
 	test_00_strstr_SecondWorld();
@@ -85,6 +127,9 @@ void		suite_strstr(void)
 	test_02_strstr_LongStringOneChar();
 	test_03_strstr_LongStringSeveralChars();
 	test_04_strstr_NoChar();
+	test_05_strstr_LittleBiggerThanBig();
+	test_06_strstr_LittleEqualBig();
+	test_07_strstr_AlmostEqual();
 
 	VSS;
 }
