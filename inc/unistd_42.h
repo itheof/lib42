@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib42.h                                            :+:      :+:    :+:   */
+/*   unistd_42.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: tvallee <tvallee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/04 14:40:55 by tvallee          ###   ########.fr       */
+/*   Created: 2016/10/04 14:38:45 by tvallee           #+#    #+#             */
+/*   Updated: 2016/10/04 14:52:55 by tvallee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB42_H
-# define LIB42_H
+#ifndef UNISTD_42_H
+# define UNISTD_42_H
 
-# include "macros_42.h"
-# include "typedefs_42.h"
-# include "structs_42.h"
-# include "stdlib_42.h"
-# include "memory_42.h"
 # include "string_42.h"
-# include "array_42.h"
-# include "buffer_42.h"
-# include "pool_42.h"
-# include "error_42.h"
-# include "unistd_42.h"
+
+typedef struct	s_opt
+{
+	char	*optarg;
+	int		opterr;
+	int		optind;
+	int		optopt;
+	int		optoff;
+}				t_opt;
+
+int				ft_getopt(int ac, char *const av[], const char *optstring,
+		t_opt *state);
 
 #endif

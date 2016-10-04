@@ -119,6 +119,11 @@ SRC_SUBDIR += error
 SOURCES += ft_error.c
 SOURCES += ft_die.c
 
+# Unistd
+INC_FILES += unistd_42.h
+SRC_SUBDIR += unistd
+SOURCES += ft_getopt.c
+
 # Generation
 INC_PATH = inc
 SRC_PATH = src
