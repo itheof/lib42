@@ -2,12 +2,12 @@ NAME = lib42.a
 CC ?= clang
 CFLAGS = -Wall -Werror -Wextra
 CFLAGS += -std=c99 -pedantic -pedantic-errors
-ifeq ($(CC),clang)
+ifeq (readlink $(command -v $(CC)),clang)
 	CFLAGS += -Weverything -Wno-missing-noreturn
 endif
 CFLAGS += -fno-strict-aliasing
 
-#Debug
+# Debug
 ifeq ($(DEBUG),yes)
 	CFLAGS += -g3 -O0 -fno-inline
 endif
@@ -28,14 +28,14 @@ ifeq ($(SAN),yes)
 	CFLAGS += -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls
 endif
 
-# General
-INC_FILES += lib42.h
-INC_FILES += typedefs_42.h
-INC_FILES += structs_42.h
-INC_FILES += macros_42.h
+# # General
+# INC_FILES += lib42.h
+# INC_FILES += typedefs_42.h
+# INC_FILES += structs_42.h
+# INC_FILES += macros_42.h
 
 # Memory
-INC_FILES += memory_42.h
+# INC_FILES += memory_42.h
 SRC_SUBDIR += memory
 SOURCES += ft_memset.c
 SOURCES += ft_memalloc.c
@@ -43,21 +43,21 @@ SOURCES += ft_memcpy.c
 SOURCES += ft_memccpy.c
 SOURCES += ft_memmove.c
 SOURCES += ft_memcmp.c
-ifeq ($(SAN), yes)
+ifeq ($(SAN),yes)
 	SOURCES += ft_memchr_sanitize.c
 else
 	SOURCES += ft_memchr.c
 endif
 
 # Stdlib
-INC_FILES += stdlib_42.h
+# INC_FILES += stdlib_42.h
 SRC_SUBDIR += stdlib
 SOURCES += ft_realloc.c
 SOURCES += ft_toa_base.c
 SOURCES += next_power2.c
 
 # Array
-INC_FILES += array_42.h
+# INC_FILES += array_42.h
 SRC_SUBDIR += array
 SOURCES += array_new.c
 SOURCES += array_resize.c
@@ -75,7 +75,7 @@ SOURCES += array_strsplit.c
 SOURCES += array_iter.c
 
 # Buffer
-INC_FILES += buffer_42.h
+# INC_FILES += buffer_42.h
 SRC_SUBDIR += buffer
 SOURCES += buffer_new.c
 SOURCES += buffer_dup.c
@@ -94,7 +94,7 @@ SOURCES += buffer_append.c
 SOURCES += buffer_iter.c
 
 # String
-INC_FILES += string_42.h
+# INC_FILES += string_42.h
 SRC_SUBDIR += string
 SOURCES += ft_strlen.c
 SOURCES += ft_strdup.c
@@ -104,7 +104,7 @@ SOURCES += ft_strrchr.c
 SOURCES += ft_strrev.c
 
 # Pool
-INC_FILES += pool_42.h
+# INC_FILES += pool_42.h
 SRC_SUBDIR += pool
 SOURCES += pool_new.c
 SOURCES += pool_chunk.c
@@ -114,7 +114,7 @@ SOURCES += pool_reset.c
 SOURCES += pool_destroy.c
 
 # Error
-INC_FILES += error_42.h
+# INC_FILES += error_42.h
 SRC_SUBDIR += error
 SOURCES += ft_error.c
 SOURCES += ft_die.c
@@ -122,31 +122,47 @@ SOURCES += ft_die.c
 # Generation
 INC_PATH = inc
 SRC_PATH = src
-HEADERS = $(INC_FILES:%.h=$(INC_PATH)/%.h)
+# HEADERS = $(INC_FILES:%.h=$(INC_PATH)/%.h)
 CFLAGS += $(addprefix -I,$(INC_PATH))
 vpath %.c $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
-OBJ_PATH = obj
-OBJECTS = $(addprefix $(OBJ_PATH)/, $(SOURCES:%.c=%.o))
+
+# Object files
+OBJ_PATH = .obj
+OBJECTS = $(SOURCES:%.c=$(OBJ_PATH)/%.o)
+
+# Dependencies
+DEP_PATH = .dep
+DEPS = $(SOURCES:%.c=$(DEP_PATH)/%.d)
+
+BUILD_DIR = $(OBJ_PATH) $(DEP_PATH)
 
 # Tests
 TEST_PATH = test
 TEST_EXEC = $(TEST_PATH)/test_lib42.out
-
+GIT_CLEAN = git clean -fd
 
 # Rules
-all: $(NAME)
+.PHONY: all
+
+.SECONDARY: $(OBJECTS)
+
+all: $(DEPS) $(NAME)
+
+-include $(DEPS)
 
 $(NAME): $(OBJECTS)
 	ar rcs $@ $^
 
-$(OBJECTS): $(HEADERS) | $(OBJ_PATH)
-$(OBJECTS): $(OBJ_PATH)/%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJECTS): $(OBJ_PATH)/%.o: %.c | $(OBJ_PATH)
+	$(CC) $(CFLAGS) -o $@ -c $<
 
-$(OBJ_PATH):
+$(DEP_PATH)/%.d: %.c | $(DEP_PATH)
+	$(CC) $(CFLAGS) -MM $< -MT $(OBJ_PATH)/$*.o -MF $@
+
+$(BUILD_DIR):
 	@-mkdir -p $@
 
-.PHONY: all clean fclean re
+.PHONY: clean fclean re sanitize unsanitize
 
 clean:
 	$(RM) -r $(OBJ_PATH)
@@ -156,20 +172,44 @@ fclean: clean
 
 re: fclean all
 
+sanitize:
+	$(MAKE) -C ./ re SAN=yes DEBUG=yes
 
-# Tools
-.PHONY: norme ctags
+unsanitize:
+	$(MAKE) -C ./ re DEBUG=yes
 
-norme:
-	@norminette $(SRC_PATH)
-	@norminette $(HEADERS)
+# Submodule
+.PHONY: sub-update sub-init
 
-ctags:
-	ctags -R --tag-relative=yes --exclude='.git*' --exclude=test --exclude='*.o' --exclude='*dSYM' --exclude='*.pdf'
+sub-init:
+	git submodule update --init --recursive
+
+sub-update:
+	git submodule update --remote --recursive
 
 # Tests
-.PHONY: check
+.PHONY: check test-cleanup
 
-check: re
-	@$(MAKE) -C $(TEST_PATH) re
+check: all
+	@$(MAKE) -C $(TEST_PATH) all
 	@./$(TEST_EXEC)
+
+# Tools
+.PHONY: norme valgrind ctags clean-tools
+
+norme:
+	@ ! norminette -R CheckTopCommentHeader $(SRC_PATH) | grep -v -B 1 "^Norme"
+	@ ! norminette -R CheckTopCommentHeader $(INC_PATH) | grep -v -B 1 "^Norme"
+
+valgrind:
+	valgrind --leak-check=full ./$(NAME)
+
+callgrind:
+	valgrind --tool=callgrind --callgrind-out-file=$(CG_OUTPUT_FILE) ./$(NAME)
+	callgrind_annotate --auto=yes $(CG_OUTPUT_FILE)
+
+ctags:
+	ctags -R --tag-relative=yes --exclude='.git*' --exclude='test' --exclude='*.o' --exclude='*dSYM' --exclude='doc' --exclude='exercices'
+
+clean-tools:
+	$(RM) -r *.dSYM/
