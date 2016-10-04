@@ -28,12 +28,6 @@ ifeq ($(SAN),yes)
 	CFLAGS += -fsanitize=address -fno-omit-frame-pointer -fno-optimize-sibling-calls
 endif
 
-# # General
-# INC_FILES += lib42.h
-# INC_FILES += typedefs_42.h
-# INC_FILES += structs_42.h
-# INC_FILES += macros_42.h
-
 # Memory
 SRC_SUBDIR += memory
 SOURCES += ft_memset.c
