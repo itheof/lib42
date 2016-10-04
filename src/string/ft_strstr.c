@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "string_42.h"
-#include <stdio.h> // delete
 
 char	*ft_strstr(const char *big, const char *little)
 {
