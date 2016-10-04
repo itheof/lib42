@@ -20,8 +20,8 @@ char	*ft_strstr(const char *big, const char *little)
 
 	big_len = ft_strlen(big);
 	little_len = ft_strlen(little);
-	if (*little == '\0' || little_len > big_len)
-		return (NULL);
+	if (*little == '\0')
+		return ((char *)(uintptr_t)big);
 	i = 0;
 	while (i < big_len - little_len)
 	{
