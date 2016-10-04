@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 12:14:45 by djean             #+#    #+#             */
-/*   Updated: 2016/10/04 23:50:27 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/05 01:34:02 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,8 @@ char			*ft_strstr(const char *big, const char *little)
 		{
 			i = little_len - 1;
 			while (little[i] == big[skip + i])
-			{
-				if (i == 0)
+				if (i-- == 0)
 					return ((char *)(uintptr_t)(big + skip));
-				--i;
-			}
 			skip += skip_table[(size_t)big[skip + little_len - 1]];
 		}
 	}
