@@ -2,6 +2,7 @@
 
 int	main(void)
 {
+
 	// memory
 	suite_memset();
 	suite_memcmp();
@@ -43,7 +44,7 @@ int	main(void)
 	suite_buffer_set();
 	suite_buffer_rewind();
 	suite_buffer_rewindchr();
-	/* suite_buffer_rewindnchr(); */
+	//suite_buffer_rewindnchr();
 	suite_buffer_twin();
 	suite_buffer_merge();
 	suite_buffer_iterator();
@@ -56,7 +57,7 @@ int	main(void)
 	suite_array_replace();
 	suite_array_insert();
 	suite_array_remove();
-	/* suite_array_copy(); */
+	//suite_array_copy();
 	suite_array_getset();
 	suite_array_strsplit();
 	suite_array_iterator();
@@ -75,6 +76,8 @@ int	main(void)
 	suite_pool_obtain();
 	suite_pool_return();
 	suite_pool_reset();
+
+	suite_unistd_getopt();
 
 	v_full_success("Lib42");
 	return (0);
