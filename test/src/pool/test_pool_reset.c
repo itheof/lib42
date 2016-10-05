@@ -23,13 +23,12 @@ static void	test_00_pool_reset_MultiChunksInPool(void)
 {
 	size_t	elem_size = sizeof(char*);
 	size_t	count = 1;
-	void	*pValue[6];
 
 	// setup
 	setup(elem_size, count);
 	for (size_t i = 0; i < 6; ++i)
 	{
-		pValue[i] = pool_obtain(p);
+		pool_obtain(p);
 	}
 
 	// reset du pool
@@ -55,6 +54,7 @@ static void test_01_pool_reset_NewAllocAfterReset(void)
 	{
 		pValue[i] = pool_obtain(p);
 		pValue[i] = "Hello World!";
+		v_assert_str("Hello World!", pValue[i]);
 	}
 
 	// reset du pool
@@ -67,6 +67,7 @@ static void test_01_pool_reset_NewAllocAfterReset(void)
 	// nouvelle allocation
 	pValue[0] = pool_obtain(p);
 	pValue[0] = "New alloc";
+	v_assert_str("New alloc", pValue[0]);
 
 	teardown();
 	VTS;
