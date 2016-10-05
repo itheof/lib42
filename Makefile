@@ -69,7 +69,8 @@ SOURCES += array_iter.c
 SRC_SUBDIR += cbuffer
 SOURCES += cbuffer_new.c
 SOURCES += cbuffer_push.c
-SOURCES += cbuffer_index.c
+SOURCES += cbuffer_pop.c
+SOURCES += cbuffer_get.c
 
 # Buffer
 SRC_SUBDIR += buffer

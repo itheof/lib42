@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 18:44:25 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/05 22:59:51 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@
 t_cbuffer	*cbuffer_new(size_t len, size_t elem_size);
 void		*cbuffer_init(t_cbuffer *buffer, size_t len, size_t elem_size);
 
-void		cbuffer_push_back(t_cbuffer *buffer, void const *e);
-void		cbuffer_push_front(t_cbuffer *buffer, void const *e);
+void		cbuffer_push_back(t_cbuffer *buffer, void const *elem);
+void		cbuffer_push_front(t_cbuffer *buffer, void const *elem);
 
-void		cbuffer_index_push_back(size_t m, size_t *l, size_t *s, size_t *e);
-void		cbuffer_index_push_front(size_t m, size_t *l, size_t *s, size_t *e);
+void		cbuffer_pop_back(t_cbuffer *buffer);
+void		cbuffer_pop_front(t_cbuffer *buffer);
 
-// void		*array_resize(t_array *v);
-// void		*array_get(t_array *v, size_t i);
+void		*cbuffer_get(t_cbuffer *buffer, size_t i);
+void		*cbuffer_get_front(t_cbuffer *buffer);
+void		*cbuffer_get_back(t_cbuffer *buffer);
+
 // void		array_set(t_array *v, size_t i, void *e);
 // int			array_indexof(t_array *v, void *e);
 // void		*array_create_node(t_array *v);
