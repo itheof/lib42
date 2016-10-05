@@ -2,6 +2,7 @@
 
 static int g_test_getopt_err_ref = 0;
 static int g_test_getopt_err = 0;
+static int g_test_getopt_diagnostic = 0;
 
 static void reset_getopt_gvars(void)
 {
@@ -39,24 +40,45 @@ static void assert_silent_getopt_values(int argc, char *const argv[], const char
 		v_assert_ptr(optarg, ==,state.optarg);
 	}
 }
-/*
+
+static void panic_syscall_failed(void)
+{
+	perror("test PANIC");
+	exit(1);
+}
+
 static void assert_getopt_diagnostics(int argc, char *const argv[], const char *optstring)
 {
 	int filedes[2][2];
 	char buf1[512];
 	char buf2[512];
 
-	g_test_getopt_err_ref = ;
-	g_test_getopt_err = ;
+	if (pipe(filedes[0]) < 0 && pipe(filedes[1]) < 0)
+		panic_syscall_failed();
+
+	g_test_getopt_diagnostic = 1;
+	g_test_getopt_err_ref = filedes[0][1];
+	g_test_getopt_err = filedes[1][1];
 
 	assert_silent_getopt_values(argc, argv, optstring);
+	close(filedes[0][1]);
+	close(filedes[1][1]);
 
-	if 
+	buf1[511] = 0;
+	buf2[511] = 0;
+	if (read(filedes[0][0], buf1, 511) < 0 || read(filedes[1][0], buf2, 511) < 0)
+		panic_syscall_failed();
 
+	printf("salut !!: %s\n", buf1);
+	printf("salut !!: %s\n", buf2);
+	close(filedes[0][0]);
+	close(filedes[1][0]);
+	v_assert_str(buf1, buf2);
 	g_test_getopt_err_ref = 0;
 	g_test_getopt_err = 0;
+	g_test_getopt_diagnostic = 0;
 }
-*/
+
 static void test_00_no_opts(void)
 {
 	assert_silent_getopt_values(
@@ -262,7 +284,11 @@ static void test_07_double_dash_spec(void)
 
 static void test_08_error_bad_opt(void)
 {
-	
+/*	assert_getopt_diagnostics(
+		2, (char*[])
+		{"./test", "-F", NULL},
+		"a"
+	);*/
 
 	VTS;
 }
