@@ -9,7 +9,7 @@ static void	setup(void)
 {
 	v = array_new(8, sizeof(int));
 	for (size_t i = 0; i < ARR_SIZ_MAX(tab); ++i)
-		array_add(v, tab + i);
+		array_push(v, tab + i);
 }
 
 static void	teardown(void)

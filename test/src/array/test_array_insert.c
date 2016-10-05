@@ -13,7 +13,7 @@ static void	setup(void)
 {
 	v = array_new(8, sizeof(char*));
 	for (size_t i = 0; i < ARR_SIZ_MAX(str); ++i)
-		array_add(v, &str[i]);
+		array_push(v, &str[i]);
 }
 
 static void	teardown(void)
@@ -151,14 +151,13 @@ static void	test_03_array_insert_Resize(void)
 
 	setup();
 
-	index = v->count;
 	array_insert(v, v->count, &s1);
 	array_insert(v, v->count, &s2);
 	array_insert(v, v->count, &s3);
 
 	// Check array integrity
 	v_assert_size_t(8, ==, v->count);
-	v_assert_size_t(16, ==, v->max);
+	v_assert_size_t(8, ==, v->max);
 
 	for (size_t i = 0; i < v->count - 3; ++i)
 	{

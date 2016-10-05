@@ -10,7 +10,7 @@ static void	teardown(void)
 		char	*s = *(char**)array_get(v, i);
 		free(s);
 	}
-	array_destroy(v);
+	array_destroy(&v);
 	v = NULL;
 }
 
