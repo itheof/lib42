@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 20:14:54 by djean             #+#    #+#             */
-/*   Updated: 2016/10/01 16:09:53 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/05 17:48:13 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	*free_and_return(t_array *v, char *sub)
 		free(p);
 		++i;
 	}
-	array_destroy(v);
+	array_destroy(&v);
 	free(sub);
 	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 17:45:44 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/05 17:47:50 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_array	*array_insert(t_array *v, size_t i, void *e);
 void	*array_remove(t_array *v, size_t i, void *removed);
 void	*array_remove_elem(t_array *v, void *e);
 void	array_delete(t_array *v, size_t i);
-void	array_destroy(t_array *v);
+void	array_destroy(t_array **v);
 void	*array_reset(t_array *v);
 t_array	*array_copy(t_array *v);
 t_array	*array_strsplit(char *str, char c);
