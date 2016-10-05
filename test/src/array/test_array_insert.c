@@ -13,7 +13,7 @@ static void	setup(void)
 {
 	v = array_new(8, sizeof(char*));
 	for (size_t i = 0; i < ARR_SIZ_MAX(str); ++i)
-		array_add(v, &str[i]);
+		array_push(v, &str[i]);
 }
 
 static void	teardown(void)

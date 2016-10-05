@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 17:47:50 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/05 17:57:19 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	*array_get(t_array *v, size_t i);
 void	array_set(t_array *v, size_t i, void *e);
 int		array_indexof(t_array *v, void *e);
 void	*array_create_node(t_array *v);
-t_array	*array_add(t_array *v, void *e);
 void	*array_replace(t_array *v, size_t i, void *e, void *old);
 t_array	*array_insert(t_array *v, size_t i, void *e);
 void	*array_remove(t_array *v, size_t i, void *removed);
@@ -57,5 +56,7 @@ void	*array_iterator(t_array *v);
 void	array_iterator_prev(t_array *v);
 void	array_iterator_next(t_array *v);
 void	array_iterator_set(t_array *v, size_t index);
+void	*array_pop(t_array *v, void *old);
+t_array	*array_push(t_array *v, void *e);
 
 #endif

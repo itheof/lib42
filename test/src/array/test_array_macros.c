@@ -32,10 +32,10 @@ static void	test_01_TARRAY_IN_RANGE_FilledArray(void)
 
 	v = array_new(8, sizeof(int));
 	value = 3;
-	array_add(v, &value);
-	array_add(v, &value);
-	array_add(v, &value);
-	array_add(v, &value);
+	array_push(v, &value);
+	array_push(v, &value);
+	array_push(v, &value);
+	array_push(v, &value);
 
 	v_assert_size_t(4, ==, v->count);
 

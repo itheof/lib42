@@ -17,7 +17,7 @@ static void	setup(void)
 	v = array_new(8, sizeof(char*));
 	for (size_t i = 0; i < ARR_SIZ_MAX(str); ++i)
 	{
-		array_add(v, &str[i]);
+		array_push(v, &str[i]);
 	}
 }
 
@@ -197,7 +197,7 @@ static void	test_04_array_remove_OneItemInArrayOfSizeOne(void)
 	int	ptr;
 
 	v = array_new(1, sizeof(int));
-	array_add(v, &(int){42});
+	array_push(v, &(int){42});
 	v_assert_size_t(8, ==, v->max);
 	v_assert_size_t(1, ==, v->count);
 

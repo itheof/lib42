@@ -46,7 +46,7 @@ int	main(void)
 	suite_array_macros();
 	suite_array_indexof();
 	suite_array_create_node();
-	suite_array_add();
+	suite_array_push();
 	suite_array_replace();
 	suite_array_insert();
 	suite_array_remove();

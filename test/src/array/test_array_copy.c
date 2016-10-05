@@ -11,11 +11,11 @@ void	test_00_array_copy_SimpleCopy(void)
 	t_array *cp;
 
 	array_init(&v, 8);
-	array_add(&v, s1);
-	array_add(&v, s2);
-	array_add(&v, s3);
-	array_add(&v, s4);
-	array_add(&v, s5);
+	array_pus(&v, s1);
+	array_pus(&v, s2);
+	array_pus(&v, s3);
+	array_pus(&v, s4);
+	array_pus(&v, s5);
 
 	cp = array_copy(&v);
 
