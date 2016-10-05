@@ -56,6 +56,9 @@ int	main(void)
 	suite_array_strsplit();
 	suite_array_iterator();
 
+	// cbuffer
+	suite_cbuffer_push();
+
 	// error
 	suite_error();
 

@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:53:30 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/05 18:15:45 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/05 19:15:34 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,15 @@ void	cbuffer_index_push_back(size_t max_len, size_t *len,
 		*start += 1;
 		*end += 1;
 	}
-	else if (*end == *len - 1)
+	else if (*end == *len - 1 || *len == max_len - 1)
 	{
 		*end = 0;
-		++(*len);
+		*len += 1;
 	}
 	else
 	{
 		*end += 1;
-		++(*len);
+		*len += 1;
 	}
 }
 
@@ -63,12 +63,12 @@ void	cbuffer_index_push_front(size_t max_len, size_t *len,
 	}
 	else if (*start == 0)
 	{
+		*len += 1;
 		*start = *len - 1;
-		++(*len);
 	}
 	else
 	{
 		*start -= 1;
-		++(*len);
+		*len += 1;
 	}
 }

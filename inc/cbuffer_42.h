@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 18:18:10 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/05 18:44:25 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include "typedefs_42.h"
 
-# define CBUFFER_GET(v, i) ((char*)(v)->data + ((v)->elem_size * (i)))
+# define CBUFFER_GET(b, i) ((char*)(b)->data + ((b)->elem_size * (i)))
 
 t_cbuffer	*cbuffer_new(size_t len, size_t elem_size);
 void		*cbuffer_init(t_cbuffer *buffer, size_t len, size_t elem_size);
