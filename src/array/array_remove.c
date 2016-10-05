@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 19:35:29 by djean             #+#    #+#             */
-/*   Updated: 2016/10/01 16:05:38 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/05 17:21:16 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	*array_remove(t_array *v, size_t i, void *removed)
 	p = TARRAY_GET(v, i);
 	if (removed != NULL)
 		ft_memcpy(removed, p, v->elem_size);
+	v->count -= 1;
 	len = (v->count - i) * v->elem_size;
 	ft_memmove(p, p + v->elem_size, len);
-	v->count -= 1;
 	if (v->iterator > i)
 		array_iterator_prev(v);
 	return (removed);

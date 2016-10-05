@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 16:16:16 by djean             #+#    #+#             */
-/*   Updated: 2016/09/07 19:04:49 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/05 17:59:48 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_array		*array_insert(t_array *v, size_t i, void *e)
 		if (array_resize(v) == NULL)
 			return (NULL);
 	if (i == v->count)
-		return (array_add(v, e));
+		return (array_push(v, e));
 	src = TARRAY_GET(v, i);
 	len = (v->count - i) * v->elem_size;
 	ft_memmove(src + v->elem_size, src, len);

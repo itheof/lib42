@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 20:14:54 by djean             #+#    #+#             */
-/*   Updated: 2016/10/01 16:09:53 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/05 17:59:42 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	*free_and_return(t_array *v, char *sub)
 		free(p);
 		++i;
 	}
-	array_destroy(v);
+	array_destroy(&v);
 	free(sub);
 	return (NULL);
 }
@@ -34,7 +34,7 @@ static void	*add_and_return(t_array *v, char *str)
 	char	*sub;
 
 	sub = ft_strdup(str);
-	if (array_add(v, &sub) == NULL)
+	if (array_push(v, &sub) == NULL)
 		return (free_and_return(v, sub));
 	return (v);
 }
@@ -53,7 +53,7 @@ t_array		*array_strsplit(char *str, char c)
 	{
 		if ((sub = ft_strsub(str, 0, (size_t)len)) == NULL)
 			return (free_and_return(v, NULL));
-		if (array_add(v, &sub) == NULL)
+		if (array_push(v, &sub) == NULL)
 			return (free_and_return(v, sub));
 		str += len + 1;
 	}
