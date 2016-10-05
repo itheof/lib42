@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:31:25 by djean             #+#    #+#             */
-/*   Updated: 2016/09/07 15:13:44 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/05 17:27:37 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_array	*array_new(size_t size, size_t elem_size)
 {
 	t_array	*v;
 
-	v = ft_memalloc(sizeof(t_array));
+	v = malloc(sizeof(t_array));
 	if (v == NULL)
 		return (NULL);
 	if ((array_init(v, size, elem_size)) == NULL)
@@ -33,7 +33,7 @@ void	*array_init(t_array *v, size_t size, size_t elem_size)
 	v->count = 0;
 	v->elem_size = elem_size;
 	v->iterator = 0;
-	v->data = ft_memalloc(elem_size * v->max);
+	v->data = malloc(elem_size * v->max);
 	if (v->data == NULL)
 		return (NULL);
 	return (v);
