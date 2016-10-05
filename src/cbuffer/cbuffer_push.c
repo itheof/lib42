@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/05 23:16:33 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/06 00:09:10 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 inline static size_t	move_forward(size_t len, size_t n)
 {
-	if (n == len - 1)
+	if (n >= len - 1)
 		return (0);
 	return (n + 1);
 }

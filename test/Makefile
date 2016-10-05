@@ -51,6 +51,7 @@ SOURCES += test_array_iterator.c
 
 # Cbuffer
 SOURCES += test_cbuffer_push.c
+SOURCES += test_cbuffer_pop.c
 
 # Buffer
 SOURCES += test_buffer_new.c

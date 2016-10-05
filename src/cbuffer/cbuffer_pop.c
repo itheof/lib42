@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/05 23:01:25 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/06 00:21:51 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 inline static size_t	move_forward(size_t len, size_t n)
 {
-	if (n == len - 1)
+	if (n >= len - 1)
 		return (0);
 	return (n + 1);
 }
@@ -28,12 +28,18 @@ inline static size_t	move_backward(size_t len, size_t n)
 
 void					cbuffer_pop_back(t_cbuffer *b)
 {
-	b->len -= 1;
-	b->end = move_backward(b->len, b->end);
+	if (b->len > 0)
+	{
+		b->end = move_backward(b->len, b->end);
+		b->len -= 1;
+	}
 }
 
 void					cbuffer_pop_front(t_cbuffer *b)
 {
-	b->len -= 1;
-	b->start = move_forward(b->len, b->start);
+	if (b->len > 0)
+	{
+		b->len -= 1;
+		b->start = move_forward(b->max_len, b->start);
+	}
 }
