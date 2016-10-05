@@ -16,6 +16,8 @@
 # include <stdlib.h>
 # include "memory_42.h"
 
+# define ASCII_TABLE_LEN 127
+
 char	*ft_strdup(const char *s1);
 char	*ft_strndup(const char *s1, size_t n);
 size_t	ft_strlen(const char *s);
@@ -30,5 +32,6 @@ char	*ft_strrnchr(const char *s, int c, size_t n);
 int		ft_strrnchrpos(const char *s, int c, size_t n);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strrev(char *str);
+char	*ft_strstr(const char *big, const char *little);
 
 #endif

@@ -102,6 +102,7 @@ SOURCES += ft_strsub.c
 SOURCES += ft_strchr.c
 SOURCES += ft_strrchr.c
 SOURCES += ft_strrev.c
+SOURCES += ft_strstr.c
 
 # Pool
 INC_FILES += pool_42.h
@@ -161,8 +162,8 @@ re: fclean all
 .PHONY: norme ctags
 
 norme:
-	@norminette $(SRC_PATH)
-	@norminette $(HEADERS)
+	@ ! norminette -R CheckTopCommentHeader $(SRC_PATH) | grep -v -B 1 "^Norme"
+	@ ! norminette -R CheckTopCommentHeader $(HEADERS) | grep -v -B 1 "^Norme"
 
 ctags:
 	ctags -R --tag-relative=yes --exclude='.git*' --exclude=test --exclude='*.o' --exclude='*dSYM' --exclude='*.pdf'
