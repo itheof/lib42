@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array_new.c                                        :+:      :+:    :+:   */
+/*   cbuffer_new.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/10 16:31:25 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 16:10:55 by crenault         ###   ########.fr       */
+/*   Created: 2016/10/05 16:01:15 by crenault          #+#    #+#             */
+/*   Updated: 2016/10/05 16:12:21 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include "typedefs_42.h"
 #include "array_42.h"
 
-t_array	*array_new(size_t size, size_t elem_size)
+t_cbuffer	*cbuffer_new(size_t size, size_t elem_size)
 {
-	t_array	*v;
+	t_cbuffer	*buffer;
 
-	v = ft_memalloc(sizeof(t_array));
-	if (v == NULL)
+	buffer = ft_memalloc(sizeof(t_cbuffer));
+	if (buffer == NULL)
 		return (NULL);
-	if ((array_init(v, size, elem_size)) == NULL)
+	if ((cbuffer_init(buffer, size, elem_size)) == NULL)
 	{
-		free(v);
+		free(buffer);
 		return (NULL);
 	}
-	return (v);
+	return (buffer);
 }
 
-void	*array_init(t_array *v, size_t size, size_t elem_size)
+void		*cbuffer_init(t_cbuffer *buffer, size_t size, size_t elem_size)
 {
-	v->max = (size < TARRAY_MIN_SIZE) ? TARRAY_MIN_SIZE : size;
-	v->count = 0;
-	v->elem_size = elem_size;
-	v->iterator = 0;
-	v->data = ft_memalloc(elem_size * v->max);
-	if (v->data == NULL)
+	if ((array_init(&buffer->array, size, elem_size)) == NULL)
 		return (NULL);
-	return (v);
+	buffer->start = 0;
+	buffer->end = 0;
+	return (buffer);
 }
