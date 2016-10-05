@@ -6,23 +6,26 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 16:53:19 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/05 18:18:10 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CBUFFER_42_H
 # define CBUFFER_42_H
 
-t_cbuffer	*cbuffer_new(size_t size, size_t elem_size);
-void		*cbuffer_init(t_cbuffer *buffer, size_t size, size_t elem_size);
+# include <stdlib.h>
+# include "typedefs_42.h"
 
-void		*cbuffer_push_back(t_cbuffer *buffer, void const *e);
-void		*cbuffer_push_front(t_cbuffer *buffer, void const *e);
+# define CBUFFER_GET(v, i) ((char*)(v)->data + ((v)->elem_size * (i)))
 
-void		cbuffer_index_push_back(size_t count, size_t max,
-									size_t *start, size_t *end);
-void		cbuffer_index_push_front(size_t count, size_t max,
-									size_t *start, size_t *end);
+t_cbuffer	*cbuffer_new(size_t len, size_t elem_size);
+void		*cbuffer_init(t_cbuffer *buffer, size_t len, size_t elem_size);
+
+void		cbuffer_push_back(t_cbuffer *buffer, void const *e);
+void		cbuffer_push_front(t_cbuffer *buffer, void const *e);
+
+void		cbuffer_index_push_back(size_t m, size_t *l, size_t *s, size_t *e);
+void		cbuffer_index_push_front(size_t m, size_t *l, size_t *s, size_t *e);
 
 // void		*array_resize(t_array *v);
 // void		*array_get(t_array *v, size_t i);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lib42.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/02 12:48:07 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/05 17:55:48 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "memory_42.h"
 # include "string_42.h"
 # include "array_42.h"
+# include "cbuffer_42.h"
 # include "buffer_42.h"
 # include "pool_42.h"
 # include "error_42.h"

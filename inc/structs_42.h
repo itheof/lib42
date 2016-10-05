@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 16:21:42 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/05 18:01:55 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,12 @@ struct	s_array
 
 struct	s_cbuffer
 {
-	struct s_array	array;
-	size_t			start;
-	size_t			end;
+	void		*data;
+	size_t		len;
+	size_t		max_len;
+	size_t		elem_size;
+	size_t		start;
+	size_t		end;
 };
 
 #endif

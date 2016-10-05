@@ -65,6 +65,12 @@ SOURCES += array_delete.c
 SOURCES += array_strsplit.c
 SOURCES += array_iter.c
 
+# Cbuffer
+SRC_SUBDIR += cbuffer
+SOURCES += cbuffer_new.c
+SOURCES += cbuffer_push.c
+SOURCES += cbuffer_index.c
+
 # Buffer
 SRC_SUBDIR += buffer
 SOURCES += buffer_new.c
