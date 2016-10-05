@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/09/27 16:17:04 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/05 16:41:00 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define TARRAY_MIN_SIZE		8
 # define TARRAY_GROWTH_FACTOR	2
-# define TARRAY_NEED_RESIZE(v)	((v)->count + 1 >= (v)->max)
+# define TARRAY_NEED_RESIZE(v)	((v)->count + 1 > (v)->max)
 # define TARRAY_MAX(v)			((v)->max)
 # define TARRAY_COUNT(v)		((v)->count)
 # define TARRAY_DATA(v)			((v)->data)

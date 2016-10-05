@@ -35,7 +35,7 @@ static void	test_00_array_add_Int(void)
 	{
 		int	value = data[i];
 		array_add(v, &value);
-		if (i < 7)
+		if (i < 8)
 			v_assert_size_t(8, ==, TARRAY_MAX(v));
 		else
 			v_assert_size_t(16, ==, TARRAY_MAX(v));
@@ -81,11 +81,11 @@ static void	test_02_array_add_Struct(void)
 	struct s_test {
 		void	*e;
 		int		i;
-		char	c;
+		char	c[4];
 	} data[3] = {
-		{ NULL, 42, 'a' },
-		{ (void*)0xdeadbeef, 8, 'z' },
-		{ (void*)0xabcdef, -1, '*' },
+		{ NULL, 42, {'a', 'b', 'c', 'd'} },
+		{ (void*)0xdeadbeef, 8, {'z', 'y', 'x', 'w'} },
+		{ (void*)0xabcdef, -1, {'*', '&', '^', '%'} }
 	};
 	setup(NULL, sizeof(struct s_test), 0);
 
@@ -102,7 +102,6 @@ static void	test_02_array_add_Struct(void)
 		struct s_test *res = array_get(v, i);
 		v_assert_ptr(value.e, ==, res->e);
 		v_assert_int(value.i, ==, res->i);
-		v_assert_char(value.c, ==, res->c);
 	}
 
 	teardown();
