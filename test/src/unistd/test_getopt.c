@@ -36,7 +36,8 @@ static void assert_silent_getopt_values(int argc, char *const argv[], const char
 			break;
 		v_assert_char(optind, ==, state.optind);
 		v_assert_int(opterr, ==, state.opterr);
-		v_assert_char(optopt, ==, state.optopt);
+		if (ret_ref == '?' || ret_ref == ':')
+			v_assert_char(optopt, ==, state.optopt);
 		v_assert_ptr(optarg, ==,state.optarg);
 	}
 }
