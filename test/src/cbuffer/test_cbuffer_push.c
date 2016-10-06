@@ -376,6 +376,97 @@ static void test_11_cbuffer_pushBackAndFrontTwoInt(void)
 	VTS;
 }
 
+static void	delete_func(void *n)
+{
+	**((int**)n) = 22;
+}
+
+static void	test_12_cbuffer_pushBackCallDelete(void)
+{
+	t_cbuffer	buffer;
+
+	cbuffer_init(&buffer, 3, sizeof(int*), delete_func);
+
+	v_assert_size_t(0, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	int a = 10;
+	int b = 11;
+	int c = 12;
+	int d = 13;
+
+	int *a_ptr = &a;
+	int *b_ptr = &b;
+	int *c_ptr = &c;
+	int *d_ptr = &d;
+	cbuffer_push_back(&buffer, &a_ptr);
+	cbuffer_push_back(&buffer, &b_ptr);
+	cbuffer_push_back(&buffer, &c_ptr);
+	cbuffer_push_back(&buffer, &d_ptr);
+
+	int *front = *((int**)cbuffer_get_front(&buffer));
+	v_assert_ptr(b_ptr, ==, front);
+	v_assert_int(b, ==, *front);
+
+	int *middle = *((int**)cbuffer_get(&buffer, 1));
+	v_assert_ptr(c_ptr, ==, middle);
+	v_assert_int(c, ==, *middle);
+
+	int *back = *((int**)cbuffer_get_back(&buffer));
+	v_assert_ptr(d_ptr, ==, back);
+	v_assert_int(d, ==, *back);
+
+	v_assert_int(a, ==, 22);
+
+	v_assert_size_t(3, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	VTS;
+}
+
+static void	test_13_cbuffer_pushFrontCallDelete(void)
+{
+	t_cbuffer	buffer;
+
+	cbuffer_init(&buffer, 3, sizeof(int*), delete_func);
+
+	v_assert_size_t(0, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	int a = 10;
+	int b = 11;
+	int c = 12;
+	int d = 13;
+
+	int *a_ptr = &a;
+	int *b_ptr = &b;
+	int *c_ptr = &c;
+	int *d_ptr = &d;
+	cbuffer_push_front(&buffer, &a_ptr);
+	cbuffer_push_front(&buffer, &b_ptr);
+	cbuffer_push_front(&buffer, &c_ptr);
+	cbuffer_push_front(&buffer, &d_ptr);
+
+	int *front = *((int**)cbuffer_get_front(&buffer));
+	v_assert_ptr(d_ptr, ==, front);
+	v_assert_int(d, ==, *front);
+
+	int *middle = *((int**)cbuffer_get(&buffer, 1));
+	v_assert_ptr(c_ptr, ==, middle);
+	v_assert_int(c, ==, *middle);
+
+	int *back = *((int**)cbuffer_get_back(&buffer));
+	v_assert_ptr(b_ptr, ==, back);
+	v_assert_int(b, ==, *back);
+
+	v_assert_int(a, ==, 22);
+
+	v_assert_size_t(3, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	VTS;
+}
+
 void	suite_cbuffer_push(void)
 {
 	test_00_cbuffer_pushBackInt();
@@ -393,6 +484,9 @@ void	suite_cbuffer_push(void)
 
 	test_10_cbuffer_pushBackAndFrontInt();
 	test_11_cbuffer_pushBackAndFrontTwoInt();
+
+	test_12_cbuffer_pushBackCallDelete();
+	test_13_cbuffer_pushFrontCallDelete();
 
 	VSS;
 }

@@ -272,6 +272,54 @@ static void	test_07_cbuffer_popFrontMoreThanLenInt(void)
 	VTS;
 }
 
+static void	test_08_cbuffer_popFrontCheckReturn(void)
+{
+	t_cbuffer	buffer;
+
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
+
+	v_assert_size_t(0, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	int a = 10;
+	cbuffer_push_back(&buffer, &a);
+
+	v_assert_size_t(1, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	int *r = cbuffer_pop_front(&buffer);
+	v_assert_int(a, ==, *r);
+
+	v_assert_size_t(0, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	VTS;
+}
+
+static void	test_09_cbuffer_popBackCheckReturn(void)
+{
+	t_cbuffer	buffer;
+
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
+
+	v_assert_size_t(0, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	int a = 10;
+	cbuffer_push_back(&buffer, &a);
+
+	v_assert_size_t(1, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	int *r = cbuffer_pop_back(&buffer);
+	v_assert_int(a, ==, *r);
+
+	v_assert_size_t(0, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	VTS;
+}
+
 void	suite_cbuffer_pop(void)
 {
 	test_00_cbuffer_popBackInt();
@@ -283,6 +331,9 @@ void	suite_cbuffer_pop(void)
 	test_05_cbuffer_popFrontWithTwoInt();
 	test_05_cbuffer_popFrontEqualMaxLenInt();
 	test_07_cbuffer_popFrontMoreThanLenInt();
+
+	test_08_cbuffer_popFrontCheckReturn();
+	test_09_cbuffer_popBackCheckReturn();
 
 	VSS;
 }
