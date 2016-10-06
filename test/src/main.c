@@ -59,6 +59,7 @@ int	main(void)
 	// cbuffer
 	suite_cbuffer_push();
 	suite_cbuffer_pop();
+	suite_cbuffer_resize();
 
 	// error
 	suite_error();

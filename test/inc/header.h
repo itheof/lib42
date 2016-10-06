@@ -32,7 +32,8 @@ void	suite_array_iterator(void);
 
 // Cbuffer
 void    suite_cbuffer_push(void);
-void	suite_cbuffer_pop(void);
+void    suite_cbuffer_pop(void);
+void	suite_cbuffer_resize(void);
 
 // Buffer
 void	suite_buffer_macros(void);

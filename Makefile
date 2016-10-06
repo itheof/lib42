@@ -71,6 +71,7 @@ SOURCES += cbuffer_new.c
 SOURCES += cbuffer_push.c
 SOURCES += cbuffer_pop.c
 SOURCES += cbuffer_get.c
+SOURCES += cbuffer_resize.c
 
 # Buffer
 SRC_SUBDIR += buffer
@@ -185,7 +186,7 @@ sub-update:
 .PHONY: check test-cleanup
 
 check: all
-	@$(MAKE) -C $(TEST_PATH) all
+	@$(MAKE) -C $(TEST_PATH) re
 	@./$(TEST_EXEC)
 
 # Tools
