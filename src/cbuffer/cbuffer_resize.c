@@ -6,11 +6,10 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/06 02:12:32 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/06 02:13:46 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h> // delete
 #include "cbuffer_42.h"
 #include "memory_42.h"
 
