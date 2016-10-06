@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/06 15:33:59 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/06 16:06:59 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,30 @@ inline static size_t	move_backward(size_t len, size_t n)
 	return (n - 1);
 }
 
-// TODO need return poped elem
-void					cbuffer_pop_back(t_cbuffer *b)
+void					*cbuffer_pop_back(t_cbuffer *b)
 {
+	void	*popped;
+
 	if (b->len > 0)
 	{
+		popped = CBUFFER_GET(b, b->end);
 		b->end = move_backward(b->max_len, b->end);
 		b->len -= 1;
+		return (popped);
 	}
+	return (NULL);
 }
 
-// TODO need return poped elem
-void					cbuffer_pop_front(t_cbuffer *b)
+void					*cbuffer_pop_front(t_cbuffer *b)
 {
+	void	*popped;
+
 	if (b->len > 0)
 	{
+		popped = CBUFFER_GET(b, b->start);
 		b->start = move_forward(b->max_len, b->start);
 		b->len -= 1;
+		return (popped);
 	}
+	return (NULL);
 }

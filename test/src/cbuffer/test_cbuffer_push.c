@@ -4,7 +4,7 @@ static void	test_00_cbuffer_pushBackInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -31,7 +31,7 @@ static void	test_01_cbuffer_pushBackTwoInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -57,7 +57,7 @@ static void	test_02_cbuffer_pushBackExactLenInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -88,7 +88,7 @@ static void	test_03_cbuffer_pushBackMoreInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -121,7 +121,7 @@ static void	test_04_cbuffer_pushFrontInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -148,7 +148,7 @@ static void	test_05_cbuffer_pushFrontTwoInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -180,7 +180,7 @@ static void	test_06_cbuffer_pushFrontExactLenInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -211,7 +211,7 @@ static void	test_07_cbuffer_pushFrontMoreInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -244,7 +244,7 @@ static void test_08_cbuffer_pushFrontAndBackInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -276,7 +276,7 @@ static void test_09_cbuffer_pushFrontAndBackTwoInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -315,7 +315,7 @@ static void test_10_cbuffer_pushBackAndFrontInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -341,7 +341,7 @@ static void test_11_cbuffer_pushBackAndFrontTwoInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);

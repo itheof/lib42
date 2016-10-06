@@ -4,7 +4,7 @@ static void	test_00_cbuffer_popBackInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -40,7 +40,7 @@ static void	test_01_cbuffer_popBackWithTwoInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -77,7 +77,7 @@ static void	test_02_cbuffer_popBackEqualMaxLenInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -111,7 +111,7 @@ static void	test_03_cbuffer_popBackMoreThanLenInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -139,7 +139,7 @@ static void	test_04_cbuffer_popFrontInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -175,7 +175,7 @@ static void	test_05_cbuffer_popFrontWithTwoInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -214,7 +214,7 @@ static void	test_05_cbuffer_popFrontEqualMaxLenInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
@@ -248,7 +248,7 @@ static void	test_07_cbuffer_popFrontMoreThanLenInt(void)
 {
 	t_cbuffer	buffer;
 
-	cbuffer_init(&buffer, 3, sizeof(int));
+	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.max_len);
