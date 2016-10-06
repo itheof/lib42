@@ -65,6 +65,14 @@ SOURCES += array_delete.c
 SOURCES += array_strsplit.c
 SOURCES += array_iter.c
 
+# Cbuffer
+SRC_SUBDIR += cbuffer
+SOURCES += cbuffer_new.c
+SOURCES += cbuffer_push.c
+SOURCES += cbuffer_pop.c
+SOURCES += cbuffer_get.c
+SOURCES += cbuffer_resize.c
+
 # Buffer
 SRC_SUBDIR += buffer
 SOURCES += buffer_new.c
@@ -178,7 +186,7 @@ sub-update:
 .PHONY: check test-cleanup
 
 check: all
-	@$(MAKE) -C $(TEST_PATH) all
+	@$(MAKE) -C $(TEST_PATH) re
 	@./$(TEST_EXEC)
 
 # Tools

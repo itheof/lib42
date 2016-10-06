@@ -30,6 +30,11 @@ void	suite_array_strsplit(void);
 void	suite_array_iterator(void);
 /* void	suite_array_copy(void); */
 
+// Cbuffer
+void    suite_cbuffer_push(void);
+void    suite_cbuffer_pop(void);
+void	suite_cbuffer_resize(void);
+
 // Buffer
 void	suite_buffer_macros(void);
 void	suite_buffer_new(void);

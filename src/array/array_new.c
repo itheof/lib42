@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   array_new.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:31:25 by djean             #+#    #+#             */
 /*   Updated: 2016/10/05 17:27:37 by djean            ###   ########.fr       */

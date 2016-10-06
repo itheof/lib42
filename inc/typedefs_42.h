@@ -13,10 +13,13 @@
 #ifndef TYPEDEFS_42_H
 # define TYPEDEFS_42_H
 
-typedef struct s_chunk	t_chunk;
-typedef struct s_pool	t_pool;
-typedef struct s_buffer	t_buffer;
-typedef struct s_array	t_array;
-typedef struct s_errors	t_errors;
+# include "structs_42.h"
+
+typedef struct s_chunk		t_chunk;
+typedef struct s_pool		t_pool;
+typedef struct s_buffer		t_buffer;
+typedef struct s_array		t_array;
+typedef struct s_cbuffer	t_cbuffer;
+typedef struct s_errors		t_errors;
 
 #endif
