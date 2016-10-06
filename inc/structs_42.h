@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs_42.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/10/04 11:58:49 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/06 15:59:34 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,18 @@ struct	s_array
 	size_t	count;
 	size_t	elem_size;
 	size_t	iterator;
+};
+
+struct	s_cbuffer
+{
+	void		*data;
+	size_t		len;
+	size_t		max_len;
+	size_t		elem_size;
+	void		(*delete_func)(void *);
+
+	size_t		start;
+	size_t		end;
 };
 
 #endif

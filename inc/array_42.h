@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   array_42.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
 /*   Updated: 2016/10/05 17:57:19 by djean            ###   ########.fr       */
