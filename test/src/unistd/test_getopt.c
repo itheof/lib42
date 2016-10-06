@@ -1,15 +1,49 @@
 #include "header.h"
 
-static int g_test_getopt_err_ref = 0;
-static int g_test_getopt_err = 0;
 static int g_test_getopt_diagnostic = 0;
 
-static void reset_getopt_gvars(void)
+static void reset_getopt_vars(t_opt *state)
 {
 	optarg = NULL;
-	opterr = g_test_getopt_err_ref;
+	opterr = g_test_getopt_diagnostic;
 	optind = 1;
 	optopt = 0;
+	state->optind = 1;
+	state->opterr = g_test_getopt_diagnostic;
+	state->optarg = NULL;
+	state->optopt = 0;
+	state->optoff = 0;
+}
+
+static void panic_syscall_failed(void)
+{
+	perror("test panic");
+	exit(1);
+}
+
+static int	getopt_stderr_wrap(int argc, char *const argv[], const char *optstring, t_opt *state, int fd)
+{
+	int stderr_save;
+	int ret;
+
+	if ((stderr_save = dup(2)) < 0)
+		panic_syscall_failed();
+
+	if (dup2(fd, 2) < 0)
+		panic_syscall_failed();
+
+	if (!state)
+		ret = getopt(argc, argv, optstring);
+	else
+		ret = ft_getopt(argc, argv, optstring, state);
+
+	if (close(2) < 0 || close(fd) < 0)
+		panic_syscall_failed();
+	if (dup2(stderr_save, 2) < 0)
+		panic_syscall_failed();
+	if (close(stderr_save) < 0)
+		panic_syscall_failed();
+	return (ret);
 }
 
 static void assert_silent_getopt_values(int argc, char *const argv[], const char *optstring)
@@ -17,66 +51,61 @@ static void assert_silent_getopt_values(int argc, char *const argv[], const char
 	t_opt	state;
 	int		ret_ref;
 	int		ret;
+	int		filedes[2][2];
+	char	buf_ref[512];
+	char	buf[512];
+	pid_t	son_pid;
+	int		status;
 
-	state.optind = 1;
-	state.opterr = g_test_getopt_err;
-	state.optarg = NULL;
-	state.optopt = 0;
-	state.optoff = 0;
+	son_pid = fork();
+	if (!son_pid)
+	{
+		reset_getopt_vars(&state);
+		ret_ref = 0;
 
-	reset_getopt_gvars();
-	ret_ref = 0;
+		while (ret_ref != -1) {
 
-	while (ret_ref != -1) {
-		ret_ref = getopt(argc, argv, optstring);
-		ret = ft_getopt(argc, argv, optstring, &state);
+			if (pipe(filedes[0]) < 0 || pipe(filedes[1]) < 0)
+				panic_syscall_failed();
 
-		v_assert_char(ret_ref, ==, ret);
-		if (ret_ref == -1)
-			break;
-		v_assert_char(optind, ==, state.optind);
-		v_assert_int(opterr, ==, state.opterr);
-		if (ret_ref == '?' || ret_ref == ':')
-			v_assert_char(optopt, ==, state.optopt);
-		v_assert_ptr(optarg, ==,state.optarg);
+			ret_ref = getopt_stderr_wrap(argc, argv, optstring, NULL, filedes[0][1]);
+			ret = getopt_stderr_wrap(argc, argv, optstring, &state, filedes[1][1]);
+
+			memset(buf, 0, 512);
+			memset(buf_ref, 0, 512);
+			if (read(filedes[0][0], buf_ref, 511) < 0 || read(filedes[1][0], buf, 511) < 0 || close(filedes[0][0]) < 0 || close(filedes[1][0]))
+				panic_syscall_failed();
+			v_assert_char(ret_ref, ==, ret);
+			if (ret_ref == -1)
+				break;
+			v_assert_char(optind, ==, state.optind);
+			v_assert_int(opterr, ==, state.opterr);
+			if (ret_ref == '?' || ret_ref == ':')
+			{
+				v_assert_char(optopt, ==, state.optopt);
+				if (g_test_getopt_diagnostic)
+					v_assert_str(buf_ref, buf);
+			}
+			v_assert_ptr(optarg, ==,state.optarg);
+
+		}
+		exit(0);
 	}
-}
-
-static void panic_syscall_failed(void)
-{
-	perror("test PANIC");
-	exit(1);
+	else if (son_pid > 0)
+	{
+		wait(&status);
+		if (status){
+			exit(status);
+		}
+	}
+	else
+		panic_syscall_failed();
 }
 
 static void assert_getopt_diagnostics(int argc, char *const argv[], const char *optstring)
 {
-	int filedes[2][2];
-	char buf1[512];
-	char buf2[512];
-
-	if (pipe(filedes[0]) < 0 && pipe(filedes[1]) < 0)
-		panic_syscall_failed();
-
 	g_test_getopt_diagnostic = 1;
-	g_test_getopt_err_ref = filedes[0][1];
-	g_test_getopt_err = filedes[1][1];
-
 	assert_silent_getopt_values(argc, argv, optstring);
-	close(filedes[0][1]);
-	close(filedes[1][1]);
-
-	buf1[511] = 0;
-	buf2[511] = 0;
-	if (read(filedes[0][0], buf1, 511) < 0 || read(filedes[1][0], buf2, 511) < 0)
-		panic_syscall_failed();
-
-	printf("salut !!: %s\n", buf1);
-	printf("salut !!: %s\n", buf2);
-	close(filedes[0][0]);
-	close(filedes[1][0]);
-	v_assert_str(buf1, buf2);
-	g_test_getopt_err_ref = 0;
-	g_test_getopt_err = 0;
 	g_test_getopt_diagnostic = 0;
 }
 
@@ -285,18 +314,33 @@ static void test_07_double_dash_spec(void)
 
 static void test_08_error_bad_opt(void)
 {
-/*	assert_getopt_diagnostics(
+	assert_getopt_diagnostics(
 		2, (char*[])
 		{"./test", "-F", NULL},
 		"a"
-	);*/
+	);
+	assert_getopt_diagnostics(
+		2, (char*[])
+		{"./test", "-aF", NULL},
+		"a"
+	);
+	assert_getopt_diagnostics(
+		3, (char*[])
+		{"./test", "-a", "-Fa", NULL},
+		"a"
+	);
+	assert_getopt_diagnostics(
+		4, (char*[])
+		{"./test", "-a", "--", "-Fa", NULL},
+		"a"
+	);
 
 	VTS;
 }
 
 static void test_09_error_missing_operand(void)
 {
-
+	
 	VTS;
 }
 

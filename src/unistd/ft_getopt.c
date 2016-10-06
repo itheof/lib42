@@ -6,7 +6,7 @@
 /*   By: tvallee <tvallee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/30 13:49:50 by tvallee           #+#    #+#             */
-/*   Updated: 2016/10/04 15:19:55 by tvallee          ###   ########.fr       */
+/*   Updated: 2016/10/06 18:30:53 by tvallee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ static int	opt_get_type(char *const av[], const char *optstring, t_opt *state)
 			state->optoff = 0;
 			state->optind += 1;
 		}
+		write(2, av[0], ft_strlen(av[0]));
+		write(2, ": illegal option -- ", 20);
+		write(2, temp, 1);
+		write(2, "\n", 1);
 		return (-1);
 	}
 	else
