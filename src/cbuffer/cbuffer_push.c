@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/06 00:09:10 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:47:39 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ void					cbuffer_push_back(t_cbuffer *b, void const *elem)
 	}
 	else if (b->len == b->max_len)
 	{
-		b->end = move_forward(b->len, b->end);
-		b->start = move_forward(b->len, b->start);
+		b->end = move_forward(b->max_len, b->end);
+		b->start = move_forward(b->max_len, b->start);
 	}
 	else
 	{
 		b->len += 1;
-		b->end = move_forward(b->len, b->end);
+		b->end = move_forward(b->max_len, b->end);
 	}
 	ft_memcpy(CBUFFER_GET(b, b->end), elem, b->elem_size);
 }

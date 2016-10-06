@@ -113,7 +113,6 @@ static void	test_02_cbuffer_resizeEmptyBuffer(void)
 	VTS;
 }
 
-
 void	suite_cbuffer_resize(void)
 {
 	test_00_cbuffer_resizeStartBeforeEnd();
