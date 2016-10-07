@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:01:15 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/05 18:12:52 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/07 14:58:56 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_cbuffer	*cbuffer_new(size_t len, size_t elem_size,
 	return (buffer);
 }
 
-void		*cbuffer_init(t_cbuffer *buffer, size_t len, size_t elem_size,
+t_cbuffer	*cbuffer_init(t_cbuffer *buffer, size_t len, size_t elem_size,
 							void (*delete_func)(void *))
 {
 	if ((buffer->data = malloc(len * elem_size)) == NULL)
