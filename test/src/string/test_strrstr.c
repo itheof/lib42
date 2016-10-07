@@ -1,27 +1,27 @@
 #include "header.h"
 
-// static void	test_00_strstr_SecondWorld(void)
+// static void	test_00_strrstr_SecondWorld(void)
 // {
 // 	char	*big = "Hello World!";
 // 	char	*little = "World";
 // 	char	*ret;
 // 	char	*valid;
 
-// 	ret = ft_strstr(big, little);
+// 	ret = ft_strrstr(big, little);
 // 	valid = strstr(big, little);
 // 	v_assert_ptr(valid, ==, ret);
 
 // 	VTS;
 // }
 
-// static void	test_01_strstr_Null(void)
+// static void	test_01_strrstr_Null(void)
 // {
 // 	char	*big = "Hello World!";
 // 	char	*little = "\0";
 // 	char	*ret;
 // 	char	*valid;
 
-// 	ret = ft_strstr(big, little);
+// 	ret = ft_strrstr(big, little);
 // 	valid = strstr(big, little);
 // 	v_assert_ptr(valid, ==, ret);
 
@@ -39,14 +39,14 @@ static void	test_02_strrstr_LongStringOneChar(void)
 	char	*ret;
 	char	*valid;
 
-	ret = ft_strstr(big, little);
+	ret = ft_strrstr(big, little);
 	valid = strstr(big, little);
 	v_assert_ptr(valid, ==, ret);
 
 	VTS;
 }
 
-// static void	test_03_strstr_LongStringSeveralChars(void)
+// static void	test_03_strrstr_LongStringSeveralChars(void)
 // {
 // 	char	*big = "Lorem ipsum dolor sit amet, 1consectetur adipiscing elit. Sed "
 // 					"eu tortor porttitor nunc porttitor aliquam. Quisque a varius l1orem. "
@@ -57,77 +57,77 @@ static void	test_02_strrstr_LongStringOneChar(void)
 // 	char	*ret;
 // 	char	*valid;
 
-// 	ret = ft_strstr(big, little);
+// 	ret = ft_strrstr(big, little);
 // 	valid = strstr(big, little);
 // 	v_assert_ptr(valid, ==, ret);
 
 // 	VTS;
 // }
 
-// static void	test_04_strstr_NoChar(void)
+// static void	test_04_strrstr_NoChar(void)
 // {
 // 	char	*big = "Hello World!";
 // 	char	*little = "1";
 // 	char	*ret;
 // 	char	*valid;
 
-// 	ret = ft_strstr(big, little);
+// 	ret = ft_strrstr(big, little);
 // 	valid = strstr(big, little);
 // 	v_assert_ptr(valid, ==, ret);
 
 // 	VTS;
 // }
 
-// static void	test_05_strstr_LittleBiggerThanBig(void)
+// static void	test_05_strrstr_LittleBiggerThanBig(void)
 // {
 // 	char	*big = "Hello World!";
 // 	char	*little = "Hello Matrix World!";
 // 	char	*ret;
 // 	char	*valid;
 
-// 	ret = ft_strstr(big, little);
+// 	ret = ft_strrstr(big, little);
 // 	valid = strstr(big, little);
 // 	v_assert_ptr(valid, ==, ret);
 
 // 	VTS;
 // }
 
-// static void	test_06_strstr_LittleEqualBig(void)
+// static void	test_06_strrstr_LittleEqualBig(void)
 // {
 // 	char	*big = "Hello World!";
 // 	char	*little = "Hello World!";
 // 	char	*ret;
 // 	char	*valid;
 
-// 	ret = ft_strstr(big, little);
+// 	ret = ft_strrstr(big, little);
 // 	valid = strstr(big, little);
 // 	v_assert_ptr(valid, ==, ret);
 
 // 	VTS;
 // }
 
-// static void	test_07_strstr_AlmostEqual(void)
+// static void	test_07_strrstr_AlmostEqual(void)
 // {
 // 	char	*big = "Hello World!";
 // 	char	*little = "Hello World ";
 // 	char	*ret;
 // 	char	*valid;
 
-// 	ret = ft_strstr(big, little);
+// 	ret = ft_strrstr(big, little);
 // 	valid = strstr(big, little);
 // 	v_assert_ptr(valid, ==, ret);
 
 // 	VTS;
 // }
 
-// static void	test_08_strstr_ResultAtEnd(void)
+// static void	test_08_strrstr_ResultAtEnd(void)
 // {
 // 	char	*big = "Hello World!";
 // 	char	*little = "!";
 // 	char	*ret;
 // 	char	*valid;
 
-// 	ret = ft_strstr(big, little);
+// 	ret = ft_strrstr(big, little);
 // 	valid = strstr(big, little);
 // 	v_assert_ptr(valid, ==, ret);
 
