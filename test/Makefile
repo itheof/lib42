@@ -94,6 +94,7 @@ SOURCES += test_strchr.c
 SOURCES += test_strrchr.c
 SOURCES += test_strrev.c
 SOURCES += test_strstr.c
+SOURCES += test_strrstr.c
 
 # Pool
 SOURCES += test_pool_macros.c

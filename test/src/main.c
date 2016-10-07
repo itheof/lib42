@@ -24,6 +24,7 @@ int	main(void)
 	suite_strrchr();
 	suite_strrev();
 	suite_strstr();
+	suite_strrstr();
 
 	// buffer
 	suite_buffer_dup();

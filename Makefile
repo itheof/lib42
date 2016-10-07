@@ -100,6 +100,7 @@ SOURCES += ft_strchr.c
 SOURCES += ft_strrchr.c
 SOURCES += ft_strrev.c
 SOURCES += ft_strstr.c
+SOURCES += ft_strrstr.c
 
 # Pool
 SRC_SUBDIR += pool

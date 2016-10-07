@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_42.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/08/10 16:29:16 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/07 18:00:12 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,33 @@
 # include <stdlib.h>
 # include "memory_42.h"
 
-# define ASCII_TABLE_LEN 127
+#define ASCII_TABLE_LEN 127
 
 char	*ft_strdup(const char *s1);
 char	*ft_strndup(const char *s1, size_t n);
+
 size_t	ft_strlen(const char *s);
 size_t	ft_strnlen(const char *s, size_t maxlen);
+
 char	*ft_strchr(const char *s, int c);
-int		ft_strchrpos(const char *s, int c);
 char	*ft_strnchr(const char *s, int c, size_t n);
-int		ft_strnchrpos(const char *s, int c, size_t n);
+
 char	*ft_strrchr(const char *s, int c);
-int		ft_strrchrpos(const char *s, int c);
 char	*ft_strrnchr(const char *s, int c, size_t n);
+
+int		ft_strchrpos(const char *s, int c);
+int		ft_strnchrpos(const char *s, int c, size_t n);
+
+int		ft_strrchrpos(const char *s, int c);
 int		ft_strrnchrpos(const char *s, int c, size_t n);
+
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strrev(char *str);
+
 char	*ft_strstr(const char *big, const char *little);
+char	*ft_strnstr(const char *big, const char *little, size_t len); // TODO tests
+
+char	*ft_strrstr(const char *big, const char *little); // TODO tests
+char	*ft_strrnstr(const char *big, const char *little, size_t len); // TODO tests
 
 #endif

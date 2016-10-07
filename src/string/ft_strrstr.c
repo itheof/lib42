@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strrstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 12:14:45 by djean             #+#    #+#             */
-/*   Updated: 2016/10/07 18:35:52 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/07 19:12:25 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,21 @@ static void		init_skip_table(const char *pattern, size_t len, size_t *table)
 		table[i] = len;
 		++i;
 	}
-	i = 0;
-	while (i < len)
+	i = len;
+	while (i > 0)
 	{
-		table[(size_t)pattern[i]] = len - i - 1;
-		++i;
+		table[(size_t)pattern[i]] = i;
+		--i;
 	}
+	table[(size_t)pattern[0]] = 1;
 }
 
-char			*ft_strstr(const char *big, const char *little)
+char			*ft_strrstr(const char *big, const char *little)
 {
-	return (ft_strnstr(big, little, ft_strlen(big)));
+	return (ft_strrnstr(big, little, ft_strlen(big)));
 }
 
-char			*ft_strnstr(const char *big, const char *little, size_t len)
+char			*ft_strrnstr(const char *big, const char *little, size_t len)
 {
 	size_t		skip_table[ASCII_TABLE_LEN];
 	size_t		little_len;
@@ -48,17 +49,17 @@ char			*ft_strnstr(const char *big, const char *little, size_t len)
 	init_skip_table(little, little_len, skip_table);
 	if (little_len <= len)
 	{
-		skip = 0;
-		while (skip <= len - little_len)
+		skip = len - little_len + 1;
+		while (skip-- > 0)
 		{
-			i = little_len - 1;
+			i = 0;
 			while (little[i] == big[skip + i])
 			{
-				if (i == 0)
+				if (i == little_len - 1)
 					return ((char *)(uintptr_t)(big + skip));
-				--i;
+				++i;
 			}
-			skip += skip_table[(size_t)big[skip + little_len - 1]];
+			skip -= skip_table[(size_t)big[skip + i]];
 		}
 	}
 	return (NULL);
