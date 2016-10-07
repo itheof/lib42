@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/10/07 18:00:12 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/07 22:08:43 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strrev(char *str);
 
 char	*ft_strstr(const char *big, const char *little);
-char	*ft_strnstr(const char *big, const char *little, size_t len); // TODO tests
+char	*ft_strnstr(const char *big, const char *little, size_t len);
 
-char	*ft_strrstr(const char *big, const char *little); // TODO tests
-char	*ft_strrnstr(const char *big, const char *little, size_t len); // TODO tests
+char	*ft_strrstr(const char *big, const char *little);
+char	*ft_strrnstr(const char *big, const char *little, size_t len);
 
 #endif
