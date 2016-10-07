@@ -95,7 +95,7 @@ static void assert_silent_getopt_values(int argc, char *const argv[], const char
 	{
 		wait(&status);
 		if (status){
-			exit(status);
+			exit(1);
 		}
 	}
 	else
