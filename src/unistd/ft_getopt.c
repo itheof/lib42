@@ -6,7 +6,7 @@
 /*   By: tvallee <tvallee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/30 13:49:50 by tvallee           #+#    #+#             */
-/*   Updated: 2016/10/06 18:30:53 by tvallee          ###   ########.fr       */
+/*   Updated: 2016/10/07 14:37:38 by tvallee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,13 @@ static int	opt_get_type(char *const av[], const char *optstring, t_opt *state)
 			state->optoff = 0;
 			state->optind += 1;
 		}
-		write(2, av[0], ft_strlen(av[0]));
-		write(2, ": illegal option -- ", 20);
-		write(2, temp, 1);
-		write(2, "\n", 1);
+		if (state->opterr)
+		{
+			write(2, av[0], ft_strlen(av[0]));
+			write(2, ": illegal option -- ", 20);
+			write(2, temp, 1);
+			write(2, "\n", 1);
+		}
 		return (-1);
 	}
 	else
@@ -51,8 +54,16 @@ static int	parse_operand_opt(int ac, char *const av[], const char *optstring,
 		state->optarg = av[state->optind + 1];
 		state->optind += 2;
 		state->optoff = 0;
-		if (state->optind > ac)
+		if (state->optind > ac) {
+			if (state->opterr && *optstring != ':')
+			{
+				write(2, av[0], ft_strlen(av[0]));
+				write(2, ": option requires an argument -- ", 33);
+				write(2, &c, 1);
+				write(2, "\n", 1);
+			}
 			return ((*optstring == ':') ? ':' : '?');
+		}
 	}
 	else
 	{

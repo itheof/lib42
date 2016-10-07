@@ -81,11 +81,11 @@ static void assert_silent_getopt_values(int argc, char *const argv[], const char
 			v_assert_char(optind, ==, state.optind);
 			v_assert_int(opterr, ==, state.opterr);
 			if (ret_ref == '?' || ret_ref == ':')
-			{
+//			{
 				v_assert_char(optopt, ==, state.optopt);
-				if (g_test_getopt_diagnostic)
+//				if (g_test_getopt_diagnostic)
 					v_assert_str(buf_ref, buf);
-			}
+//			}
 			v_assert_ptr(optarg, ==,state.optarg);
 
 		}
@@ -340,7 +340,30 @@ static void test_08_error_bad_opt(void)
 
 static void test_09_error_missing_operand(void)
 {
-	
+	assert_getopt_diagnostics(
+		2, (char*[])
+		{"./test", "-ab", NULL},
+		"ab:"
+	);
+
+	assert_getopt_diagnostics(
+		2, (char*[])
+		{"./test", "-ab", NULL},
+		":ab:"
+	);
+
+	assert_getopt_diagnostics(
+		3, (char*[])
+		{"./test", "-a", "-b", NULL},
+		"ab:"
+	);
+
+	assert_getopt_diagnostics(
+		3, (char*[])
+		{"./test", "-a", "-b", NULL},
+		":ab:"
+	);
+
 	VTS;
 }
 
