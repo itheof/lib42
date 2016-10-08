@@ -135,6 +135,20 @@ static void	test_08_strrstr_ResultAtEnd(void)
 	VTS;
 }
 
+static void	test_09_strrstr_DoesntMatch(void)
+{
+	char	*big = "ls -la";
+	char	*little = "kiki";
+	char	*ret;
+	char	*valid;
+
+	ret = ft_strrstr(big, little);
+	valid = strstr(big, little);
+	v_assert_ptr(valid, ==, ret);
+
+	VTS;
+}
+
 void		suite_strrstr(void)
 {
 	test_00_strrstr_SecondWorld();
@@ -146,6 +160,7 @@ void		suite_strrstr(void)
 	test_06_strrstr_LittleEqualBig();
 	test_07_strrstr_AlmostEqual();
 	test_08_strrstr_ResultAtEnd();
+	test_09_strrstr_DoesntMatch();
 
 	VSS;
 }
