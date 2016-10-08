@@ -6,12 +6,13 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:01:15 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/08 18:22:14 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:28:07 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
+#include "structs_42.h"
 #include "typedefs_42.h"
 #include "cbuffer_42.h"
 

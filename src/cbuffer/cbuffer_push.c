@@ -6,10 +6,12 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/08 18:13:06 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:29:51 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "structs_42.h"
+#include "typedefs_42.h"
 #include "cbuffer_42.h"
 #include "memory_42.h"
 

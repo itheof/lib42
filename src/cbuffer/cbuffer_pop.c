@@ -6,10 +6,12 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/08 18:13:39 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:29:05 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "structs_42.h"
+#include "typedefs_42.h"
 #include "cbuffer_42.h"
 
 inline static size_t	move_forward(size_t len, size_t n)
