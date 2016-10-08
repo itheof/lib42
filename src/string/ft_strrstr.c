@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 12:14:45 by djean             #+#    #+#             */
-/*   Updated: 2016/10/07 22:08:28 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/07 23:34:05 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ char			*ft_strrnstr(const char *big, const char *little, size_t len)
 	size_t		i;
 
 	if (*little == '\0')
-		return ((char *)(uintptr_t)big);
+		return ((char *)(uintptr_t)(big + len));
 	little_len = ft_strlen(little);
 	init_skip_table(little, little_len, skip_table);
-	skip = len - little_len + 1;
+	skip = len - little_len + 1; // TODO bad overflow possible (put this line+2)
 	if (little_len <= len)
 		while (skip > 0)
 		{
