@@ -7,7 +7,7 @@ static void	test_00_cbuffer_popBackInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	cbuffer_push_back(&buffer, &a);
@@ -22,7 +22,7 @@ static void	test_00_cbuffer_popBackInt(void)
 	v_assert_int(a, ==, n);
 
 	v_assert_size_t(1, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	cbuffer_pop_back(&buffer);
 
@@ -31,7 +31,7 @@ static void	test_00_cbuffer_popBackInt(void)
 	v_assert_ptr(NULL, ==, cbuffer_get(&buffer, 0));
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -43,7 +43,7 @@ static void	test_01_cbuffer_popBackWithTwoInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -57,7 +57,7 @@ static void	test_01_cbuffer_popBackWithTwoInt(void)
 	v_assert_int(b, ==, back);
 
 	v_assert_size_t(2, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	cbuffer_pop_back(&buffer);
 	{
@@ -68,7 +68,7 @@ static void	test_01_cbuffer_popBackWithTwoInt(void)
 	}
 
 	v_assert_size_t(1, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -80,7 +80,7 @@ static void	test_02_cbuffer_popBackEqualMaxLenInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -90,7 +90,7 @@ static void	test_02_cbuffer_popBackEqualMaxLenInt(void)
 	cbuffer_push_front(&buffer, &c);
 
 	v_assert_size_t(3, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	cbuffer_pop_back(&buffer);
 	cbuffer_pop_back(&buffer);
@@ -102,7 +102,7 @@ static void	test_02_cbuffer_popBackEqualMaxLenInt(void)
 	}
 
 	v_assert_size_t(1, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -114,13 +114,13 @@ static void	test_03_cbuffer_popBackMoreThanLenInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	cbuffer_push_back(&buffer, &a);
 
 	v_assert_size_t(1, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	cbuffer_pop_back(&buffer);
 	cbuffer_pop_back(&buffer);
@@ -130,7 +130,7 @@ static void	test_03_cbuffer_popBackMoreThanLenInt(void)
 	cbuffer_pop_back(&buffer);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -142,7 +142,7 @@ static void	test_04_cbuffer_popFrontInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	cbuffer_push_back(&buffer, &a);
@@ -157,7 +157,7 @@ static void	test_04_cbuffer_popFrontInt(void)
 	v_assert_int(a, ==, n);
 
 	v_assert_size_t(1, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	cbuffer_pop_front(&buffer);
 
@@ -166,7 +166,7 @@ static void	test_04_cbuffer_popFrontInt(void)
 	v_assert_ptr(NULL, ==, cbuffer_get(&buffer, 0));
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -178,7 +178,7 @@ static void	test_05_cbuffer_popFrontWithTwoInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -192,7 +192,7 @@ static void	test_05_cbuffer_popFrontWithTwoInt(void)
 	v_assert_int(b, ==, back);
 
 	v_assert_size_t(2, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	cbuffer_pop_front(&buffer);
 	{
@@ -205,7 +205,7 @@ static void	test_05_cbuffer_popFrontWithTwoInt(void)
 	}
 
 	v_assert_size_t(1, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -217,7 +217,7 @@ static void	test_05_cbuffer_popFrontEqualMaxLenInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -227,7 +227,7 @@ static void	test_05_cbuffer_popFrontEqualMaxLenInt(void)
 	cbuffer_push_back(&buffer, &c);
 
 	v_assert_size_t(3, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	cbuffer_pop_front(&buffer);
 	cbuffer_pop_front(&buffer);
@@ -239,7 +239,7 @@ static void	test_05_cbuffer_popFrontEqualMaxLenInt(void)
 	}
 
 	v_assert_size_t(1, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -251,13 +251,13 @@ static void	test_07_cbuffer_popFrontMoreThanLenInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	cbuffer_push_back(&buffer, &a);
 
 	v_assert_size_t(1, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	cbuffer_pop_front(&buffer);
 	cbuffer_pop_front(&buffer);
@@ -267,7 +267,7 @@ static void	test_07_cbuffer_popFrontMoreThanLenInt(void)
 	cbuffer_pop_front(&buffer);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -279,19 +279,19 @@ static void	test_08_cbuffer_popFrontCheckReturn(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	cbuffer_push_back(&buffer, &a);
 
 	v_assert_size_t(1, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int *r = cbuffer_pop_front(&buffer);
 	v_assert_int(a, ==, *r);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -303,19 +303,19 @@ static void	test_09_cbuffer_popBackCheckReturn(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	cbuffer_push_back(&buffer, &a);
 
 	v_assert_size_t(1, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int *r = cbuffer_pop_back(&buffer);
 	v_assert_int(a, ==, *r);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }

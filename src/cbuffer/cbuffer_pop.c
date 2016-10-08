@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/06 16:06:59 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:13:39 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void					*cbuffer_pop_back(t_cbuffer *b)
 	if (b->len > 0)
 	{
 		popped = CBUFFER_GET(b, b->end);
-		b->end = move_backward(b->max_len, b->end);
+		b->end = move_backward(b->capacity, b->end);
 		b->len -= 1;
 		return (popped);
 	}
@@ -47,7 +47,7 @@ void					*cbuffer_pop_front(t_cbuffer *b)
 	if (b->len > 0)
 	{
 		popped = CBUFFER_GET(b, b->start);
-		b->start = move_forward(b->max_len, b->start);
+		b->start = move_forward(b->capacity, b->start);
 		b->len -= 1;
 		return (popped);
 	}

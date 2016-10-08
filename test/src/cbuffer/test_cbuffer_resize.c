@@ -7,7 +7,7 @@ static void	test_00_cbuffer_resizeStartBeforeEnd(void)
 	cbuffer_init(&buffer, 10, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(10, ==, buffer.max_len);
+	v_assert_size_t(10, ==, buffer.capacity);
 
 	for (int i = 0; i < 10; ++i)
 	{
@@ -26,7 +26,7 @@ static void	test_00_cbuffer_resizeStartBeforeEnd(void)
 	}
 
 	v_assert_size_t(10, ==, buffer.len);
-	v_assert_size_t(10, ==, buffer.max_len);
+	v_assert_size_t(10, ==, buffer.capacity);
 
 	buffer = *cbuffer_resize(&buffer, 20);
 	{
@@ -41,7 +41,7 @@ static void	test_00_cbuffer_resizeStartBeforeEnd(void)
 	}
 
 	v_assert_size_t(10, ==, buffer.len);
-	v_assert_size_t(20, ==, buffer.max_len);
+	v_assert_size_t(20, ==, buffer.capacity);
 
 	VTS;
 }
@@ -53,7 +53,7 @@ static void	test_01_cbuffer_resizeStartAfterEnd(void)
 	cbuffer_init(&buffer, 10, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(10, ==, buffer.max_len);
+	v_assert_size_t(10, ==, buffer.capacity);
 
 	for (int i = 0; i < 8; ++i)
 	{
@@ -72,7 +72,7 @@ static void	test_01_cbuffer_resizeStartAfterEnd(void)
 	}
 
 	v_assert_size_t(8, ==, buffer.len);
-	v_assert_size_t(10, ==, buffer.max_len);
+	v_assert_size_t(10, ==, buffer.capacity);
 
 	buffer = *cbuffer_resize(&buffer, 20);
 	{
@@ -87,7 +87,7 @@ static void	test_01_cbuffer_resizeStartAfterEnd(void)
 	}
 
 	v_assert_size_t(8, ==, buffer.len);
-	v_assert_size_t(20, ==, buffer.max_len);
+	v_assert_size_t(20, ==, buffer.capacity);
 
 	VTS;
 }
@@ -101,14 +101,14 @@ static void	test_02_cbuffer_resizeEmptyBuffer(void)
 	v_assert_ptr(NULL, ==, cbuffer_get_back(&buffer));
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(10, ==, buffer.max_len);
+	v_assert_size_t(10, ==, buffer.capacity);
 
 	buffer = *cbuffer_resize(&buffer, 20);
 
 	v_assert_ptr(NULL, ==, cbuffer_get_back(&buffer));
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(20, ==, buffer.max_len);
+	v_assert_size_t(20, ==, buffer.capacity);
 
 	VTS;
 }

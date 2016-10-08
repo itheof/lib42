@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/06 16:02:55 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:13:06 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void					cbuffer_push_back(t_cbuffer *b, void const *elem)
 	{
 		b->len += 1;
 	}
-	else if (b->len == b->max_len)
+	else if (b->len == b->capacity)
 	{
-		b->end = move_forward(b->max_len, b->end);
-		b->start = move_forward(b->max_len, b->start);
+		b->end = move_forward(b->capacity, b->end);
+		b->start = move_forward(b->capacity, b->start);
 		if (b->delete_func != NULL)
 		{
 			(*b->delete_func)(CBUFFER_GET(b, b->end));
@@ -45,7 +45,7 @@ void					cbuffer_push_back(t_cbuffer *b, void const *elem)
 	else
 	{
 		b->len += 1;
-		b->end = move_forward(b->max_len, b->end);
+		b->end = move_forward(b->capacity, b->end);
 	}
 	ft_memcpy(CBUFFER_GET(b, b->end), elem, b->elem_size);
 }
@@ -56,10 +56,10 @@ void					cbuffer_push_front(t_cbuffer *b, void const *elem)
 	{
 		b->len += 1;
 	}
-	else if (b->len == b->max_len)
+	else if (b->len == b->capacity)
 	{
-		b->start = move_backward(b->max_len, b->start);
-		b->end = move_backward(b->max_len, b->end);
+		b->start = move_backward(b->capacity, b->start);
+		b->end = move_backward(b->capacity, b->end);
 		if (b->delete_func != NULL)
 		{
 			(*b->delete_func)(CBUFFER_GET(b, b->start));
@@ -68,7 +68,7 @@ void					cbuffer_push_front(t_cbuffer *b, void const *elem)
 	else
 	{
 		b->len += 1;
-		b->start = move_backward(b->max_len, b->start);
+		b->start = move_backward(b->capacity, b->start);
 	}
 	ft_memcpy(CBUFFER_GET(b, b->start), elem, b->elem_size);
 }

@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:51:28 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/05 23:30:00 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:13:30 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void		*cbuffer_get(t_cbuffer *buffer, size_t i)
 {
 	if (i >= buffer->len || buffer->len == 0)
 		return (NULL);
-	if (buffer->start + i >= buffer->max_len)
-		return (CBUFFER_GET(buffer, buffer->start + i - buffer->max_len));
+	if (buffer->start + i >= buffer->capacity)
+		return (CBUFFER_GET(buffer, buffer->start + i - buffer->capacity));
 	return (CBUFFER_GET(buffer, buffer->start + i));
 }
 

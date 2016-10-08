@@ -7,7 +7,7 @@ static void	test_00_cbuffer_pushBackInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	cbuffer_push_back(&buffer, &a);
@@ -22,7 +22,7 @@ static void	test_00_cbuffer_pushBackInt(void)
 	v_assert_int(a, ==, n);
 
 	v_assert_size_t(1, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -34,7 +34,7 @@ static void	test_01_cbuffer_pushBackTwoInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -48,7 +48,7 @@ static void	test_01_cbuffer_pushBackTwoInt(void)
 	v_assert_int(b, ==, back);
 
 	v_assert_size_t(2, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -60,7 +60,7 @@ static void	test_02_cbuffer_pushBackExactLenInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -79,7 +79,7 @@ static void	test_02_cbuffer_pushBackExactLenInt(void)
 	v_assert_int(c, ==, back);
 
 	v_assert_size_t(3, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -91,7 +91,7 @@ static void	test_03_cbuffer_pushBackMoreInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -112,7 +112,7 @@ static void	test_03_cbuffer_pushBackMoreInt(void)
 	v_assert_int(d, ==, back);
 
 	v_assert_size_t(3, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -124,7 +124,7 @@ static void	test_04_cbuffer_pushFrontInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	cbuffer_push_front(&buffer, &a);
@@ -139,7 +139,7 @@ static void	test_04_cbuffer_pushFrontInt(void)
 	v_assert_int(a, ==, back);
 
 	v_assert_size_t(1, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -151,7 +151,7 @@ static void	test_05_cbuffer_pushFrontTwoInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -171,7 +171,7 @@ static void	test_05_cbuffer_pushFrontTwoInt(void)
 	v_assert_int(a, ==, back);
 
 	v_assert_size_t(2, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -183,7 +183,7 @@ static void	test_06_cbuffer_pushFrontExactLenInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -202,7 +202,7 @@ static void	test_06_cbuffer_pushFrontExactLenInt(void)
 	v_assert_int(a, ==, back);
 
 	v_assert_size_t(3, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -214,7 +214,7 @@ static void	test_07_cbuffer_pushFrontMoreInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -235,7 +235,7 @@ static void	test_07_cbuffer_pushFrontMoreInt(void)
 	v_assert_int(b, ==, back);
 
 	v_assert_size_t(3, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -247,7 +247,7 @@ static void test_08_cbuffer_pushFrontAndBackInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -267,7 +267,7 @@ static void test_08_cbuffer_pushFrontAndBackInt(void)
 	v_assert_int(a, ==, back);
 
 	v_assert_size_t(2, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -279,7 +279,7 @@ static void test_09_cbuffer_pushFrontAndBackTwoInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -306,7 +306,7 @@ static void test_09_cbuffer_pushFrontAndBackTwoInt(void)
 	v_assert_int(d, ==, back);
 
 	v_assert_size_t(3, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -318,7 +318,7 @@ static void test_10_cbuffer_pushBackAndFrontInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -332,7 +332,7 @@ static void test_10_cbuffer_pushBackAndFrontInt(void)
 	v_assert_int(a, ==, back);
 
 	v_assert_size_t(2, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -344,7 +344,7 @@ static void test_11_cbuffer_pushBackAndFrontTwoInt(void)
 	cbuffer_init(&buffer, 3, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -371,7 +371,7 @@ static void test_11_cbuffer_pushBackAndFrontTwoInt(void)
 	v_assert_int(a, ==, back);
 
 	v_assert_size_t(3, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -388,7 +388,7 @@ static void	test_12_cbuffer_pushBackCallDelete(void)
 	cbuffer_init(&buffer, 3, sizeof(int*), delete_func);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -419,7 +419,7 @@ static void	test_12_cbuffer_pushBackCallDelete(void)
 	v_assert_int(a, ==, 22);
 
 	v_assert_size_t(3, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -431,7 +431,7 @@ static void	test_13_cbuffer_pushFrontCallDelete(void)
 	cbuffer_init(&buffer, 3, sizeof(int*), delete_func);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	int a = 10;
 	int b = 11;
@@ -462,7 +462,7 @@ static void	test_13_cbuffer_pushFrontCallDelete(void)
 	v_assert_int(a, ==, 22);
 
 	v_assert_size_t(3, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -477,7 +477,7 @@ static void	test_14_cbuffer_pushFrontStrings(void)
 	cbuffer_init(&buffer, 3, sizeof(char*), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	cbuffer_push_front(&buffer, &str_hello);
 	cbuffer_push_front(&buffer, &str_bonjour);
@@ -493,7 +493,7 @@ static void	test_14_cbuffer_pushFrontStrings(void)
 	v_assert_str(str_hello, *back);
 
 	v_assert_size_t(3, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
@@ -508,7 +508,7 @@ static void	test_14_cbuffer_pushBackStrings(void)
 	cbuffer_init(&buffer, 3, sizeof(char*), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	cbuffer_push_back(&buffer, &str_hello);
 	cbuffer_push_back(&buffer, &str_bonjour);
@@ -524,7 +524,7 @@ static void	test_14_cbuffer_pushBackStrings(void)
 	v_assert_str(str_holla, *back);
 
 	v_assert_size_t(3, ==, buffer.len);
-	v_assert_size_t(3, ==, buffer.max_len);
+	v_assert_size_t(3, ==, buffer.capacity);
 
 	VTS;
 }
