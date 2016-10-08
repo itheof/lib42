@@ -10,6 +10,9 @@ int	main(void)
 	suite_memchr();
 	suite_memmove();
 
+	// ctype
+	suite_ctype();
+
 	// stdlib
 	suite_realloc();
 	suite_toa_base();

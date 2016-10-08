@@ -34,7 +34,8 @@ CFLAGS += $(addprefix -I,$(INC_PATH))
 SRC_PATH = src
 SRC_SUBDIR = . array buffer memory stdlib string error pool
 vpath %.c $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
-SOURCES = main.c
+SOURCES += main.c
+SOURCES += ctype.c
 
 # Array
 SOURCES += test_array_macros.c

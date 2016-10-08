@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/02 12:48:07 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/08 16:10:40 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "macros_42.h"
 # include "typedefs_42.h"
 # include "structs_42.h"
+# include "ctype_42.h"
 # include "stdlib_42.h"
 # include "memory_42.h"
 # include "string_42.h"
