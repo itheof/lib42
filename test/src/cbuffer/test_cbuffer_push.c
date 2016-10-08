@@ -467,6 +467,68 @@ static void	test_13_cbuffer_pushFrontCallDelete(void)
 	VTS;
 }
 
+static void	test_14_cbuffer_pushFrontStrings(void)
+{
+	t_cbuffer	buffer;
+	const char	*str_hello = "hello";
+	const char	*str_bonjour = "bonjour";
+	const char	*str_holla = "holla";
+
+	cbuffer_init(&buffer, 3, sizeof(char*), NULL);
+
+	v_assert_size_t(0, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	cbuffer_push_front(&buffer, &str_hello);
+	cbuffer_push_front(&buffer, &str_bonjour);
+	cbuffer_push_front(&buffer, &str_holla);
+
+	char **front = cbuffer_get_front(&buffer);
+	v_assert_str(str_holla, *front);
+
+	char **n = cbuffer_get(&buffer, 1);
+	v_assert_str(str_bonjour, *n);
+
+	char **back = cbuffer_get_back(&buffer);
+	v_assert_str(str_hello, *back);
+
+	v_assert_size_t(3, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	VTS;
+}
+
+static void	test_14_cbuffer_pushBackStrings(void)
+{
+	t_cbuffer	buffer;
+	const char	*str_hello = "hello";
+	const char	*str_bonjour = "bonjour";
+	const char	*str_holla = "holla";
+
+	cbuffer_init(&buffer, 3, sizeof(char*), NULL);
+
+	v_assert_size_t(0, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	cbuffer_push_back(&buffer, &str_hello);
+	cbuffer_push_back(&buffer, &str_bonjour);
+	cbuffer_push_back(&buffer, &str_holla);
+
+	char **front = cbuffer_get_front(&buffer);
+	v_assert_str(str_hello, *front);
+
+	char **n = cbuffer_get(&buffer, 1);
+	v_assert_str(str_bonjour, *n);
+
+	char **back = cbuffer_get_back(&buffer);
+	v_assert_str(str_holla, *back);
+
+	v_assert_size_t(3, ==, buffer.len);
+	v_assert_size_t(3, ==, buffer.max_len);
+
+	VTS;
+}
+
 void	suite_cbuffer_push(void)
 {
 	test_00_cbuffer_pushBackInt();
@@ -487,6 +549,9 @@ void	suite_cbuffer_push(void)
 
 	test_12_cbuffer_pushBackCallDelete();
 	test_13_cbuffer_pushFrontCallDelete();
+
+	test_14_cbuffer_pushFrontStrings();
+	test_14_cbuffer_pushBackStrings();
 
 	VSS;
 }
