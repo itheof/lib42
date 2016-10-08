@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/08 18:28:37 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:33:25 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include "typedefs_42.h"
 
 # define CBUFFER_GET(b, i) ((char*)(b)->data + ((b)->elem_size * (i)))
+# define CBUFFER_MOVE_BACKWARD(l, n) ((n) ? (n) - 1 : (l) - 1)
+# define CBUFFER_MOVE_FORWARD(l, n) ((n) >= l - 1 ? 0 : (n) + 1)
 
 t_cbuffer	*cbuffer_new(size_t len, size_t elem_size,
 							void (*delete_func)(void *));
