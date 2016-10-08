@@ -17,12 +17,12 @@ static void	test_00_strrstr_SecondWorld(void)
 static void	test_01_strrstr_Null(void)
 {
 	char	*big = "Hello World!";
-	char	*little = "\0";
+	char	*little = "";
 	char	*ret;
 	char	*valid;
 
 	ret = ft_strrstr(big, little);
-	valid = strstr(big, little);
+	valid = big + strlen(big);
 	v_assert_ptr(valid, ==, ret);
 
 	VTS;
