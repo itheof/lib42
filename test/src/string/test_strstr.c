@@ -134,6 +134,20 @@ static void	test_08_strstr_ResultAtEnd(void)
 	VTS;
 }
 
+static void	test_09_strstr_StrangeInfiniteLoop(void)
+{
+	char	*big = "potos\n";
+	char	*little = "\\\n";
+	char	*ret;
+	char	*valid;
+
+	ret = ft_strstr(big, little);
+	valid = strstr(big, little);
+	v_assert_ptr(valid, ==, ret);
+
+	VTS;
+}
+
 void		suite_strstr(void)
 {
 	test_00_strstr_SecondWorld();
@@ -145,6 +159,8 @@ void		suite_strstr(void)
 	test_06_strstr_LittleEqualBig();
 	test_07_strstr_AlmostEqual();
 	test_08_strstr_ResultAtEnd();
+
+	test_09_strstr_StrangeInfiniteLoop();
 
 	VSS;
 }

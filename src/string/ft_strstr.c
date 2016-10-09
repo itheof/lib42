@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 12:14:45 by djean             #+#    #+#             */
-/*   Updated: 2016/10/07 23:02:55 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/09 20:05:02 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ char			*ft_strnstr(const char *big, const char *little, size_t len)
 					return ((char *)(uintptr_t)(big + skip));
 				--i;
 			}
-			skip += skip_table[(size_t)big[skip + little_len - 1]];
+			skip += skip_table[(size_t)big[skip + i]];
 		}
 	}
 	return (NULL);
