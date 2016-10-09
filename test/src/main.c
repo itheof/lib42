@@ -33,6 +33,7 @@ int	main(void)
 	suite_buffer_append();
 	suite_buffer_macros();
 	suite_buffer_replace();
+	suite_buffer_escape();
 	suite_buffer_new();
 	suite_buffer_resize();
 	suite_buffer_remove();

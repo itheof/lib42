@@ -83,6 +83,7 @@ SOURCES += buffer_insert.c
 SOURCES += buffer_merge.c
 SOURCES += buffer_remove.c
 SOURCES += buffer_replace.c
+SOURCES += buffer_escape.c
 SOURCES += buffer_resize.c
 SOURCES += buffer_rewind.c
 SOURCES += buffer_set.c
