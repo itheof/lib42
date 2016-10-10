@@ -18,7 +18,7 @@ static void	test_00_cbuffer_pushBackInt(void)
 	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(a, ==, front);
 
-	int n = *((int*)cbuffer_get(&buffer, 0));
+	int n = *((int*)cbuffer_at(&buffer, 0));
 	v_assert_int(a, ==, n);
 
 	v_assert_size_t(1, ==, buffer.len);
@@ -72,7 +72,7 @@ static void	test_02_cbuffer_pushBackExactLenInt(void)
 	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(a, ==, front);
 
-	int middle = *((int*)cbuffer_get(&buffer, 1));
+	int middle = *((int*)cbuffer_at(&buffer, 1));
 	v_assert_int(b, ==, middle);
 
 	int back = *((int*)cbuffer_back(&buffer));
@@ -105,7 +105,7 @@ static void	test_03_cbuffer_pushBackMoreInt(void)
 	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(b, ==, front);
 
-	int middle = *((int*)cbuffer_get(&buffer, 1));
+	int middle = *((int*)cbuffer_at(&buffer, 1));
 	v_assert_int(c, ==, middle);
 
 	int back = *((int*)cbuffer_back(&buffer));
@@ -132,7 +132,7 @@ static void	test_04_cbuffer_pushFrontInt(void)
 	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(a, ==, front);
 
-	int n = *((int*)cbuffer_get(&buffer, 0));
+	int n = *((int*)cbuffer_at(&buffer, 0));
 	v_assert_int(a, ==, n);
 
 	int back = *((int*)cbuffer_back(&buffer));
@@ -161,10 +161,10 @@ static void	test_05_cbuffer_pushFrontTwoInt(void)
 	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(b, ==, front);
 
-	int n1 = *((int*)cbuffer_get(&buffer, 0));
+	int n1 = *((int*)cbuffer_at(&buffer, 0));
 	v_assert_int(b, ==, n1);
 
-	int n2 = *((int*)cbuffer_get(&buffer, 1));
+	int n2 = *((int*)cbuffer_at(&buffer, 1));
 	v_assert_int(a, ==, n2);
 
 	int back = *((int*)cbuffer_back(&buffer));
@@ -195,7 +195,7 @@ static void	test_06_cbuffer_pushFrontExactLenInt(void)
 	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(c, ==, front);
 
-	int middle = *((int*)cbuffer_get(&buffer, 1));
+	int middle = *((int*)cbuffer_at(&buffer, 1));
 	v_assert_int(b, ==, middle);
 
 	int back = *((int*)cbuffer_back(&buffer));
@@ -228,7 +228,7 @@ static void	test_07_cbuffer_pushFrontMoreInt(void)
 	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(d, ==, front);
 
-	int middle = *((int*)cbuffer_get(&buffer, 1));
+	int middle = *((int*)cbuffer_at(&buffer, 1));
 	v_assert_int(c, ==, middle);
 
 	int back = *((int*)cbuffer_back(&buffer));
@@ -257,10 +257,10 @@ static void test_08_cbuffer_pushFrontAndBackInt(void)
 	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(b, ==, front);
 
-	int n1 = *((int*)cbuffer_get(&buffer, 0));
+	int n1 = *((int*)cbuffer_at(&buffer, 0));
 	v_assert_int(b, ==, n1);
 
-	int n2 = *((int*)cbuffer_get(&buffer, 1));
+	int n2 = *((int*)cbuffer_at(&buffer, 1));
 	v_assert_int(a, ==, n2);
 
 	int back = *((int*)cbuffer_back(&buffer));
@@ -293,13 +293,13 @@ static void test_09_cbuffer_pushFrontAndBackTwoInt(void)
 	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(a, ==, front);
 
-	int n1 = *((int*)cbuffer_get(&buffer, 0));
+	int n1 = *((int*)cbuffer_at(&buffer, 0));
 	v_assert_int(a, ==, n1);
 
-	int n2 = *((int*)cbuffer_get(&buffer, 1));
+	int n2 = *((int*)cbuffer_at(&buffer, 1));
 	v_assert_int(c, ==, n2);
 
-	int n3 = *((int*)cbuffer_get(&buffer, 2));
+	int n3 = *((int*)cbuffer_at(&buffer, 2));
 	v_assert_int(d, ==, n3);
 
 	int back = *((int*)cbuffer_back(&buffer));
@@ -358,13 +358,13 @@ static void test_11_cbuffer_pushBackAndFrontTwoInt(void)
 	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(d, ==, front);
 
-	int n1 = *((int*)cbuffer_get(&buffer, 0));
+	int n1 = *((int*)cbuffer_at(&buffer, 0));
 	v_assert_int(d, ==, n1);
 
-	int n2 = *((int*)cbuffer_get(&buffer, 1));
+	int n2 = *((int*)cbuffer_at(&buffer, 1));
 	v_assert_int(c, ==, n2);
 
-	int n3 = *((int*)cbuffer_get(&buffer, 2));
+	int n3 = *((int*)cbuffer_at(&buffer, 2));
 	v_assert_int(a, ==, n3);
 
 	int back = *((int*)cbuffer_back(&buffer));
@@ -408,7 +408,7 @@ static void	test_12_cbuffer_pushBackCallDelete(void)
 	v_assert_ptr(b_ptr, ==, front);
 	v_assert_int(b, ==, *front);
 
-	int *middle = *((int**)cbuffer_get(&buffer, 1));
+	int *middle = *((int**)cbuffer_at(&buffer, 1));
 	v_assert_ptr(c_ptr, ==, middle);
 	v_assert_int(c, ==, *middle);
 
@@ -451,7 +451,7 @@ static void	test_13_cbuffer_pushFrontCallDelete(void)
 	v_assert_ptr(d_ptr, ==, front);
 	v_assert_int(d, ==, *front);
 
-	int *middle = *((int**)cbuffer_get(&buffer, 1));
+	int *middle = *((int**)cbuffer_at(&buffer, 1));
 	v_assert_ptr(c_ptr, ==, middle);
 	v_assert_int(c, ==, *middle);
 
@@ -486,7 +486,7 @@ static void	test_14_cbuffer_pushFrontStrings(void)
 	char **front = cbuffer_front(&buffer);
 	v_assert_str(str_holla, *front);
 
-	char **n = cbuffer_get(&buffer, 1);
+	char **n = cbuffer_at(&buffer, 1);
 	v_assert_str(str_bonjour, *n);
 
 	char **back = cbuffer_back(&buffer);
@@ -517,7 +517,7 @@ static void	test_14_cbuffer_pushBackStrings(void)
 	char **front = cbuffer_front(&buffer);
 	v_assert_str(str_hello, *front);
 
-	char **n = cbuffer_get(&buffer, 1);
+	char **n = cbuffer_at(&buffer, 1);
 	v_assert_str(str_bonjour, *n);
 
 	char **back = cbuffer_back(&buffer);

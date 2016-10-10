@@ -18,7 +18,7 @@ static void	test_00_cbuffer_popBackInt(void)
 	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(a, ==, front);
 
-	int n = *((int*)cbuffer_get(&buffer, 0));
+	int n = *((int*)cbuffer_at(&buffer, 0));
 	v_assert_int(a, ==, n);
 
 	v_assert_size_t(1, ==, buffer.len);
@@ -28,7 +28,7 @@ static void	test_00_cbuffer_popBackInt(void)
 
 	v_assert_ptr(NULL, ==, cbuffer_back(&buffer));
 	v_assert_ptr(NULL, ==, cbuffer_front(&buffer));
-	v_assert_ptr(NULL, ==, cbuffer_get(&buffer, 0));
+	v_assert_ptr(NULL, ==, cbuffer_at(&buffer, 0));
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
@@ -153,7 +153,7 @@ static void	test_04_cbuffer_popFrontInt(void)
 	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(a, ==, front);
 
-	int n = *((int*)cbuffer_get(&buffer, 0));
+	int n = *((int*)cbuffer_at(&buffer, 0));
 	v_assert_int(a, ==, n);
 
 	v_assert_size_t(1, ==, buffer.len);
@@ -163,7 +163,7 @@ static void	test_04_cbuffer_popFrontInt(void)
 
 	v_assert_ptr(NULL, ==, cbuffer_back(&buffer));
 	v_assert_ptr(NULL, ==, cbuffer_front(&buffer));
-	v_assert_ptr(NULL, ==, cbuffer_get(&buffer, 0));
+	v_assert_ptr(NULL, ==, cbuffer_at(&buffer, 0));
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
