@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:51:28 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/10 19:46:12 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/10 19:48:20 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "typedefs_42.h"
 #include "cbuffer_42.h"
 
-void		*cbuffer_at(t_cbuffer const *buffer, size_t i)
+void		*cbuffer_at(const t_cbuffer *buffer, size_t i)
 {
 	if (i >= buffer->len || buffer->len == 0)
 		return (NULL);
@@ -24,14 +24,14 @@ void		*cbuffer_at(t_cbuffer const *buffer, size_t i)
 	return (CBUFFER_AT_INDEX(buffer, buffer->start + i));
 }
 
-void		*cbuffer_front(t_cbuffer const *buffer)
+void		*cbuffer_front(const t_cbuffer *buffer)
 {
 	if (buffer->len == 0)
 		return (NULL);
 	return (CBUFFER_AT_INDEX(buffer, buffer->start));
 }
 
-void		*cbuffer_back(t_cbuffer const *buffer)
+void		*cbuffer_back(const t_cbuffer *buffer)
 {
 	if (buffer->len == 0)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/10 19:45:56 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/10 19:48:29 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "cbuffer_42.h"
 #include "memory_42.h"
 
-void					cbuffer_push_back(t_cbuffer *b, void const *elem)
+void					cbuffer_push_back(t_cbuffer *b, const void *elem)
 {
 	if (b->len == 0)
 	{
@@ -38,7 +38,7 @@ void					cbuffer_push_back(t_cbuffer *b, void const *elem)
 	ft_memcpy(CBUFFER_AT_INDEX(b, b->end), elem, b->elem_size);
 }
 
-void					cbuffer_push_front(t_cbuffer *b, void const *elem)
+void					cbuffer_push_front(t_cbuffer *b, const void *elem)
 {
 	if (b->len == 0)
 	{

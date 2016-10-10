@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/10 19:45:59 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/10 19:48:10 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ t_cbuffer	*cbuffer_init(t_cbuffer *buffer, size_t len, size_t elem_size,
 
 t_cbuffer	*cbuffer_resize(t_cbuffer *buffer, size_t len);
 
-void		cbuffer_push_back(t_cbuffer *buffer, void const *elem);
-void		cbuffer_push_front(t_cbuffer *buffer, void const *elem);
+void		cbuffer_push_back(t_cbuffer *buffer, const void *elem);
+void		cbuffer_push_front(t_cbuffer *buffer, const void *elem);
 
 void		*cbuffer_pop_back(t_cbuffer *buffer);
 void		*cbuffer_pop_front(t_cbuffer *buffer);
 
-void		*cbuffer_at(t_cbuffer const *buffer, size_t i);
-void		*cbuffer_front(t_cbuffer const *buffer);
-void		*cbuffer_back(t_cbuffer const *buffer);
+void		*cbuffer_at(const t_cbuffer *buffer, size_t i);
+void		*cbuffer_front(const t_cbuffer *buffer);
+void		*cbuffer_back(const t_cbuffer *buffer);
 
 #endif
