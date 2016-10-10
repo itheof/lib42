@@ -6,10 +6,11 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 12:14:45 by djean             #+#    #+#             */
-/*   Updated: 2016/10/07 19:12:25 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/10 19:57:53 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "string_42.h"
 
 static void		init_skip_table(const char *pattern, size_t len, size_t *table)
@@ -41,26 +42,26 @@ char			*ft_strrnstr(const char *big, const char *little, size_t len)
 	size_t		skip_table[ASCII_TABLE_LEN];
 	size_t		little_len;
 	size_t		skip;
+	size_t		to_skip;
 	size_t		i;
 
 	if (*little == '\0')
-		return ((char *)(uintptr_t)big);
+		return ((char *)(uintptr_t)(big + len));
 	little_len = ft_strlen(little);
 	init_skip_table(little, little_len, skip_table);
+	skip = len - little_len + 1;
 	if (little_len <= len)
-	{
-		skip = len - little_len + 1;
-		while (skip-- > 0)
+		while (skip > 0)
 		{
 			i = 0;
-			while (little[i] == big[skip + i])
+			while (little[i] == big[skip - 1 + i])
 			{
 				if (i == little_len - 1)
-					return ((char *)(uintptr_t)(big + skip));
+					return ((char *)(uintptr_t)(big + skip - 1));
 				++i;
 			}
-			skip -= skip_table[(size_t)big[skip + i]];
+			to_skip = skip_table[(size_t)big[skip - 1 + i]];
+			skip = to_skip > skip ? 0 : skip - to_skip;
 		}
-	}
 	return (NULL);
 }
