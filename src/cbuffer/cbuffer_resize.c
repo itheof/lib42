@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/06 02:13:46 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:20:41 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 
 inline static void	copy_data(t_cbuffer const *b, char *new_data)
 {
+	size_t		rest;
+
 	if (b->start > b->end)
 	{
+		rest = b->capacity - b->start;
 		ft_memcpy(new_data, (char*)b->data + (b->start * b->elem_size),
-					(b->max_len - b->start) * b->elem_size);
-		ft_memcpy(new_data + ((b->max_len - b->start) * b->elem_size), b->data,
-					(b->len - (b->max_len - b->start)) * b->elem_size);
+					rest * b->elem_size);
+		ft_memcpy(new_data + (rest * b->elem_size), b->data,
+					(b->len - rest) * b->elem_size);
 	}
 	else
 	{
@@ -35,7 +38,7 @@ t_cbuffer			*cbuffer_resize(t_cbuffer *b, size_t len)
 
 	if (len < b->len)
 		return (NULL);
-	if (len == b->max_len)
+	if (len == b->capacity)
 		return (b);
 	if ((new_data = malloc(len * b->elem_size)) == NULL)
 		return (NULL);
@@ -44,6 +47,6 @@ t_cbuffer			*cbuffer_resize(t_cbuffer *b, size_t len)
 	b->data = new_data;
 	b->start = 0;
 	b->end = b->len == 0 ? 0 : b->len - 1;
-	b->max_len = len;
+	b->capacity = len;
 	return (b);
 }

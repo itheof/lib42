@@ -6,14 +6,12 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/10/06 15:58:07 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:26:07 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef TYPEDEFS_42_H
 # define TYPEDEFS_42_H
-
-# include "structs_42.h"
 
 typedef struct s_chunk		t_chunk;
 typedef struct s_pool		t_pool;

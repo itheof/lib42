@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 18:01:55 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:12:55 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,9 @@ struct	s_cbuffer
 {
 	void		*data;
 	size_t		len;
-	size_t		max_len;
+	size_t		capacity;
 	size_t		elem_size;
 	void		(*delete_func)(void *);
-
 	size_t		start;
 	size_t		end;
 };
