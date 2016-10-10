@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buffer_42.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/01 16:10:52 by djean            ###   ########.fr       */
+/*   Created: 2016/10/10 00:56:09 by crenault          #+#    #+#             */
+/*   Updated: 2016/10/10 00:56:15 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,39 @@
 
 t_buffer	*buffer_new(size_t size);
 t_buffer	*buffer_init(t_buffer *b, size_t size);
+void		buffer_destroy(t_buffer *b);
+
 t_buffer	*buffer_dup(const char *str);
 t_buffer	*buffer_ndup(const char *str, size_t len);
 t_buffer	*buffer_cdup(const char *str, int c);
+t_buffer	*buffer_twin(t_buffer *b);
+
 t_buffer	*buffer_cat(t_buffer *b, const char *s);
 t_buffer	*buffer_ncat(t_buffer *b, const char *s, size_t len);
+
 t_buffer	*buffer_replace(t_buffer *b, const char *s);
 t_buffer	*buffer_nreplace(t_buffer *b, const char *s, size_t len);
+
+t_buffer	*buffer_escape(t_buffer *b, int c);
+t_buffer	*buffer_unescape(t_buffer *b, int c);
+
 t_buffer	*buffer_resize(t_buffer *b, size_t expand);
+
 t_buffer	*buffer_insert(t_buffer *b, size_t pos, const char *s, size_t len);
 size_t		buffer_remove(t_buffer *b, size_t pos, size_t size);
-void		buffer_destroy(t_buffer *b);
+
 t_buffer	*buffer_set(t_buffer *b, int c, size_t len);
+
 int			buffer_rewind(t_buffer *b, size_t n);
 int			buffer_rewindchr(t_buffer *b, int c);
-t_buffer	*buffer_twin(t_buffer *b);
+
 t_buffer	*buffer_append(t_buffer *dst, t_buffer *src);
+
 t_buffer	*buffer_merge(t_buffer *b1, t_buffer *b2);
+
 t_buffer	*buffer_stoa(t_buffer *b, long long value, unsigned base);
 t_buffer	*buffer_utoa(t_buffer *b, unsigned long long value, unsigned base);
+
 char		buffer_iterator(t_buffer *b);
 void		buffer_iterator_prev(t_buffer *b);
 void		buffer_iterator_next(t_buffer *b);

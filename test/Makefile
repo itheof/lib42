@@ -69,6 +69,7 @@ SOURCES += test_buffer_rewindchr.c
 # SOURCES += test_buffer_rewindnchr.c
 SOURCES += test_buffer_append.c
 SOURCES += test_buffer_replace.c
+SOURCES += test_buffer_escape.c
 SOURCES += test_buffer_twin.c
 SOURCES += test_buffer_merge.c
 SOURCES += test_buffer_iterator.c
