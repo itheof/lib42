@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 19:51:28 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/09 16:12:38 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/10 16:50:47 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void		*cbuffer_get(t_cbuffer const *buffer, size_t i)
 	return (CBUFFER_GET(buffer, buffer->start + i));
 }
 
-void		*cbuffer_get_front(t_cbuffer const *buffer)
+void		*cbuffer_front(t_cbuffer const *buffer)
 {
 	if (buffer->len == 0)
 		return (NULL);
 	return (CBUFFER_GET(buffer, buffer->start));
 }
 
-void		*cbuffer_get_back(t_cbuffer const *buffer)
+void		*cbuffer_back(t_cbuffer const *buffer)
 {
 	if (buffer->len == 0)
 		return (NULL);

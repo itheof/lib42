@@ -12,10 +12,10 @@ static void	test_00_cbuffer_popBackInt(void)
 	int a = 10;
 	cbuffer_push_back(&buffer, &a);
 
-	int back = *((int*)cbuffer_get_back(&buffer));
+	int back = *((int*)cbuffer_back(&buffer));
 	v_assert_int(a, ==, back);
 
-	int front = *((int*)cbuffer_get_front(&buffer));
+	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(a, ==, front);
 
 	int n = *((int*)cbuffer_get(&buffer, 0));
@@ -26,8 +26,8 @@ static void	test_00_cbuffer_popBackInt(void)
 
 	cbuffer_pop_back(&buffer);
 
-	v_assert_ptr(NULL, ==, cbuffer_get_back(&buffer));
-	v_assert_ptr(NULL, ==, cbuffer_get_front(&buffer));
+	v_assert_ptr(NULL, ==, cbuffer_back(&buffer));
+	v_assert_ptr(NULL, ==, cbuffer_front(&buffer));
 	v_assert_ptr(NULL, ==, cbuffer_get(&buffer, 0));
 
 	v_assert_size_t(0, ==, buffer.len);
@@ -50,10 +50,10 @@ static void	test_01_cbuffer_popBackWithTwoInt(void)
 	cbuffer_push_back(&buffer, &a);
 	cbuffer_push_back(&buffer, &b);
 
-	int front = *((int*)cbuffer_get_front(&buffer));
+	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(a, ==, front);
 
-	int back = *((int*)cbuffer_get_back(&buffer));
+	int back = *((int*)cbuffer_back(&buffer));
 	v_assert_int(b, ==, back);
 
 	v_assert_size_t(2, ==, buffer.len);
@@ -61,9 +61,9 @@ static void	test_01_cbuffer_popBackWithTwoInt(void)
 
 	cbuffer_pop_back(&buffer);
 	{
-		int front = *((int*)cbuffer_get_front(&buffer));
+		int front = *((int*)cbuffer_front(&buffer));
 		v_assert_int(a, ==, front);
-		int back = *((int*)cbuffer_get_back(&buffer));
+		int back = *((int*)cbuffer_back(&buffer));
 		v_assert_int(a, ==, back);
 	}
 
@@ -95,9 +95,9 @@ static void	test_02_cbuffer_popBackEqualMaxLenInt(void)
 	cbuffer_pop_back(&buffer);
 	cbuffer_pop_back(&buffer);
 	{
-		int front = *((int*)cbuffer_get_front(&buffer));
+		int front = *((int*)cbuffer_front(&buffer));
 		v_assert_int(c, ==, front);
-		int back = *((int*)cbuffer_get_back(&buffer));
+		int back = *((int*)cbuffer_back(&buffer));
 		v_assert_int(c, ==, back);
 	}
 
@@ -147,10 +147,10 @@ static void	test_04_cbuffer_popFrontInt(void)
 	int a = 10;
 	cbuffer_push_back(&buffer, &a);
 
-	int back = *((int*)cbuffer_get_back(&buffer));
+	int back = *((int*)cbuffer_back(&buffer));
 	v_assert_int(a, ==, back);
 
-	int front = *((int*)cbuffer_get_front(&buffer));
+	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(a, ==, front);
 
 	int n = *((int*)cbuffer_get(&buffer, 0));
@@ -161,8 +161,8 @@ static void	test_04_cbuffer_popFrontInt(void)
 
 	cbuffer_pop_front(&buffer);
 
-	v_assert_ptr(NULL, ==, cbuffer_get_back(&buffer));
-	v_assert_ptr(NULL, ==, cbuffer_get_front(&buffer));
+	v_assert_ptr(NULL, ==, cbuffer_back(&buffer));
+	v_assert_ptr(NULL, ==, cbuffer_front(&buffer));
 	v_assert_ptr(NULL, ==, cbuffer_get(&buffer, 0));
 
 	v_assert_size_t(0, ==, buffer.len);
@@ -185,10 +185,10 @@ static void	test_05_cbuffer_popFrontWithTwoInt(void)
 	cbuffer_push_back(&buffer, &a);
 	cbuffer_push_back(&buffer, &b);
 
-	int front = *((int*)cbuffer_get_front(&buffer));
+	int front = *((int*)cbuffer_front(&buffer));
 	v_assert_int(a, ==, front);
 
-	int back = *((int*)cbuffer_get_back(&buffer));
+	int back = *((int*)cbuffer_back(&buffer));
 	v_assert_int(b, ==, back);
 
 	v_assert_size_t(2, ==, buffer.len);
@@ -196,8 +196,8 @@ static void	test_05_cbuffer_popFrontWithTwoInt(void)
 
 	cbuffer_pop_front(&buffer);
 	{
-		int front = *((int*)cbuffer_get_front(&buffer));
-		int back = *((int*)cbuffer_get_back(&buffer));
+		int front = *((int*)cbuffer_front(&buffer));
+		int back = *((int*)cbuffer_back(&buffer));
 
 		v_assert_int(front, ==, back);
 		v_assert_int(b, ==, front);
@@ -232,9 +232,9 @@ static void	test_05_cbuffer_popFrontEqualMaxLenInt(void)
 	cbuffer_pop_front(&buffer);
 	cbuffer_pop_front(&buffer);
 	{
-		int front = *((int*)cbuffer_get_front(&buffer));
+		int front = *((int*)cbuffer_front(&buffer));
 		v_assert_int(c, ==, front);
-		int back = *((int*)cbuffer_get_back(&buffer));
+		int back = *((int*)cbuffer_back(&buffer));
 		v_assert_int(c, ==, back);
 	}
 

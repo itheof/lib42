@@ -15,13 +15,13 @@ static void	test_00_cbuffer_resizeStartBeforeEnd(void)
 	}
 
 	{
-		int front = *((int*)cbuffer_get_front(&buffer));
+		int front = *((int*)cbuffer_front(&buffer));
 		v_assert_int(0, ==, front);
 
 		int n = *((int*)cbuffer_get(&buffer, 5));
 		v_assert_int(5, ==, n);
 
-		int back = *((int*)cbuffer_get_back(&buffer));
+		int back = *((int*)cbuffer_back(&buffer));
 		v_assert_int(9, ==, back);
 	}
 
@@ -30,13 +30,13 @@ static void	test_00_cbuffer_resizeStartBeforeEnd(void)
 
 	buffer = *cbuffer_resize(&buffer, 20);
 	{
-		int front = *((int*)cbuffer_get_front(&buffer));
+		int front = *((int*)cbuffer_front(&buffer));
 		v_assert_int(0, ==, front);
 
 		int n = *((int*)cbuffer_get(&buffer, 5));
 		v_assert_int(5, ==, n);
 
-		int back = *((int*)cbuffer_get_back(&buffer));
+		int back = *((int*)cbuffer_back(&buffer));
 		v_assert_int(9, ==, back);
 	}
 
@@ -61,13 +61,13 @@ static void	test_01_cbuffer_resizeStartAfterEnd(void)
 	}
 
 	{
-		int front = *((int*)cbuffer_get_front(&buffer));
+		int front = *((int*)cbuffer_front(&buffer));
 		v_assert_int(7, ==, front);
 
 		int n = *((int*)cbuffer_get(&buffer, 4));
 		v_assert_int(3, ==, n);
 
-		int back = *((int*)cbuffer_get_back(&buffer));
+		int back = *((int*)cbuffer_back(&buffer));
 		v_assert_int(0, ==, back);
 	}
 
@@ -76,13 +76,13 @@ static void	test_01_cbuffer_resizeStartAfterEnd(void)
 
 	buffer = *cbuffer_resize(&buffer, 20);
 	{
-		int front = *((int*)cbuffer_get_front(&buffer));
+		int front = *((int*)cbuffer_front(&buffer));
 		v_assert_int(7, ==, front);
 
 		int n = *((int*)cbuffer_get(&buffer, 4));
 		v_assert_int(3, ==, n);
 
-		int back = *((int*)cbuffer_get_back(&buffer));
+		int back = *((int*)cbuffer_back(&buffer));
 		v_assert_int(0, ==, back);
 	}
 
@@ -98,14 +98,14 @@ static void	test_02_cbuffer_resizeEmptyBuffer(void)
 
 	cbuffer_init(&buffer, 10, sizeof(int), NULL);
 
-	v_assert_ptr(NULL, ==, cbuffer_get_back(&buffer));
+	v_assert_ptr(NULL, ==, cbuffer_back(&buffer));
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(10, ==, buffer.capacity);
 
 	buffer = *cbuffer_resize(&buffer, 20);
 
-	v_assert_ptr(NULL, ==, cbuffer_get_back(&buffer));
+	v_assert_ptr(NULL, ==, cbuffer_back(&buffer));
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(20, ==, buffer.capacity);

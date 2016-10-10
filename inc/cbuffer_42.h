@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/09 16:12:13 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/10 16:50:22 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void		*cbuffer_pop_back(t_cbuffer *buffer);
 void		*cbuffer_pop_front(t_cbuffer *buffer);
 
 void		*cbuffer_get(t_cbuffer const *buffer, size_t i);
-void		*cbuffer_get_front(t_cbuffer const *buffer);
-void		*cbuffer_get_back(t_cbuffer const *buffer);
+void		*cbuffer_front(t_cbuffer const *buffer);
+void		*cbuffer_back(t_cbuffer const *buffer);
 
 #endif
