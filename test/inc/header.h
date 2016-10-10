@@ -5,6 +5,7 @@
 #define _DEFAUTL_SOURCE
 
 #include <unistd.h>
+#include <ctype.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -65,6 +66,9 @@ void	suite_memchr(void);
 void	suite_realloc(void);
 void	suite_toa_base(void);
 void	suite_next_power_of_2(void);
+
+// Ctype
+void	suite_ctype(void);
 
 // String
 void	suite_strlen(void);
