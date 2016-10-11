@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_42.h                                           :+:      :+:    :+:   */
+/*   str_42.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 18:01:20 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/09 19:59:23 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 #define ASCII_TABLE_LEN (127)
 
-char		*ft_strdup(const char *s1);
-char		*ft_strndup(const char *s1, size_t n);
+char	*ft_strdup(const char *s1);
+char	*ft_strndup(const char *s1, size_t n);
 
 int			ft_strcmp(const char *s1, const char *s2);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);

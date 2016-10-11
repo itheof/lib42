@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/14 22:50:58 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/11 02:20:31 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 ** free the entire struct
 */
 
-// TODO delete this
 void	string_destroy(t_string *b)
 {
 	free(b->str);
+	free(b);
 }
