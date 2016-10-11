@@ -19,6 +19,7 @@ int	main(void)
 	suite_next_power_of_2();
 
 	// string
+	suite_strcmp();
 	suite_strlen();
 	suite_strnlen();
 	suite_strdup();

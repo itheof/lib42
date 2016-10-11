@@ -71,6 +71,7 @@ void	suite_next_power_of_2(void);
 void	suite_ctype(void);
 
 // String
+void	suite_strcmp(void);
 void	suite_strlen(void);
 void	suite_strnlen(void);
 void	suite_strdup(void);

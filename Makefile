@@ -93,6 +93,7 @@ SOURCES += buffer_iter.c
 
 # String
 SRC_SUBDIR += string
+SOURCES += ft_strcmp.c
 SOURCES += ft_strlen.c
 SOURCES += ft_strdup.c
 SOURCES += ft_strsub.c

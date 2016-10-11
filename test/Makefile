@@ -87,6 +87,7 @@ SOURCES += test_toa_base.c
 SOURCES += test_next_power2.c
 
 # String
+SOURCES += test_strcmp.c
 SOURCES += test_strlen.c
 SOURCES += test_strnlen.c
 SOURCES += test_strdup.c
