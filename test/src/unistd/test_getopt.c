@@ -78,7 +78,7 @@ static void assert_silent_getopt_values(int argc, char *const argv[], const char
 			v_assert_char(ret_ref, ==, ret);
 			if (ret_ref == -1)
 				break;
-			v_assert_char(optind, ==, state.optind);
+			v_assert_int(optind, ==, state.optind);
 			v_assert_int(opterr, ==, state.opterr);
 			if (ret_ref == '?' || ret_ref == ':')
 //			{
