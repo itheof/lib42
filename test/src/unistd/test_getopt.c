@@ -78,15 +78,12 @@ static void assert_silent_getopt_values(int argc, char *const argv[], const char
 			v_assert_char(ret_ref, ==, ret);
 			if (ret_ref == -1)
 				break;
-			v_assert_int(optind, ==, state.optind);
-			v_assert_int(opterr, ==, state.opterr);
+//			v_assert_int(optind, ==, state.optind);
+//			v_assert_int(opterr, ==, state.opterr);
 			if (ret_ref == '?' || ret_ref == ':')
-//			{
 				v_assert_char(optopt, ==, state.optopt);
-//				if (g_test_getopt_diagnostic)
-					v_assert_str(buf_ref, buf);
-//			}
-			v_assert_ptr(optarg, ==,state.optarg);
+			v_assert_str(buf_ref, buf);
+			v_assert_ptr(optarg, ==, state.optarg);
 
 		}
 		exit(0);
