@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/09 15:33:13 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:20:45 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/11 23:33:50 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,40 +16,37 @@
 ** Duplicate the string '*str' and return a buffer of it
 */
 
-t_string	*string_dup(const char *str)
+t_string	*string_dup(t_string *s, const char *str)
 {
-	return (string_ndup(str, ft_strlen(str)));
+	return (string_ndup(s, str, ft_strlen(str)));
 }
 
 /*
 ** Duplicate the string '*str', up to the char 'c', and return a buffer of it
 */
 
-t_string	*string_cdup(const char *str, int c)
+t_string	*string_cdup(t_string *s, const char *str, int c)
 {
-	int	pos;
+	int		pos;
 
 	pos = ft_strchrpos(str, c);
 	if (pos == -1)
 		return (NULL);
-	return (string_ndup(str, (size_t)pos + 1));
+	return (string_ndup(s, str, (size_t)pos + 1));
 }
 
 /*
 ** Duplicate the string '*str', up to the size 'len', and return a buffer of it
 */
 
-t_string	*string_ndup(const char *str, size_t len)
+t_string	*string_ndup(t_string *s, const char *str, size_t len)
 {
-	t_string	*new;
-	size_t		string_len;
+	const char	*cpy_stop;
 
-	new = string_new(len + 1);
-	if (new == NULL)
+	if ((string_init(s, len)) == NULL)
 		return (NULL);
-	string_len = ft_strlen(str);
-	len = string_len < len ? string_len : len;
-	ft_memcpy(new->str, str, len);
-	new->len = len;
-	return (new);
+	cpy_stop = ft_memccpy(s->str, str, '\0', len);
+	s->len = cpy_stop == NULL ? len : (size_t)(cpy_stop - 1 - s->str);
+	s->str[s->len] = '\0';
+	return (s);
 }

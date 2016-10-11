@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:22:53 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/11 22:23:18 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,18 @@
 ** Return the new size of the buffer or -1 if the rewind is to large
 */
 
-int	string_rewind(t_string *b, size_t n)
+int		string_rewind(t_string *s, size_t n)
 {
 	size_t	nlen;
 
-	if (n > b->len)
+	if (n > s->len)
 		return (-1);
-	nlen = b->len - n;
-	b->str[nlen] = '\0';
-	b->len = nlen;
-	if (b->iterator > b->len)
-		string_iterator_set(b, b->len);
+	nlen = s->len - n;
+	s->str[nlen] = '\0';
+	s->len = nlen;
+	// TODO delete this horific thing !!! now !!!
+	if (s->iterator > s->len)
+		string_iterator_set(s, s->len);
 	return ((int)nlen);
 }
 
@@ -37,18 +38,18 @@ int	string_rewind(t_string *b, size_t n)
 ** Return the number of chars that have been rewind, or -1 if it is not found
 */
 
-int	string_rewindchr(t_string *b, int c)
+int		string_rewindchr(t_string *s, int c)
 {
 	int		pos;
 	size_t	ret;
 
-	pos = ft_strrchrpos(b->str, c);
+	pos = ft_strrchrpos(s->str, c);
 	if (pos == -1)
 		return (-1);
-	b->str[pos] = '\0';
-	ret = b->len - (size_t)pos;
-	b->len = (size_t)pos;
-	if (b->iterator > b->len)
-		string_iterator_set(b, b->len);
+	s->str[pos] = '\0';
+	ret = s->len - (size_t)pos;
+	s->len = (size_t)pos;
+	if (s->iterator > s->len)
+		string_iterator_set(s, s->len);
 	return ((int)ret);
 }

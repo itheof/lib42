@@ -1,16 +1,16 @@
 #include "header.h"
 
-static t_string b;
+static t_string		string;
 
 static void	setup(void)
 {
-	string_init(&b, 127);
-	string_ncat(&b, "Hello World!", 12);
+	string_init(&string, 127);
+	string_ncat(&string, "Hello World!", 12);
 }
 
 static void	teardown(void)
 {
-	TBUFFER_FREE(&b);
+	free(string.str);
 }
 
 static void	test_00_string_rewindchr_SimpleRewind(void)
@@ -18,11 +18,11 @@ static void	test_00_string_rewindchr_SimpleRewind(void)
 	/* size_t res; */
 	setup();
 
-	/* res = string_rewindchr(&b, 'l'); */
-	string_rewindchr(&b, 'l');
-	v_assert_size_t(128, ==, TBUFFER_MAX(&b));
-	v_assert_size_t(9, ==, TBUFFER_LEN(&b));
-	v_assert_str("Hello Wor", TBUFFER_GET(&b));
+	/* res = string_rewindchr(&string, 'l'); */
+	string_rewindchr(&string, 'l');
+	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(9, ==, string.len);
+	v_assert_str("Hello Wor", string.str);
 
 	teardown();
 	VTS;
@@ -33,11 +33,11 @@ static void	test_01_string_rewindchr_EndOfString(void)
 	/* size_t res; */
 	setup();
 
-	/* res = string_rewindchr(&b, '\0'); */
-	string_rewindchr(&b, '\0');
-	v_assert_size_t(128, ==, TBUFFER_MAX(&b));
-	v_assert_size_t(12, ==, TBUFFER_LEN(&b));
-	v_assert_str("Hello World!", TBUFFER_GET(&b));
+	/* res = string_rewindchr(&string, '\0'); */
+	string_rewindchr(&string, '\0');
+	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(12, ==, string.len);
+	v_assert_str("Hello World!", string.str);
 
 	teardown();
 	VTS;
@@ -48,11 +48,11 @@ static void	test_02_string_rewindchr_LastChar(void)
 	/* size_t res; */
 	setup();
 
-	/* res = string_rewindchr(&b, '!'); */
-	string_rewindchr(&b, '!');
-	v_assert_size_t(128, ==, TBUFFER_MAX(&b));
-	v_assert_size_t(11, ==, TBUFFER_LEN(&b));
-	v_assert_str("Hello World", TBUFFER_GET(&b));
+	/* res = string_rewindchr(&string, '!'); */
+	string_rewindchr(&string, '!');
+	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(11, ==, string.len);
+	v_assert_str("Hello World", string.str);
 
 	teardown();
 	VTS;
@@ -63,11 +63,11 @@ static void	test_03_string_rewindchr_FirstChar(void)
 	/* size_t res; */
 	setup();
 
-	/* res = string_rewindchr(&b, 'H'); */
-	string_rewindchr(&b, 'H');
-	v_assert_size_t(128, ==, TBUFFER_MAX(&b));
-	v_assert_size_t(0, ==, TBUFFER_LEN(&b));
-	v_assert_str("", TBUFFER_GET(&b));
+	/* res = string_rewindchr(&string, 'H'); */
+	string_rewindchr(&string, 'H');
+	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(0, ==, string.len);
+	v_assert_str("", string.str);
 
 	teardown();
 	VTS;
@@ -78,11 +78,11 @@ static void	test_04_string_rewindchr_MultipleOccurrence(void)
 	/* size_t res; */
 	setup();
 
-	/* res = string_rewindchr(&b, 'o'); */
-	string_rewindchr(&b, 'o');
-	v_assert_size_t(128, ==, TBUFFER_MAX(&b));
-	v_assert_size_t(7, ==, TBUFFER_LEN(&b));
-	v_assert_str("Hello W", TBUFFER_GET(&b));
+	/* res = string_rewindchr(&string, 'o'); */
+	string_rewindchr(&string, 'o');
+	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(7, ==, string.len);
+	v_assert_str("Hello W", string.str);
 
 	teardown();
 	VTS;
