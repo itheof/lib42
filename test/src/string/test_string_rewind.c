@@ -1,16 +1,16 @@
 #include "header.h"
 
-static t_string b;
+static t_string		string;
 
 static void	setup(void)
 {
-	string_init(&b, 120);
-	string_ncat(&b, "Hello World!", 12);
+	string_init(&string, 120);
+	string_ncat(&string, "Hello World!", 12);
 }
 
 static void	teardown(void)
 {
-	TBUFFER_FREE(&b);
+	free(string.str);
 }
 
 static void	test_00_string_rewind_SimpleSize(void)
@@ -18,10 +18,10 @@ static void	test_00_string_rewind_SimpleSize(void)
 	int res;
 	setup();
 
-	res = string_rewind(&b, 3);
-	v_assert_size_t(128, ==, TBUFFER_MAX(&b));
-	v_assert_size_t(9, ==, TBUFFER_LEN(&b));
-	v_assert_str("Hello Wor", TBUFFER_GET(&b));
+	res = string_rewind(&string, 3);
+	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(9, ==, string.len);
+	v_assert_str("Hello Wor", string.str);
 	v_assert_int(9, ==, res);
 
 	teardown();
@@ -33,10 +33,10 @@ static void	test_01_string_rewind_ZeroSize(void)
 	int res;
 	setup();
 
-	res = string_rewind(&b, 0);
-	v_assert_size_t(128, ==, TBUFFER_MAX(&b));
-	v_assert_size_t(12, ==, TBUFFER_LEN(&b));
-	v_assert_str("Hello World!", TBUFFER_GET(&b));
+	res = string_rewind(&string, 0);
+	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(12, ==, string.len);
+	v_assert_str("Hello World!", string.str);
 	v_assert_int(12, ==, res);
 
 	teardown();
@@ -48,10 +48,10 @@ static void	test_02_string_rewind_FullSize(void)
 	int res;
 	setup();
 
-	res = string_rewind(&b, 12);
-	v_assert_size_t(128, ==, TBUFFER_MAX(&b));
-	v_assert_size_t(0, ==, TBUFFER_LEN(&b));
-	v_assert_str("", TBUFFER_GET(&b));
+	res = string_rewind(&string, 12);
+	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(0, ==, string.len);
+	v_assert_str("", string.str);
 	v_assert_int(0, ==, res);
 
 	teardown();
@@ -63,10 +63,10 @@ static void	test_03_string_rewind_SizeOverflow(void)
 	int res;
 	setup();
 
-	res = string_rewind(&b, 42);
-	v_assert_size_t(128, ==, TBUFFER_MAX(&b));
-	v_assert_size_t(12, ==, TBUFFER_LEN(&b));
-	v_assert_str("Hello World!", TBUFFER_GET(&b));
+	res = string_rewind(&string, 42);
+	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(12, ==, string.len);
+	v_assert_str("Hello World!", string.str);
 	v_assert_int(-1, ==, res);
 
 	teardown();

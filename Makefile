@@ -75,7 +75,7 @@ SOURCES += cbuffer_resize.c
 
 # Buffer
 SRC_SUBDIR += string
-SOURCES += string_new.c
+SOURCES += string_init.c
 SOURCES += string_dup.c
 SOURCES += string_cat.c
 SOURCES += string_destroy.c

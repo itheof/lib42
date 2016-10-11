@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:20:17 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/11 23:34:53 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 ** Concatene the string '*s' to the buffer '*b'
 */
 
-t_string	*string_cat(t_string *b, const char *s)
+t_string	*string_cat(t_string *s, const char *str)
 {
-	return (string_ncat(b, s, ft_strlen(s)));
+	return (string_ncat(s, str, ft_strlen(str)));
 }
 
 /*
 ** Concatene the string '*s', of size 'len', to the buffer '*b'
 */
 
-t_string	*string_ncat(t_string *b, const char *s, size_t len)
+t_string	*string_ncat(t_string *s, const char *str, size_t len)
 {
-	if (BUF_NEED_RESIZE(b, len))
-		if (string_resize(b, len) == NULL)
-			return (NULL);
-	ft_memcpy(b->str + b->len, s, len);
-	b->len += len;
-	return (b);
+	if (BUF_NEED_RESIZE(s, len) && string_resize(s, len) == NULL)
+		return (NULL);
+	ft_memcpy(s->str + s->len, str, len);
+    s->len += len;
+    s->str[s->len] = '\0';
+    return (s);
 }

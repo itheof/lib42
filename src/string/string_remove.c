@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:21:59 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/11 22:15:37 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,26 @@
 ** Return the numbers of bytes effectively removed
 */
 
-size_t	string_remove(t_string *b, size_t pos, size_t size)
+// TODO add 'string_pop_char' function
+size_t		string_remove(t_string *s, size_t pos, size_t size)
 {
 	size_t	removed;
 
-	if (pos >= b->len)
+	if (pos >= s->len)
 		return (0);
-	if (pos + size >= b->len)
+	if (pos + size >= s->len)
 	{
-		removed = b->len - pos;
-		b->len = pos;
+		removed = s->len - pos;
+		s->len = pos;
 	}
 	else
 	{
 		removed = size;
-		ft_memmove(b->str + pos, b->str + pos + size, b->len - (pos + size));
-		b->len -= size;
+		ft_memmove(s->str + pos, s->str + pos + size, s->len - (pos + size));
+		s->len -= size;
 	}
-	b->str[b->len] = '\0';
-	if (b->iterator > pos)
-		string_iterator_set(b, pos);
+	s->str[s->len] = '\0';
+	if (s->iterator > pos)
+		string_iterator_set(s, pos);
 	return (removed);
 }

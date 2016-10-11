@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:22:39 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/11 22:08:37 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,21 @@
 ** Enlarge the buffer by adding 'expand'
 */
 
-t_string	*string_resize(t_string *b, size_t expand)
+// TODO rename 'reserve' + 'additional' parameter name
+// https://doc.rust-lang.org/std/vec/struct.Vec.html#method.reserve
+// TODO review this function
+t_string	*string_resize(t_string *s, size_t expand)
 {
 	void	*new;
 	size_t	newsize;
 
-	newsize = b->sizemax * STRING_GROWTH_FACTOR;
-	while (b->len + expand >= newsize)
+	newsize = s->sizemax * STRING_GROWTH_FACTOR;
+	while (s->len + expand >= newsize)
 		newsize *= STRING_GROWTH_FACTOR;
-	new = ft_realloc(b->str, newsize, b->sizemax);
+	new = ft_realloc(s->str, newsize, s->sizemax);
 	if (new == NULL)
 		return (NULL);
-	b->sizemax = newsize;
-	b->str = new;
-	return (b);
+	s->sizemax = newsize;
+	s->str = new;
+	return (s);
 }

@@ -2,53 +2,53 @@
 
 void	test_00_string_insert_AddStringMiddle(void)
 {
-	t_string b;
+	t_string	string;
 	char	*s = "docfolamour";
 	char	*good = "docteur folamour";
 	size_t	len_good = strlen(good);
 
-	string_init(&b, 32);
-	string_ncat(&b, s, strlen(s));
-	string_insert(&b, 3, "teur ", 5);
-	v_assert_str(good, b.str);
-	v_assert_size_t(len_good, ==, b.len);
+	string_init(&string, 32);
+	string_ncat(&string, s, strlen(s));
+	string_insert(&string, 3, "teur ", 5);
+	v_assert_str(good, string.str);
+	v_assert_size_t(len_good, ==, string.len);
 
-	TBUFFER_FREE(&b);
+	TBUFFER_FREE(&string);
 	VTS;
 }
 
 void	test_01_string_insert_AddStringHead(void)
 {
-	t_string b;
+	t_string	string;
 	char	*s = "folamour";
 	char	*good = "docteur folamour";
 	size_t	len_good = strlen(good);
 
-	string_init(&b, 32);
-	string_ncat(&b, s, strlen(s));
-	string_insert(&b, 0, "docteur ", 8);
-	v_assert_str(good, b.str);
-	v_assert_size_t(len_good, ==, b.len);
+	string_init(&string, 32);
+	string_ncat(&string, s, strlen(s));
+	string_insert(&string, 0, "docteur ", 8);
+	v_assert_str(good, string.str);
+	v_assert_size_t(len_good, ==, string.len);
 
-	TBUFFER_FREE(&b);
+	TBUFFER_FREE(&string);
 	VTS;
 }
 
 void	test_02_string_insert_AddStringTail(void)
 {
-	t_string b;
+	t_string	string;
 	char	*s = "docteur";
 	char	*good = "docteur folamour";
 	size_t	len_good = strlen(good);
 
-	string_init(&b, 32);
-	string_ncat(&b, s, strlen(s));
-	string_insert(&b, b.len, " folamour", 9);
+	string_init(&string, 32);
+	string_ncat(&string, s, strlen(s));
+	string_insert(&string, string.len, " folamour", 9);
 
-	v_assert_str(good, b.str);
-	v_assert_size_t(len_good, ==, b.len);
+	v_assert_str(good, string.str);
+	v_assert_size_t(len_good, ==, string.len);
 
-	TBUFFER_FREE(&b);
+	TBUFFER_FREE(&string);
 	VTS;
 }
 

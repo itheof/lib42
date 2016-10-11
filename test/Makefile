@@ -58,7 +58,6 @@ SOURCES += test_cbuffer_resize.c
 SRC_SUBDIR += string
 SOURCES += test_string_new.c
 SOURCES += test_string_resize.c
-SOURCES += test_string_macros.c
 SOURCES += test_string_cat.c
 SOURCES += test_string_dup.c
 SOURCES += test_string_insert.c
@@ -71,7 +70,6 @@ SOURCES += test_string_append.c
 SOURCES += test_string_replace.c
 SOURCES += test_string_twin.c
 SOURCES += test_string_merge.c
-SOURCES += test_string_iterator.c
 
 # Memory
 SRC_SUBDIR += memory
