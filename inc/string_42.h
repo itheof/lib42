@@ -1,19 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   string_42.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 11:14:08 by djean            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef STRING_42_H
 # define STRING_42_H
 
 # include <stdlib.h>
+# include "ctype_42.h"
 # include "memory_42.h"
 
 #define ASCII_TABLE_LEN 127
@@ -47,5 +36,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 
 char	*ft_strrstr(const char *big, const char *little);
 char	*ft_strrnstr(const char *big, const char *little, size_t len);
+
+char	*ft_strtoupper(char *str);
+char	*ft_strtolower(char *str);
 
 #endif

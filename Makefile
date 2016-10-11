@@ -102,6 +102,8 @@ SOURCES += ft_strrchr.c
 SOURCES += ft_strrev.c
 SOURCES += ft_strstr.c
 SOURCES += ft_strrstr.c
+SOURCES += ft_strtolower.c
+SOURCES += ft_strtoupper.c
 
 # Pool
 SRC_SUBDIR += pool
@@ -116,6 +118,28 @@ SOURCES += pool_destroy.c
 SRC_SUBDIR += error
 SOURCES += ft_error.c
 SOURCES += ft_die.c
+
+# Printf
+SRC_SUBDIR += printf
+SOURCES += ft_printf.c
+SOURCES += ft_printf_core.c
+SOURCES += ft_dprintf.c
+SOURCES += ft_asprintf.c
+SOURCES += ft_snprintf.c
+SOURCES += ft_sprintf.c
+SOURCES += conv_c.c
+SOURCES += conv_s.c
+SOURCES += conv_wc.c
+SOURCES += conv_wcs.c
+SOURCES += conv_d.c
+SOURCES += conv_uo.c
+SOURCES += conv_x.c
+SOURCES += conv_prc.c
+SOURCES += utf8.c
+SOURCES += str_formatting.c
+SOURCES += int_formatting.c
+SOURCES += parsing.c
+SOURCES += utils.c
 
 # Generation
 INC_PATH = inc
