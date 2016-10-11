@@ -91,7 +91,7 @@ SOURCES += string_twin.c
 SOURCES += string_append.c
 SOURCES += string_iter.c
 
-# String
+# Str
 SRC_SUBDIR += str
 SOURCES += ft_strcmp.c
 SOURCES += ft_strlen.c
