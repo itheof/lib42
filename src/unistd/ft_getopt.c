@@ -6,7 +6,7 @@
 /*   By: tvallee <tvallee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/30 13:49:50 by tvallee           #+#    #+#             */
-/*   Updated: 2016/10/11 12:09:21 by tvallee          ###   ########.fr       */
+/*   Updated: 2016/10/11 14:20:44 by tvallee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 static int	opt_get_type(char *const av[], const char *optstring, t_opt *state)
 {
-	char	temp[2];
 	char	*addr;
+	char	temp;
 
-	temp[1] = 0;
-	temp[0] = av[state->optind][state->optoff];
-	state->optopt = temp[0];
-	addr = strstr(optstring, temp);
-	if (!addr)
+	temp = av[state->optind][state->optoff];
+	state->optopt = temp;
+	if (!(addr = ft_strchr(optstring, temp)))
 	{
 		if (av[state->optind][state->optoff + 1])
 			state->optoff += 1;
@@ -31,9 +29,7 @@ static int	opt_get_type(char *const av[], const char *optstring, t_opt *state)
 			state->optind += 1;
 		}
 		if (state->opterr)
-		{
-			dprintf(2, GETOPT_INVALID_ERR_FORMAT, av[0], temp[0]);
-		}
+			dprintf(2, GETOPT_INVALID_ERR_FORMAT, av[0], temp);
 		return (-1);
 	}
 	else
