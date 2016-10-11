@@ -330,6 +330,11 @@ static void test_08_error_bad_opt(void)
 		"a"
 	);
 	assert_getopt_diagnostics(
+		3, (char*[])
+		{"./test", "-Fa", "-b", NULL},
+		"ab"
+	);
+	assert_getopt_diagnostics(
 		4, (char*[])
 		{"./test", "-a", "--", "-Fa", NULL},
 		"a"

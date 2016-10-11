@@ -6,7 +6,7 @@
 /*   By: tvallee <tvallee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/30 13:49:50 by tvallee           #+#    #+#             */
-/*   Updated: 2016/10/11 14:20:44 by tvallee          ###   ########.fr       */
+/*   Updated: 2016/10/11 14:53:10 by tvallee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	opt_get_type(char *const av[], const char *optstring, t_opt *state)
 			state->optind += 1;
 		}
 		if (state->opterr)
-			dprintf(2, GETOPT_INVALID_ERR_FORMAT, av[0], temp);
+			ft_dprintf(2, GETOPT_INVALID_ERR_FORMAT, av[0], temp);
 		return (-1);
 	}
 	else
@@ -49,9 +49,7 @@ static int	parse_operand_opt(int ac, char *const av[], const char *optstring,
 		state->optoff = 0;
 		if (state->optind > ac) {
 			if (state->opterr && *optstring != ':')
-			{
-				dprintf(2, GETOPT_MULT_ERR_FORMAT, av[0], c);
-			}
+				ft_dprintf(2, GETOPT_MULT_ERR_FORMAT, av[0], c);
 			return ((*optstring == ':') ? ':' : '?');
 		}
 	}
