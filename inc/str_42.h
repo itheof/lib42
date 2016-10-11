@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 23:59:04 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/11 18:01:20 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include "memory_42.h"
 
-#define ASCII_TABLE_LEN 127
+#define ASCII_TABLE_LEN (127)
 
 char	*ft_strdup(const char *s1);
 char	*ft_strndup(const char *s1, size_t n);
