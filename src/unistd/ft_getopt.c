@@ -6,7 +6,7 @@
 /*   By: tvallee <tvallee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/30 13:49:50 by tvallee           #+#    #+#             */
-/*   Updated: 2016/10/07 14:37:38 by tvallee          ###   ########.fr       */
+/*   Updated: 2016/10/11 12:09:21 by tvallee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ static int	opt_get_type(char *const av[], const char *optstring, t_opt *state)
 		}
 		if (state->opterr)
 		{
-			write(2, av[0], ft_strlen(av[0]));
-			write(2, ": illegal option -- ", 20);
-			write(2, temp, 1);
-			write(2, "\n", 1);
+			dprintf(2, GETOPT_INVALID_ERR_FORMAT, av[0], temp[0]);
 		}
 		return (-1);
 	}
@@ -57,10 +54,7 @@ static int	parse_operand_opt(int ac, char *const av[], const char *optstring,
 		if (state->optind > ac) {
 			if (state->opterr && *optstring != ':')
 			{
-				write(2, av[0], ft_strlen(av[0]));
-				write(2, ": option requires an argument -- ", 33);
-				write(2, &c, 1);
-				write(2, "\n", 1);
+				dprintf(2, GETOPT_MULT_ERR_FORMAT, av[0], c);
 			}
 			return ((*optstring == ':') ? ':' : '?');
 		}
