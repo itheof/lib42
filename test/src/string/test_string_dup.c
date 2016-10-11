@@ -1,11 +1,10 @@
 #include "header.h"
 
-static t_string	*b;
+static t_string		string;
 
 static void	teardown(void)
 {
-	free(b->str);
-	free(b);
+	free(string.str);
 }
 
 static void	test_00_string_dup_String(void)
@@ -13,10 +12,10 @@ static void	test_00_string_dup_String(void)
 	char	*s = "Hello world";
 	size_t	len = strlen(s);
 
-	b = string_dup(s);
+	string_dup(&string, s);
 
-	v_assert_size_t(len, ==, b->len);
-	v_assert_str(s, b->str);
+	v_assert_size_t(len, ==, string.len);
+	v_assert_str(s, string.str);
 
 	teardown();
 	VTS;
@@ -27,10 +26,10 @@ static void	test_01_string_dup_EmptyString(void)
 	char	*s = "";
 	size_t	len = strlen(s);
 
-	b = string_dup(s);
+	string_dup(&string, s);
 
-	v_assert_size_t(len, ==, b->len);
-	v_assert_str(s, b->str);
+	v_assert_size_t(len, ==, string.len);
+	v_assert_str(s, string.str);
 
 	teardown();
 	VTS;
@@ -41,10 +40,10 @@ static void	test_02_string_ndup_SimpleString(void)
 	char	*s = "Hello World!";
 	/* size_t	len = strlen(s); */
 
-	b = string_ndup(s, 5);
+	string_ndup(&string, s, 5);
 
-	v_assert_size_t(5, ==, b->len);
-	v_assert_str("Hello", b->str);
+	v_assert_size_t(5, ==, string.len);
+	v_assert_str("Hello", string.str);
 
 	teardown();
 	VTS;
@@ -53,13 +52,13 @@ static void	test_02_string_ndup_SimpleString(void)
 static void	test_03_string_ndup_ShortenString(void)
 {
 	char	*s = "abc";
-	/* size_t	len = strlen(s); */
+	size_t	len = strlen(s);
 
-	b = string_ndup(s, 10);
+	string_ndup(&string, s, 10);
 
-	v_assert_size_t(64, ==, TBUFFER_MAX(b));
-	v_assert_size_t(3, ==, b->len);
-	v_assert_str("abc", b->str);
+	v_assert_size_t(64, ==, string.sizemax);
+	v_assert_size_t(len, ==, string.len);
+	v_assert_str(s, string.str);
 
 	teardown();
 	VTS;
@@ -70,10 +69,10 @@ static void	test_04_string_ndup_ZeroLength(void)
 	char	*s = "World!";
 	/* size_t	len = strlen(s); */
 
-	b = string_ndup(s, 0);
+	string_ndup(&string, s, 0);
 
-	v_assert_size_t(0, ==, b->len);
-	v_assert_str("", b->str);
+	v_assert_size_t(0, ==, string.len);
+	v_assert_str("", string.str);
 
 	teardown();
 	VTS;
@@ -84,10 +83,10 @@ static void	test_05_string_cdup_CharInString(void)
 	char	*s = "Hello World!";
 	/* size_t	len = strlen(s); */
 
-	b = string_cdup(s, 'W');
+	string_cdup(&string, s, 'W');
 
-	v_assert_size_t(7, ==, b->len);
-	v_assert_str("Hello W", b->str);
+	v_assert_size_t(7, ==, string.len);
+	v_assert_str("Hello W", string.str);
 
 	teardown();
 	VTS;
@@ -98,9 +97,7 @@ static void	test_06_string_cdup_CharNotInString(void)
 	char	*s = "Hello World!";
 	/* size_t	len = strlen(s); */
 
-	b = string_cdup(s, 'z');
-
-	v_assert_ptr(NULL, ==, b);
+	v_assert_ptr(NULL, ==, string_cdup(&string, s, 'z'));
 
 	VTS;
 }

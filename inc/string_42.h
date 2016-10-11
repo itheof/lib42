@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 20:01:47 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/11 22:45:29 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,13 @@
 # include "stdlib_42.h"
 # include "str_42.h"
 
-# define STRING_INIT_SIZE		64U
-# define STRING_GROWTH_FACTOR	2U
+# define STRING_INIT_SIZE		(64U)
+# define STRING_GROWTH_FACTOR	(2U)
+
+// TODO rename STRING_NEED_RESIZE
 # define BUF_NEED_RESIZE(b, l)	(b->len + l >= b->sizemax)
+
+// TODO delete all these macros
 # define TBUFFER_MAX(b)			((b)->sizemax)
 # define TBUFFER_LEN(b)			((b)->len)
 # define TBUFFER_GET(b)			((b)->str)
@@ -36,35 +40,35 @@
 # define TBUFFER_ITER(b)		((b)->iterator)
 # define TBUFFER_RESET_ITER(b)	((b)->iterator = 0)
 
-t_string	*string_new(size_t size);
-t_string	*string_init(t_string *b, size_t size);
-void		string_destroy(t_string *b);
+// TODO move definition in header file
+// TODO rename file string_init.c
+t_string	*string_init(t_string *s, size_t size);
+void		string_destroy(t_string *s);
 
-// TODO refacto, no malloc ever, always on stack pls !!!
-t_string	*string_dup(const char *str);
-t_string	*string_ndup(const char *str, size_t len);
-t_string	*string_cdup(const char *str, int c);
-t_string	*string_twin(t_string *b);
+t_string	*string_dup(t_string *s, const char *str);
+t_string	*string_ndup(t_string *s, const char *str, size_t len);
+t_string	*string_cdup(t_string *s, const char *str, int c);
+t_string	*string_twin(t_string *dst, const t_string *src);
 
-t_string	*string_cat(t_string *b, const char *s);
-t_string	*string_ncat(t_string *b, const char *s, size_t len);
+t_string	*string_cat(t_string *s, const char *str);
+t_string	*string_ncat(t_string *s, const char *str, size_t len);
 
-t_string	*string_replace(t_string *b, const char *s);
-t_string	*string_nreplace(t_string *b, const char *s, size_t len);
-t_string	*string_set(t_string *b, int c, size_t len);
+t_string	*string_replace(t_string *s, const char *str);
+t_string	*string_nreplace(t_string *s, const char *str, size_t len);
+t_string	*string_set(t_string *s, int c, size_t len);
 
-t_string	*string_resize(t_string *b, size_t expand);
+t_string	*string_resize(t_string *s, size_t expand);
 
-t_string	*string_insert(t_string *b, size_t pos, const char *s, size_t len);
-t_string	*string_append(t_string *dst, t_string *src);
-t_string	*string_merge(t_string *b1, t_string *b2);
-size_t		string_remove(t_string *b, size_t pos, size_t size);
+t_string	*string_insert(t_string *s, size_t pos, const char *str, size_t l);
+t_string	*string_append(t_string *dst, const t_string *src);
+t_string	*string_merge(t_string *dst, const t_string *a, const t_string *b);
+size_t		string_remove(t_string *s, size_t pos, size_t size);
 
-int			string_rewind(t_string *b, size_t n);
-int			string_rewindchr(t_string *b, int c);
+int			string_rewind(t_string *s, size_t n);
+int			string_rewindchr(t_string *s, int c);
 
-t_string	*string_stoa(t_string *b, long long value, unsigned base);
-t_string	*string_utoa(t_string *b, unsigned long long value, unsigned base);
+t_string	*string_stoa(t_string *s, long long value, unsigned base);
+t_string	*string_utoa(t_string *s, unsigned long long value, unsigned base);
 
 // TODO delete iterator
 char		string_iterator(t_string *b);

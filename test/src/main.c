@@ -34,7 +34,6 @@ int	main(void)
 	suite_string_cat();
 	suite_string_insert();
 	suite_string_append();
-	suite_string_macros();
 	suite_string_replace();
 	suite_string_new();
 	suite_string_resize();
@@ -45,7 +44,6 @@ int	main(void)
 	/* suite_string_rewindnchr(); */
 	suite_string_twin();
 	suite_string_merge();
-	suite_string_iterator();
 
 	// array
 	suite_array_macros();

@@ -6,27 +6,27 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:21:29 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/11 23:37:40 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string_42.h"
 
 /*
-** Create a new buffer, resulting in the merge of '*b1' and '*b2'
+** Fill a destination buffer, resulting in the merge of '*a' and '*b'
 */
 
-t_string	*string_merge(t_string *b1, t_string *b2)
+// TODO rename it string_concat
+t_string	*string_merge(t_string *dst, const t_string *a, const t_string *b)
 {
-	t_string	*new;
 	size_t		size;
 
-	size = b1->len + b2->len;
-	new = string_new(size);
-	if (new == NULL)
+	size = a->len + b->len;
+	if (string_init(dst, size) == NULL)
 		return (NULL);
-	new->len = b1->len + b2->len;
-	ft_memcpy(new->str, b1->str, b1->len);
-	ft_memcpy(new->str + b1->len, b2->str, b2->len);
-	return (new);
+	dst->len = a->len + b->len;
+	ft_memcpy(dst->str, a->str, a->len);
+	ft_memcpy(dst->str + a->len, b->str, b->len);
+    dst->str[dst->len] = '\0';
+	return (dst);
 }

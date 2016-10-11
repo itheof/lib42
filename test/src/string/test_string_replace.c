@@ -1,22 +1,19 @@
 #include "header.h"
 
-static t_string	*string;
+static t_string		string;
 
 static void	setup(char *s, size_t len, size_t max)
 {
-	string = malloc(sizeof(t_string));
-	string->str = malloc(max);
-	memset(string->str, 0, max);
-	memcpy(string->str, s, len);
-	string->len = len;
-	string->sizemax = max;
+	string.str = malloc(max);
+	memset(string.str, 0, max);
+	memcpy(string.str, s, len);
+	string.len = len;
+	string.sizemax = max;
 }
 
 static void	teardown(void)
 {
-	free(string->str);
-	memset(string, 0, sizeof(t_string));
-	free(string);
+	free(string.str);
 }
 
 static void	test_00_string_replace_BiggerString(void)
@@ -28,11 +25,11 @@ static void	test_00_string_replace_BiggerString(void)
 
 	char	*replace = "World!";
 	size_t	lrep = strlen(replace);
-	string_replace(string, replace);
+	string_replace(&string, replace);
 
-	v_assert_size_t(max, ==, TBUFFER_MAX(string));
-	v_assert_size_t(lrep, ==, TBUFFER_LEN(string));
-	v_assert_str(replace, TBUFFER_GET(string));
+	v_assert_size_t(max, ==, string.sizemax);
+	v_assert_size_t(lrep, ==, string.len);
+	v_assert_str(replace, string.str);
 
 	teardown();
 	VTS;
@@ -52,12 +49,12 @@ static void	test_01_string_nreplace_BigStringNotNullTerminated(void)
 		memcpy(arr + (i * lrep), replace, lrep);
 	arr[500] = 'x';
 
-	string_nreplace(string, arr, 500);
+	string_nreplace(&string, arr, 500);
 
-	v_assert_size_t(512, ==, TBUFFER_MAX(string));
-	v_assert_size_t(500, ==, TBUFFER_LEN(string));
+	v_assert_size_t(512, ==, string.sizemax);
+	v_assert_size_t(500, ==, string.len);
 	arr[500] = '\0';
-	v_assert_str(arr, TBUFFER_GET(string));
+	v_assert_str(arr, string.str);
 
 	teardown();
 	VTS;
@@ -72,11 +69,11 @@ static void	test_02_string_replace_LowerString(void)
 
 	char	*replace = "abc";
 	size_t	lrep = strlen(replace);
-	string_replace(string, replace);
+	string_replace(&string, replace);
 
-	v_assert_size_t(16, ==, TBUFFER_MAX(string));
-	v_assert_size_t(lrep, ==, TBUFFER_LEN(string));
-	v_assert_str(replace, TBUFFER_GET(string));
+	v_assert_size_t(16, ==, string.sizemax);
+	v_assert_size_t(lrep, ==, string.len);
+	v_assert_str(replace, string.str);
 
 	teardown();
 	VTS;

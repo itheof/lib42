@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:23:30 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/11 23:36:44 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 ** Return a strict copy of the buffer '*b'
 */
 
-t_string	*string_twin(t_string *b)
+// TODO rename it 'string_clone'
+t_string	*string_twin(t_string *dst, const t_string *src)
 {
-	t_string	*copy;
-
-	copy = string_new(b->sizemax - 1);
-	if (copy == NULL)
+	// TODO don't need all capacity and why capacity - 1 ?
+	if (string_init(dst, src->sizemax - 1) == NULL)
 		return (NULL);
-	copy->len = b->len;
-	copy->iterator = b->iterator;
-	ft_memcpy(copy->str, b->str, b->len);
-	return (copy);
+	dst->len = src->len;
+	dst->iterator = src->iterator;
+	ft_memcpy(dst->str, src->str, src->len);
+    dst->str[dst->len] = '\0';
+	return (dst);
 }
