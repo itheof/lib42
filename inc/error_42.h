@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_42.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/08/10 16:29:25 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/11 02:24:47 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include "typedefs_42.h"
 # include "structs_42.h"
-# include "buffer_42.h"
+# include "string_42.h"
 
 # define FATAL_MALLOC	"fatal: malloc failed !"
 # define UNKNOWN_ERROR	"Unknown error !"

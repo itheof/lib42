@@ -1,24 +1,24 @@
 #include "ft_printf.h"
 
-static int	formatting_x(t_buffer *pb, t_format *fmt, char *arg, size_t arglen)
+static int	formatting_x(t_string *pb, t_format *fmt, char *arg, size_t arglen)
 {
 	int_format_intro(fmt, arg, &arglen);
 	if (fmt->f_minus == 0 && fmt->f_zero == 0)
 		int_padding(pb, fmt, (fmt->f_sharp) ? arglen + 2 : arglen, arg[0]);
 	if (fmt->conv == 'p')
-		buffer_ncat(pb, "0x", 2);
+		string_ncat(pb, "0x", 2);
 	else if (fmt->f_sharp && ft_strcmp("0", arg))
-		buffer_ncat(pb, (fmt->conv == 'X') ? "0X" : "0x", 2);
+		string_ncat(pb, (fmt->conv == 'X') ? "0X" : "0x", 2);
 	if (fmt->f_minus == 0 && fmt->f_zero == 1)
 		int_padding(pb, fmt, (fmt->f_sharp) ? arglen + 2 : arglen, arg[0]);
 	int_precision(pb, fmt, arglen);
-	buffer_ncat(pb, arg, arglen);
+	string_ncat(pb, arg, arglen);
 	if (fmt->f_minus == 1)
 		int_padding(pb, fmt, (fmt->f_sharp) ? arglen + 2 : arglen, arg[0]);
 	return (0);
 }
 
-int			conv_x(t_buffer *pb, t_format *fmt, va_list ap)
+int			conv_x(t_string *pb, t_format *fmt, va_list ap)
 {
 	char	*arg;
 
@@ -39,7 +39,7 @@ int			conv_x(t_buffer *pb, t_format *fmt, va_list ap)
 	return (1);
 }
 
-int			conv_p(t_buffer *pb, t_format *fmt, va_list ap)
+int			conv_p(t_string *pb, t_format *fmt, va_list ap)
 {
 	char	*arg;
 

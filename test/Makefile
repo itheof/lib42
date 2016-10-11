@@ -31,13 +31,11 @@ CFLAGS += $(addprefix -I,$(INC_PATH))
 
 
 # Sources
-SRC_PATH = src
-SRC_SUBDIR = . array cbuffer buffer memory stdlib string error pool
-vpath %.c $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
 SOURCES += main.c
 SOURCES += ctype.c
 
 # Array
+SRC_SUBDIR += array
 SOURCES += test_array_macros.c
 SOURCES += test_array_getset.c
 SOURCES += test_array_indexof.c
@@ -51,29 +49,32 @@ SOURCES += test_array_strsplit.c
 SOURCES += test_array_iterator.c
 
 # Cbuffer
+SRC_SUBDIR += cbuffer
 SOURCES += test_cbuffer_push.c
 SOURCES += test_cbuffer_pop.c
 SOURCES += test_cbuffer_resize.c
 
-# Buffer
-SOURCES += test_buffer_new.c
-SOURCES += test_buffer_resize.c
-SOURCES += test_buffer_macros.c
-SOURCES += test_buffer_cat.c
-SOURCES += test_buffer_dup.c
-SOURCES += test_buffer_insert.c
-SOURCES += test_buffer_remove.c
-SOURCES += test_buffer_set.c
-SOURCES += test_buffer_rewind.c
-SOURCES += test_buffer_rewindchr.c
-# SOURCES += test_buffer_rewindnchr.c
-SOURCES += test_buffer_append.c
-SOURCES += test_buffer_replace.c
-SOURCES += test_buffer_twin.c
-SOURCES += test_buffer_merge.c
-SOURCES += test_buffer_iterator.c
+# String
+SRC_SUBDIR += string
+SOURCES += test_string_new.c
+SOURCES += test_string_resize.c
+SOURCES += test_string_macros.c
+SOURCES += test_string_cat.c
+SOURCES += test_string_dup.c
+SOURCES += test_string_insert.c
+SOURCES += test_string_remove.c
+SOURCES += test_string_set.c
+SOURCES += test_string_rewind.c
+SOURCES += test_string_rewindchr.c
+# SOURCES += test_string_rewindnchr.c
+SOURCES += test_string_append.c
+SOURCES += test_string_replace.c
+SOURCES += test_string_twin.c
+SOURCES += test_string_merge.c
+SOURCES += test_string_iterator.c
 
 # Memory
+SRC_SUBDIR += memory
 SOURCES += test_memset.c
 SOURCES += test_memcpy.c
 SOURCES += test_memccpy.c
@@ -82,11 +83,13 @@ SOURCES += test_memchr.c
 SOURCES += test_memcmp.c
 
 # Stdlib
+SRC_SUBDIR += stdlib
 SOURCES += test_realloc.c
 SOURCES += test_toa_base.c
 SOURCES += test_next_power2.c
 
-# String
+# Str
+SRC_SUBDIR += str
 SOURCES += test_strcmp.c
 SOURCES += test_strlen.c
 SOURCES += test_strnlen.c
@@ -99,6 +102,7 @@ SOURCES += test_strstr.c
 SOURCES += test_strrstr.c
 
 # Pool
+SRC_SUBDIR += pool
 SOURCES += test_pool_macros.c
 SOURCES += test_pool_new.c
 SOURCES += test_pool_obtain.c
@@ -106,8 +110,11 @@ SOURCES += test_pool_return.c
 SOURCES += test_pool_reset.c
 
 # Error
+SRC_SUBDIR += error
 SOURCES += test_error.c
 
+SRC_PATH = src
+vpath %.c $(SRC_PATH) $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
 
 # Objects
 OBJ_PATH = obj
