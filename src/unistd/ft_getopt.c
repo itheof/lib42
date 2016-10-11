@@ -6,7 +6,7 @@
 /*   By: tvallee <tvallee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/30 13:49:50 by tvallee           #+#    #+#             */
-/*   Updated: 2016/10/11 16:36:59 by tvallee          ###   ########.fr       */
+/*   Updated: 2016/10/11 17:30:30 by tvallee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int	parse_simple_opt(char *const av[], t_opt *state)
 	int c;
 
 	c = av[state->optind][state->optoff];
-	if (av[state->optind][state->optoff + 1])
+	if (av[state->optind][state->optoff + 1] != '\0')
 		state->optoff += 1;
 	else
 	{
