@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib42.h                                            :+:      :+:    :+:   */
+/*   string_append.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/10 10:03:56 by tvallee          ###   ########.fr       */
+/*   Created: 2016/09/06 12:04:13 by djean             #+#    #+#             */
+/*   Updated: 2016/10/11 02:19:38 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB42_H
-# define LIB42_H
+#include "string_42.h"
 
-# include "macros_42.h"
-# include "typedefs_42.h"
-# include "structs_42.h"
-# include "ctype_42.h"
-# include "stdlib_42.h"
-# include "memory_42.h"
-# include "str_42.h"
-# include "array_42.h"
-# include "cbuffer_42.h"
-# include "str_42.h"
-# include "pool_42.h"
-# include "error_42.h"
+/*
+** Append to 'dst' the content of 'src'
+** Return the new size of 'dst' or -1 on error
+*/
 
-#endif
+t_string	*string_append(t_string *dst, t_string *src)
+{
+	return (string_ncat(dst, src->str, src->len));
+}

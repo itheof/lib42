@@ -19,7 +19,7 @@
 # include "structs_42.h"
 # include "memory_42.h"
 # include "stdlib_42.h"
-# include "string_42.h"
+# include "str_42.h"
 
 # define TARRAY_MIN_SIZE		8
 # define TARRAY_GROWTH_FACTOR	2

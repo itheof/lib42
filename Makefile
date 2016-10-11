@@ -74,25 +74,25 @@ SOURCES += cbuffer_get.c
 SOURCES += cbuffer_resize.c
 
 # Buffer
-SRC_SUBDIR += buffer
-SOURCES += buffer_new.c
-SOURCES += buffer_dup.c
-SOURCES += buffer_cat.c
-SOURCES += buffer_destroy.c
-SOURCES += buffer_insert.c
-SOURCES += buffer_merge.c
-SOURCES += buffer_remove.c
-SOURCES += buffer_replace.c
-SOURCES += buffer_resize.c
-SOURCES += buffer_rewind.c
-SOURCES += buffer_set.c
-SOURCES += buffer_toa.c
-SOURCES += buffer_twin.c
-SOURCES += buffer_append.c
-SOURCES += buffer_iter.c
+SRC_SUBDIR += string
+SOURCES += string_new.c
+SOURCES += string_dup.c
+SOURCES += string_cat.c
+SOURCES += string_destroy.c
+SOURCES += string_insert.c
+SOURCES += string_merge.c
+SOURCES += string_remove.c
+SOURCES += string_replace.c
+SOURCES += string_resize.c
+SOURCES += string_rewind.c
+SOURCES += string_set.c
+SOURCES += string_toa.c
+SOURCES += string_twin.c
+SOURCES += string_append.c
+SOURCES += string_iter.c
 
 # String
-SRC_SUBDIR += string
+SRC_SUBDIR += str
 SOURCES += ft_strlen.c
 SOURCES += ft_strdup.c
 SOURCES += ft_strsub.c

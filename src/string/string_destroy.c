@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lib42.h                                            :+:      :+:    :+:   */
+/*   string_destroy.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/10 10:03:56 by tvallee          ###   ########.fr       */
+/*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
+/*   Updated: 2016/10/11 02:20:31 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB42_H
-# define LIB42_H
+#include "string_42.h"
 
-# include "macros_42.h"
-# include "typedefs_42.h"
-# include "structs_42.h"
-# include "ctype_42.h"
-# include "stdlib_42.h"
-# include "memory_42.h"
-# include "str_42.h"
-# include "array_42.h"
-# include "cbuffer_42.h"
-# include "str_42.h"
-# include "pool_42.h"
-# include "error_42.h"
+/*
+** free the entire struct
+*/
 
-#endif
+void	string_destroy(t_string *b)
+{
+	free(b->str);
+	free(b);
+}
