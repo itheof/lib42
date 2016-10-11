@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:12:41 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/11 20:01:47 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_string	*string_new(size_t size);
 t_string	*string_init(t_string *b, size_t size);
 void		string_destroy(t_string *b);
 
+// TODO refacto, no malloc ever, always on stack pls !!!
 t_string	*string_dup(const char *str);
 t_string	*string_ndup(const char *str, size_t len);
 t_string	*string_cdup(const char *str, int c);
