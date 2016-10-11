@@ -2,7 +2,6 @@
 
 int	main(void)
 {
-
 	// memory
 	suite_memset();
 	suite_memcmp();
@@ -19,7 +18,7 @@ int	main(void)
 	suite_toa_base();
 	suite_next_power_of_2();
 
-	// string
+	// str
 	suite_strcmp();
 	suite_strlen();
 	suite_strnlen();
@@ -31,23 +30,23 @@ int	main(void)
 	suite_strstr();
 	suite_strrstr();
 
-	// buffer
-	suite_buffer_dup();
-	suite_buffer_cat();
-	suite_buffer_insert();
-	suite_buffer_append();
-	suite_buffer_macros();
-	suite_buffer_replace();
-	suite_buffer_new();
-	suite_buffer_resize();
-	suite_buffer_remove();
-	suite_buffer_set();
-	suite_buffer_rewind();
-	suite_buffer_rewindchr();
-	//suite_buffer_rewindnchr();
-	suite_buffer_twin();
-	suite_buffer_merge();
-	suite_buffer_iterator();
+	// string
+	suite_string_dup();
+	suite_string_cat();
+	suite_string_insert();
+	suite_string_append();
+	suite_string_macros();
+	suite_string_replace();
+	suite_string_new();
+	suite_string_resize();
+	suite_string_remove();
+	suite_string_set();
+	suite_string_rewind();
+	suite_string_rewindchr();
+	/* suite_string_rewindnchr(); */
+	suite_string_twin();
+	suite_string_merge();
+	suite_string_iterator();
 
 	// array
 	suite_array_macros();
@@ -57,7 +56,7 @@ int	main(void)
 	suite_array_replace();
 	suite_array_insert();
 	suite_array_remove();
-	//suite_array_copy();
+	/* suite_array_copy(); */
 	suite_array_getset();
 	suite_array_strsplit();
 	suite_array_iterator();
@@ -77,6 +76,7 @@ int	main(void)
 	suite_pool_return();
 	suite_pool_reset();
 
+	// getopt
 	suite_unistd_getopt();
 
 	v_full_success("Lib42");

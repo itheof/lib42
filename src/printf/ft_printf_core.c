@@ -2,7 +2,7 @@
 
 static size_t	g_bufsize = PRF_BUFSIZ;
 
-static int	tables_dispatch(t_buffer *b, t_format *fmt, va_list ap)
+static int	tables_dispatch(t_string *b, t_format *fmt, va_list ap)
 {
 	static char	*spec = "csCSdouxXp%";
 	static t_fc	fp[11];
@@ -47,21 +47,21 @@ void		ft_printf_init(size_t initsize)
 ssize_t		ft_printf_core(const char *format, va_list ap, char **ret)
 {
 	t_format	fmt;
-	t_buffer	b;
+	t_string	b;
 	char		*pconv;
 
-	buffer_init(&b, g_bufsize);
+	string_init(&b, g_bufsize);
 	while ((pconv = ft_strchr(format, '%')) != NULL)
 	{
 		ft_memset(&fmt, 0, sizeof(fmt));
-		buffer_ncat(&b, format, (size_t)(pconv - format));
+		string_ncat(&b, format, (size_t)(pconv - format));
 		format = parse_fmt(pconv + 1, &fmt);
 		if (fmt.conv != '\0')
 			if (tables_dispatch(&b, &fmt, ap) == -1)
 				return (cleanup_buf(&b));
 	}
 	if (*format != '\0')
-		buffer_ncat(&b, format, ft_strlen(format));
+		string_ncat(&b, format, ft_strlen(format));
 	*ret = b.str;
-	return ((ssize_t)TBUFFER_LEN(&b));
+	return ((ssize_t)b.len);
 }

@@ -36,23 +36,23 @@ void	suite_cbuffer_push(void);
 void	suite_cbuffer_pop(void);
 void	suite_cbuffer_resize(void);
 
-// Buffer
-void	suite_buffer_macros(void);
-void	suite_buffer_new(void);
-void	suite_buffer_resize(void);
-void	suite_buffer_dup(void);
-void	suite_buffer_cat(void);
-void	suite_buffer_insert(void);
-void	suite_buffer_remove(void);
-void	suite_buffer_set(void);
-void	suite_buffer_rewind(void);
-void	suite_buffer_rewindchr(void);
-/* void	suite_buffer_rewindnchr(void); */
-void	suite_buffer_append(void);
-void	suite_buffer_replace(void);
-void	suite_buffer_twin(void);
-void	suite_buffer_merge(void);
-void	suite_buffer_iterator(void);
+// String
+void	suite_string_macros(void);
+void	suite_string_new(void);
+void	suite_string_resize(void);
+void	suite_string_dup(void);
+void	suite_string_cat(void);
+void	suite_string_insert(void);
+void	suite_string_remove(void);
+void	suite_string_set(void);
+void	suite_string_rewind(void);
+void	suite_string_rewindchr(void);
+/* void	suite_string_rewindnchr(void); */
+void	suite_string_append(void);
+void	suite_string_replace(void);
+void	suite_string_twin(void);
+void	suite_string_merge(void);
+void	suite_string_iterator(void);
 
 // Memory
 void	suite_memcpy(void);
@@ -70,7 +70,7 @@ void	suite_next_power_of_2(void);
 // Ctype
 void	suite_ctype(void);
 
-// String
+// Str
 void	suite_strcmp(void);
 void	suite_strlen(void);
 void	suite_strnlen(void);

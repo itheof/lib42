@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:35:17 by djean             #+#    #+#             */
-/*   Updated: 2016/10/01 16:11:15 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/11 02:19:00 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ void	ft_perror(const char *msg)
 
 void	ft_perrorn(const char *msg, int errnum)
 {
-	t_buffer	buf;
+	t_string	buf;
 	char		*errmsg;
 
-	buffer_init(&buf, 64);
-	buffer_cat(&buf, g_project_name);
-	buffer_ncat(&buf, ": ", 2);
+	string_init(&buf, 64);
+	string_cat(&buf, g_project_name);
+	string_ncat(&buf, ": ", 2);
 	if (msg != NULL && msg[0] != '\0')
 	{
-		buffer_cat(&buf, msg);
-		buffer_ncat(&buf, ": ", 2);
+		string_cat(&buf, msg);
+		string_ncat(&buf, ": ", 2);
 	}
 	errmsg = ft_strerror(errnum);
-	buffer_cat(&buf, errmsg);
+	string_cat(&buf, errmsg);
 	write(STDERR_FILENO, buf.str, buf.len);
 	free(buf.str);
 }

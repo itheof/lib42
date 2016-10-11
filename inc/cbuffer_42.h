@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CBUFFER_42_H
-# define CBUFFER_42_H
+#ifndef cbuffer_42_H
+# define cbuffer_42_H
 
 # include <stdlib.h>
 # include "typedefs_42.h"

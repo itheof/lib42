@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include "macros_42.h"
 # include "memory_42.h"
-# include "string_42.h"
+# include "str_42.h"
 
 void	*ft_realloc(void *ptr, size_t size, size_t oldsize);
 char	*ft_utoa_base_r(char *buf, unsigned long long n, unsigned base);

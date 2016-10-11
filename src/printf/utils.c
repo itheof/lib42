@@ -6,8 +6,8 @@ void	exit_printf(int code)
 	exit(code);
 }
 
-int		cleanup_buf(t_buffer *pb)
+int		cleanup_buf(t_string *pb)
 {
-	TBUFFER_FREE(pb);
+	free(pb->str);
 	return (-1);
 }
