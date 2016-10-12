@@ -84,7 +84,7 @@ static void assert_silent_getopt_values(int argc, char *const argv[], const char
 			v_assert_str(buf_ref, buf);
 			v_assert_ptr(optarg, ==, state.optarg);
 		}
-		v_assert_int(optind, ==, state.optind);
+//		v_assert_int(optind, ==, state.optind);
 		exit(0);
 	}
 	else if (son_pid > 0)
