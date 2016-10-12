@@ -87,7 +87,7 @@ SOURCES += string_resize.c
 SOURCES += string_rewind.c
 SOURCES += string_set.c
 SOURCES += string_toa.c
-SOURCES += string_twin.c
+SOURCES += string_clone.c
 SOURCES += string_append.c
 
 # String
