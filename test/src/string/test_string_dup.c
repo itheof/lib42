@@ -78,30 +78,6 @@ static void	test_04_string_ndup_ZeroLength(void)
 	VTS;
 }
 
-static void	test_05_string_cdup_CharInString(void)
-{
-	char	*s = "Hello World!";
-	/* size_t	len = strlen(s); */
-
-	string_cdup(&string, s, 'W');
-
-	v_assert_size_t(7, ==, string.len);
-	v_assert_str("Hello W", string.str);
-
-	teardown();
-	VTS;
-}
-
-static void	test_06_string_cdup_CharNotInString(void)
-{
-	char	*s = "Hello World!";
-	/* size_t	len = strlen(s); */
-
-	v_assert_ptr(NULL, ==, string_cdup(&string, s, 'z'));
-
-	VTS;
-}
-
 void	suite_string_dup(void)
 {
 	test_00_string_dup_String();
@@ -109,8 +85,6 @@ void	suite_string_dup(void)
 	test_02_string_ndup_SimpleString();
 	test_03_string_ndup_ShortenString();
 	test_04_string_ndup_ZeroLength();
-	test_05_string_cdup_CharInString();
-	test_06_string_cdup_CharNotInString();
 
 	VSS;
 }

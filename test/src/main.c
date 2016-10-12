@@ -43,7 +43,7 @@ int	main(void)
 	suite_string_rewind();
 	suite_string_rewindchr();
 	/* suite_string_rewindnchr(); */
-	suite_string_twin();
+	suite_string_clone();
 	suite_string_merge();
 
 	// array
