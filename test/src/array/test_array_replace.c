@@ -1,7 +1,7 @@
 #include "header.h"
 
-static t_array	*v;
-static char		*str[] = {
+static t_array		array;
+static char			*str[] = {
 	"hello",
 	"world",
 	"and",
@@ -11,16 +11,14 @@ static char		*str[] = {
 
 static void	setup(void)
 {
-	v = array_new(8, sizeof(char*));
+	array_init(&array, 8, sizeof(char*));
 	for (size_t i = 0; i < ARR_SIZ_MAX(str); ++i)
-		array_push(v, &str[i]);
+		array_push(&array, &str[i]);
 }
 
 static void	teardown(void)
 {
-	free(v->data);
-	memset(v, 0, sizeof(t_array));
-	free(v);
+	free(array.data);
 }
 
 static void	test_00_array_replace_FirstItem(void)
@@ -32,7 +30,7 @@ static void	test_00_array_replace_FirstItem(void)
 
 	setup();
 
-	array_replace(v, index, &rep, &old);
+	array_replace(&array, index, &rep, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, !=, old);
@@ -40,40 +38,40 @@ static void	test_00_array_replace_FirstItem(void)
 	v_assert_str(str[index], old);
 
 	// Check array integrity
-	v_assert_size_t(5, ==, v->count);
-	v_assert_size_t(8, ==, v->max);
+	v_assert_size_t(5, ==, array.len);
+	v_assert_size_t(8, ==, array.capacity);
 
-	value = *(char**)array_get(v, 0);
+	value = *(char**)array_get_at(&array, 0);
 	v_assert_ptr(rep, ==, value);
 
-	value = *(char**)array_get(v, 1);
+	value = *(char**)array_get_at(&array, 1);
 	v_assert_ptr(str[1], ==, value);
 
-	value = *(char**)array_get(v, 2);
+	value = *(char**)array_get_at(&array, 2);
 	v_assert_ptr(str[2], ==, value);
 
-	value = *(char**)array_get(v, 3);
+	value = *(char**)array_get_at(&array, 3);
 	v_assert_ptr(str[3], ==, value);
 
-	value = *(char**)array_get(v, 4);
+	value = *(char**)array_get_at(&array, 4);
 	v_assert_ptr(str[4], ==, value);
 
-	value = array_get(v, 5);
+	value = array_get_at(&array, 5);
 	v_assert_ptr(NULL, ==, value);
 
-	value = *(char**)array_get(v, 0);
+	value = *(char**)array_get_at(&array, 0);
 	v_assert_str(rep, value);
 
-	value = *(char**)array_get(v, 1);
+	value = *(char**)array_get_at(&array, 1);
 	v_assert_str(str[1], value);
 
-	value = *(char**)array_get(v, 2);
+	value = *(char**)array_get_at(&array, 2);
 	v_assert_str(str[2], value);
 
-	value = *(char**)array_get(v, 3);
+	value = *(char**)array_get_at(&array, 3);
 	v_assert_str(str[3], value);
 
-	value = *(char**)array_get(v, 4);
+	value = *(char**)array_get_at(&array, 4);
 	v_assert_str(str[4], value);
 
 	teardown();
@@ -89,7 +87,7 @@ static void	test_01_array_replace_MiddleItem(void)
 
 	setup();
 
-	array_replace(v, index, &rep, &old);
+	array_replace(&array, index, &rep, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, !=, old);
@@ -97,40 +95,40 @@ static void	test_01_array_replace_MiddleItem(void)
 	v_assert_str(str[index], old);
 
 	// Check array integrity
-	v_assert_size_t(5, ==, v->count);
-	v_assert_size_t(8, ==, v->max);
+	v_assert_size_t(5, ==, array.len);
+	v_assert_size_t(8, ==, array.capacity);
 
-	value = *(char**)array_get(v, 0);
+	value = *(char**)array_get_at(&array, 0);
 	v_assert_ptr(str[0], ==, value);
 
-	value = *(char**)array_get(v, 1);
+	value = *(char**)array_get_at(&array, 1);
 	v_assert_ptr(str[1], ==, value);
 
-	value = *(char**)array_get(v, 2);
+	value = *(char**)array_get_at(&array, 2);
 	v_assert_ptr(rep, ==, value);
 
-	value = *(char**)array_get(v, 3);
+	value = *(char**)array_get_at(&array, 3);
 	v_assert_ptr(str[3], ==, value);
 
-	value = *(char**)array_get(v, 4);
+	value = *(char**)array_get_at(&array, 4);
 	v_assert_ptr(str[4], ==, value);
 
-	value = array_get(v, 5);
+	value = array_get_at(&array, 5);
 	v_assert_ptr(NULL, ==, value);
 
-	value = *(char**)array_get(v, 0);
+	value = *(char**)array_get_at(&array, 0);
 	v_assert_str(str[0], value);
 
-	value = *(char**)array_get(v, 1);
+	value = *(char**)array_get_at(&array, 1);
 	v_assert_str(str[1], value);
 
-	value = *(char**)array_get(v, 2);
+	value = *(char**)array_get_at(&array, 2);
 	v_assert_str(rep, value);
 
-	value = *(char**)array_get(v, 3);
+	value = *(char**)array_get_at(&array, 3);
 	v_assert_str(str[3], value);
 
-	value = *(char**)array_get(v, 4);
+	value = *(char**)array_get_at(&array, 4);
 	v_assert_str(str[4], value);
 
 	teardown();
@@ -146,7 +144,7 @@ static void	test_02_array_replace_LastItem(void)
 
 	setup();
 
-	array_replace(v, index, &rep, &old);
+	array_replace(&array, index, &rep, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, !=, old);
@@ -154,40 +152,40 @@ static void	test_02_array_replace_LastItem(void)
 	v_assert_str(str[index], old);
 
 	// Check array integrity
-	v_assert_size_t(5, ==, v->count);
-	v_assert_size_t(8, ==, v->max);
+	v_assert_size_t(5, ==, array.len);
+	v_assert_size_t(8, ==, array.capacity);
 
-	value = *(char**)array_get(v, 0);
+	value = *(char**)array_get_at(&array, 0);
 	v_assert_ptr(str[0], ==, value);
 
-	value = *(char**)array_get(v, 1);
+	value = *(char**)array_get_at(&array, 1);
 	v_assert_ptr(str[1], ==, value);
 
-	value = *(char**)array_get(v, 2);
+	value = *(char**)array_get_at(&array, 2);
 	v_assert_ptr(str[2], ==, value);
 
-	value = *(char**)array_get(v, 3);
+	value = *(char**)array_get_at(&array, 3);
 	v_assert_ptr(str[3], ==, value);
 
-	value = *(char**)array_get(v, 4);
+	value = *(char**)array_get_at(&array, 4);
 	v_assert_ptr(rep, ==, value);
 
-	value = array_get(v, 5);
+	value = array_get_at(&array, 5);
 	v_assert_ptr(NULL, ==, value);
 
-	value = *(char**)array_get(v, 0);
+	value = *(char**)array_get_at(&array, 0);
 	v_assert_str(str[0], value);
 
-	value = *(char**)array_get(v, 1);
+	value = *(char**)array_get_at(&array, 1);
 	v_assert_str(str[1], value);
 
-	value = *(char**)array_get(v, 2);
+	value = *(char**)array_get_at(&array, 2);
 	v_assert_str(str[2], value);
 
-	value = *(char**)array_get(v, 3);
+	value = *(char**)array_get_at(&array, 3);
 	v_assert_str(str[3], value);
 
-	value = *(char**)array_get(v, 4);
+	value = *(char**)array_get_at(&array, 4);
 	v_assert_str(rep, value);
 
 	teardown();
@@ -204,17 +202,17 @@ static void	test_03_array_replace_OutOfRange(void)
 
 	setup();
 
-	ret = array_replace(v, index, &rep, &old);
+	ret = array_replace(&array, index, &rep, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, ==, ret);
 
 	// Check array integrity
-	v_assert_size_t(5, ==, v->count);
-	v_assert_size_t(8, ==, v->max);
-	for (size_t i = 0; i < v->count; ++i)
+	v_assert_size_t(5, ==, array.len);
+	v_assert_size_t(8, ==, array.capacity);
+	for (size_t i = 0; i < array.len; ++i)
 	{
-		value = *(char**)array_get(v, i);
+		value = *(char**)array_get_at(&array, i);
 		v_assert_ptr(str[i], ==, value);
 		v_assert_str(str[i], value);
 	}

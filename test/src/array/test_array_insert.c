@@ -1,7 +1,7 @@
 #include "header.h"
 
-static t_array	*v;
-static char		*str[] = {
+static t_array		array;
+static char			*str[] = {
 	"hello",
 	"world",
 	"and",
@@ -11,16 +11,14 @@ static char		*str[] = {
 
 static void	setup(void)
 {
-	v = array_new(8, sizeof(char*));
+	array_init(&array, 8, sizeof(char*));
 	for (size_t i = 0; i < ARR_SIZ_MAX(str); ++i)
-		array_push(v, &str[i]);
+		array_push(&array, &str[i]);
 }
 
 static void	teardown(void)
 {
-	free(v->data);
-	memset(v, 0, sizeof(t_array));
-	free(v);
+	free(array.data);
 }
 
 static void	test_00_array_insert_FirstPlace(void)
@@ -31,15 +29,15 @@ static void	test_00_array_insert_FirstPlace(void)
 
 	setup();
 
-	array_insert(v, index, &s1);
+	array_insert(&array, index, &s1);
 
 	// Check array integrity
-	v_assert_size_t(6, ==, v->count);
-	v_assert_size_t(8, ==, v->max);
+	v_assert_size_t(6, ==, array.len);
+	v_assert_size_t(8, ==, array.capacity);
 
-	for (size_t i = 0, j = 0; i < v->count; ++i)
+	for (size_t i = 0, j = 0; i < array.len; ++i)
 	{
-		value = *(char**)array_get(v, i);
+		value = *(char**)array_get_at(&array, i);
 		if (i == index)
 		{
 			v_assert_ptr(s1, ==, value);
@@ -54,7 +52,7 @@ static void	test_00_array_insert_FirstPlace(void)
 	}
 
 	// last, unassigned
-	value = array_get(v, v->count);
+	value = array_get_at(&array, array.len);
 	v_assert_ptr(NULL, ==, value);
 
 	teardown();
@@ -69,16 +67,16 @@ static void	test_01_array_insert_LastPlace(void)
 
 	setup();
 
-	index = v->count - 1;
-	array_insert(v, index, &s1);
+	index = array.len - 1;
+	array_insert(&array, index, &s1);
 
 	// Check array integrity
-	v_assert_size_t(6, ==, v->count);
-	v_assert_size_t(8, ==, v->max);
+	v_assert_size_t(6, ==, array.len);
+	v_assert_size_t(8, ==, array.capacity);
 
-	for (size_t i = 0, j = 0; i < v->count; ++i)
+	for (size_t i = 0, j = 0; i < array.len; ++i)
 	{
-		value = *(char**)array_get(v, i);
+		value = *(char**)array_get_at(&array, i);
 
 		if (i == index)
 		{
@@ -94,7 +92,7 @@ static void	test_01_array_insert_LastPlace(void)
 	}
 
 	// last, unassigned
-	value = array_get(v, v->count);
+	value = array_get_at(&array, array.len);
 	v_assert_ptr(NULL, ==, value);
 
 	teardown();
@@ -109,16 +107,16 @@ static void	test_02_array_insert_MiddlePlace(void)
 
 	setup();
 
-	index = v->count / 2;
-	array_insert(v, index, &s1);
+	index = array.len / 2;
+	array_insert(&array, index, &s1);
 
 	// Check array integrity
-	v_assert_size_t(6, ==, v->count);
-	v_assert_size_t(8, ==, v->max);
+	v_assert_size_t(6, ==, array.len);
+	v_assert_size_t(8, ==, array.capacity);
 
-	for (size_t i = 0, j = 0; i < v->count; ++i)
+	for (size_t i = 0, j = 0; i < array.len; ++i)
 	{
-		value = *(char**)array_get(v, i);
+		value = *(char**)array_get_at(&array, i);
 
 		if (i == index)
 		{
@@ -134,7 +132,7 @@ static void	test_02_array_insert_MiddlePlace(void)
 	}
 
 	// last, unassigned
-	value = array_get(v, v->count);
+	value = array_get_at(&array, array.len);
 	v_assert_ptr(NULL, ==, value);
 
 	teardown();
@@ -151,38 +149,38 @@ static void	test_03_array_insert_Resize(void)
 
 	setup();
 
-	array_insert(v, v->count, &s1);
-	array_insert(v, v->count, &s2);
-	array_insert(v, v->count, &s3);
+	array_insert(&array, array.len, &s1);
+	array_insert(&array, array.len, &s2);
+	array_insert(&array, array.len, &s3);
 
 	// Check array integrity
-	v_assert_size_t(8, ==, v->count);
-	v_assert_size_t(8, ==, v->max);
+	v_assert_size_t(8, ==, array.len);
+	v_assert_size_t(8, ==, array.capacity);
 
-	for (size_t i = 0; i < v->count - 3; ++i)
+	for (size_t i = 0; i < array.len - 3; ++i)
 	{
-		value = *(char**)array_get(v, i);
+		value = *(char**)array_get_at(&array, i);
 		v_assert_ptr(str[i], ==, value);
 		v_assert_str(str[i], value);
 	}
 
-	index = v->count - 1;
-	value = *(char**)array_get(v, index);
+	index = array.len - 1;
+	value = *(char**)array_get_at(&array, index);
 	v_assert_ptr(s3, ==, value);
 	v_assert_str(s3, value);
 
-	index = v->count - 2;
-	value = *(char**)array_get(v, index);
+	index = array.len - 2;
+	value = *(char**)array_get_at(&array, index);
 	v_assert_ptr(s2, ==, value);
 	v_assert_str(s2, value);
 
-	index = v->count - 3;
-	value = *(char**)array_get(v, index);
+	index = array.len - 3;
+	value = *(char**)array_get_at(&array, index);
 	v_assert_ptr(s1, ==, value);
 	v_assert_str(s1, value);
 
 	// last, unassigned
-	value = array_get(v, v->count);
+	value = array_get_at(&array, array.len);
 	v_assert_ptr(NULL, ==, value);
 
 	teardown();

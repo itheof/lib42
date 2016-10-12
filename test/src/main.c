@@ -47,7 +47,6 @@ int	main(void)
 	suite_string_merge();
 
 	// array
-	suite_array_macros();
 	suite_array_indexof();
 	suite_array_create_node();
 	suite_array_push();
@@ -55,9 +54,7 @@ int	main(void)
 	suite_array_insert();
 	suite_array_remove();
 	/* suite_array_copy(); */
-	suite_array_getset();
-	suite_array_strsplit();
-	suite_array_iterator();
+	suite_array_at();
 
 	// cbuffer
 	suite_cbuffer_push();

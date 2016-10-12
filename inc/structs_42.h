@@ -38,10 +38,10 @@ struct	s_string
 
 struct	s_array
 {
-	void	*data;
-	size_t	capacity;
-	size_t	len;
-	size_t	elem_size;
+	void		*data;
+	size_t		len;
+	size_t		capacity;
+	size_t		elem_size;
 };
 
 struct	s_cbuffer

@@ -36,17 +36,14 @@ SOURCES += ctype.c
 
 # Array
 SRC_SUBDIR += array
-SOURCES += test_array_macros.c
-SOURCES += test_array_getset.c
+SOURCES += test_array_at.c
 SOURCES += test_array_indexof.c
 SOURCES += test_array_create_node.c
 SOURCES += test_array_push.c
 SOURCES += test_array_replace.c
 SOURCES += test_array_insert.c
 SOURCES += test_array_remove.c
-SOURCES += test_array_strsplit.c
 # SOURCES += test_array_copy.c
-SOURCES += test_array_iterator.c
 
 # Cbuffer
 SRC_SUBDIR += cbuffer
