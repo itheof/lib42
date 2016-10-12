@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 01:58:32 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/12 02:03:42 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,7 @@
 // TODO rename STRING_NEED_RESIZE
 # define STRING_NEED_RESIZE(s, l) (s->len + l >= s->capacity)
 
-// TODO delete iterator
-# define TBUFFER_ITER(b)		((b)->iterator)
-# define TBUFFER_RESET_ITER(b)	((b)->iterator = 0)
-
 // TODO move definition in header file
-// TODO rename file string_init.c
 t_string	*string_init(t_string *s, size_t size);
 void		string_destroy(t_string *s);
 
@@ -59,11 +54,5 @@ int			string_rewindchr(t_string *s, int c);
 
 t_string	*string_stoa(t_string *s, long long value, unsigned base);
 t_string	*string_utoa(t_string *s, unsigned long long value, unsigned base);
-
-// TODO delete iterator
-char		string_iterator(t_string *b);
-void		string_iterator_prev(t_string *b);
-void		string_iterator_next(t_string *b);
-void		string_iterator_set(t_string *b, size_t index);
 
 #endif
