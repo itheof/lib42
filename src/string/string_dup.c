@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/09 15:33:13 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 23:33:50 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/12 02:07:35 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,6 @@
 t_string	*string_dup(t_string *s, const char *str)
 {
 	return (string_ndup(s, str, ft_strlen(str)));
-}
-
-/*
-** Duplicate the string '*str', up to the char 'c', and return a buffer of it
-*/
-
-t_string	*string_cdup(t_string *s, const char *str, int c)
-{
-	int		pos;
-
-	pos = ft_strchrpos(str, c);
-	if (pos == -1)
-		return (NULL);
-	return (string_ndup(s, str, (size_t)pos + 1));
 }
 
 /*

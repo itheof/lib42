@@ -68,7 +68,7 @@ SOURCES += test_string_rewindchr.c
 # SOURCES += test_string_rewindnchr.c
 SOURCES += test_string_append.c
 SOURCES += test_string_replace.c
-SOURCES += test_string_twin.c
+SOURCES += test_string_clone.c
 SOURCES += test_string_merge.c
 
 # Memory

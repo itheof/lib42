@@ -1,6 +1,6 @@
 #include "header.h"
 
-static void	test_00_string_twin_Simple(void)
+static void	test_00_string_clone_Simple(void)
 {
 	t_string	origin;
 	t_string	cp;
@@ -8,9 +8,8 @@ static void	test_00_string_twin_Simple(void)
 	size_t		len = strlen(s);
 
 	string_dup(&origin, s);
-	string_twin(&cp, &origin);
+	string_clone(&cp, &origin);
 
-	v_assert_size_t(STRING_INIT_SIZE, ==, cp.capacity);
 	v_assert_size_t(len, ==, cp.len);
 	v_assert_str(s, cp.str);
 	v_assert_ptr(origin.str, !=, cp.str);
@@ -21,9 +20,9 @@ static void	test_00_string_twin_Simple(void)
 	VTS;
 }
 
-void	suite_string_twin(void)
+void	suite_string_clone(void)
 {
-	test_00_string_twin_Simple();
+	test_00_string_clone_Simple();
 
 	VSS;
 }

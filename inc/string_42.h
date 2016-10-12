@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 02:03:42 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/12 02:08:20 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 # define STRING_INIT_SIZE		(64U)
 # define STRING_GROWTH_FACTOR	(2U)
 
-// TODO rename STRING_NEED_RESIZE
 # define STRING_NEED_RESIZE(s, l) (s->len + l >= s->capacity)
 
 // TODO move definition in header file
@@ -32,8 +31,7 @@ void		string_destroy(t_string *s);
 
 t_string	*string_dup(t_string *s, const char *str);
 t_string	*string_ndup(t_string *s, const char *str, size_t len);
-t_string	*string_cdup(t_string *s, const char *str, int c);
-t_string	*string_twin(t_string *dst, const t_string *src);
+t_string	*string_clone(t_string *dst, const t_string *src);
 
 t_string	*string_cat(t_string *s, const char *str);
 t_string	*string_ncat(t_string *s, const char *str, size_t len);
