@@ -19,7 +19,7 @@ static void	test_00_string_rewind_SimpleSize(void)
 	setup();
 
 	res = string_rewind(&string, 3);
-	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(128, ==, string.capacity);
 	v_assert_size_t(9, ==, string.len);
 	v_assert_str("Hello Wor", string.str);
 	v_assert_int(9, ==, res);
@@ -34,7 +34,7 @@ static void	test_01_string_rewind_ZeroSize(void)
 	setup();
 
 	res = string_rewind(&string, 0);
-	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(128, ==, string.capacity);
 	v_assert_size_t(12, ==, string.len);
 	v_assert_str("Hello World!", string.str);
 	v_assert_int(12, ==, res);
@@ -49,7 +49,7 @@ static void	test_02_string_rewind_FullSize(void)
 	setup();
 
 	res = string_rewind(&string, 12);
-	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(128, ==, string.capacity);
 	v_assert_size_t(0, ==, string.len);
 	v_assert_str("", string.str);
 	v_assert_int(0, ==, res);
@@ -64,7 +64,7 @@ static void	test_03_string_rewind_SizeOverflow(void)
 	setup();
 
 	res = string_rewind(&string, 42);
-	v_assert_size_t(128, ==, string.sizemax);
+	v_assert_size_t(128, ==, string.capacity);
 	v_assert_size_t(12, ==, string.len);
 	v_assert_str("Hello World!", string.str);
 	v_assert_int(-1, ==, res);

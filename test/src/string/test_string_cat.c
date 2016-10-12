@@ -10,7 +10,7 @@ static void	test_00_string_cat_Simple(void)
 	string_cat(&string, s);
 
 	v_assert_size_t(l, ==, string.len);
-	v_assert_size_t(64, ==, string.sizemax);
+	v_assert_size_t(64, ==, string.capacity);
 	v_assert_str(s, string.str);
 
 	free(string.str);
@@ -28,7 +28,7 @@ static void	test_01_string_cat_NeedResize(void)
 	string_cat(&string, s);
 
 	v_assert_size_t(l, ==, string.len);
-	v_assert_size_t(64, ==, string.sizemax);
+	v_assert_size_t(64, ==, string.capacity);
 	v_assert_str(s, string.str);
 
 	free(string.str);
@@ -52,7 +52,7 @@ static void	test_02_string_cat_BigConcatenation(void)
 	alen = strlen(a);
 	string_ncat(&string, a, alen);
 	v_assert_size_t(alen, ==, string.len);
-	v_assert_size_t(512, ==, string.sizemax);
+	v_assert_size_t(512, ==, string.capacity);
 	v_assert_str(a, string.str);
 
 	memset(m, 'm', sizeof(m));
@@ -63,7 +63,7 @@ static void	test_02_string_cat_BigConcatenation(void)
 	strcat(am + sizeof(a) - 1, m);
 	string_ncat(&string, m, mlen);
 	v_assert_size_t(alen + mlen, ==, string.len);
-	v_assert_size_t(4096, ==, string.sizemax);
+	v_assert_size_t(4096, ==, string.capacity);
 	v_assert_str(am, string.str);
 
 	free(string.str);

@@ -13,7 +13,7 @@ void	test_00_string_insert_AddStringMiddle(void)
 	v_assert_str(good, string.str);
 	v_assert_size_t(len_good, ==, string.len);
 
-	TBUFFER_FREE(&string);
+	free(string.str);
 	VTS;
 }
 
@@ -30,7 +30,7 @@ void	test_01_string_insert_AddStringHead(void)
 	v_assert_str(good, string.str);
 	v_assert_size_t(len_good, ==, string.len);
 
-	TBUFFER_FREE(&string);
+	free(string.str);
 	VTS;
 }
 
@@ -48,7 +48,7 @@ void	test_02_string_insert_AddStringTail(void)
 	v_assert_str(good, string.str);
 	v_assert_size_t(len_good, ==, string.len);
 
-	TBUFFER_FREE(&string);
+	free(string.str);
 	VTS;
 }
 

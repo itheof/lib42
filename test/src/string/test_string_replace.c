@@ -8,7 +8,7 @@ static void	setup(char *s, size_t len, size_t max)
 	memset(string.str, 0, max);
 	memcpy(string.str, s, len);
 	string.len = len;
-	string.sizemax = max;
+	string.capacity = max;
 }
 
 static void	teardown(void)
@@ -27,7 +27,7 @@ static void	test_00_string_replace_BiggerString(void)
 	size_t	lrep = strlen(replace);
 	string_replace(&string, replace);
 
-	v_assert_size_t(max, ==, string.sizemax);
+	v_assert_size_t(max, ==, string.capacity);
 	v_assert_size_t(lrep, ==, string.len);
 	v_assert_str(replace, string.str);
 
@@ -51,7 +51,7 @@ static void	test_01_string_nreplace_BigStringNotNullTerminated(void)
 
 	string_nreplace(&string, arr, 500);
 
-	v_assert_size_t(512, ==, string.sizemax);
+	v_assert_size_t(512, ==, string.capacity);
 	v_assert_size_t(500, ==, string.len);
 	arr[500] = '\0';
 	v_assert_str(arr, string.str);
@@ -71,7 +71,7 @@ static void	test_02_string_replace_LowerString(void)
 	size_t	lrep = strlen(replace);
 	string_replace(&string, replace);
 
-	v_assert_size_t(16, ==, string.sizemax);
+	v_assert_size_t(16, ==, string.capacity);
 	v_assert_size_t(lrep, ==, string.len);
 	v_assert_str(replace, string.str);
 
