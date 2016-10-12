@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 22:15:37 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/12 02:04:27 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,5 @@ size_t		string_remove(t_string *s, size_t pos, size_t size)
 		s->len -= size;
 	}
 	s->str[s->len] = '\0';
-	if (s->iterator > pos)
-		string_iterator_set(s, pos);
 	return (removed);
 }

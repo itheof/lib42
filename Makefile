@@ -89,7 +89,6 @@ SOURCES += string_set.c
 SOURCES += string_toa.c
 SOURCES += string_twin.c
 SOURCES += string_append.c
-SOURCES += string_iter.c
 
 # String
 SRC_SUBDIR += str
