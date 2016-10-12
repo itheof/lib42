@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 22:08:37 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/12 01:59:03 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ t_string	*string_resize(t_string *s, size_t expand)
 	void	*new;
 	size_t	newsize;
 
-	newsize = s->sizemax * STRING_GROWTH_FACTOR;
+	newsize = s->capacity * STRING_GROWTH_FACTOR;
 	while (s->len + expand >= newsize)
 		newsize *= STRING_GROWTH_FACTOR;
-	new = ft_realloc(s->str, newsize, s->sizemax);
+	new = ft_realloc(s->str, newsize, s->capacity);
 	if (new == NULL)
 		return (NULL);
-	s->sizemax = newsize;
+	s->capacity = newsize;
 	s->str = new;
 	return (s);
 }

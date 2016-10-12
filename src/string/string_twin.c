@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 23:36:44 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/12 01:59:01 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 t_string	*string_twin(t_string *dst, const t_string *src)
 {
 	// TODO don't need all capacity and why capacity - 1 ?
-	if (string_init(dst, src->sizemax - 1) == NULL)
+	if (string_init(dst, src->capacity - 1) == NULL)
 		return (NULL);
 	dst->len = src->len;
 	dst->iterator = src->iterator;

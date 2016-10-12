@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 22:10:31 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/12 01:59:41 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_string	*string_insert(t_string *s, size_t pos, const char *str, size_t l)
 {
 	if (pos > s->len)
 		return (NULL);
-	if (BUF_NEED_RESIZE(s, l) && string_resize(s, l) == NULL)
+	if (STRING_NEED_RESIZE(s, l) && string_resize(s, l) == NULL)
 		return (NULL);
 	ft_memmove(s->str + pos + l, s->str + pos, s->len - pos);
 	ft_memcpy(s->str + pos, str, l);

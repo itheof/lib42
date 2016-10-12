@@ -19,7 +19,7 @@ static void	test_00_string_append_Simple(void)
 	v_assert_size_t(l2, ==, src.len);
 	v_assert_str(s2, src.str);
 
-	/* v_assert_size_t(16, ==, dst.sizemax); */
+	/* v_assert_size_t(16, ==, dst.capacity); */
 	v_assert_size_t(l1 + l2, ==, dst.len);
 	v_assert_str(cat, dst.str);
 
@@ -48,7 +48,7 @@ static void	test_01_string_append_Emptystring(void)
 	v_assert_size_t(l2, ==, src.len);
 	v_assert_str(s2, src.str);
 
-	/* v_assert_size_t(16, ==, dst.sizemax); */
+	/* v_assert_size_t(16, ==, dst.capacity); */
 	v_assert_size_t(l1 + l2, ==, dst.len);
 	v_assert_str(cat, dst.str);
 
