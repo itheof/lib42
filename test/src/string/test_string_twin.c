@@ -10,7 +10,7 @@ static void	test_00_string_twin_Simple(void)
 	string_dup(&origin, s);
 	string_twin(&cp, &origin);
 
-	v_assert_size_t(STRING_INIT_SIZE, ==, cp.sizemax);
+	v_assert_size_t(STRING_INIT_SIZE, ==, cp.capacity);
 	v_assert_size_t(len, ==, cp.len);
 	v_assert_size_t(TBUFFER_ITER(&origin), ==, TBUFFER_ITER(&cp));
 	v_assert_str(s, cp.str);

@@ -10,10 +10,10 @@ static void	teardown(void)
 static void	test_00_string_resize_ExpandNotMuch(void)
 {
 	string_init(&string, 4);
-	v_assert_size_t(STRING_INIT_SIZE, ==, string.sizemax);
+	v_assert_size_t(STRING_INIT_SIZE, ==, string.capacity);
 
 	string_resize(&string, 7);
-	v_assert_size_t(STRING_INIT_SIZE * 2, ==, string.sizemax);
+	v_assert_size_t(STRING_INIT_SIZE * 2, ==, string.capacity);
 
 	teardown();
 	VTS;
@@ -22,10 +22,10 @@ static void	test_00_string_resize_ExpandNotMuch(void)
 static void	test_01_string_resize_ExpandMoreThan2(void)
 {
 	string_init(&string, 1111);
-	v_assert_size_t(2048, ==, string.sizemax);
+	v_assert_size_t(2048, ==, string.capacity);
 
 	string_resize(&string, 5555);
-	v_assert_size_t(8192, ==, string.sizemax);
+	v_assert_size_t(8192, ==, string.capacity);
 
 	teardown();
 	VTS;
@@ -34,10 +34,10 @@ static void	test_01_string_resize_ExpandMoreThan2(void)
 static void	test_02_string_resize_ExpandPowerOf2(void)
 {
 	string_init(&string, 256);
-	v_assert_size_t(512, ==, string.sizemax);
+	v_assert_size_t(512, ==, string.capacity);
 
 	string_resize(&string, 256);
-	v_assert_size_t(1024, ==, string.sizemax);
+	v_assert_size_t(1024, ==, string.capacity);
 
 	teardown();
 	VTS;

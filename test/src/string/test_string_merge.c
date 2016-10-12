@@ -20,7 +20,7 @@ static void	test_00_string_merge_NoRealloc(void)
 
 	v_assert_str(s1, b1.str);
 	v_assert_str(s2, b2.str);
-	v_assert_size_t(STRING_INIT_SIZE, ==, merge.sizemax);
+	v_assert_size_t(STRING_INIT_SIZE, ==, merge.capacity);
 	v_assert_size_t(l1 + l2, ==, merge.len);
 	v_assert_str(s, merge.str);
 
@@ -49,9 +49,9 @@ static void	test_01_string_merge_Realloc(void)
 	string_merge(&merge, &b1, &b2);
 
 	// test
-	v_assert_size_t(STRING_INIT_SIZE * STRING_GROWTH_FACTOR, ==, b1.sizemax);
-	v_assert_size_t(STRING_INIT_SIZE, ==, b2.sizemax);
-	v_assert_size_t(STRING_INIT_SIZE * STRING_GROWTH_FACTOR, ==, merge.sizemax);
+	v_assert_size_t(STRING_INIT_SIZE * STRING_GROWTH_FACTOR, ==, b1.capacity);
+	v_assert_size_t(STRING_INIT_SIZE, ==, b2.capacity);
+	v_assert_size_t(STRING_INIT_SIZE * STRING_GROWTH_FACTOR, ==, merge.capacity);
 	v_assert_size_t(80, ==, merge.len);
 	v_assert_str(s1, merge.str);
 

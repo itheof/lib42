@@ -56,7 +56,7 @@ static void	test_03_string_ndup_ShortenString(void)
 
 	string_ndup(&string, s, 10);
 
-	v_assert_size_t(64, ==, string.sizemax);
+	v_assert_size_t(64, ==, string.capacity);
 	v_assert_size_t(len, ==, string.len);
 	v_assert_str(s, string.str);
 

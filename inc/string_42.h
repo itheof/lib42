@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 22:45:29 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/12 01:58:32 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,7 @@
 # define STRING_GROWTH_FACTOR	(2U)
 
 // TODO rename STRING_NEED_RESIZE
-# define BUF_NEED_RESIZE(b, l)	(b->len + l >= b->sizemax)
-
-// TODO delete all these macros
-# define TBUFFER_MAX(b)			((b)->sizemax)
-# define TBUFFER_LEN(b)			((b)->len)
-# define TBUFFER_GET(b)			((b)->str)
-# define TBUFFER_FREE(b)		(free((b)->str))
-# define TBUFFER_RESET(b)		((b)->str[(b)->len = 0] = '\0')
-# define TBUFFER_LAST(b)		((b)->str[(b)->len - 1])
-# define TBUFFER_FIRST(b)		((b)->str[0])
-# define TBUFFER_ISEMPTY(b)		(!((b)->len))
+# define STRING_NEED_RESIZE(s, l) (s->len + l >= s->capacity)
 
 // TODO delete iterator
 # define TBUFFER_ITER(b)		((b)->iterator)

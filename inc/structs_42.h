@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:00:28 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/12 01:57:48 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ struct	s_string
 {
 	char	*str;
 	size_t	len;
-	size_t	sizemax;
+	size_t	capacity;
 	size_t	iterator;
 };
 
