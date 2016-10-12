@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   array_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 14:09:45 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 16:45:08 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/12 02:37:22 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ void	*array_create_node(t_array *v)
 {
 	void	*p;
 
-	if (TARRAY_NEED_RESIZE(v))
-		if (array_resize(v) == NULL)
-			return (NULL);
-	p = TARRAY_GET(v, v->count);
-	v->count += 1;
+	if (TARRAY_NEED_RESIZE(v) && array_resize(v) == NULL)
+		return (NULL);
+	p = TARRAY_GET(v, v->len);
+	v->len += 1;
 	return (p);
 }

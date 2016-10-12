@@ -1,28 +1,26 @@
 #include "header.h"
 
-static t_array	*v;
+static t_array		array;
 
 static void	setup(void *data, size_t elem_size, size_t len)
 {
 	unsigned char	*p;
 	unsigned char	*d;
 
-	v = array_new(8, elem_size);
+	array_init(&array, 8, elem_size);
 	if (data != NULL)
 	{
-		p = v->data;
+		p = array.data;
 		d = data;
 		for (size_t i = 0; i < len; ++i)
 			memcpy(p + (elem_size * i), d + (elem_size * i), elem_size);
-		v->count = len;
+		array.len = len;
 	}
 }
 
 static void	teardown(void)
 {
-	free(v->data);
-	memset(v, 0, sizeof(t_array));
-	free(v);
+	free(array.data);
 }
 
 static void	test_00_array_push_Int(void)
@@ -34,13 +32,13 @@ static void	test_00_array_push_Int(void)
 	for (size_t i = 0; i < ARR_SIZ_MAX(data); ++i)
 	{
 		int	value = data[i];
-		array_push(v, &value);
+		array_push(&array, &value);
 		if (i < 8)
-			v_assert_size_t(8, ==, TARRAY_MAX(v));
+			v_assert_size_t(8, ==, array.capacity);
 		else
-			v_assert_size_t(16, ==, TARRAY_MAX(v));
-		v_assert_size_t(i + 1, ==, TARRAY_COUNT(v));
-		int	*res = array_get(v, i);
+			v_assert_size_t(16, ==, array.capacity);
+		v_assert_size_t(i + 1, ==, array.len);
+		int	*res = array_get_at(&array, i);
 		v_assert_int(value, ==, *res);
 	}
 
@@ -62,13 +60,13 @@ static void	test_01_array_push_String(void)
 	for (size_t i = 0; i < ARR_SIZ_MAX(data); ++i)
 	{
 		char	*value = data[i];
-		array_push(v, &value);
+		array_push(&array, &value);
 		if (i < 7)
-			v_assert_size_t(8, ==, TARRAY_MAX(v));
+			v_assert_size_t(8, ==, array.capacity);
 		else
-			v_assert_size_t(16, ==, TARRAY_MAX(v));
-		v_assert_size_t(i + 1, ==, TARRAY_COUNT(v));
-		char	**res = array_get(v, i);
+			v_assert_size_t(16, ==, array.capacity);
+		v_assert_size_t(i + 1, ==, array.len);
+		char	**res = array_get_at(&array, i);
 		v_assert_str(value, *res);
 	}
 
@@ -92,14 +90,14 @@ static void	test_02_array_push_Struct(void)
 	for (size_t i = 0; i < ARR_SIZ_MAX(data); ++i)
 	{
 		struct s_test value = data[i];
-		array_push(v, &value);
+		array_push(&array, &value);
 
 		if (i < 7)
-			v_assert_size_t(8, ==, TARRAY_MAX(v));
+			v_assert_size_t(8, ==, array.capacity);
 		else
-			v_assert_size_t(16, ==, TARRAY_MAX(v));
+			v_assert_size_t(16, ==, array.capacity);
 
-		struct s_test *res = array_get(v, i);
+		struct s_test *res = array_get_at(&array, i);
 		v_assert_ptr(value.e, ==, res->e);
 		v_assert_int(value.i, ==, res->i);
 	}
