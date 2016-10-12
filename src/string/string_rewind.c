@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 22:23:18 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/12 02:04:45 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@ int		string_rewind(t_string *s, size_t n)
 	nlen = s->len - n;
 	s->str[nlen] = '\0';
 	s->len = nlen;
-	// TODO delete this horific thing !!! now !!!
-	if (s->iterator > s->len)
-		string_iterator_set(s, s->len);
 	return ((int)nlen);
 }
 
@@ -49,7 +46,5 @@ int		string_rewindchr(t_string *s, int c)
 	s->str[pos] = '\0';
 	ret = s->len - (size_t)pos;
 	s->len = (size_t)pos;
-	if (s->iterator > s->len)
-		string_iterator_set(s, s->len);
 	return ((int)ret);
 }

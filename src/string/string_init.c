@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 01:59:04 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/12 02:04:15 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_string	*string_init(t_string *s, size_t size)
 		size = next_power_of_2(size);
 	s->capacity = size;
 	s->len = 0;
-	s->iterator = 0;
 	if ((s->str = malloc(sizeof(char) * size)) == NULL)
 		return (NULL);
 	return (s);
