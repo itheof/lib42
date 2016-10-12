@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array_new.c                                        :+:      :+:    :+:   */
+/*   array_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:31:25 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 17:27:37 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/12 02:35:51 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array_42.h"
 
-t_array	*array_new(size_t size, size_t elem_size)
+void	*array_get_at(t_array *v, size_t i)
 {
-	t_array	*v;
-
-	v = malloc(sizeof(t_array));
-	if (v == NULL)
-		return (NULL);
-	if ((array_init(v, size, elem_size)) == NULL)
-	{
-		free(v);
-		return (NULL);
-	}
-	return (v);
+	if (i < v->len)
+		return (TARRAY_GET(v, i));
+	return (NULL);
 }
 
-void	*array_init(t_array *v, size_t size, size_t elem_size)
+void	array_set_at(t_array *v, size_t i, const void *e)
 {
-	v->max = (size < TARRAY_MIN_SIZE) ? TARRAY_MIN_SIZE : size;
-	v->count = 0;
-	v->elem_size = elem_size;
-	v->iterator = 0;
-	v->data = malloc(elem_size * v->max);
-	if (v->data == NULL)
-		return (NULL);
-	return (v);
+	if (i < v->len)
+		ft_memcpy(TARRAY_GET(v, i), e, v->elem_size);
 }

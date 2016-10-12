@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   array_replace.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 11:02:40 by djean             #+#    #+#             */
-/*   Updated: 2016/09/07 17:57:03 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/12 02:43:34 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 ** Si old == NULL, alors l'élément est simplement écrasé
 */
 
-void	*array_replace(t_array *v, size_t i, void *e, void *old)
+void	*array_replace(t_array *v, size_t i, const void *e, void *old)
 {
 	void	*p;
 
-	if (i >= v->count)
+	if (i >= v->len)
 		return (NULL);
 	if (old != NULL)
 	{
-		p = TARRAY_GET(v, i);
+		p = TARRAY_GET(v, i); // TODO array_get_at ??
 		ft_memcpy(old, p, v->elem_size);
 	}
-	array_set(v, i, e);
+	array_set_at(v, i, e);
 	return (old);
 }
