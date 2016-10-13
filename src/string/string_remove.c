@@ -17,7 +17,6 @@
 ** Return the numbers of bytes effectively removed
 */
 
-// TODO add 'string_pop_char' function
 size_t		string_remove(t_string *s, size_t pos, size_t size)
 {
 	size_t	removed;

@@ -13,15 +13,35 @@
 #include "string_42.h"
 
 /*
-** Truncate the string
-** Return the new size of the string or -1 if the truncate is to large
+** Remove back 'n' chars
+** Return the new size of the buffer or -1 if the truncate is to large
 */
 
-ssize_t		string_truncate(t_string *s, size_t n)
+ssize_t		string_remove_back(t_string *s, size_t n)
 {
 	if (n > s->len)
 		return (-1);
-	s->len = n;
+	s->len -= n;
 	s->str[s->len] = '\0';
 	return ((ssize_t)s->len);
+}
+
+/*
+** Remove back up to 'c' char
+** The char 'c' is exclude from the buffer
+** Return the number of chars that have been truncate, or -1 if it is not found
+*/
+
+ssize_t		string_remove_back_chr(t_string *s, int c)
+{
+	ssize_t	pos;
+	size_t	ret;
+
+	pos = ft_strrchrpos(s->str, c);
+	if (pos == -1)
+		return (-1);
+	s->str[pos] = '\0';
+	ret = s->len - (size_t)pos;
+	s->len = (size_t)pos;
+	return ((ssize_t)ret);
 }

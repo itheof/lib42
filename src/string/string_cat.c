@@ -27,10 +27,10 @@ t_string	*string_cat(t_string *s, const char *str)
 
 t_string	*string_ncat(t_string *s, const char *str, size_t len)
 {
-	if (STRING_NEED_RESIZE(s, len) && string_resize(s, len) == NULL)
+	if (STRING_NEED_RESIZE(s, len) && priv_string_resize(s, len) == NULL)
 		return (NULL);
 	ft_memcpy(s->str + s->len, str, len);
-    s->len += len;
-    s->str[s->len] = '\0';
-    return (s);
+	s->len += len;
+	s->str[s->len] = '\0';
+	return (s);
 }
