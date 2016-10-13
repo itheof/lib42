@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   priv_string_resize.c                               :+:      :+:    :+:   */
+/*   string_reserve.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/14 16:27:51 by crenault         ###   ########.fr       */
+/*   Created: 2016/10/13 19:19:08 by crenault          #+#    #+#             */
+/*   Updated: 2016/10/14 16:58:29 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string_42.h"
+#include "stdlib_42.h"
 
-t_string	*priv_string_resize(t_string *s, size_t expand)
+t_string	*string_reserve(t_string *s, size_t additional)
 {
-	void	*new;
-	size_t	newsize;
-
-	newsize = s->capacity * STRING_GROWTH_FACTOR;
-	while (s->len + expand >= newsize)
-		newsize *= STRING_GROWTH_FACTOR;
-	new = ft_realloc(s->str, newsize, s->len);
-	if (new == NULL)
-		return (NULL);
-	s->capacity = newsize;
-	s->str = new;
+	if (s->capacity - s->len < additional)
+	{
+		s->capacity = next_power_of_2(s->capacity + additional);
+		s->str = ft_realloc(s->str, s->capacity, s->len);
+		if (s->str == NULL)
+			return (NULL);
+	}
 	return (s);
 }

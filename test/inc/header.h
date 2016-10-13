@@ -50,7 +50,6 @@ void	suite_string_append(void);
 void	suite_string_replace(void);
 void	suite_string_clone(void);
 void	suite_string_merge(void);
-void	suite_string_iterator(void);
 
 // Memory
 void	suite_memcpy(void);
