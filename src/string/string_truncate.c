@@ -19,14 +19,11 @@
 
 int		string_truncate(t_string *s, size_t n)
 {
-	size_t	nlen;
-
 	if (n > s->len)
 		return (-1);
-	nlen = s->len - n;
-	s->str[nlen] = '\0';
-	s->len = nlen;
-	return ((int)nlen);
+	s->len -= n;
+	s->str[s->len] = '\0';
+	return ((int)s->len);
 }
 
 /*
