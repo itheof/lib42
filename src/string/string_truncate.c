@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_rewind.c                                    :+:      :+:    :+:   */
+/*   string_truncate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,11 +13,11 @@
 #include "string_42.h"
 
 /*
-** Rewind the string by 'n' chars
-** Return the new size of the buffer or -1 if the rewind is to large
+** Truncate the string by 'n' chars
+** Return the new size of the buffer or -1 if the truncate is to large
 */
 
-int		string_rewind(t_string *s, size_t n)
+int		string_truncate(t_string *s, size_t n)
 {
 	size_t	nlen;
 
@@ -30,12 +30,12 @@ int		string_rewind(t_string *s, size_t n)
 }
 
 /*
-** Rewind the string up to 'c' char
+** truncate the string up to 'c' char
 ** The char 'c' is exclude from the buffer
-** Return the number of chars that have been rewind, or -1 if it is not found
+** Return the number of chars that have been truncate, or -1 if it is not found
 */
 
-int		string_rewindchr(t_string *s, int c)
+int		string_truncate_chr(t_string *s, int c)
 {
 	int		pos;
 	size_t	ret;

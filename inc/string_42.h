@@ -47,8 +47,8 @@ t_string	*string_append(t_string *dst, const t_string *src);
 t_string	*string_merge(t_string *dst, const t_string *a, const t_string *b);
 size_t		string_remove(t_string *s, size_t pos, size_t size);
 
-int			string_rewind(t_string *s, size_t n);
-int			string_rewindchr(t_string *s, int c);
+int			string_truncate(t_string *s, size_t n);
+int			string_truncate_chr(t_string *s, int c);
 
 t_string	*string_stoa(t_string *s, long long value, unsigned base);
 t_string	*string_utoa(t_string *s, unsigned long long value, unsigned base);
