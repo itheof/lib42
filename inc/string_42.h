@@ -45,6 +45,8 @@ t_string	*string_append(t_string *dst, const t_string *src);
 t_string	*string_merge(t_string *dst, const t_string *a, const t_string *b);
 size_t		string_remove(t_string *s, size_t pos, size_t size);
 
+t_string	*string_reserve(t_string *s, size_t additional);
+
 ssize_t		string_truncate(t_string *s, size_t n);
 ssize_t		string_remove_back(t_string *s, size_t n);
 ssize_t		string_remove_back_chr(t_string *s, int c);
