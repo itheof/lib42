@@ -12,14 +12,10 @@
 
 #include "string_42.h"
 
-/*
-** Enlarge the buffer by adding 'expand'
-*/
-
 // TODO rename 'reserve' + 'additional' parameter name
 // https://doc.rust-lang.org/std/vec/struct.Vec.html#method.reserve
 // TODO review this function
-t_string	*string_resize(t_string *s, size_t expand)
+t_string	*priv_string_resize(t_string *s, size_t expand)
 {
 	void	*new;
 	size_t	newsize;

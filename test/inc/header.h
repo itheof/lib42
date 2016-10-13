@@ -43,7 +43,8 @@ void	suite_string_insert(void);
 void	suite_string_remove(void);
 void	suite_string_set(void);
 void	suite_string_truncate(void);
-void	suite_string_truncate_chr(void);
+void	suite_string_remove_back(void);
+void	suite_string_remove_back_chr(void);
 /* void	suite_string_rewindnchr(void); */
 void	suite_string_append(void);
 void	suite_string_replace(void);
