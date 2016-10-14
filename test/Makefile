@@ -54,16 +54,15 @@ SOURCES += test_cbuffer_resize.c
 # String
 SRC_SUBDIR += string
 SOURCES += test_string_new.c
-SOURCES += test_string_resize.c
 SOURCES += test_string_cat.c
 SOURCES += test_string_dup.c
+SOURCES += test_string_reserve.c
 SOURCES += test_string_insert.c
 SOURCES += test_string_remove.c
 SOURCES += test_string_set.c
 SOURCES += test_string_truncate.c
 SOURCES += test_string_remove_back.c
 SOURCES += test_string_remove_back_chr.c
-# SOURCES += test_string_rewindnchr.c
 SOURCES += test_string_append.c
 SOURCES += test_string_replace.c
 SOURCES += test_string_clone.c

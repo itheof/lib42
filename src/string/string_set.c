@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 01:59:40 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/14 23:41:27 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // TODO rethink this function (need to give ranges)
 t_string	*string_set(t_string *s, int c, size_t n)
 {
-	if (STRING_NEED_RESIZE(s, n) && priv_string_resize(s, n) == NULL)
+	if (string_reserve(s, n + 1) == NULL)
 		return (NULL);
 	ft_memset(s->str + s->len, c, n);
 	s->len += n;

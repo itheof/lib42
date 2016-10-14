@@ -36,7 +36,7 @@ void	suite_cbuffer_resize(void);
 // String
 void	suite_string_macros(void);
 void	suite_string_new(void);
-void	suite_string_resize(void);
+void	suite_string_reserve(void);
 void	suite_string_dup(void);
 void	suite_string_cat(void);
 void	suite_string_insert(void);
@@ -45,7 +45,6 @@ void	suite_string_set(void);
 void	suite_string_truncate(void);
 void	suite_string_remove_back(void);
 void	suite_string_remove_back_chr(void);
-/* void	suite_string_rewindnchr(void); */
 void	suite_string_append(void);
 void	suite_string_replace(void);
 void	suite_string_clone(void);
