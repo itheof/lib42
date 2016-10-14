@@ -60,7 +60,6 @@ SOURCES += array_replace.c
 SOURCES += array_insert.c
 SOURCES += array_destroy.c
 SOURCES += array_remove.c
-SOURCES += array_delete.c
 
 # Cbuffer
 SRC_SUBDIR += cbuffer

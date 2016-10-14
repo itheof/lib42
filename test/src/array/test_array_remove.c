@@ -37,7 +37,7 @@ static void	test_00_array_remove_FirstItem(void)
 	v_assert_size_t(ARR_SIZ_MAX(str), ==, array.len);
 
 	index = 0;
-	ptr = array_remove(&array, index, &old);
+	ptr = array_remove_at(&array, index, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, !=, ptr);
@@ -75,7 +75,7 @@ static void	test_01_array_remove_MiddleItem(void)
 	v_assert_size_t(ARR_SIZ_MAX(str), ==, array.len);
 
 	index = array.len / 2;
-	ptr = array_remove(&array, index, &old);
+	ptr = array_remove_at(&array, index, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, !=, ptr);
@@ -121,7 +121,7 @@ static void	test_02_array_remove_LastItem(void)
 	v_assert_size_t(ARR_SIZ_MAX(str), ==, array.len);
 
 	index = array.len - 1;
-	ptr = array_remove(&array, index, &old);
+	ptr = array_remove_at(&array, index, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, !=, ptr);
@@ -167,7 +167,7 @@ static void	test_03_array_remove_OutOfRange(void)
 	v_assert_size_t(ARR_SIZ_MAX(str), ==, array.len);
 
 	index = array.len;
-	ptr = array_remove(&array, index, &old);
+	ptr = array_remove_at(&array, index, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, ==, ptr);
@@ -199,7 +199,7 @@ static void	test_04_array_remove_OneItemInArrayOfSizeOne(void)
 	v_assert_size_t(8, ==, array.capacity);
 	v_assert_size_t(1, ==, array.len);
 
-	array_remove(&array, 0, &ptr);
+	array_remove_at(&array, 0, &ptr);
 	v_assert_int(42, ==, ptr);
 	v_assert_size_t(0, ==, array.len);
 

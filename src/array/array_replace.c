@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 11:02:40 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 02:43:34 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 00:31:47 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** Si old == NULL, alors l'élément est simplement écrasé
 */
 
-void	*array_replace(t_array *v, size_t i, const void *e, void *old)
+void	*array_replace_at(t_array *v, size_t i, const void *e, void *old)
 {
 	void	*p;
 
@@ -27,7 +27,7 @@ void	*array_replace(t_array *v, size_t i, const void *e, void *old)
 		return (NULL);
 	if (old != NULL)
 	{
-		p = TARRAY_GET(v, i); // TODO array_get_at ??
+		p = array_get_at(v, i);
 		ft_memcpy(old, p, v->elem_size);
 	}
 	array_set_at(v, i, e);

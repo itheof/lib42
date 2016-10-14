@@ -30,7 +30,7 @@ static void	test_00_array_replace_FirstItem(void)
 
 	setup();
 
-	array_replace(&array, index, &rep, &old);
+	array_replace_at(&array, index, &rep, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, !=, old);
@@ -87,7 +87,7 @@ static void	test_01_array_replace_MiddleItem(void)
 
 	setup();
 
-	array_replace(&array, index, &rep, &old);
+	array_replace_at(&array, index, &rep, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, !=, old);
@@ -144,7 +144,7 @@ static void	test_02_array_replace_LastItem(void)
 
 	setup();
 
-	array_replace(&array, index, &rep, &old);
+	array_replace_at(&array, index, &rep, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, !=, old);
@@ -202,7 +202,7 @@ static void	test_03_array_replace_OutOfRange(void)
 
 	setup();
 
-	ret = array_replace(&array, index, &rep, &old);
+	ret = array_replace_at(&array, index, &rep, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, ==, ret);

@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:31:26 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 02:42:46 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 00:31:26 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	*array_pop(t_array *v, void *old)
 {
 	v->len -= 1;
-	return (array_remove(v, v->len, old));
+	return (array_remove_at(v, v->len, old));
 }
 
 t_array	*array_push(t_array *v, const void *e)
 {
 	if (TARRAY_NEED_RESIZE(v))
-		if (array_resize(v) == NULL)
+		if (array_resize(v) == NULL) // TODO array_reserve
 			return (NULL);
 	ft_memcpy(TARRAY_GET(v, v->len), e, v->elem_size);
 	v->len += 1;
