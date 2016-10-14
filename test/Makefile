@@ -108,8 +108,13 @@ SOURCES += test_pool_reset.c
 SRC_SUBDIR += error
 SOURCES += test_error.c
 
+# GetOpt
+SRC_SUBDIR += unistd
+SOURCES += test_getopt.c
+
 SRC_PATH = src
 vpath %.c $(SRC_PATH) $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
+
 
 # Objects
 OBJ_PATH = obj

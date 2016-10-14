@@ -88,7 +88,7 @@ SOURCES += string_toa.c
 SOURCES += string_clone.c
 SOURCES += string_append.c
 
-# String
+# Str
 SRC_SUBDIR += str
 SOURCES += ft_strcmp.c
 SOURCES += ft_strlen.c
@@ -137,6 +137,10 @@ SOURCES += str_formatting.c
 SOURCES += int_formatting.c
 SOURCES += parsing.c
 SOURCES += utils.c
+
+# Unistd
+SRC_SUBDIR += unistd
+SOURCES += ft_getopt.c
 
 # Generation
 INC_PATH = inc
