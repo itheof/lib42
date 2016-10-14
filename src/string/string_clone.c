@@ -22,6 +22,6 @@ t_string	*string_clone(t_string *dst, const t_string *src)
 		return (NULL);
 	dst->len = src->len;
 	ft_memcpy(dst->str, src->str, src->len);
-    dst->str[dst->len] = '\0';
+	dst->str[dst->len] = '\0';
 	return (dst);
 }

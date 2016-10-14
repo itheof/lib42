@@ -1,52 +1,50 @@
 #include "header.h"
 
-static t_array	*v;
+static t_array	array;
 
 static void	setup(void *data, size_t elem_size, size_t len)
 {
 	unsigned char	*p;
 	unsigned char	*d;
 
-	v = array_new(8, elem_size);
+	array_init(&array, 8, elem_size);
 	if (data != NULL)
 	{
-		p = v->data;
+		p = array.data;
 		d = data;
 		for (size_t i = 0; i < len; ++i)
 			memcpy(p + (elem_size * i), d + (elem_size * i), elem_size);
-		v->count = len;
+		array.len = len;
 	}
 }
 
 static void	teardown(void)
 {
-	free(v->data);
-	memset(v, 0, sizeof(t_array));
-	free(v);
+	free(array.data);
 }
 
-static void	test_00_array_getset_Int(void)
+static void	test_00_array_at_Int(void)
 {
 	int	data[4] = {11, 22, 33, 44};
 	setup(data, sizeof(int), ARR_SIZ_MAX(data));
 
 	for (size_t i = 0; i < ARR_SIZ_MAX(data); ++i)
 	{
-		int *value = array_get(v, i);
+		int *value = array_get_at(&array, i);
 		v_assert_int(data[i], ==, *value);
 	}
 
 	// set
 	int	new = 8;
-	int *value = array_get(v, 3);
-	array_set(v, 3, &new);
+	int *value = array_get_at(&array, 3);
+	array_set_at(&array, 3, &new);
 	v_assert_int(8, ==, *value);
 
 	teardown();
 	VTS;
 }
 
-static void	test_01_array_getset_String(void)
+static void	test_01_array_at_String(void)
 {
 	char		*data[] = {
 		"hello",
@@ -59,14 +57,14 @@ static void	test_01_array_getset_String(void)
 
 	for (size_t i = 0; i < ARR_SIZ_MAX(data); ++i)
 	{
-		char	**value = array_get(v, i);
+		char	**value = array_get_at(&array, i);
 		v_assert_str(data[i], *value);
 	}
 
 	// set
 	char	*s = "zut";
-	char	**value = array_get(v, 2);
-	array_set(v, 2, &s);
+	char	**value = array_get_at(&array, 2);
+	array_set_at(&array, 2, &s);
 	v_assert_ptr(s, ==, *value);
 	v_assert_str(s, *value);
 
@@ -74,7 +72,7 @@ static void	test_01_array_getset_String(void)
 	VTS;
 }
 
-static void	test_02_array_getset_Struct(void)
+static void	test_02_array_at_Struct(void)
 {
 	struct s_test {
 		void	*e;
@@ -90,7 +88,7 @@ static void	test_02_array_getset_Struct(void)
 
 	for (size_t i = 0; i < ARR_SIZ_MAX(data); ++i)
 	{
-		struct s_test value = *(struct s_test*)array_get(v, i);
+		struct s_test value = *(struct s_test*)array_get_at(&array, i);
 		v_assert_ptr(data[i].e, ==, value.e);
 		v_assert_int(data[i].i, ==, value.i);
 		v_assert_char(data[i].c, ==, value.c);
@@ -98,8 +96,8 @@ static void	test_02_array_getset_Struct(void)
 
 	// set
 	struct s_test new = { (void*)0x1234, 1 << 31, 'X', {0} };
-	array_set(v, 0, &new);
-	struct s_test value = *(struct s_test*)array_get(v, 0);
+	array_set_at(&array, 0, &new);
+	struct s_test value = *(struct s_test*)array_get_at(&array, 0);
 	v_assert_ptr(new.e, ==, value.e);
 	v_assert_int(new.i, ==, value.i);
 	v_assert_char(new.c, ==, value.c);
@@ -108,23 +106,23 @@ static void	test_02_array_getset_Struct(void)
 	VTS;
 }
 
-static void	test_03_array_getset_OutOfRange(void)
+static void	test_03_array_at_OutOfRange(void)
 {
 	int	data[4] = {11, 22, 33, 44};
 	setup(data, sizeof(int), ARR_SIZ_MAX(data));
 
-	v_assert_ptr(NULL, ==, array_get(v, 4));
+	v_assert_ptr(NULL, ==, array_get_at(&array, 4));
 
 	teardown();
 	VTS;
 }
 
-void	suite_array_getset(void)
+void	suite_array_at(void)
 {
-	test_00_array_getset_Int();
-	test_01_array_getset_String();
-	test_02_array_getset_Struct();
-	test_03_array_getset_OutOfRange();
+	test_00_array_at_Int();
+	test_01_array_at_String();
+	test_02_array_at_Struct();
+	test_03_array_at_OutOfRange();
 
 	VSS;
 }

@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   array_destroy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/07 19:30:12 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 17:47:52 by djean            ###   ########.fr       */
+/*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
+/*   Updated: 2016/10/12 02:45:19 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "array_42.h"
 
-void	array_destroy(t_array **v)
+void		array_destroy(t_array *v)
 {
-	free((*v)->data);
-	free(*v);
-	*v = NULL;
+	free(v->data);
 }

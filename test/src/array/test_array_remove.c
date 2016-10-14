@@ -1,7 +1,7 @@
 #include "header.h"
 
-static t_array	*v;
-static char		*str[] = {
+static t_array		array;
+static char			*str[] = {
 	"hello",
 	"world",
 	"and",
@@ -14,18 +14,16 @@ static char		*str[] = {
 
 static void	setup(void)
 {
-	v = array_new(8, sizeof(char*));
+	array_init(&array, 8, sizeof(char*));
 	for (size_t i = 0; i < ARR_SIZ_MAX(str); ++i)
 	{
-		array_push(v, &str[i]);
+		array_push(&array, &str[i]);
 	}
 }
 
 static void	teardown(void)
 {
-	free(v->data);
-	memset(v, 0, sizeof(t_array));
-	free(v);
+	free(array.data);
 }
 
 static void	test_00_array_remove_FirstItem(void)
@@ -36,10 +34,10 @@ static void	test_00_array_remove_FirstItem(void)
 	size_t	index;
 
 	setup();
-	v_assert_size_t(ARR_SIZ_MAX(str), ==, v->count);
+	v_assert_size_t(ARR_SIZ_MAX(str), ==, array.len);
 
 	index = 0;
-	ptr = array_remove(v, index, &old);
+	ptr = array_remove(&array, index, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, !=, ptr);
@@ -48,19 +46,19 @@ static void	test_00_array_remove_FirstItem(void)
 	v_assert_str(str[index], old);
 
 	// Check array integrity
-	v_assert_size_t(ARR_SIZ_MAX(str) - 1, ==, v->count);
-	v_assert_size_t(8, ==, v->max);
+	v_assert_size_t(ARR_SIZ_MAX(str) - 1, ==, array.len);
+	v_assert_size_t(8, ==, array.capacity);
 
-	for (size_t i = 0; i < v->count; ++i)
+	for (size_t i = 0; i < array.len; ++i)
 	{
-		value = *(char**)array_get(v, i);
+		value = *(char**)array_get_at(&array, i);
 		v_assert_ptr(str[i + 1], ==, value);
 		v_assert_str(str[i + 1], value);
 	}
 
 	// last, unassigned
-	v_assert_ptr(NULL, ==, array_get(v, 7));
-	v_assert_ptr(NULL, ==, array_get(v, 8));
+	v_assert_ptr(NULL, ==, array_get_at(&array, 7));
+	v_assert_ptr(NULL, ==, array_get_at(&array, 8));
 
 	teardown();
 	VTS;
@@ -74,10 +72,10 @@ static void	test_01_array_remove_MiddleItem(void)
 	size_t	index;
 
 	setup();
-	v_assert_size_t(ARR_SIZ_MAX(str), ==, v->count);
+	v_assert_size_t(ARR_SIZ_MAX(str), ==, array.len);
 
-	index = v->count / 2;
-	ptr = array_remove(v, index, &old);
+	index = array.len / 2;
+	ptr = array_remove(&array, index, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, !=, ptr);
@@ -86,12 +84,12 @@ static void	test_01_array_remove_MiddleItem(void)
 	v_assert_str(str[index], old);
 
 	// Check array integrity
-	v_assert_size_t(ARR_SIZ_MAX(str) - 1, ==, v->count);
-	v_assert_size_t(8, ==, v->max);
+	v_assert_size_t(ARR_SIZ_MAX(str) - 1, ==, array.len);
+	v_assert_size_t(8, ==, array.capacity);
 
-	for (size_t i = 0; i < v->count; ++i)
+	for (size_t i = 0; i < array.len; ++i)
 	{
-		value = *(char**)array_get(v, i);
+		value = *(char**)array_get_at(&array, i);
 		if (i < index)
 		{
 			v_assert_ptr(str[i], ==, value);
@@ -105,8 +103,8 @@ static void	test_01_array_remove_MiddleItem(void)
 	}
 
 	// last, unassigned
-	v_assert_ptr(NULL, ==, array_get(v, 7));
-	v_assert_ptr(NULL, ==, array_get(v, 8));
+	v_assert_ptr(NULL, ==, array_get_at(&array, 7));
+	v_assert_ptr(NULL, ==, array_get_at(&array, 8));
 
 	teardown();
 	VTS;
@@ -120,10 +118,10 @@ static void	test_02_array_remove_LastItem(void)
 	size_t	index;
 
 	setup();
-	v_assert_size_t(ARR_SIZ_MAX(str), ==, v->count);
+	v_assert_size_t(ARR_SIZ_MAX(str), ==, array.len);
 
-	index = v->count - 1;
-	ptr = array_remove(v, index, &old);
+	index = array.len - 1;
+	ptr = array_remove(&array, index, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, !=, ptr);
@@ -132,12 +130,12 @@ static void	test_02_array_remove_LastItem(void)
 	v_assert_str(str[index], old);
 
 	// Check array integrity
-	v_assert_size_t(ARR_SIZ_MAX(str) - 1, ==, v->count);
-	v_assert_size_t(8, ==, v->max);
+	v_assert_size_t(ARR_SIZ_MAX(str) - 1, ==, array.len);
+	v_assert_size_t(8, ==, array.capacity);
 
-	for (size_t i = 0; i < v->count; ++i)
+	for (size_t i = 0; i < array.len; ++i)
 	{
-		value = *(char**)array_get(v, i);
+		value = *(char**)array_get_at(&array, i);
 		if (i < index)
 		{
 			v_assert_ptr(str[i], ==, value);
@@ -151,8 +149,8 @@ static void	test_02_array_remove_LastItem(void)
 	}
 
 	// last, unassigned
-	v_assert_ptr(NULL, ==, array_get(v, 7));
-	v_assert_ptr(NULL, ==, array_get(v, 8));
+	v_assert_ptr(NULL, ==, array_get_at(&array, 7));
+	v_assert_ptr(NULL, ==, array_get_at(&array, 8));
 
 	teardown();
 	VTS;
@@ -166,27 +164,27 @@ static void	test_03_array_remove_OutOfRange(void)
 	size_t	index;
 
 	setup();
-	v_assert_size_t(ARR_SIZ_MAX(str), ==, v->count);
+	v_assert_size_t(ARR_SIZ_MAX(str), ==, array.len);
 
-	index = v->count;
-	ptr = array_remove(v, index, &old);
+	index = array.len;
+	ptr = array_remove(&array, index, &old);
 
 	// Check return value
 	v_assert_ptr(NULL, ==, ptr);
 
 	// Check array integrity
-	v_assert_size_t(ARR_SIZ_MAX(str), ==, v->count);
-	v_assert_size_t(8, ==, v->max);
+	v_assert_size_t(ARR_SIZ_MAX(str), ==, array.len);
+	v_assert_size_t(8, ==, array.capacity);
 
-	for (size_t i = 0; i < v->count; ++i)
+	for (size_t i = 0; i < array.len; ++i)
 	{
-		value = *(char**)array_get(v, i);
+		value = *(char**)array_get_at(&array, i);
 		v_assert_ptr(str[i], ==, value);
 		v_assert_str(str[i], value);
 	}
 
 	// last, unassigned
-	v_assert_ptr(NULL, ==, array_get(v, 8));
+	v_assert_ptr(NULL, ==, array_get_at(&array, 8));
 
 	teardown();
 	VTS;
@@ -196,14 +194,14 @@ static void	test_04_array_remove_OneItemInArrayOfSizeOne(void)
 {
 	int	ptr;
 
-	v = array_new(1, sizeof(int));
-	array_push(v, &(int){42});
-	v_assert_size_t(8, ==, v->max);
-	v_assert_size_t(1, ==, v->count);
+	array_init(&array, 1, sizeof(int));
+	array_push(&array, &(int){42});
+	v_assert_size_t(8, ==, array.capacity);
+	v_assert_size_t(1, ==, array.len);
 
-	array_remove(v, 0, &ptr);
+	array_remove(&array, 0, &ptr);
 	v_assert_int(42, ==, ptr);
-	v_assert_size_t(0, ==, v->count);
+	v_assert_size_t(0, ==, array.len);
 
 	VTS;
 }

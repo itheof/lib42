@@ -40,14 +40,14 @@ int	main(void)
 	suite_string_resize();
 	suite_string_remove();
 	suite_string_set();
-	suite_string_rewind();
-	suite_string_rewindchr();
+	suite_string_truncate();
+	suite_string_remove_back();
+	suite_string_remove_back_chr();
 	/* suite_string_rewindnchr(); */
 	suite_string_clone();
 	suite_string_merge();
 
 	// array
-	suite_array_macros();
 	suite_array_indexof();
 	suite_array_create_node();
 	suite_array_push();
@@ -55,9 +55,7 @@ int	main(void)
 	suite_array_insert();
 	suite_array_remove();
 	/* suite_array_copy(); */
-	suite_array_getset();
-	suite_array_strsplit();
-	suite_array_iterator();
+	suite_array_at();
 
 	// cbuffer
 	suite_cbuffer_push();
@@ -73,6 +71,8 @@ int	main(void)
 	suite_pool_obtain();
 	suite_pool_return();
 	suite_pool_reset();
+
+	suite_unistd_getopt();
 
 	v_full_success("Lib42");
 	return (0);

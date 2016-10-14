@@ -36,17 +36,14 @@ SOURCES += ctype.c
 
 # Array
 SRC_SUBDIR += array
-SOURCES += test_array_macros.c
-SOURCES += test_array_getset.c
+SOURCES += test_array_at.c
 SOURCES += test_array_indexof.c
 SOURCES += test_array_create_node.c
 SOURCES += test_array_push.c
 SOURCES += test_array_replace.c
 SOURCES += test_array_insert.c
 SOURCES += test_array_remove.c
-SOURCES += test_array_strsplit.c
 # SOURCES += test_array_copy.c
-SOURCES += test_array_iterator.c
 
 # Cbuffer
 SRC_SUBDIR += cbuffer
@@ -63,8 +60,9 @@ SOURCES += test_string_dup.c
 SOURCES += test_string_insert.c
 SOURCES += test_string_remove.c
 SOURCES += test_string_set.c
-SOURCES += test_string_rewind.c
-SOURCES += test_string_rewindchr.c
+SOURCES += test_string_truncate.c
+SOURCES += test_string_remove_back.c
+SOURCES += test_string_remove_back_chr.c
 # SOURCES += test_string_rewindnchr.c
 SOURCES += test_string_append.c
 SOURCES += test_string_replace.c
@@ -111,8 +109,13 @@ SOURCES += test_pool_reset.c
 SRC_SUBDIR += error
 SOURCES += test_error.c
 
+# GetOpt
+SRC_SUBDIR += unistd
+SOURCES += test_getopt.c
+
 SRC_PATH = src
 vpath %.c $(SRC_PATH) $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
+
 
 # Objects
 OBJ_PATH = obj

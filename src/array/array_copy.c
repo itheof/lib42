@@ -3,27 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   array_copy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 20:14:18 by djean             #+#    #+#             */
-/*   Updated: 2016/10/01 15:59:34 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/12 02:32:28 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array_42.h"
 
 /*
-** Alloue un nouveau array et copie la structure *v
-** Dans le nouvel espace.
+** Init un nouvel array et copie la structure *v dans le nouvel espace.
 */
 
-t_array	*array_copy(t_array *v)
+t_array		*array_copy(t_array *dst, const t_array *src)
 {
-	t_array	*cp;
-
-	if ((cp = array_new(v->max, v->elem_size)) == NULL)
+	if (array_init(dst, src->capacity, src->elem_size) == NULL)
 		return (NULL);
-	cp->count = v->count;
-	ft_memcpy(cp->data, v->data, v->count * v->elem_size);
-	return (cp);
+	dst->len = src->len;
+	ft_memcpy(dst->data, src->data, src->len * src->elem_size);
+	return (dst);
 }

@@ -27,6 +27,6 @@ t_string	*string_merge(t_string *dst, const t_string *a, const t_string *b)
 	dst->len = a->len + b->len;
 	ft_memcpy(dst->str, a->str, a->len);
 	ft_memcpy(dst->str + a->len, b->str, b->len);
-    dst->str[dst->len] = '\0';
+	dst->str[dst->len] = '\0';
 	return (dst);
 }

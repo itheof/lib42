@@ -22,14 +22,14 @@ char	*ft_strchr(const char *s, int c)
 	return (ft_memchr(s, c, len));
 }
 
-int		ft_strchrpos(const char *s, int c)
+ssize_t		ft_strchrpos(const char *s, int c)
 {
 	char	*p;
 
 	p = ft_strchr(s, c);
 	if (p == NULL)
 		return (-1);
-	return ((int)(p - s));
+	return ((ssize_t)(p - s));
 }
 
 char	*ft_strnchr(const char *s, int c, size_t n)
@@ -42,12 +42,12 @@ char	*ft_strnchr(const char *s, int c, size_t n)
 	return (ft_memchr(s, c, len));
 }
 
-int		ft_strnchrpos(const char *s, int c, size_t n)
+ssize_t		ft_strnchrpos(const char *s, int c, size_t n)
 {
 	char	*p;
 
 	p = ft_strnchr(s, c, n);
 	if (p == NULL)
 		return (-1);
-	return ((int)(p - s));
+	return ((ssize_t)(p - s));
 }

@@ -17,13 +17,13 @@ void	*ft_realloc(void *ptr, size_t size, size_t oldsize)
 	void	*p;
 
 	if (!ptr)
-		return (ft_memalloc(size)); // TODO nope !!! (that's not ft_memrealloc)
+		return (malloc(size));
 	if (size == 0)
 	{
 		free(ptr);
 		return (NULL);
 	}
-	if ((p = ft_memalloc(size)) == NULL) // TODO nope !!!
+	if ((p = malloc(size)) == NULL)
 		return (NULL);
 	ft_memcpy(p, ptr, oldsize);
 	free(ptr);
