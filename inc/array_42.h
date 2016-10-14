@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 02:46:23 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 00:33:39 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,11 @@ int			array_indexof(t_array *v, void *e); // TODO better with a search_func
 
 void		*array_create_node(t_array *v);
 
-t_array		*array_insert(t_array *v, size_t i, const void *e);
-void		*array_replace(t_array *v, size_t i, const void *e, void *old);
+t_array		*array_insert_at(t_array *v, size_t i, const void *e);
+void		*array_replace_at(t_array *v, size_t i, const void *e, void *old);
 
-void		array_delete(t_array *v, size_t i);
 // TODO diff between these two functions
-void		*array_remove(t_array *v, size_t i, void *removed);
+void		*array_remove_at(t_array *v, size_t i, void *removed);
 void		*array_remove_elem(t_array *v, void *e);
 
 t_array		*array_push(t_array *v, const void *e);

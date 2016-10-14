@@ -29,7 +29,7 @@ static void	test_00_array_insert_FirstPlace(void)
 
 	setup();
 
-	array_insert(&array, index, &s1);
+	array_insert_at(&array, index, &s1);
 
 	// Check array integrity
 	v_assert_size_t(6, ==, array.len);
@@ -68,7 +68,7 @@ static void	test_01_array_insert_LastPlace(void)
 	setup();
 
 	index = array.len - 1;
-	array_insert(&array, index, &s1);
+	array_insert_at(&array, index, &s1);
 
 	// Check array integrity
 	v_assert_size_t(6, ==, array.len);
@@ -108,7 +108,7 @@ static void	test_02_array_insert_MiddlePlace(void)
 	setup();
 
 	index = array.len / 2;
-	array_insert(&array, index, &s1);
+	array_insert_at(&array, index, &s1);
 
 	// Check array integrity
 	v_assert_size_t(6, ==, array.len);
@@ -149,9 +149,9 @@ static void	test_03_array_insert_Resize(void)
 
 	setup();
 
-	array_insert(&array, array.len, &s1);
-	array_insert(&array, array.len, &s2);
-	array_insert(&array, array.len, &s3);
+	array_insert_at(&array, array.len, &s1);
+	array_insert_at(&array, array.len, &s2);
+	array_insert_at(&array, array.len, &s3);
 
 	// Check array integrity
 	v_assert_size_t(8, ==, array.len);

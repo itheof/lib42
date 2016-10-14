@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 19:35:29 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 02:40:21 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 00:32:41 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 ** If *removed == NULL, no backup is made
 */
 
-void	*array_remove(t_array *v, size_t i, void *removed)
+void	*array_remove_at(t_array *v, size_t i, void *removed)
 {
 	char	*p;
 	size_t	len;
 
 	if (i >= v->len)
 		return (NULL);
-	p = TARRAY_GET(v, i);
+	p = array_get_at(v, i);
 	if (removed != NULL)
 		ft_memcpy(removed, p, v->elem_size);
 	v->len -= 1;
@@ -41,5 +41,5 @@ void	*array_remove_elem(t_array *v, void *e)
 	index = array_indexof(v, e);
 	if (index == -1)
 		return (NULL);
-	return (array_remove(v, (size_t)index, NULL));
+	return (array_remove_at(v, (size_t)index, NULL));
 }
