@@ -32,7 +32,7 @@ CFLAGS += $(addprefix -I,$(INC_PATH))
 
 # Sources
 SRC_PATH = src
-SRC_SUBDIR = . array cbuffer buffer memory stdlib string error pool
+SRC_SUBDIR = . array cbuffer buffer memory stdlib string error pool unistd
 vpath %.c $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
 SOURCES += main.c
 SOURCES += ctype.c
@@ -108,6 +108,9 @@ SOURCES += test_pool_reset.c
 # Error
 SOURCES += test_error.c
 
+# Unistd
+
+SOURCES += test_getopt.c
 
 # Objects
 OBJ_PATH = obj
