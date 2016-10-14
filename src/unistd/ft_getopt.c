@@ -6,7 +6,7 @@
 /*   By: tvallee <tvallee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/30 13:49:50 by tvallee           #+#    #+#             */
-/*   Updated: 2016/10/11 17:30:30 by tvallee          ###   ########.fr       */
+/*   Updated: 2016/10/14 10:19:30 by tvallee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	parse_simple_opt(char *const av[], t_opt *state)
 	return (c);
 }
 
-static int	is_opt_format(char *str)
+static int	is_opt_candidate(char *str)
 {
 	return (str && str[0] == '-' && str[1]);
 }
@@ -91,7 +91,7 @@ int			ft_getopt(int ac, char *const av[], const char *optstring,
 		state->optind = 1;
 	if (!state->optoff)
 	{
-		if (state->optind < ac && is_opt_format(av[state->optind]))
+		if (state->optind < ac && is_opt_candidate(av[state->optind]))
 		{
 			if (av[state->optind][1] == '-' && av[state->optind][2] == '\0')
 				state->optind += 1;
