@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 19:19:08 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/14 16:58:29 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/14 23:59:32 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ t_string	*string_reserve(t_string *s, size_t additional)
 {
 	if (s->capacity - s->len < additional)
 	{
-		s->capacity = next_power_of_2(s->capacity + additional);
+		if (IS_POWER_OF_2(s->len + additional))
+			s->capacity = s->len + additional;
+		else
+			s->capacity = next_power_of_2(s->len + additional);
 		s->str = ft_realloc(s->str, s->capacity, s->len);
 		if (s->str == NULL)
 			return (NULL);

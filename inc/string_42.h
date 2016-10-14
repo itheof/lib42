@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 02:08:20 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/14 23:34:06 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 
 # define STRING_INIT_SIZE		(64U)
 # define STRING_GROWTH_FACTOR	(2U)
-
-# define STRING_NEED_RESIZE(s, l) (s->len + l >= s->capacity)
 
 // TODO move definition in header file
 t_string	*string_init(t_string *s, size_t size);
@@ -53,7 +51,5 @@ ssize_t		string_remove_back_chr(t_string *s, int c);
 
 t_string	*string_stoa(t_string *s, long long value, unsigned base);
 t_string	*string_utoa(t_string *s, unsigned long long value, unsigned base);
-
-t_string	*priv_string_resize(t_string *s, size_t expand);
 
 #endif

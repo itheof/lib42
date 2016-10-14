@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 01:59:27 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/14 23:40:23 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_string	*string_cat(t_string *s, const char *str)
 
 t_string	*string_ncat(t_string *s, const char *str, size_t len)
 {
-	if (STRING_NEED_RESIZE(s, len) && priv_string_resize(s, len) == NULL)
+	if (string_reserve(s, len + 1) == NULL)
 		return (NULL);
 	ft_memcpy(s->str + s->len, str, len);
 	s->len += len;

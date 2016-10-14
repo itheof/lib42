@@ -33,11 +33,11 @@ int	main(void)
 	// string
 	suite_string_dup();
 	suite_string_cat();
+	suite_string_reserve();
 	suite_string_insert();
 	suite_string_append();
 	suite_string_replace();
 	suite_string_new();
-	suite_string_resize();
 	suite_string_remove();
 	suite_string_set();
 	suite_string_truncate();
