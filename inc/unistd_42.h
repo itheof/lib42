@@ -6,7 +6,7 @@
 /*   By: tvallee <tvallee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 14:38:45 by tvallee           #+#    #+#             */
-/*   Updated: 2016/10/11 14:51:58 by tvallee          ###   ########.fr       */
+/*   Updated: 2016/10/14 10:24:14 by tvallee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@ typedef struct	s_opt
 	int		optopt;
 	int		optoff;
 }				t_opt;
+
+enum e_opt_type
+{
+	E_OPT_TYPE_ERR,
+	E_OPT_TYPE_SIMPLE,
+	E_OPT_TYPE_OPERAND
+};
 
 int				ft_getopt(int ac, char *const av[], const char *optstring,
 		t_opt *state);
