@@ -138,6 +138,10 @@ SOURCES += int_formatting.c
 SOURCES += parsing.c
 SOURCES += utils.c
 
+# Unistd
+SRC_SUBDIR += unistd
+SOURCES += ft_getopt.c
+
 # Generation
 INC_PATH = inc
 SRC_PATH = src

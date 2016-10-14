@@ -72,6 +72,8 @@ int	main(void)
 	suite_pool_return();
 	suite_pool_reset();
 
+	suite_unistd_getopt();
+
 	v_full_success("Lib42");
 	return (0);
 }

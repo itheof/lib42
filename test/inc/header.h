@@ -90,4 +90,8 @@ void	suite_pool_reset(void);
 // Error
 void	suite_error(void);
 
+// unistd
+
+void	suite_unistd_getopt(void);
+
 #endif
