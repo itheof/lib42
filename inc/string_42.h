@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/15 16:21:47 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 18:54:10 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,14 @@ ssize_t		string_remove_back_chr(t_string *s, int c);
 ** `string_reserve` enlarge the capacity of the string if (len + additional)
 ** is bigger than actual capacity.
 **
+** `string_shrink_to_fit` reduce the capacity of the 'internal str' to
+** be the closest to the string length.
+**
 ** `string_truncate` truncates the string. It returns the new size of the string
 ** or -1 if the truncate is to large.
 */
 t_string	*string_reserve(t_string *s, size_t additional);
+t_string	*string_shrink_to_fit(t_string *s);
 ssize_t		string_truncate(t_string *s, size_t n);
 
 /*

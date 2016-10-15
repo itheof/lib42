@@ -34,6 +34,7 @@ int	main(void)
 	suite_string_dup();
 	suite_string_cat();
 	suite_string_reserve();
+	suite_string_shrink_to_fit();
 	suite_string_insert();
 	suite_string_append();
 	suite_string_replace();

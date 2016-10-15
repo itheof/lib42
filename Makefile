@@ -79,6 +79,7 @@ SOURCES += string_replace.c
 SOURCES += string_insert.c
 SOURCES += string_remove.c
 SOURCES += string_reserve.c
+SOURCES += string_shrink_to_fit.c
 SOURCES += string_truncate.c
 SOURCES += string_toa.c
 
