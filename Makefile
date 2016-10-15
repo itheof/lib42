@@ -71,21 +71,16 @@ SOURCES += cbuffer_resize.c
 
 # Buffer
 SRC_SUBDIR += string
-SOURCES += string_init.c
 SOURCES += string_create.c
+SOURCES += string_init.c
 SOURCES += string_dup.c
-SOURCES += string_reserve.c
 SOURCES += string_cat.c
-SOURCES += string_insert.c
-SOURCES += string_merge.c
-SOURCES += string_remove.c
 SOURCES += string_replace.c
+SOURCES += string_insert.c
+SOURCES += string_remove.c
+SOURCES += string_reserve.c
 SOURCES += string_truncate.c
-SOURCES += string_remove_back.c
-SOURCES += string_set.c
 SOURCES += string_toa.c
-SOURCES += string_clone.c
-SOURCES += string_append.c
 
 # Str
 SRC_SUBDIR += str

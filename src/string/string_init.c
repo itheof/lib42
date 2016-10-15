@@ -6,16 +6,11 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/15 14:32:18 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 15:46:59 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string_42.h"
-
-/*
-** Initialize an already existing buffer
-** The rule for the capacity are the same than for string_new
-*/
 
 t_string	*string_init(t_string *s)
 {

@@ -6,15 +6,11 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/14 23:40:59 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 15:26:02 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string_42.h"
-
-/*
-** Insert at the position 'pos', the string '*s' of size 'len'
-*/
 
 t_string	*string_insert(t_string *s, size_t pos, const char *str, size_t len)
 {
