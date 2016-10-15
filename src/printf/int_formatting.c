@@ -29,19 +29,19 @@ int		int_padding(t_string *pb, t_format *fmt, size_t arglen, int fchar)
 		pad = fmt->min_width > max ? (int)(fmt->min_width - max) : 0;
 	}
 	if (pad > 0)
-		string_set(pb, fill, (size_t)pad);
+		string_set(pb, 0, (size_t)pad, fill);
 	return (pad);
 }
 
 int		int_sign(t_string *pb, t_format *fmt, char *arg)
 {
 	if (arg[0] == '-')
-		string_set(pb, '-', 1);
+		string_set(pb, 0, 1, '-');
 	else
 	{
 		if (fmt->f_space == 0 && fmt->f_plus == 0)
 			return (2);
-		string_set(pb, ((fmt->f_plus) ? '+' : ' '), 1);
+		string_set(pb, 0, 1, ((fmt->f_plus) ? '+' : ' ')); // TODO serious lee ?
 		return (1);
 	}
 	return (3);
@@ -53,6 +53,6 @@ int		int_precision(t_string *pb, t_format *fmt, size_t arglen)
 		return (0);
 	if ((size_t)fmt->prec < arglen)
 		return (0);
-	string_set(pb, '0', (size_t)fmt->prec - arglen);
+	string_set(pb, 0, (size_t)fmt->prec - arglen, '0');
 	return (1);
 }
