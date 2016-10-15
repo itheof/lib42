@@ -6,7 +6,7 @@ void	test_00_string_set_simple(void)
 	char	*s = "**********";
 	size_t len = strlen(s);
 
-	string_init(&string, 0);
+	string_init(&string);
 	string_set(&string, '*', 10);
 	string_set(&string, '\0', 1);
 	v_assert_str(s, string.str);

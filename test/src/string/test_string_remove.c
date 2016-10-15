@@ -7,7 +7,7 @@ void	test_00_string_remove_Middle(void)
 	size_t	len = strlen(s);
 	size_t	ret;
 
-	string_init(&string, 32);
+	string_init(&string);
 	string_ncat(&string, s, len);
 	ret = string_remove(&string, 5, 5);
 
@@ -26,7 +26,7 @@ void	test_01_string_remove_OutOfRange(void)
 	size_t	len = strlen(s);
 	size_t	ret;
 
-	string_init(&string, 32);
+	string_init(&string);
 	string_ncat(&string, s, len);
 	ret = string_remove(&string, 11, 1);
 
@@ -45,7 +45,7 @@ void	test_02_string_remove_MiddleLongRange(void)
 	size_t	len = strlen(s);
 	size_t	ret;
 
-	string_init(&string, 32);
+	string_init(&string);
 	string_ncat(&string, s, len);
 	ret = string_remove(&string, 5, 20);
 
@@ -64,7 +64,7 @@ void	test_03_string_remove_Head(void)
 	size_t	len = strlen(s);
 	size_t	ret;
 
-	string_init(&string, 32);
+	string_init(&string);
 	string_ncat(&string, s, len);
 	ret = string_remove(&string, 0, 6);
 
@@ -83,7 +83,7 @@ void	test_04_string_remove_HeadLongRange(void)
 	size_t	len = strlen(s);
 	size_t	ret;
 
-	string_init(&string, 32);
+	string_init(&string);
 	string_ncat(&string, s, len);
 	ret = string_remove(&string, 0, 20);
 
@@ -102,7 +102,7 @@ void	test_05_string_remove_Tail(void)
 	size_t	len = strlen(s);
 	size_t	ret;
 
-	string_init(&string, 32);
+	string_init(&string);
 	string_ncat(&string, s, len);
 	ret = string_remove(&string, 10, 1);
 
@@ -121,7 +121,7 @@ void	test_06_string_remove_TailLongRange(void)
 	size_t	len = strlen(s);
 	size_t	ret;
 
-	string_init(&string, 32);
+	string_init(&string);
 	string_ncat(&string, s, len);
 	ret = string_remove(&string, 10, 20);
 

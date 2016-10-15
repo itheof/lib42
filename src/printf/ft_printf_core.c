@@ -50,7 +50,7 @@ ssize_t		ft_printf_core(const char *format, va_list ap, char **ret)
 	t_string	b;
 	char		*pconv;
 
-	string_init(&b, g_bufsize);
+	string_init_with_capacity(&b, g_bufsize);
 	while ((pconv = ft_strchr(format, '%')) != NULL)
 	{
 		ft_memset(&fmt, 0, sizeof(fmt));

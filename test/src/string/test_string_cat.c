@@ -6,7 +6,7 @@ static void	test_00_string_cat_Simple(void)
 	char		*s = "Hello World!";
 	size_t		l = strlen(s);
 
-	string_init(&string, 4);
+	string_init_with_capacity(&string, 4);
 	string_cat(&string, s);
 
 	v_assert_size_t(l, ==, string.len);
@@ -24,7 +24,7 @@ static void	test_01_string_cat_NeedResize(void)
 	char		*s = "Hello World!";
 	size_t		l = strlen(s);
 
-	string_init(&string, 12);
+	string_init_with_capacity(&string, 12);
 	string_cat(&string, s);
 
 	v_assert_size_t(l, ==, string.len);
@@ -45,7 +45,7 @@ static void	test_02_string_cat_BigConcatenation(void)
 	size_t		alen;
 	size_t		mlen;
 
-	string_init(&string, 8);
+	string_init_with_capacity(&string, 8);
 
 	memset(a, 'a', sizeof(a));
 	a[sizeof(a) - 1] = '\0';
