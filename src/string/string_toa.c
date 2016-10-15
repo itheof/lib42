@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/15 15:44:57 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 19:23:24 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,32 @@
 
 t_string	*string_stoa(t_string *s, long long value, unsigned base)
 {
-	char	*n;
+	char	*number;
 
-	n = ft_stoa_base(value, base);
-	if (string_cat(s, n) == NULL)
+	number = ft_stoa_base(value, base);
+	if (number == NULL)
+		return (NULL);
+	if (string_dup(s, number) == NULL)
 	{
-		free(n);
+		free(number);
 		return (NULL);
 	}
-	free(n);
+	free(number);
 	return (s);
 }
 
 t_string	*string_utoa(t_string *s, unsigned long long value, unsigned base)
 {
-	char	*n;
+	char	*number;
 
-	n = ft_utoa_base(value, base);
-	if (string_cat(s, n) == NULL)
+	number = ft_utoa_base(value, base);
+	if (number == NULL)
+		return (NULL);
+	if (string_dup(s, number) == NULL)
 	{
-		free(n);
+		free(number);
 		return (NULL);
 	}
-	free(n);
+	free(number);
 	return (s);
 }
