@@ -37,7 +37,7 @@ int	main(void)
 	suite_string_insert();
 	suite_string_append();
 	suite_string_replace();
-	suite_string_new();
+	suite_string_create_init();
 	suite_string_remove();
 	suite_string_set();
 	suite_string_truncate();

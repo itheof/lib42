@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:12:41 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 14:57:02 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,15 @@
 # include "str_42.h"
 
 # define STRING_INIT_SIZE		(64U)
-# define STRING_GROWTH_FACTOR	(2U)
 
-// TODO move definition in header file
-t_string	*string_init(t_string *s, size_t size);
+// TODO move definitions in header file
+t_string	*string_create(void);
+t_string	*string_create_with_capacity(size_t capacity);
 void		string_destroy(t_string *s);
+
+t_string	*string_init(t_string *s);
+t_string	*string_init_with_capacity(t_string *s, size_t capacity);
+void		string_shutdown(t_string *s);
 
 t_string	*string_dup(t_string *s, const char *str);
 t_string	*string_ndup(t_string *s, const char *str, size_t len);

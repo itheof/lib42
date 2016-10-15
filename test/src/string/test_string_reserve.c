@@ -9,7 +9,7 @@ static void	teardown(void)
 
 static void	test_00_string_reserve_DontNeedExpansion(void)
 {
-	string_init(&string, 4);
+	string_init_with_capacity(&string, 4);
 	v_assert_size_t(STRING_INIT_SIZE, ==, string.capacity);
 
 	string_reserve(&string, 7);
@@ -21,7 +21,7 @@ static void	test_00_string_reserve_DontNeedExpansion(void)
 
 static void	test_01_string_reserve_ExpandMoreThan2(void)
 {
-	string_init(&string, 1111);
+	string_init_with_capacity(&string, 1111);
 	v_assert_size_t(2048, ==, string.capacity);
 
 	string_reserve(&string, 5555);
@@ -33,7 +33,7 @@ static void	test_01_string_reserve_ExpandMoreThan2(void)
 
 static void	test_02_string_reserve_ExpandUseless(void)
 {
-	string_init(&string, 256); // '\0' make it be 257
+	string_init_with_capacity(&string, 256); // '\0' make it be 257
 	v_assert_size_t(512, ==, string.capacity);
 
 	// len is 0 then it doesn't need to realloc
@@ -48,7 +48,7 @@ static void	test_03_string_reserve_ExpandPowerOf2(void)
 {
 	char		*big_str;
 
-	string_init(&string, 255);
+	string_init_with_capacity(&string, 255);
 	v_assert_size_t(256, ==, string.capacity);
 
 	big_str = ft_memalloc(257); // '\0' everywhere

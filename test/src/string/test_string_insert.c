@@ -7,7 +7,7 @@ void	test_00_string_insert_AddStringMiddle(void)
 	char	*good = "docteur folamour";
 	size_t	len_good = strlen(good);
 
-	string_init(&string, 32);
+	string_init(&string);
 	string_ncat(&string, s, strlen(s));
 	string_insert(&string, 3, "teur ", 5);
 	v_assert_str(good, string.str);
@@ -24,7 +24,7 @@ void	test_01_string_insert_AddStringHead(void)
 	char	*good = "docteur folamour";
 	size_t	len_good = strlen(good);
 
-	string_init(&string, 32);
+	string_init(&string);
 	string_ncat(&string, s, strlen(s));
 	string_insert(&string, 0, "docteur ", 8);
 	v_assert_str(good, string.str);
@@ -41,7 +41,7 @@ void	test_02_string_insert_AddStringTail(void)
 	char	*good = "docteur folamour";
 	size_t	len_good = strlen(good);
 
-	string_init(&string, 32);
+	string_init(&string);
 	string_ncat(&string, s, strlen(s));
 	string_insert(&string, string.len, " folamour", 9);
 

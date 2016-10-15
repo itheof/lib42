@@ -4,7 +4,7 @@ static t_string		string;
 
 static void	setup(void)
 {
-	string_init(&string, 127);
+	string_init(&string);
 	string_ncat(&string, "Hello World!", 12);
 }
 

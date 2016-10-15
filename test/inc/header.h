@@ -35,7 +35,7 @@ void	suite_cbuffer_resize(void);
 
 // String
 void	suite_string_macros(void);
-void	suite_string_new(void);
+void	suite_string_create_init(void);
 void	suite_string_reserve(void);
 void	suite_string_dup(void);
 void	suite_string_cat(void);

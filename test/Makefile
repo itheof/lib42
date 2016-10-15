@@ -53,7 +53,7 @@ SOURCES += test_cbuffer_resize.c
 
 # String
 SRC_SUBDIR += string
-SOURCES += test_string_new.c
+SOURCES += test_string_create_init.c
 SOURCES += test_string_cat.c
 SOURCES += test_string_dup.c
 SOURCES += test_string_reserve.c

@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 02:09:04 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 14:39:05 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 t_string	*string_clone(t_string *dst, const t_string *src)
 {
-	if (string_init(dst, src->len - 1) == NULL)
+	if (string_init_with_capacity(dst, src->len - 1) == NULL)
 		return (NULL);
 	dst->len = src->len;
 	ft_memcpy(dst->str, src->str, src->len);

@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:35:17 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:19:00 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 14:39:26 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_perrorn(const char *msg, int errnum)
 	t_string	buf;
 	char		*errmsg;
 
-	string_init(&buf, 64);
+	string_init(&buf);
 	string_cat(&buf, g_project_name);
 	string_ncat(&buf, ": ", 2);
 	if (msg != NULL && msg[0] != '\0')

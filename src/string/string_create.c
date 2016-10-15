@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   string_destroy.c                                   :+:      :+:    :+:   */
+/*   string_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:20:31 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 14:37:32 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string_42.h"
 
-/*
-** free the entire struct
-*/
-
-void	string_destroy(t_string *b)
+t_string	*string_create(void)
 {
-	free(b->str);
-	free(b);
+	t_string	*s;
+
+	s = malloc(sizeof(t_string));
+	if (s == NULL)
+		return (NULL);
+	return (string_init(s));
+}
+
+t_string	*string_create_with_capacity(size_t capacity)
+{
+	t_string	*s;
+
+	s = malloc(sizeof(t_string));
+	if (s == NULL)
+		return (NULL);
+	return (string_init_with_capacity(s, capacity));
+}
+
+void		string_destroy(t_string *s)
+{
+	free(s->str);
+	free(s);
 }
