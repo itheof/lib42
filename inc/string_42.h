@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/15 19:18:30 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/15 19:44:28 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 ** `string_create` and `string_create_with_capacity` malloc a new `t_string`
 ** and a new 'internal str' with default size or (capacity + 1) if specified.
 **
-** `string_destroy` free the `t_string` and the 'internal str'.
+** `string_destroy` free the `t_string*` and the 'internal str'.
 */
 t_string	*string_create(void);
 t_string	*string_create_with_capacity(size_t capacity);
@@ -102,7 +102,7 @@ ssize_t		string_remove_back(t_string *s, size_t n);
 ssize_t		string_remove_back_chr(t_string *s, int c);
 
 /*
-** `string_reserve` enlarge the capacity of the string if (len + additional)
+** `string_reserve` enlarge the capacity of the string if (len + 1 + additional)
 ** is bigger than actual capacity.
 **
 ** `string_shrink_to_fit` reduce the capacity of the 'internal str' to
