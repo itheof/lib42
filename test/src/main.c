@@ -49,8 +49,7 @@ int	main(void)
 	suite_string_merge();
 
 	// array
-	suite_array_indexof();
-	suite_array_create_node();
+	suite_array_index_of();
 	suite_array_push();
 	suite_array_replace();
 	suite_array_insert();

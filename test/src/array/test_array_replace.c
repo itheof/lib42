@@ -11,7 +11,7 @@ static char			*str[] = {
 
 static void	setup(void)
 {
-	array_init(&array, 8, sizeof(char*));
+	array_init(&array, sizeof(char*));
 	for (size_t i = 0; i < ARR_SIZ_MAX(str); ++i)
 		array_push(&array, &str[i]);
 }
@@ -39,7 +39,7 @@ static void	test_00_array_replace_FirstItem(void)
 
 	// Check array integrity
 	v_assert_size_t(5, ==, array.len);
-	v_assert_size_t(8, ==, array.capacity);
+	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
 
 	value = *(char**)array_get_at(&array, 0);
 	v_assert_ptr(rep, ==, value);
@@ -96,7 +96,7 @@ static void	test_01_array_replace_MiddleItem(void)
 
 	// Check array integrity
 	v_assert_size_t(5, ==, array.len);
-	v_assert_size_t(8, ==, array.capacity);
+	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
 
 	value = *(char**)array_get_at(&array, 0);
 	v_assert_ptr(str[0], ==, value);
@@ -153,7 +153,7 @@ static void	test_02_array_replace_LastItem(void)
 
 	// Check array integrity
 	v_assert_size_t(5, ==, array.len);
-	v_assert_size_t(8, ==, array.capacity);
+	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
 
 	value = *(char**)array_get_at(&array, 0);
 	v_assert_ptr(str[0], ==, value);
@@ -209,7 +209,7 @@ static void	test_03_array_replace_OutOfRange(void)
 
 	// Check array integrity
 	v_assert_size_t(5, ==, array.len);
-	v_assert_size_t(8, ==, array.capacity);
+	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
 	for (size_t i = 0; i < array.len; ++i)
 	{
 		value = *(char**)array_get_at(&array, i);

@@ -14,7 +14,7 @@ static char			*str[] = {
 
 static void	setup(void)
 {
-	array_init(&array, 8, sizeof(char*));
+	array_init(&array, sizeof(char*));
 	for (size_t i = 0; i < ARR_SIZ_MAX(str); ++i)
 	{
 		array_push(&array, &str[i]);
@@ -41,13 +41,12 @@ static void	test_00_array_remove_FirstItem(void)
 
 	// Check return value
 	v_assert_ptr(NULL, !=, ptr);
-	v_assert_ptr(&old, ==, ptr);
 	v_assert_ptr(str[index], ==, old);
 	v_assert_str(str[index], old);
 
 	// Check array integrity
 	v_assert_size_t(ARR_SIZ_MAX(str) - 1, ==, array.len);
-	v_assert_size_t(8, ==, array.capacity);
+	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0; i < array.len; ++i)
 	{
@@ -79,13 +78,12 @@ static void	test_01_array_remove_MiddleItem(void)
 
 	// Check return value
 	v_assert_ptr(NULL, !=, ptr);
-	v_assert_ptr(&old, ==, ptr);
 	v_assert_ptr(str[index], ==, old);
 	v_assert_str(str[index], old);
 
 	// Check array integrity
 	v_assert_size_t(ARR_SIZ_MAX(str) - 1, ==, array.len);
-	v_assert_size_t(8, ==, array.capacity);
+	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0; i < array.len; ++i)
 	{
@@ -125,13 +123,12 @@ static void	test_02_array_remove_LastItem(void)
 
 	// Check return value
 	v_assert_ptr(NULL, !=, ptr);
-	v_assert_ptr(&old, ==, ptr);
 	v_assert_ptr(str[index], ==, old);
 	v_assert_str(str[index], old);
 
 	// Check array integrity
 	v_assert_size_t(ARR_SIZ_MAX(str) - 1, ==, array.len);
-	v_assert_size_t(8, ==, array.capacity);
+	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0; i < array.len; ++i)
 	{
@@ -174,7 +171,7 @@ static void	test_03_array_remove_OutOfRange(void)
 
 	// Check array integrity
 	v_assert_size_t(ARR_SIZ_MAX(str), ==, array.len);
-	v_assert_size_t(8, ==, array.capacity);
+	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0; i < array.len; ++i)
 	{
@@ -194,9 +191,9 @@ static void	test_04_array_remove_OneItemInArrayOfSizeOne(void)
 {
 	int	ptr;
 
-	array_init(&array, 1, sizeof(int));
+	array_init_with_capacity(&array, sizeof(int), 1);
 	array_push(&array, &(int){42});
-	v_assert_size_t(8, ==, array.capacity);
+	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
 	v_assert_size_t(1, ==, array.len);
 
 	array_remove_at(&array, 0, &ptr);

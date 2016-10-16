@@ -50,16 +50,18 @@ SOURCES += next_power2.c
 
 # Array
 SRC_SUBDIR += array
+SOURCES += array_create.c
 SOURCES += array_init.c
-SOURCES += array_resize.c
-SOURCES += array_at.c
-SOURCES += array_indexof.c
-SOURCES += array_create_node.c
-SOURCES += array_stack.c
-SOURCES += array_replace.c
+SOURCES += array_reserve.c
+SOURCES += array_shrink_to_fit.c
+SOURCES += array_truncate.c
+SOURCES += array_clear.c
+SOURCES += array_getset.c
+SOURCES += array_index_of.c
 SOURCES += array_insert.c
-SOURCES += array_destroy.c
+SOURCES += array_replace.c
 SOURCES += array_remove.c
+SOURCES += array_stack.c
 
 # Cbuffer
 SRC_SUBDIR += cbuffer

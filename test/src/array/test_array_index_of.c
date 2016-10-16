@@ -7,7 +7,7 @@ static int		tab[7] = {
 
 static void	setup(void)
 {
-	array_init(&array, 8, sizeof(int));
+	array_init(&array, sizeof(int));
 	for (size_t i = 0; i < ARR_SIZ_MAX(tab); ++i)
 		array_push(&array, tab + i);
 }
@@ -17,45 +17,45 @@ static void	teardown(void)
 	free(array.data);
 }
 
-void	test_00_array_indexof_CheckAllValue(void)
+void	test_00_array_index_of_CheckAllValue(void)
 {
 	setup();
 
-	v_assert_size_t(8, ==, array.capacity);
+	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0; i < 7; ++i)
 	{
 		int	*value = array_get_at(&array, i);
-		int	index = array_indexof(&array, value);
+		int	index = array_index_of(&array, value);
 		v_assert_int(i, ==, index);
 	}
 
 	// Last index
 	int	*value = array_get_at(&array, array.len);
-	int	index = array_indexof(&array, value);
+	int	index = array_index_of(&array, value);
 	v_assert_int(-1, ==, index);
 
 	teardown();
 	VTS;
 }
 
-void	test_01_array_indexof_NotInArray(void)
+void	test_01_array_index_of_NotInArray(void)
 {
 	setup();
 
 	int value;
-	int	index = array_indexof(&array, &value);
-	v_assert_size_t(8, ==, array.capacity);
+	int	index = array_index_of(&array, &value);
+	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
 	v_assert_int(-1, ==, index);
 
 	teardown();
 	VTS;
 }
 
-void	suite_array_indexof(void)
+void	suite_array_index_of(void)
 {
-	test_00_array_indexof_CheckAllValue();
-	test_01_array_indexof_NotInArray();
+	test_00_array_index_of_CheckAllValue();
+	test_01_array_index_of_NotInArray();
 
 	VSS;
 }
