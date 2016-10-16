@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array_indexof.c                                    :+:      :+:    :+:   */
+/*   array_index_of.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/02 15:54:59 by djean             #+#    #+#             */
-/*   Updated: 2016/10/01 16:03:38 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/16 15:41:45 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array_42.h"
 
-/*
-** Search if the pointer e belongs to the array range
-** Return the index or -1 on error
-*/
-
-int		array_indexof(t_array *v, void *e)
+ssize_t		array_index_of(t_array *a, const void *e)
 {
-	uintptr_t	index;
+	size_t		index;
 
-	if (TARRAY_IN_RANGE(v, e))
+	if (e >= a->data && (size_t)e < (size_t)a->data + a->len * a->elem_size)
 	{
-		index = (uintptr_t)e - (uintptr_t)v->data;
-		index /= v->elem_size;
-		return ((int)index);
+		index = (size_t)e - (size_t)a->data;
+		index /= a->elem_size;
+		return ((ssize_t)index);
 	}
 	return (-1);
 }

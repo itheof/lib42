@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array_create_node.c                                :+:      :+:    :+:   */
+/*   array_shrink_to_fit.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/07 14:09:45 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 02:37:22 by crenault         ###   ########.fr       */
+/*   Created: 2016/10/15 18:33:05 by crenault          #+#    #+#             */
+/*   Updated: 2016/10/16 15:13:44 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array_42.h"
 
-/*
-** Return the first free node or create one if the array is full
-*/
-
-void	*array_create_node(t_array *v)
+t_array		*array_shrink_to_fit(t_array *a)
 {
-	void	*p;
+	size_t	capacity;
 
-	if (TARRAY_NEED_RESIZE(v) && array_resize(v) == NULL)
-		return (NULL);
-	p = TARRAY_GET(v, v->len);
-	v->len += 1;
-	return (p);
+	if (a->len != a->capacity)
+	{
+		capacity = next_power_of_2(a->len);
+		if (capacity < TARRAY_INIT_SIZE)
+			capacity = TARRAY_INIT_SIZE;
+		if (capacity < a->capacity)
+		{
+			a->capacity = capacity;
+			a->data = ft_realloc(a->data, a->capacity * a->elem_size,
+								a->len * a->elem_size);
+			if (a->data == NULL)
+				return (NULL);
+		}
+	}
+	return (a);
 }

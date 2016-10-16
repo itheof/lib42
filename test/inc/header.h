@@ -20,8 +20,7 @@
 
 // Array
 void	suite_array_at(void);
-void	suite_array_indexof(void);
-void	suite_array_create_node(void);
+void	suite_array_index_of(void);
 void	suite_array_push(void);
 void	suite_array_replace(void);
 void	suite_array_insert(void);

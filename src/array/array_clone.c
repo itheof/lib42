@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array_stack.c                                      :+:      :+:    :+:   */
+/*   array_clone.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/10 16:31:26 by djean             #+#    #+#             */
-/*   Updated: 2016/10/16 15:40:09 by crenault         ###   ########.fr       */
+/*   Created: 2016/09/07 20:14:18 by djean             #+#    #+#             */
+/*   Updated: 2016/10/16 14:38:05 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array_42.h"
 
-t_array		*array_push(t_array *a, const void *e)
+t_array		*array_copy(t_array *dst, const t_array *src)
 {
-	if (array_reserve(a, 1) == NULL)
+	if (array_init_with_capacity(dst, src->capacity, src->elem_size) == NULL)
 		return (NULL);
-	a->len += 1;
-	ft_memcpy(array_get_at(a, a->len - 1), e, a->elem_size);
-	return (a);
-}
-
-void		*array_pop(t_array *a, void *old)
-{
-	if (a->len == 0)
-		return (NULL);
-	a->len -= 1;
-	return (array_remove_at(a, a->len, old));
+	dst->len = src->len;
+	ft_memcpy(dst->data, src->data, src->len * src->elem_size);
+	return (dst);
 }

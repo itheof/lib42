@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array_at.c                                         :+:      :+:    :+:   */
+/*   array_truncate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/10 16:31:25 by djean             #+#    #+#             */
-/*   Updated: 2016/10/12 02:35:51 by crenault         ###   ########.fr       */
+/*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
+/*   Updated: 2016/10/16 15:13:59 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array_42.h"
 
-void	*array_get_at(t_array *v, size_t i)
+ssize_t		array_truncate(t_array *a, size_t n)
 {
-	if (i < v->len)
-		return (TARRAY_GET(v, i));
-	return (NULL);
-}
-
-void	array_set_at(t_array *v, size_t i, const void *e)
-{
-	if (i < v->len)
-		ft_memcpy(TARRAY_GET(v, i), e, v->elem_size);
+	if (n > a->len)
+		return (-1);
+	a->len = n;
+	return ((ssize_t)a->len);
 }

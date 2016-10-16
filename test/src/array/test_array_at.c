@@ -7,7 +7,7 @@ static void	setup(void *data, size_t elem_size, size_t len)
 	unsigned char	*p;
 	unsigned char	*d;
 
-	array_init(&array, 8, elem_size);
+	array_init(&array, elem_size);
 	if (data != NULL)
 	{
 		p = array.data;
