@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/09 15:33:13 by djean             #+#    #+#             */
-/*   Updated: 2016/10/15 15:51:37 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/16 16:20:23 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_string	*string_merge(t_string *dst, const t_string *a, const t_string *b)
 {
 	size_t		size;
 
-	// TODO rework this function
 	size = a->len + b->len;
 	if (string_init_with_capacity(dst, size) == NULL)
 		return (NULL);

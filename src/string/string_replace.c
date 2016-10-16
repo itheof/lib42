@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/15 16:25:41 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/16 16:20:58 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_string	*string_set(t_string *s, size_t from, size_t n, int c)
 {
 	if (from > s->len)
 		return (NULL);
-	if (string_reserve(s, n - from + 1) == NULL)
+	if (string_reserve(s, n - from) == NULL)
 		return (NULL);
 	ft_memset(s->str + from, c, n);
 	if (from + n > s->len)

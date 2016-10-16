@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/16 16:12:35 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/16 16:21:35 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_string	*string_create_with_capacity(size_t capacity)
 	s = malloc(sizeof(t_string));
 	if (s == NULL)
 		return (NULL);
-	if (string_init_with_capacity(s, capacity) == NULL);
+	if (string_init_with_capacity(s, capacity) == NULL)
 		return (NULL);
 	return (s);
 }
