@@ -6,11 +6,9 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/16 16:20:58 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/17 17:02:08 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h> // delete
 
 #include "string_42.h"
 
@@ -24,7 +22,6 @@ t_string	*string_nreplace(t_string *s, const char *str, size_t len)
 	s->len = 0;
 	if (string_ncat(s, str, len) == NULL)
 		return (NULL);
-	s->str[s->len] = '\0';
 	return (s);
 }
 
