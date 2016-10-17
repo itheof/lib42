@@ -6,13 +6,13 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 20:14:18 by djean             #+#    #+#             */
-/*   Updated: 2016/10/16 14:38:05 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/17 15:10:28 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array_42.h"
 
-t_array		*array_copy(t_array *dst, const t_array *src)
+t_array		*array_clone(t_array *dst, const t_array *src)
 {
 	if (array_init_with_capacity(dst, src->capacity, src->elem_size) == NULL)
 		return (NULL);
