@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/16 15:12:18 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/17 12:08:20 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 /*
 ** `array_create` and `array_create_with_capacity` malloc a new `t_array`
 ** and a new 'internal buffer' with
-** (default size) * elem_size or capacity *elem_size if specified.
+** (default size) * elem_size or capacity * elem_size if specified.
 **
 ** `array_destroy` free the `t_array*` and the 'internal buffer'.
 */
