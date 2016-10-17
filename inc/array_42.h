@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/17 16:31:36 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/17 18:44:27 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,13 @@ ssize_t		array_index_of(t_array *a, const void *e);
 ** `array_replace_at` replace the element at the given index and
 ** if old is not NULL, write the element inside it. Returns NULL if the index
 ** is out of bounds.
+**
+** `array_get_available` gives a new unitialized space at the end of the array,
+** returns its pointer or NULL if an error occurs.
 */
 t_array		*array_insert_at(t_array *a, size_t i, const void *e);
 void		*array_replace_at(t_array *a, size_t i, const void *e, void *old);
+void		*array_get_available(t_array *a);
 
 /*
 ** `array_remove_at` removes the element at the given index, if 'removed'
