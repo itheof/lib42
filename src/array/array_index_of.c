@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/02 15:54:59 by djean             #+#    #+#             */
-/*   Updated: 2016/10/16 15:41:45 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/17 15:14:38 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 ssize_t		array_index_of(t_array *a, const void *e)
 {
-	size_t		index;
+	uintptr_t	index;
 
-	if (e >= a->data && (size_t)e < (size_t)a->data + a->len * a->elem_size)
+	if (e >= a->data
+		&& (uintptr_t)e < (uintptr_t)a->data + a->len * a->elem_size)
 	{
-		index = (size_t)e - (size_t)a->data;
+		index = (uintptr_t)e - (uintptr_t)a->data;
 		index /= a->elem_size;
 		return ((ssize_t)index);
 	}
