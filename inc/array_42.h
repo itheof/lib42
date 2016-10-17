@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/17 12:08:20 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:31:36 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,6 @@ t_array		*array_remove_elem(t_array *a, const void *e);
 ** is not NULL, the old data is written inside it.
 */
 t_array		*array_push(t_array *a, const void *e);
-void		*array_pop(t_array *a, void *old);
+t_array		*array_pop(t_array *a, void *old);
 
 #endif
