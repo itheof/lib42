@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:31:26 by djean             #+#    #+#             */
-/*   Updated: 2016/10/16 15:40:09 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/17 15:56:33 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void		*array_pop(t_array *a, void *old)
 {
 	if (a->len == 0)
 		return (NULL);
-	a->len -= 1;
-	return (array_remove_at(a, a->len, old));
+	if (array_remove_at(a, a->len - 1, old) == NULL)
+		return (NULL);
+	return (old);
 }
