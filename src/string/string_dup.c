@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/09 15:33:13 by djean             #+#    #+#             */
-/*   Updated: 2016/10/16 16:20:23 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/17 16:33:55 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_string	*string_ndup(t_string *s, const char *str, size_t len)
 
 	if ((string_init_with_capacity(s, len)) == NULL)
 		return (NULL);
-	cpy_stop = ft_memccpy(s->str, str, '\0', len);
+	cpy_stop = ft_memcpy(s->str, str, len);
 	s->len = cpy_stop == NULL ? len : (size_t)(cpy_stop - 1 - s->str);
 	s->str[s->len] = '\0';
 	return (s);
