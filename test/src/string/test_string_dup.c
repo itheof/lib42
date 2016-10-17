@@ -49,20 +49,20 @@ static void	test_02_string_ndup_SimpleString(void)
 	VTS;
 }
 
-static void	test_03_string_ndup_ShortenString(void)
-{
-	char	*s = "abc";
-	size_t	len = strlen(s);
+// static void	test_03_string_ndup_ShortenString(void)
+// {
+// 	char	*s = "abc";
+// 	size_t	len = strlen(s);
 
-	string_ndup(&string, s, 10);
+// 	string_ndup(&string, s, 10);
 
-	v_assert_size_t(64, ==, string.capacity);
-	v_assert_size_t(len, ==, string.len);
-	v_assert_str(s, string.str);
+// 	v_assert_size_t(64, ==, string.capacity);
+// 	v_assert_size_t(len, ==, string.len);
+// 	v_assert_str(s, string.str);
 
-	teardown();
-	VTS;
-}
+// 	teardown();
+// 	VTS;
+// }
 
 static void	test_04_string_ndup_ZeroLength(void)
 {
@@ -83,7 +83,7 @@ void	suite_string_dup(void)
 	test_00_string_dup_String();
 	test_01_string_dup_EmptyString();
 	test_02_string_ndup_SimpleString();
-	test_03_string_ndup_ShortenString();
+	// test_03_string_ndup_ShortenString();
 	test_04_string_ndup_ZeroLength();
 
 	VSS;
