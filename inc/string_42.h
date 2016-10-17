@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/15 19:44:28 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/17 17:02:42 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ t_string	*string_append(t_string *dst, const t_string *src);
 ** reserving enought space to write the new str entirely.
 **
 ** `string_set` replace from the given position 'from',
-** 'n' characters by the specified 'c' char. Return NULL if from is bigger
+** 'n' characters by the specified 'c' char. Return NULL if 'from' is bigger
 ** than the string's len.
 */
 t_string	*string_replace(t_string *s, const char *str);
