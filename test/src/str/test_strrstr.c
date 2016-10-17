@@ -149,6 +149,24 @@ static void	test_09_strrstr_DoesntMatch(void)
 	VTS;
 }
 
+static void	test_10_strrstr_MultipleCharWichFollow(void)
+{
+	char	*big = strdup("echo llllllllll");
+	char	*little = "l";
+	char	*ret;
+	char	*valid;
+
+	v_assert_ptr(big + 14, ==, ft_strrstr(big, little));
+	big[14] = '\0';
+	v_assert_ptr(big + 13, ==, ft_strrstr(big, little));
+	big[13] = '\0';
+	v_assert_ptr(big + 12, ==, ft_strrstr(big, little));
+	big[12] = '\0';
+	v_assert_ptr(big + 11, ==, ft_strrstr(big, little));
+
+	VTS;
+}
+
 void		suite_strrstr(void)
 {
 	test_00_strrstr_SecondWorld();
@@ -161,6 +179,7 @@ void		suite_strrstr(void)
 	test_07_strrstr_AlmostEqual();
 	test_08_strrstr_ResultAtEnd();
 	test_09_strrstr_DoesntMatch();
+	test_10_strrstr_MultipleCharWichFollow();
 
 	VSS;
 }
