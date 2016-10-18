@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/18 12:00:46 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/18 14:06:00 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ void		array_shutdown(t_array *a);
 ** `array_shrink_to_fit` reduce the capacity of the 'internal buffer' to
 ** be the closest to the array length.
 **
-** `array_truncate` truncates the array. It returns the new size of the array
-** or -1 if the truncate is to large.
+** `array_truncate` truncates the array.
+** It returns NULL if the truncate is to large.
 **
 ** `array_clear` set the len of the array to 0.
 */
 t_array		*array_reserve(t_array *a, size_t additional);
 t_array		*array_shrink_to_fit(t_array *a);
-ssize_t		array_truncate(t_array *a, size_t n);
+t_array		*array_truncate(t_array *a, size_t n);
 void		array_clear(t_array *a);
 
 /*
