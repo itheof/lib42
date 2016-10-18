@@ -60,6 +60,7 @@ SOURCES += array_getset.c
 SOURCES += array_index_of.c
 SOURCES += array_insert.c
 SOURCES += array_replace.c
+SOURCES += array_get_available.c
 SOURCES += array_remove.c
 SOURCES += array_stack.c
 

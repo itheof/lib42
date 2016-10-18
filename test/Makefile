@@ -48,6 +48,7 @@ SOURCES += test_array_replace.c
 SOURCES += test_array_insert.c
 SOURCES += test_array_remove_at.c
 SOURCES += test_array_remove_elem.c
+SOURCES += test_array_get_available.c
 
 # Cbuffer
 SRC_SUBDIR += cbuffer
