@@ -11,7 +11,7 @@ static void	test_00_string_truncate_SimpleSize(void)
 	v_assert_size_t(STRING_INIT_SIZE, ==, string.capacity);
 	v_assert_size_t(9, ==, string.len);
 	v_assert_str("Hello Wor", string.str);
-	v_assert_int(NULL, !=, res);
+	v_assert_ptr(NULL, !=, res);
 
 	string_shutdown(&string);
 	VTS;
@@ -26,7 +26,7 @@ static void	test_01_string_truncate_ZeroSize(void)
 	v_assert_size_t(STRING_INIT_SIZE, ==, string.capacity);
 	v_assert_size_t(12, ==, string.len);
 	v_assert_str("Hello World!", string.str);
-	v_assert_int(NULL, !=, res);
+	v_assert_ptr(NULL, !=, res);
 
 	string_shutdown(&string);
 	VTS;
@@ -41,7 +41,7 @@ static void	test_02_string_truncate_FullSize(void)
 	v_assert_size_t(STRING_INIT_SIZE, ==, string.capacity);
 	v_assert_size_t(0, ==, string.len);
 	v_assert_str("", string.str);
-	v_assert_int(NULL, !=, res);
+	v_assert_ptr(NULL, !=, res);
 
 	string_shutdown(&string);
 	VTS;
@@ -56,7 +56,7 @@ static void	test_03_string_truncate_SizeOverflow(void)
 	v_assert_size_t(STRING_INIT_SIZE, ==, string.capacity);
 	v_assert_size_t(12, ==, string.len);
 	v_assert_str("Hello World!", string.str);
-	v_assert_int(NULL, ==, res);
+	v_assert_ptr(NULL, ==, res);
 
 	string_shutdown(&string);
 	VTS;
