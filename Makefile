@@ -83,7 +83,6 @@ SOURCES += string_remove.c
 SOURCES += string_reserve.c
 SOURCES += string_shrink_to_fit.c
 SOURCES += string_truncate.c
-SOURCES += string_toa.c
 
 # String
 SRC_SUBDIR += str
