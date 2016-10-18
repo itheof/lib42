@@ -48,22 +48,21 @@ int	main(void)
 	suite_string_clone();
 	suite_string_merge();
 
-	/* // array */
+	// array
 	suite_array_create();
 	suite_array_init();
+	suite_array_at();
 	suite_array_reserve();
 	suite_array_shrink_to_fit();
-	suite_array_index_of();
 	suite_array_push();
 	suite_array_pop();
 	suite_array_replace_at();
 	suite_array_insert_at();
 	suite_array_remove_at();
 	suite_array_remove_elem();
-	suite_array_at();
 	suite_array_clone();
 	suite_array_truncate_clear();
-	suite_array_stack();
+	suite_array_get_available();
 
 	// cbuffer
 	suite_cbuffer_push();
@@ -80,7 +79,6 @@ int	main(void)
 	suite_pool_return();
 	suite_pool_reset();
 
-	// getopt
 	suite_unistd_getopt();
 
 	v_full_success("Lib42");

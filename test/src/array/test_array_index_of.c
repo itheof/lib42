@@ -17,7 +17,7 @@ static void	teardown(void)
 	free(array.data);
 }
 
-void	test_00_array_index_of_CheckAllValue(void)
+static void	test_00_array_index_of_CheckAllValue(void)
 {
 	setup();
 
@@ -26,26 +26,29 @@ void	test_00_array_index_of_CheckAllValue(void)
 	for (size_t i = 0; i < 7; ++i)
 	{
 		int	*value = array_get_at(&array, i);
-		int	index = array_index_of(&array, value);
+		int	index = (int)array_index_of(&array, value);
 		v_assert_int(i, ==, index);
 	}
 
 	// Last index
 	int	*value = array_get_at(&array, array.len);
-	int	index = array_index_of(&array, value);
+	int	index = (int)array_index_of(&array, value);
 	v_assert_int(-1, ==, index);
+	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(7, ==, array.len);
 
 	teardown();
 	VTS;
 }
 
-void	test_01_array_index_of_NotInArray(void)
+static void	test_01_array_index_of_NotInArray(void)
 {
 	setup();
 
 	int value;
-	int	index = array_index_of(&array, &value);
+	int	index = (int)array_index_of(&array, &value);
 	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(7, ==, array.len);
 	v_assert_int(-1, ==, index);
 
 	teardown();

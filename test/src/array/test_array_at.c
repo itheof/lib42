@@ -23,7 +23,7 @@ static void	teardown(void)
 	free(array.data);
 }
 
-static void	test_00_array_stack_Int(void)
+static void	test_00_array_at_Int(void)
 {
 	int	data[4] = {11, 22, 33, 44};
 	setup(data, sizeof(int), ARR_SIZ_MAX(data));
@@ -44,7 +44,7 @@ static void	test_00_array_stack_Int(void)
 	VTS;
 }
 
-static void	test_01_array_stack_String(void)
+static void	test_01_array_at_String(void)
 {
 	char		*data[] = {
 		"hello",
@@ -72,7 +72,7 @@ static void	test_01_array_stack_String(void)
 	VTS;
 }
 
-static void	test_02_array_stack_Struct(void)
+static void	test_02_array_at_Struct(void)
 {
 	struct s_test {
 		void	*e;
@@ -106,7 +106,7 @@ static void	test_02_array_stack_Struct(void)
 	VTS;
 }
 
-static void	test_03_array_stack_OutOfRange(void)
+static void	test_03_array_at_OutOfRange(void)
 {
 	int	data[4] = {11, 22, 33, 44};
 	setup(data, sizeof(int), ARR_SIZ_MAX(data));
@@ -117,12 +117,12 @@ static void	test_03_array_stack_OutOfRange(void)
 	VTS;
 }
 
-void	suite_array_stack(void)
+void	suite_array_at(void)
 {
-	test_00_array_stack_Int();
-	test_01_array_stack_String();
-	test_02_array_stack_Struct();
-	test_03_array_stack_OutOfRange();
+	test_00_array_at_Int();
+	test_01_array_at_String();
+	test_02_array_at_Struct();
+	test_03_array_at_OutOfRange();
 
 	VSS;
 }
