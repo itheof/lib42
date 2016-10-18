@@ -62,6 +62,7 @@ int	main(void)
 	suite_array_remove_elem();
 	suite_array_at();
 	suite_array_clone();
+	suite_array_truncate_clear();
 	suite_array_stack();
 
 	// cbuffer

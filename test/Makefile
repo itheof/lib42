@@ -46,6 +46,7 @@ SOURCES += test_array_clone.c
 SOURCES += test_array_index_of.c
 SOURCES += test_array_push.c
 SOURCES += test_array_pop.c
+SOURCES += suite_array_truncate_clear.c
 SOURCES += test_array_replace_at.c
 SOURCES += test_array_insert_at.c
 SOURCES += test_array_remove_at.c
