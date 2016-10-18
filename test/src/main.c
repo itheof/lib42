@@ -50,6 +50,7 @@ int	main(void)
 
 	/* // array */
 	suite_array_create();
+	suite_array_init();
 	/* suite_array_index_of(); */
 	/* suite_array_push(); */
 	/* suite_array_replace(); */

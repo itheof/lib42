@@ -20,6 +20,7 @@
 
 // Array
 void	suite_array_create(void);
+void	suite_array_init(void);
 void	suite_array_at(void);
 void	suite_array_index_of(void);
 void	suite_array_push(void);
