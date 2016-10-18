@@ -48,14 +48,14 @@ int	main(void)
 	suite_string_clone();
 	suite_string_merge();
 
-	// array
-	suite_array_index_of();
-	suite_array_push();
-	suite_array_replace();
-	suite_array_insert();
-	suite_array_remove();
-	/* suite_array_copy(); */
-	suite_array_at();
+	/* // array */
+	suite_array_create();
+	/* suite_array_index_of(); */
+	/* suite_array_push(); */
+	/* suite_array_replace(); */
+	/* suite_array_insert(); */
+	/* suite_array_remove(); */
+	/* suite_array_at(); */
 
 	// cbuffer
 	suite_cbuffer_push();
