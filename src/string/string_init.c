@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/18 10:22:11 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/18 10:50:08 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ t_string	*string_init_with_capacity(t_string *s, size_t capacity)
 		s->capacity = STRING_INIT_SIZE;
 	else if (!IS_POWER_OF_2(s->capacity))
 		s->capacity = next_power_of_2(s->capacity);
-	s->len = 0;
 	if ((s->str = malloc(s->capacity)) == NULL)
 		return (NULL);
+	s->len = 0;
+	s->str[0] = '\0';
 	return (s);
 }
 
