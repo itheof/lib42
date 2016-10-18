@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/17 17:02:42 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/18 11:08:00 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,13 +114,5 @@ ssize_t		string_remove_back_chr(t_string *s, int c);
 t_string	*string_reserve(t_string *s, size_t additional);
 t_string	*string_shrink_to_fit(t_string *s);
 ssize_t		string_truncate(t_string *s, size_t n);
-
-/*
-** `string_stoa` init a string with the signed integer 'value' in base 'base'.
-**
-** `string_utoa` init a string with the unsigned integer 'value' in base 'base'.
-*/
-t_string	*string_stoa(t_string *s, long long value, unsigned base);
-t_string	*string_utoa(t_string *s, unsigned long long value, unsigned base);
 
 #endif
