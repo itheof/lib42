@@ -21,7 +21,7 @@ static void	teardown(void)
 	free(array.data);
 }
 
-static void	test_00_array_replace_FirstItem(void)
+static void	test_00_array_replace_at_FirstItem(void)
 {
 	char	*rep = "firstitem";
 	void	*old = (void*)0xdeadbeef;
@@ -78,7 +78,7 @@ static void	test_00_array_replace_FirstItem(void)
 	VTS;
 }
 
-static void	test_01_array_replace_MiddleItem(void)
+static void	test_01_array_replace_at_MiddleItem(void)
 {
 	char	*rep = "middleitem";
 	void	*old = (void*)0xdeadbeef;
@@ -135,7 +135,7 @@ static void	test_01_array_replace_MiddleItem(void)
 	VTS;
 }
 
-static void	test_02_array_replace_LastItem(void)
+static void	test_02_array_replace_at_LastItem(void)
 {
 	char	*rep = "lastitem";
 	void	*old = (void*)0xdeadbeef;
@@ -192,7 +192,7 @@ static void	test_02_array_replace_LastItem(void)
 	VTS;
 }
 
-static void	test_03_array_replace_OutOfRange(void)
+static void	test_03_array_replace_at_OutOfRange(void)
 {
 	char	*rep = "outofrange";
 	void	*old = (void*)0xdeadbeef;
@@ -221,12 +221,12 @@ static void	test_03_array_replace_OutOfRange(void)
 	VTS;
 }
 
-void	suite_array_replace(void)
+void	suite_array_replace_at(void)
 {
-	test_00_array_replace_FirstItem();
-	test_01_array_replace_MiddleItem();
-	test_02_array_replace_LastItem();
-	test_03_array_replace_OutOfRange();
+	test_00_array_replace_at_FirstItem();
+	test_01_array_replace_at_MiddleItem();
+	test_02_array_replace_at_LastItem();
+	test_03_array_replace_at_OutOfRange();
 
 	VSS;
 }

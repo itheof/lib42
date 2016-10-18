@@ -56,7 +56,7 @@ int	main(void)
 	suite_array_index_of();
 	suite_array_push();
 	suite_array_pop();
-	suite_array_replace();
+	suite_array_replace_at();
 	suite_array_insert();
 	suite_array_remove_at();
 	suite_array_remove_elem();
