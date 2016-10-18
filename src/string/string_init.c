@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:30:57 by djean             #+#    #+#             */
-/*   Updated: 2016/10/17 15:59:33 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/18 10:22:11 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_string	*string_init(t_string *s)
 {
-	return (string_init_with_capacity(s, STRING_INIT_SIZE));
+	return (string_init_with_capacity(s, STRING_INIT_SIZE - 1));
 }
 
 t_string	*string_init_with_capacity(t_string *s, size_t capacity)
