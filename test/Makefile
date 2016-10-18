@@ -39,6 +39,7 @@ SRC_SUBDIR += array
 SOURCES += test_array_create.c
 SOURCES += test_array_init.c
 SOURCES += test_array_reserve.c
+SOURCES += test_array_shrink.c
 SOURCES += test_array_at.c
 SOURCES += test_array_index_of.c
 SOURCES += test_array_push.c
