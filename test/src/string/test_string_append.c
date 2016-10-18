@@ -33,7 +33,7 @@ static void	test_01_string_append_Emptystring(void)
 {
 	t_string	dst;
 	t_string	src;
-	char		*s1 = "Emtpy";
+	char		*s1 = "Empty";
 	char		*s2 = "";
 	char		cat[20];
 	size_t		l1 = strlen(s1);
