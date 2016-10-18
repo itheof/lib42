@@ -24,6 +24,7 @@ void	suite_array_init(void);
 void	suite_array_reserve(void);
 void	suite_array_shrink_to_fit(void);
 void	suite_array_at(void);
+void	suite_array_stack(void);
 void	suite_array_index_of(void);
 void	suite_array_push(void);
 void	suite_array_pop(void);
