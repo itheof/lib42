@@ -52,6 +52,7 @@ SOURCES += next_power2.c
 SRC_SUBDIR += array
 SOURCES += array_create.c
 SOURCES += array_init.c
+SOURCES += array_clone.c
 SOURCES += array_reserve.c
 SOURCES += array_shrink_to_fit.c
 SOURCES += array_truncate.c

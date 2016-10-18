@@ -42,6 +42,7 @@ SOURCES += test_array_reserve.c
 SOURCES += test_array_shrink.c
 SOURCES += test_array_getset.c
 SOURCES += test_array_stack.c
+SOURCES += test_array_clone.c
 SOURCES += test_array_index_of.c
 SOURCES += test_array_push.c
 SOURCES += test_array_pop.c
