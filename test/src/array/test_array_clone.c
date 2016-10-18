@@ -1,6 +1,6 @@
 #include "header.h"
 
-static void	test_00_array_clone_SimpleCopy(void)
+static void	test_00_array_clone_Simple(void)
 {
 	t_array		v;
 	t_array		cp;
@@ -34,6 +34,7 @@ static void	test_00_array_clone_SimpleCopy(void)
 	v_assert_ptr(NULL, ==, array_get_at(&cp, 5));
 	v_assert_ptr(NULL, ==, array_get_at(&cp, 6));
 	v_assert_ptr(NULL, ==, array_get_at(&cp, 7));
+	v_assert_ptr(v.data, !=, cp.data);
 
 	array_shutdown(&v);
 	array_shutdown(&cp);
@@ -50,13 +51,17 @@ static void	test_01_array_clone_Empty(void)
 	v_assert_ptr(NULL, !=, array_clone(&clone, &array));
 	v_assert_size_t(array.capacity, ==, clone.capacity);
 	v_assert_size_t(array.len, ==, clone.len);
+	v_assert_ptr(array.data, !=, clone.data);
+
+	array_shutdown(&array);
+	array_shutdown(&clone);
 
 	VTS;
 }
 
 void	suite_array_clone(void)
 {
-	test_00_array_clone_SimpleCopy();
+	test_00_array_clone_Simple();
 	test_01_array_clone_Empty();
 
 	VSS;

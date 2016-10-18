@@ -67,6 +67,7 @@ static void	test_01_array_truncate_Zero(void)
 	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 	v_assert_size_t(0, ==, array.len);
 
+	array_shutdown(&array);
 	VTS;
 }
 
@@ -88,6 +89,7 @@ static void	test_02_array_truncate_Nothing(void)
 	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 	v_assert_size_t(5, ==, array.len);
 
+	array_shutdown(&array);
 	VTS;
 }
 
@@ -109,6 +111,7 @@ static void	test_03_array_truncate_Bigger(void)
 	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 	v_assert_size_t(5, ==, array.len);
 
+	array_shutdown(&array);
 	VTS;
 }
 
@@ -130,6 +133,7 @@ static void	test_04_array_clear(void)
 	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 	v_assert_size_t(0, ==, array.len);
 
+	array_shutdown(&array);
 	VTS;
 }
 
