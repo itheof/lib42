@@ -19,13 +19,13 @@
 #include "vittf.h"
 
 // Array
+void	suite_array_create(void);
 void	suite_array_at(void);
 void	suite_array_index_of(void);
 void	suite_array_push(void);
 void	suite_array_replace(void);
 void	suite_array_insert(void);
 void	suite_array_remove(void);
-/* void	suite_array_copy(void); */
 
 // Cbuffer
 void	suite_cbuffer_push(void);
