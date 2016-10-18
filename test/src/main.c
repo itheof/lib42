@@ -53,12 +53,13 @@ int	main(void)
 	suite_array_init();
 	suite_array_reserve();
 	suite_array_shrink_to_fit();
-	/* suite_array_index_of(); */
-	/* suite_array_push(); */
-	/* suite_array_replace(); */
-	/* suite_array_insert(); */
-	/* suite_array_remove(); */
-	/* suite_array_at(); */
+	suite_array_index_of();
+	suite_array_push();
+	suite_array_pop();
+	suite_array_replace();
+	suite_array_insert();
+	suite_array_remove();
+	suite_array_at();
 
 	/* // cbuffer */
 	/* suite_cbuffer_push(); */

@@ -43,6 +43,7 @@ SOURCES += test_array_shrink.c
 SOURCES += test_array_at.c
 SOURCES += test_array_index_of.c
 SOURCES += test_array_push.c
+SOURCES += test_array_pop.c
 SOURCES += test_array_replace.c
 SOURCES += test_array_insert.c
 SOURCES += test_array_remove.c
