@@ -42,7 +42,7 @@ static void	test_00_array_remove_elem_FirstItem(void)
 
 	// Check array integrity
 	v_assert_size_t(ARR_SIZ_MAX(str) - 1, ==, array.len);
-	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0; i < array.len; ++i)
 	{
@@ -76,7 +76,7 @@ static void	test_01_array_remove_elem_MiddleItem(void)
 
 	// Check array integrity
 	v_assert_size_t(ARR_SIZ_MAX(str) - 1, ==, array.len);
-	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0; i < array.len; ++i)
 	{
@@ -118,7 +118,7 @@ static void	test_02_array_remove_elem_LastItem(void)
 
 	// Check array integrity
 	v_assert_size_t(ARR_SIZ_MAX(str) - 1, ==, array.len);
-	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0; i < array.len; ++i)
 	{
@@ -160,7 +160,7 @@ static void	test_03_array_remove_elem_OutOfRange(void)
 
 	// Check array integrity
 	v_assert_size_t(ARR_SIZ_MAX(str), ==, array.len);
-	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0; i < array.len; ++i)
 	{
@@ -180,7 +180,7 @@ static void	test_04_array_remove_elem_OneItemInArrayOfSizeOne(void)
 {
 	array_init_with_capacity(&array, sizeof(int), 1);
 	array_push(&array, &(int){42});
-	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 	v_assert_size_t(1, ==, array.len);
 
 	array_remove_elem(&array, array.data);

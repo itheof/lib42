@@ -21,7 +21,7 @@ void	test_00_array_index_of_CheckAllValue(void)
 {
 	setup();
 
-	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0; i < 7; ++i)
 	{
@@ -45,7 +45,7 @@ void	test_01_array_index_of_NotInArray(void)
 
 	int value;
 	int	index = array_index_of(&array, &value);
-	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 	v_assert_int(-1, ==, index);
 
 	teardown();

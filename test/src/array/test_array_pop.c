@@ -13,7 +13,7 @@ static void	test_00_array_pop_Int(void)
 		int	value = data[i];
 		array_push(&array, &value);
 		if (i < 8)
-			v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
+			v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 		else
 			v_assert_size_t(16, ==, array.capacity);
 		v_assert_size_t(i + 1, ==, array.len);

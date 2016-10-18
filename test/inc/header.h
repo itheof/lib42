@@ -31,6 +31,7 @@ void	suite_array_replace(void);
 void	suite_array_insert(void);
 void	suite_array_remove_at(void);
 void	suite_array_remove_elem(void);
+void	suite_array_get_available(void);
 
 // Cbuffer
 void	suite_cbuffer_push(void);

@@ -30,23 +30,23 @@ int	main(void)
 	/* suite_strstr(); */
 	/* suite_strrstr(); */
 
-	/* // string */
-	/* suite_string_dup(); */
-	/* suite_string_cat(); */
-	/* suite_string_reserve(); */
-	/* suite_string_shrink_to_fit(); */
-	/* suite_string_insert(); */
-	/* suite_string_append(); */
-	/* suite_string_replace(); */
-	/* suite_string_create_init(); */
-	/* suite_string_remove(); */
-	/* suite_string_set(); */
-	/* suite_string_truncate(); */
-	/* suite_string_remove_back(); */
-	/* suite_string_remove_back_chr(); */
-	/* /1* suite_string_rewindnchr(); *1/ */
-	/* suite_string_clone(); */
-	/* suite_string_merge(); */
+	// string
+	suite_string_dup();
+	suite_string_cat();
+	suite_string_reserve();
+	suite_string_shrink_to_fit();
+	suite_string_insert();
+	suite_string_append();
+	suite_string_replace();
+	suite_string_create_init();
+	suite_string_remove();
+	suite_string_set();
+	suite_string_truncate();
+	suite_string_remove_back();
+	suite_string_remove_back_chr();
+	suite_array_get_available();
+	suite_string_clone();
+	suite_string_merge();
 
 	/* // array */
 	suite_array_create();

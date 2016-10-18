@@ -33,7 +33,7 @@ static void	test_00_array_insert_FirstPlace(void)
 
 	// Check array integrity
 	v_assert_size_t(6, ==, array.len);
-	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0, j = 0; i < array.len; ++i)
 	{
@@ -72,7 +72,7 @@ static void	test_01_array_insert_LastPlace(void)
 
 	// Check array integrity
 	v_assert_size_t(6, ==, array.len);
-	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0, j = 0; i < array.len; ++i)
 	{
@@ -112,7 +112,7 @@ static void	test_02_array_insert_MiddlePlace(void)
 
 	// Check array integrity
 	v_assert_size_t(6, ==, array.len);
-	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0, j = 0; i < array.len; ++i)
 	{
@@ -155,7 +155,7 @@ static void	test_03_array_insert_Resize(void)
 
 	// Check array integrity
 	v_assert_size_t(8, ==, array.len);
-	v_assert_size_t(TARRAY_INIT_SIZE, ==, array.capacity);
+	v_assert_size_t(ARRAY_INIT_SIZE, ==, array.capacity);
 
 	for (size_t i = 0; i < array.len - 3; ++i)
 	{

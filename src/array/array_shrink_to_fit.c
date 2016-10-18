@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/15 18:33:05 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/17 15:01:56 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/18 12:01:13 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ t_array		*array_shrink_to_fit(t_array *a)
 
 	if (a->len != a->capacity)
 	{
-		if (a->len <= TARRAY_INIT_SIZE)
-			capacity = TARRAY_INIT_SIZE;
+		if (a->len <= ARRAY_INIT_SIZE)
+			capacity = ARRAY_INIT_SIZE;
 		else
 			capacity = next_power_of_2(a->len);
 		if (capacity < a->capacity)
