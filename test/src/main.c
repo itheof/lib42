@@ -58,7 +58,8 @@ int	main(void)
 	suite_array_pop();
 	suite_array_replace();
 	suite_array_insert();
-	suite_array_remove();
+	suite_array_remove_at();
+	suite_array_remove_elem();
 	suite_array_at();
 
 	// cbuffer
