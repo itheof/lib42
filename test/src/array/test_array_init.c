@@ -7,6 +7,7 @@ static t_array	*pa;
 
 static void teardown(void)
 {
+	free(a.data);
 	memset(&a, 0, sizeof(t_array));
 }
 

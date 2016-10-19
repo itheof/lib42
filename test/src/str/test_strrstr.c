@@ -164,6 +164,7 @@ static void	test_10_strrstr_MultipleCharWichFollow(void)
 	big[12] = '\0';
 	v_assert_ptr(big + 11, ==, ft_strrstr(big, little));
 
+	free(big);
 	VTS;
 }
 

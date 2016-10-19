@@ -200,6 +200,7 @@ static void	test_04_array_remove_at_OneItemInArrayOfSizeOne(void)
 	v_assert_int(42, ==, ptr);
 	v_assert_size_t(0, ==, array.len);
 
+	teardown();
 	VTS;
 }
 

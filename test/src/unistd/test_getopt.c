@@ -127,6 +127,7 @@ static void test_00_no_opts(void)
 		{"./test", "", NULL},
 		":a"
 	);
+
 	VTS;
 }
 

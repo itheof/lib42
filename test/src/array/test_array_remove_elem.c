@@ -186,6 +186,7 @@ static void	test_04_array_remove_elem_OneItemInArrayOfSizeOne(void)
 	array_remove_elem(&array, array.data);
 	v_assert_size_t(0, ==, array.len);
 
+	teardown();
 	VTS;
 }
 

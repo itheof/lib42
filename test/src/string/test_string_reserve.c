@@ -58,6 +58,7 @@ static void	test_03_string_reserve_ExpandPowerOf2(void)
 	v_assert_size_t(512, ==, string.capacity);
 
 	teardown();
+	free(big_str);
 	VTS;
 }
 
@@ -78,6 +79,8 @@ static void	test_03_string_reserve_ExpandFor2Strings(void)
 	string_ncat(&string, second_str, 257); // 255 + (257 + 1) = 513 -> 1024
 	v_assert_size_t(1024, ==, string.capacity);
 
+	free(first_str);
+	free(second_str);
 	teardown();
 	VTS;
 }
