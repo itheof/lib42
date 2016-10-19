@@ -54,48 +54,33 @@ static void assert_silent_getopt_values(int argc, char *const argv[], const char
 	int		filedes[2][2];
 	char	buf_ref[512];
 	char	buf[512];
-	pid_t	son_pid;
 	int		status;
 
-	son_pid = fork();
-	if (!son_pid)
-	{
-		reset_getopt_vars(&state);
-		ret_ref = 0;
+	reset_getopt_vars(&state);
+	ret_ref = 0;
 
-		while (ret_ref != -1) {
+	while (ret_ref != -1) {
 
-			if (pipe(filedes[0]) < 0 || pipe(filedes[1]) < 0)
-				panic_syscall_failed();
+		if (pipe(filedes[0]) < 0 || pipe(filedes[1]) < 0)
+			panic_syscall_failed();
 
-			ret_ref = getopt_stderr_wrap(argc, argv, optstring, NULL, filedes[0][1]);
-			ret = getopt_stderr_wrap(argc, argv, optstring, &state, filedes[1][1]);
+		ret_ref = getopt_stderr_wrap(argc, argv, optstring, NULL, filedes[0][1]);
+		ret = getopt_stderr_wrap(argc, argv, optstring, &state, filedes[1][1]);
 
-			memset(buf, 0, 512);
-			memset(buf_ref, 0, 512);
-			if (read(filedes[0][0], buf_ref, 511) < 0 || read(filedes[1][0], buf, 511) < 0 || close(filedes[0][0]) < 0 || close(filedes[1][0]))
-				panic_syscall_failed();
-			v_assert_char(ret_ref, ==, ret);
-			if (ret_ref == -1)
-				break;
-//			v_assert_int(opterr, ==, state.opterr);
-			if (ret_ref == '?' || ret_ref == ':')
-				v_assert_char(optopt, ==, state.optopt);
-			v_assert_str(buf_ref, buf);
-			v_assert_ptr(optarg, ==, state.optarg);
-		}
-//		v_assert_int(optind, ==, state.optind);
-		exit(0);
+		memset(buf, 0, 512);
+		memset(buf_ref, 0, 512);
+		if (read(filedes[0][0], buf_ref, 511) < 0 || read(filedes[1][0], buf, 511) < 0 || close(filedes[0][0]) < 0 || close(filedes[1][0]))
+			panic_syscall_failed();
+		v_assert_char(ret_ref, ==, ret);
+		if (ret_ref == -1)
+			break;
+//		v_assert_int(opterr, ==, state.opterr);
+		if (ret_ref == '?' || ret_ref == ':')
+			v_assert_char(optopt, ==, state.optopt);
+		v_assert_str(buf_ref, buf);
+		v_assert_ptr(optarg, ==, state.optarg);
 	}
-	else if (son_pid > 0)
-	{
-		wait(&status);
-		if (status){
-			exit(1);
-		}
-	}
-	else
-		panic_syscall_failed();
+//	v_assert_int(optind, ==, state.optind);
 }
 
 static void assert_getopt_diagnostics(int argc, char *const argv[], const char *optstring)
@@ -127,6 +112,7 @@ static void test_00_no_opts(void)
 		{"./test", "", NULL},
 		":a"
 	);
+
 	VTS;
 }
 

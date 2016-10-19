@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-static int	formatting_d(t_buffer *pb, t_format *fmt, char *arg, size_t arglen)
+static int	formatting_d(t_string *pb, t_format *fmt, char *arg, size_t arglen)
 {
 	fmt->f_sharp = 0;
 	int_format_intro(fmt, arg, &arglen);
@@ -12,15 +12,15 @@ static int	formatting_d(t_buffer *pb, t_format *fmt, char *arg, size_t arglen)
 		int_sign(pb, fmt, arg);
 	int_precision(pb, fmt, (FT_ISDIGIT(arg[0])) ? arglen : arglen - 1);
 	if (!FT_ISDIGIT(arg[0]))
-		buffer_ncat(pb, arg + 1, arglen - 1);
+		string_ncat(pb, arg + 1, arglen - 1);
 	else
-		buffer_ncat(pb, arg, arglen);
+		string_ncat(pb, arg, arglen);
 	if (fmt->f_minus == 1)
 		int_padding(pb, fmt, arglen, arg[0]);
 	return (1);
 }
 
-int			conv_d(t_buffer *pb, t_format *fmt, va_list ap)
+int			conv_d(t_string *pb, t_format *fmt, va_list ap)
 {
 	char	*arg;
 

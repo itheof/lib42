@@ -31,49 +31,53 @@ CFLAGS += $(addprefix -I,$(INC_PATH))
 
 
 # Sources
-SRC_PATH = src
-SRC_SUBDIR = . array cbuffer buffer memory stdlib string error pool unistd
-vpath %.c $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
 SOURCES += main.c
 SOURCES += ctype.c
 
 # Array
-SOURCES += test_array_macros.c
-SOURCES += test_array_getset.c
-SOURCES += test_array_indexof.c
-SOURCES += test_array_create_node.c
+SRC_SUBDIR += array
+SOURCES += test_array_create.c
+SOURCES += test_array_init.c
+SOURCES += test_array_at.c
+SOURCES += test_array_reserve.c
+SOURCES += test_array_shrink.c
 SOURCES += test_array_push.c
-SOURCES += test_array_replace.c
-SOURCES += test_array_insert.c
-SOURCES += test_array_remove.c
-SOURCES += test_array_strsplit.c
-# SOURCES += test_array_copy.c
-SOURCES += test_array_iterator.c
+SOURCES += test_array_pop.c
+SOURCES += test_array_index_of.c
+SOURCES += test_array_replace_at.c
+SOURCES += test_array_insert_at.c
+SOURCES += test_array_remove_at.c
+SOURCES += test_array_remove_elem.c
+SOURCES += test_array_clone.c
+SOURCES += test_array_truncate_clear.c
+SOURCES += test_array_get_available.c
 
 # Cbuffer
+SRC_SUBDIR += cbuffer
 SOURCES += test_cbuffer_push.c
 SOURCES += test_cbuffer_pop.c
 SOURCES += test_cbuffer_resize.c
 
-# Buffer
-SOURCES += test_buffer_new.c
-SOURCES += test_buffer_resize.c
-SOURCES += test_buffer_macros.c
-SOURCES += test_buffer_cat.c
-SOURCES += test_buffer_dup.c
-SOURCES += test_buffer_insert.c
-SOURCES += test_buffer_remove.c
-SOURCES += test_buffer_set.c
-SOURCES += test_buffer_rewind.c
-SOURCES += test_buffer_rewindchr.c
-# SOURCES += test_buffer_rewindnchr.c
-SOURCES += test_buffer_append.c
-SOURCES += test_buffer_replace.c
-SOURCES += test_buffer_twin.c
-SOURCES += test_buffer_merge.c
-SOURCES += test_buffer_iterator.c
+# String
+SRC_SUBDIR += string
+SOURCES += test_string_create_init.c
+SOURCES += test_string_cat.c
+SOURCES += test_string_dup.c
+SOURCES += test_string_reserve.c
+SOURCES += test_string_shrink_to_fit.c
+SOURCES += test_string_insert.c
+SOURCES += test_string_remove.c
+SOURCES += test_string_set.c
+SOURCES += test_string_truncate.c
+SOURCES += test_string_remove_back.c
+SOURCES += test_string_remove_back_chr.c
+SOURCES += test_string_append.c
+SOURCES += test_string_replace.c
+SOURCES += test_string_clone.c
+SOURCES += test_string_merge.c
 
 # Memory
+SRC_SUBDIR += memory
 SOURCES += test_memset.c
 SOURCES += test_memcpy.c
 SOURCES += test_memccpy.c
@@ -82,11 +86,13 @@ SOURCES += test_memchr.c
 SOURCES += test_memcmp.c
 
 # Stdlib
+SRC_SUBDIR += stdlib
 SOURCES += test_realloc.c
 SOURCES += test_toa_base.c
 SOURCES += test_next_power2.c
 
-# String
+# Str
+SRC_SUBDIR += str
 SOURCES += test_strcmp.c
 SOURCES += test_strlen.c
 SOURCES += test_strnlen.c
@@ -99,6 +105,7 @@ SOURCES += test_strstr.c
 SOURCES += test_strrstr.c
 
 # Pool
+SRC_SUBDIR += pool
 SOURCES += test_pool_macros.c
 SOURCES += test_pool_new.c
 SOURCES += test_pool_obtain.c
@@ -106,11 +113,15 @@ SOURCES += test_pool_return.c
 SOURCES += test_pool_reset.c
 
 # Error
+SRC_SUBDIR += error
 SOURCES += test_error.c
 
-# Unistd
-
+# Getopt
+SRC_SUBDIR += unistd
 SOURCES += test_getopt.c
+
+SRC_PATH = src
+vpath %.c $(SRC_PATH) $(addprefix $(SRC_PATH)/,$(SRC_SUBDIR))
 
 # Objects
 OBJ_PATH = obj

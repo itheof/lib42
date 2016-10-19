@@ -3,31 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   array_insert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 16:16:16 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 17:59:48 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/16 14:47:04 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array_42.h"
 
-t_array		*array_insert(t_array *v, size_t i, void *e)
+t_array		*array_insert_at(t_array *a, size_t i, const void *e)
 {
 	char	*src;
-	size_t	len;
 
-	if (i > v->count)
+	if (i > a->len)
 		return (NULL);
-	if (TARRAY_NEED_RESIZE(v))
-		if (array_resize(v) == NULL)
-			return (NULL);
-	if (i == v->count)
-		return (array_push(v, e));
-	src = TARRAY_GET(v, i);
-	len = (v->count - i) * v->elem_size;
-	ft_memmove(src + v->elem_size, src, len);
-	array_set(v, i, e);
-	v->count += 1;
-	return (v);
+	if (array_reserve(a, 1) == NULL)
+		return (NULL);
+	if (i == a->len)
+		return (array_push(a, e));
+	src = array_get_at(a, i);
+	ft_memmove(src + a->elem_size, src, (a->len - i) * a->elem_size);
+	array_set_at(a, i, e);
+	a->len += 1;
+	return (a);
 }

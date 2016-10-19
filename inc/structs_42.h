@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs_42.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
+/*   Updated: 2016/10/11 02:00:28 by crenault         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_42_H
 # define STRUCTS_42_H
 
@@ -17,21 +29,19 @@ struct	s_pool
 	size_t			elem_size;
 };
 
-struct	s_buffer
+struct	s_string
 {
 	char	*str;
 	size_t	len;
-	size_t	sizemax;
-	size_t	iterator;
+	size_t	capacity;
 };
 
 struct	s_array
 {
-	void	*data;
-	size_t	max;
-	size_t	count;
-	size_t	elem_size;
-	size_t	iterator;
+	void		*data;
+	size_t		len;
+	size_t		capacity;
+	size_t		elem_size;
 };
 
 struct	s_cbuffer

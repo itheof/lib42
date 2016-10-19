@@ -19,40 +19,44 @@
 #include "vittf.h"
 
 // Array
-void	suite_array_macros(void);
-void	suite_array_getset(void);
-void	suite_array_indexof(void);
-void	suite_array_create_node(void);
-void	suite_array_push(void);
-void	suite_array_replace(void);
-void	suite_array_insert(void);
-void	suite_array_remove(void);
-void	suite_array_strsplit(void);
-void	suite_array_iterator(void);
-/* void	suite_array_copy(void); */
+void	suite_array_create(void);
+void 	suite_array_init(void);
+void 	suite_array_at(void);
+void 	suite_array_reserve(void);
+void 	suite_array_shrink_to_fit(void);
+void 	suite_array_push(void);
+void 	suite_array_pop(void);
+void 	suite_array_index_of(void);
+void 	suite_array_replace_at(void);
+void 	suite_array_insert_at(void);
+void 	suite_array_remove_at(void);
+void 	suite_array_remove_elem(void);
+void 	suite_array_clone(void);
+void 	suite_array_truncate_clear(void);
+void 	suite_array_get_available(void);
 
 // Cbuffer
 void	suite_cbuffer_push(void);
 void	suite_cbuffer_pop(void);
 void	suite_cbuffer_resize(void);
 
-// Buffer
-void	suite_buffer_macros(void);
-void	suite_buffer_new(void);
-void	suite_buffer_resize(void);
-void	suite_buffer_dup(void);
-void	suite_buffer_cat(void);
-void	suite_buffer_insert(void);
-void	suite_buffer_remove(void);
-void	suite_buffer_set(void);
-void	suite_buffer_rewind(void);
-void	suite_buffer_rewindchr(void);
-/* void	suite_buffer_rewindnchr(void); */
-void	suite_buffer_append(void);
-void	suite_buffer_replace(void);
-void	suite_buffer_twin(void);
-void	suite_buffer_merge(void);
-void	suite_buffer_iterator(void);
+// String
+void	suite_string_macros(void);
+void	suite_string_create_init(void);
+void	suite_string_reserve(void);
+void	suite_string_shrink_to_fit(void);
+void	suite_string_dup(void);
+void	suite_string_cat(void);
+void	suite_string_insert(void);
+void	suite_string_remove(void);
+void	suite_string_set(void);
+void	suite_string_truncate(void);
+void	suite_string_remove_back(void);
+void	suite_string_remove_back_chr(void);
+void	suite_string_append(void);
+void	suite_string_replace(void);
+void	suite_string_clone(void);
+void	suite_string_merge(void);
 
 // Memory
 void	suite_memcpy(void);
@@ -70,7 +74,7 @@ void	suite_next_power_of_2(void);
 // Ctype
 void	suite_ctype(void);
 
-// String
+// Str
 void	suite_strcmp(void);
 void	suite_strlen(void);
 void	suite_strnlen(void);

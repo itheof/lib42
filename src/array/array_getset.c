@@ -3,24 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   array_getset.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:31:25 by djean             #+#    #+#             */
-/*   Updated: 2016/09/07 15:13:49 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/16 15:34:24 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array_42.h"
 
-void	*array_get(t_array *v, size_t i)
+void	*array_get_at(t_array *a, size_t i)
 {
-	if (i >= v->count)
-		return (NULL);
-	return (TARRAY_GET(v, i));
+	if (i < a->len)
+		return ((char *)a->data + i * a->elem_size);
+	return (NULL);
 }
 
-void	array_set(t_array *v, size_t i, void *e)
+void	*array_set_at(t_array *a, size_t i, const void *e)
 {
-	if (i < v->count)
-		ft_memcpy(TARRAY_GET(v, i), e, v->elem_size);
+	if (i < a->len)
+		return (ft_memcpy(array_get_at(a, i), e, a->elem_size));
+	return (NULL);
 }

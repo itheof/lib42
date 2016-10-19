@@ -50,20 +50,20 @@ SOURCES += next_power2.c
 
 # Array
 SRC_SUBDIR += array
-SOURCES += array_new.c
-SOURCES += array_resize.c
+SOURCES += array_create.c
+SOURCES += array_init.c
+SOURCES += array_clone.c
+SOURCES += array_reserve.c
+SOURCES += array_shrink_to_fit.c
+SOURCES += array_truncate.c
+SOURCES += array_clear.c
 SOURCES += array_getset.c
-SOURCES += array_indexof.c
-SOURCES += array_create_node.c
-SOURCES += array_stack.c
-SOURCES += array_replace.c
+SOURCES += array_index_of.c
 SOURCES += array_insert.c
-SOURCES += array_reset.c
-SOURCES += array_destroy.c
+SOURCES += array_replace.c
+SOURCES += array_get_available.c
 SOURCES += array_remove.c
-SOURCES += array_delete.c
-SOURCES += array_strsplit.c
-SOURCES += array_iter.c
+SOURCES += array_stack.c
 
 # Cbuffer
 SRC_SUBDIR += cbuffer
@@ -74,25 +74,20 @@ SOURCES += cbuffer_get.c
 SOURCES += cbuffer_resize.c
 
 # Buffer
-SRC_SUBDIR += buffer
-SOURCES += buffer_new.c
-SOURCES += buffer_dup.c
-SOURCES += buffer_cat.c
-SOURCES += buffer_destroy.c
-SOURCES += buffer_insert.c
-SOURCES += buffer_merge.c
-SOURCES += buffer_remove.c
-SOURCES += buffer_replace.c
-SOURCES += buffer_resize.c
-SOURCES += buffer_rewind.c
-SOURCES += buffer_set.c
-SOURCES += buffer_toa.c
-SOURCES += buffer_twin.c
-SOURCES += buffer_append.c
-SOURCES += buffer_iter.c
+SRC_SUBDIR += string
+SOURCES += string_create.c
+SOURCES += string_init.c
+SOURCES += string_dup.c
+SOURCES += string_cat.c
+SOURCES += string_replace.c
+SOURCES += string_insert.c
+SOURCES += string_remove.c
+SOURCES += string_reserve.c
+SOURCES += string_shrink_to_fit.c
+SOURCES += string_truncate.c
 
 # String
-SRC_SUBDIR += string
+SRC_SUBDIR += str
 SOURCES += ft_strcmp.c
 SOURCES += ft_strlen.c
 SOURCES += ft_strdup.c

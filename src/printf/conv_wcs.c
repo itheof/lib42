@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-int	conv_wcs(t_buffer *pb, t_format *fmt, va_list ap)
+int	conv_wcs(t_string *pb, t_format *fmt, va_list ap)
 {
 	char	*arg;
 	wchar_t	*wcs;
@@ -17,7 +17,7 @@ int	conv_wcs(t_buffer *pb, t_format *fmt, va_list ap)
 		return (-1);
 	if (fmt->f_minus == 0)
 		str_formatting(pb, fmt, wlen);
-	buffer_ncat(pb, arg, wlen);
+	string_ncat(pb, arg, wlen);
 	if (fmt->min_width > 0 && fmt->f_minus == 1)
 		str_formatting(pb, fmt, wlen);
 	free(arg);

@@ -2,7 +2,6 @@
 
 int	main(void)
 {
-
 	// memory
 	suite_memset();
 	suite_memcmp();
@@ -19,7 +18,7 @@ int	main(void)
 	suite_toa_base();
 	suite_next_power_of_2();
 
-	// string
+	// str
 	suite_strcmp();
 	suite_strlen();
 	suite_strnlen();
@@ -31,36 +30,39 @@ int	main(void)
 	suite_strstr();
 	suite_strrstr();
 
-	// buffer
-	suite_buffer_dup();
-	suite_buffer_cat();
-	suite_buffer_insert();
-	suite_buffer_append();
-	suite_buffer_macros();
-	suite_buffer_replace();
-	suite_buffer_new();
-	suite_buffer_resize();
-	suite_buffer_remove();
-	suite_buffer_set();
-	suite_buffer_rewind();
-	suite_buffer_rewindchr();
-	//suite_buffer_rewindnchr();
-	suite_buffer_twin();
-	suite_buffer_merge();
-	suite_buffer_iterator();
+	// string
+	suite_string_dup();
+	suite_string_cat();
+	suite_string_reserve();
+	suite_string_shrink_to_fit();
+	suite_string_insert();
+	suite_string_append();
+	suite_string_replace();
+	suite_string_create_init();
+	suite_string_remove();
+	suite_string_set();
+	suite_string_truncate();
+	suite_string_remove_back();
+	suite_string_remove_back_chr();
+	suite_array_get_available();
+	suite_string_clone();
+	suite_string_merge();
 
 	// array
-	suite_array_macros();
-	suite_array_indexof();
-	suite_array_create_node();
+	suite_array_create();
+	suite_array_init();
+	suite_array_at();
+	suite_array_reserve();
+	suite_array_shrink_to_fit();
 	suite_array_push();
-	suite_array_replace();
-	suite_array_insert();
-	suite_array_remove();
-	//suite_array_copy();
-	suite_array_getset();
-	suite_array_strsplit();
-	suite_array_iterator();
+	suite_array_pop();
+	suite_array_replace_at();
+	suite_array_insert_at();
+	suite_array_remove_at();
+	suite_array_remove_elem();
+	suite_array_clone();
+	suite_array_truncate_clear();
+	suite_array_get_available();
 
 	// cbuffer
 	suite_cbuffer_push();

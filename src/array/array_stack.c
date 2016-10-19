@@ -3,27 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   array_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:31:26 by djean             #+#    #+#             */
-/*   Updated: 2016/10/05 17:56:24 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/17 16:32:19 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array_42.h"
 
-void	*array_pop(t_array *v, void *old)
+t_array		*array_push(t_array *a, const void *e)
 {
-	v->count -= 1;
-	return (array_remove(v, v->count, old));
+	if (array_reserve(a, 1) == NULL)
+		return (NULL);
+	a->len += 1;
+	ft_memcpy(array_get_at(a, a->len - 1), e, a->elem_size);
+	return (a);
 }
 
-t_array	*array_push(t_array *v, void *e)
+t_array		*array_pop(t_array *a, void *old)
 {
-	if (TARRAY_NEED_RESIZE(v))
-		if (array_resize(v) == NULL)
-			return (NULL);
-	ft_memcpy(TARRAY_GET(v, v->count), e, v->elem_size);
-	v->count += 1;
-	return (v);
+	if (a->len == 0)
+		return (NULL);
+	if (array_remove_at(a, a->len - 1, old) == NULL)
+		return (NULL);
+	return (a);
 }

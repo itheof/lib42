@@ -6,12 +6,12 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/10 19:48:10 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/12 02:19:21 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CBUFFER_42_H
-# define CBUFFER_42_H
+#ifndef cbuffer_42_H
+# define cbuffer_42_H
 
 # include <stdlib.h>
 # include "typedefs_42.h"
