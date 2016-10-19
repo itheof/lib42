@@ -1,10 +1,5 @@
 #include "header.h"
 
-static void teardown(t_cbuffer *buffer)
-{
-	free(buffer->data);
-}
-
 static void	test_00_cbuffer_pushBackInt(void)
 {
 	t_cbuffer	buffer;
@@ -29,7 +24,7 @@ static void	test_00_cbuffer_pushBackInt(void)
 	v_assert_size_t(1, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -56,7 +51,7 @@ static void	test_01_cbuffer_pushBackTwoInt(void)
 	v_assert_size_t(2, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -88,7 +83,7 @@ static void	test_02_cbuffer_pushBackExactLenInt(void)
 	v_assert_size_t(3, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -122,7 +117,7 @@ static void	test_03_cbuffer_pushBackMoreInt(void)
 	v_assert_size_t(3, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -150,7 +145,7 @@ static void	test_04_cbuffer_pushFrontInt(void)
 	v_assert_size_t(1, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -183,7 +178,7 @@ static void	test_05_cbuffer_pushFrontTwoInt(void)
 	v_assert_size_t(2, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -215,7 +210,7 @@ static void	test_06_cbuffer_pushFrontExactLenInt(void)
 	v_assert_size_t(3, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -249,7 +244,7 @@ static void	test_07_cbuffer_pushFrontMoreInt(void)
 	v_assert_size_t(3, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -282,7 +277,7 @@ static void test_08_cbuffer_pushFrontAndBackInt(void)
 	v_assert_size_t(2, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -322,7 +317,7 @@ static void test_09_cbuffer_pushFrontAndBackTwoInt(void)
 	v_assert_size_t(3, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -349,7 +344,7 @@ static void test_10_cbuffer_pushBackAndFrontInt(void)
 	v_assert_size_t(2, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -389,7 +384,7 @@ static void test_11_cbuffer_pushBackAndFrontTwoInt(void)
 	v_assert_size_t(3, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -438,7 +433,7 @@ static void	test_12_cbuffer_pushBackCallDelete(void)
 	v_assert_size_t(3, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -482,7 +477,7 @@ static void	test_13_cbuffer_pushFrontCallDelete(void)
 	v_assert_size_t(3, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -514,7 +509,7 @@ static void	test_14_cbuffer_pushFrontStrings(void)
 	v_assert_size_t(3, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
@@ -546,7 +541,7 @@ static void	test_14_cbuffer_pushBackStrings(void)
 	v_assert_size_t(3, ==, buffer.len);
 	v_assert_size_t(3, ==, buffer.capacity);
 
-	teardown(&buffer);
+	cbuffer_shutdown(&buffer);
 	VTS;
 }
 

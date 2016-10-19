@@ -67,7 +67,8 @@ SOURCES += array_stack.c
 
 # Cbuffer
 SRC_SUBDIR += cbuffer
-SOURCES += cbuffer_new.c
+SOURCES += cbuffer_create.c
+SOURCES += cbuffer_init.c
 SOURCES += cbuffer_push.c
 SOURCES += cbuffer_pop.c
 SOURCES += cbuffer_get.c
