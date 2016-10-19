@@ -117,7 +117,7 @@ SRC_SUBDIR += error
 SOURCES += test_error.c
 
 # Getopt
-SRC_SUBDIR += getopt
+SRC_SUBDIR += unistd
 SOURCES += test_getopt.c
 
 SRC_PATH = src
