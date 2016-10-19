@@ -1,7 +1,7 @@
 #ifndef TEST_LIB42_H
 #define TEST_LIB42_H
 
-#define _XOPEN_SOURCE 700
+// #define _XOPEN_SOURCE 700
 #define _DEFAUTL_SOURCE
 
 #include <unistd.h>
@@ -14,26 +14,25 @@
 #include <bsd/string.h>
 #endif
 #include <stdint.h>
-#include <stdio.h>
 #include "lib42.h"
 #include "vittf.h"
 
 // Array
 void	suite_array_create(void);
-void 	suite_array_init(void);
-void 	suite_array_at(void);
-void 	suite_array_reserve(void);
-void 	suite_array_shrink_to_fit(void);
-void 	suite_array_push(void);
-void 	suite_array_pop(void);
-void 	suite_array_index_of(void);
-void 	suite_array_replace_at(void);
-void 	suite_array_insert_at(void);
-void 	suite_array_remove_at(void);
-void 	suite_array_remove_elem(void);
-void 	suite_array_clone(void);
-void 	suite_array_truncate_clear(void);
-void 	suite_array_get_available(void);
+void	suite_array_init(void);
+void	suite_array_at(void);
+void	suite_array_reserve(void);
+void	suite_array_shrink_to_fit(void);
+void	suite_array_push(void);
+void	suite_array_pop(void);
+void	suite_array_index_of(void);
+void	suite_array_replace_at(void);
+void	suite_array_insert_at(void);
+void	suite_array_remove_at(void);
+void	suite_array_remove_elem(void);
+void	suite_array_clone(void);
+void	suite_array_truncate_clear(void);
+void	suite_array_get_available(void);
 
 // Cbuffer
 void	suite_cbuffer_push(void);
