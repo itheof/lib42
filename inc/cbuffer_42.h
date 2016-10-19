@@ -42,16 +42,58 @@ t_cbuffer	*cbuffer_init(t_cbuffer *buffer, size_t capacity, size_t elem_size,
 							void (*delete_func)(void *));
 void		cbuffer_shutdown(t_cbuffer *buffer);
 
-t_cbuffer	*cbuffer_resize(t_cbuffer *buffer, size_t capacity);
+/*
+** `cbuffer_reserve` enlarge the capacity of the buffer if (len + 'additional')
+** is bigger than actual capacity.
+**
+** `cbuffer_shrink_to_fit`reduce the capacity of the 'internal data' to
+** be the closest to the buffer len.
+*/
+t_cbuffer	*cbuffer_reserve(t_cbuffer *buffer, size_t additional);
+t_cbuffer	*cbuffer_shrink_to_fit(t_cbuffer *buffer);
 
+/*
+** `cbuffer_truncate_from_back` pop enought element from the back
+** to get a len of 'n'. If truncate is larger than actual len it return NULL
+** and do nothing.
+**
+** `cbuffer_truncate_from_front` pop enought element from the front
+** to get a len of 'n'. If truncate is larger than actual len it return NULL
+** and do nothing.
+*/
+t_cbuffer	*cbuffer_truncate_from_back(t_cbuffer *buffer, size_t n);
+t_cbuffer	*cbuffer_truncate_from_front(t_cbuffer *buffer, size_t n);
+
+/*
+** `cbuffer_push_back` push the 'elem' to the back of the buffer.
+** Call delete_func if the pushed element overwrite another in the buffer.
+**
+** `cbuffer_push_front` push the 'elem' to the front of the buffer.
+** Call delete_func if the pushed element overwrite another in the buffer.
+*/
 void		cbuffer_push_back(t_cbuffer *buffer, const void *elem);
 void		cbuffer_push_front(t_cbuffer *buffer, const void *elem);
 
+/*
+** `cbuffer_pop_back` returns the popped element from the back
+** or NULL if the len is zero.
+**
+** `cbuffer_pop_front` returns the popped element from the front
+** or NULL if the len is zero.
+*/
 void		*cbuffer_pop_back(t_cbuffer *buffer);
 void		*cbuffer_pop_front(t_cbuffer *buffer);
 
-void		*cbuffer_at(const t_cbuffer *buffer, size_t i);
-void		*cbuffer_front(const t_cbuffer *buffer);
-void		*cbuffer_back(const t_cbuffer *buffer);
+/*
+** `cbuffer_get_at` returns the element at the given index
+** or NULL if out of range.
+**
+** `cbuffer_get_front` returns the element on front or NULL if the len is zero.
+**
+** `cbuffer_get_back` returns the element on back or NULL if the len is zero.
+*/
+void		*cbuffer_get_at(const t_cbuffer *buffer, size_t i);
+void		*cbuffer_get_front(const t_cbuffer *buffer);
+void		*cbuffer_get_back(const t_cbuffer *buffer);
 
 #endif

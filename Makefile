@@ -72,7 +72,8 @@ SOURCES += cbuffer_init.c
 SOURCES += cbuffer_push.c
 SOURCES += cbuffer_pop.c
 SOURCES += cbuffer_get.c
-SOURCES += cbuffer_resize.c
+SOURCES += cbuffer_reserve_shrink.c
+SOURCES += cbuffer_truncate.c
 
 # Buffer
 SRC_SUBDIR += string

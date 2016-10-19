@@ -38,7 +38,7 @@ void 	suite_array_get_available(void);
 // Cbuffer
 void	suite_cbuffer_push(void);
 void	suite_cbuffer_pop(void);
-void	suite_cbuffer_resize(void);
+void	suite_cbuffer_reserve(void);
 
 // String
 void	suite_string_macros(void);

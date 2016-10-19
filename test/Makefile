@@ -56,7 +56,7 @@ SOURCES += test_array_get_available.c
 SRC_SUBDIR += cbuffer
 SOURCES += test_cbuffer_push.c
 SOURCES += test_cbuffer_pop.c
-SOURCES += test_cbuffer_resize.c
+SOURCES += test_cbuffer_reserve.c
 
 # String
 SRC_SUBDIR += string

@@ -1,6 +1,6 @@
 #include "header.h"
 
-static void	test_00_cbuffer_resizeStartBeforeEnd(void)
+static void	test_00_cbuffer_reserveStartBeforeEnd(void)
 {
 	t_cbuffer	buffer;
 
@@ -15,28 +15,28 @@ static void	test_00_cbuffer_resizeStartBeforeEnd(void)
 	}
 
 	{
-		int front = *((int*)cbuffer_front(&buffer));
+		int front = *((int*)cbuffer_get_front(&buffer));
 		v_assert_int(0, ==, front);
 
-		int n = *((int*)cbuffer_at(&buffer, 5));
+		int n = *((int*)cbuffer_get_at(&buffer, 5));
 		v_assert_int(5, ==, n);
 
-		int back = *((int*)cbuffer_back(&buffer));
+		int back = *((int*)cbuffer_get_back(&buffer));
 		v_assert_int(9, ==, back);
 	}
 
 	v_assert_size_t(10, ==, buffer.len);
 	v_assert_size_t(10, ==, buffer.capacity);
 
-	buffer = *cbuffer_resize(&buffer, 20);
+	buffer = *cbuffer_reserve(&buffer, 10);
 	{
-		int front = *((int*)cbuffer_front(&buffer));
+		int front = *((int*)cbuffer_get_front(&buffer));
 		v_assert_int(0, ==, front);
 
-		int n = *((int*)cbuffer_at(&buffer, 5));
+		int n = *((int*)cbuffer_get_at(&buffer, 5));
 		v_assert_int(5, ==, n);
 
-		int back = *((int*)cbuffer_back(&buffer));
+		int back = *((int*)cbuffer_get_back(&buffer));
 		v_assert_int(9, ==, back);
 	}
 
@@ -47,7 +47,7 @@ static void	test_00_cbuffer_resizeStartBeforeEnd(void)
 	VTS;
 }
 
-static void	test_01_cbuffer_resizeStartAfterEnd(void)
+static void	test_01_cbuffer_reserveStartAfterEnd(void)
 {
 	t_cbuffer	buffer;
 
@@ -62,52 +62,52 @@ static void	test_01_cbuffer_resizeStartAfterEnd(void)
 	}
 
 	{
-		int front = *((int*)cbuffer_front(&buffer));
+		int front = *((int*)cbuffer_get_front(&buffer));
 		v_assert_int(7, ==, front);
 
-		int n = *((int*)cbuffer_at(&buffer, 4));
+		int n = *((int*)cbuffer_get_at(&buffer, 4));
 		v_assert_int(3, ==, n);
 
-		int back = *((int*)cbuffer_back(&buffer));
+		int back = *((int*)cbuffer_get_back(&buffer));
 		v_assert_int(0, ==, back);
 	}
 
 	v_assert_size_t(8, ==, buffer.len);
 	v_assert_size_t(10, ==, buffer.capacity);
 
-	buffer = *cbuffer_resize(&buffer, 20);
+	buffer = *cbuffer_reserve(&buffer, 10);
 	{
-		int front = *((int*)cbuffer_front(&buffer));
+		int front = *((int*)cbuffer_get_front(&buffer));
 		v_assert_int(7, ==, front);
 
-		int n = *((int*)cbuffer_at(&buffer, 4));
+		int n = *((int*)cbuffer_get_at(&buffer, 4));
 		v_assert_int(3, ==, n);
 
-		int back = *((int*)cbuffer_back(&buffer));
+		int back = *((int*)cbuffer_get_back(&buffer));
 		v_assert_int(0, ==, back);
 	}
 
 	v_assert_size_t(8, ==, buffer.len);
-	v_assert_size_t(20, ==, buffer.capacity);
+	v_assert_size_t(18, ==, buffer.capacity);
 
 	cbuffer_shutdown(&buffer);
 	VTS;
 }
 
-static void	test_02_cbuffer_resizeEmptyBuffer(void)
+static void	test_02_cbuffer_reserveEmptyBuffer(void)
 {
 	t_cbuffer	buffer;
 
 	cbuffer_init(&buffer, 10, sizeof(int), NULL);
 
-	v_assert_ptr(NULL, ==, cbuffer_back(&buffer));
+	v_assert_ptr(NULL, ==, cbuffer_get_back(&buffer));
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(10, ==, buffer.capacity);
 
-	buffer = *cbuffer_resize(&buffer, 20);
+	buffer = *cbuffer_reserve(&buffer, 20);
 
-	v_assert_ptr(NULL, ==, cbuffer_back(&buffer));
+	v_assert_ptr(NULL, ==, cbuffer_get_back(&buffer));
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(20, ==, buffer.capacity);
@@ -116,11 +116,11 @@ static void	test_02_cbuffer_resizeEmptyBuffer(void)
 	VTS;
 }
 
-void	suite_cbuffer_resize(void)
+void	suite_cbuffer_reserve(void)
 {
-	test_00_cbuffer_resizeStartBeforeEnd();
-	test_01_cbuffer_resizeStartAfterEnd();
-	test_02_cbuffer_resizeEmptyBuffer();
+	test_00_cbuffer_reserveStartBeforeEnd();
+	test_01_cbuffer_reserveStartAfterEnd();
+	test_02_cbuffer_reserveEmptyBuffer();
 
 	VSS;
 }
