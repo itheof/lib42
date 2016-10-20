@@ -200,6 +200,14 @@ static void	test_12_strrstr_GrowingPattern(void)
 	VTS;
 }
 
+static void	test_13_strrstr_StrangeTextAndPattern(void)
+{
+	const char *big = "qqqqw";
+
+	v_assert_ptr(big, ==, ft_strrstr(big, "qqqq"));
+	VTS;
+}
+
 void		suite_strrstr(void)
 {
 	test_00_strrstr_SecondWorld();
@@ -215,6 +223,7 @@ void		suite_strrstr(void)
 	test_10_strrstr_MultipleCharWichFollow();
 	test_11_strrstr_MultipleCharWichFollowLittlePattern();
 	test_12_strrstr_GrowingPattern();
+	test_13_strrstr_StrangeTextAndPattern();
 
 	VSS;
 }
