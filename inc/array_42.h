@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/24 16:34:10 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/24 16:49:31 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ t_array		*array_clone(t_array *dst, const t_array *src);
 ** `array_get_last` returns the pointer on the data of the last index, or NULL
 ** if the array is empty
 */
-void		*array_get_at(t_array *a, size_t i);
+void		*array_get_at(const t_array *a, size_t i);
 void		*array_set_at(t_array *a, size_t i, const void *e);
-ssize_t		array_index_of(t_array *a, const void *e);
-void		*array_get_last(t_array *a);
+ssize_t		array_index_of(const t_array *a, const void *e);
+void		*array_get_last(const t_array *a);
 
 /*
 ** `array_insert_at` insert an element at the specified index,

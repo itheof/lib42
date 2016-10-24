@@ -6,13 +6,13 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:31:25 by djean             #+#    #+#             */
-/*   Updated: 2016/10/24 15:57:45 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/24 16:49:29 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array_42.h"
 
-void	*array_get_at(t_array *a, size_t i)
+void	*array_get_at(const t_array *a, size_t i)
 {
 	if (i < a->len)
 		return ((char *)a->data + i * a->elem_size);
@@ -26,7 +26,7 @@ void	*array_set_at(t_array *a, size_t i, const void *e)
 	return (NULL);
 }
 
-void	*array_get_last(t_array *a)
+void	*array_get_last(const t_array *a)
 {
 	if (a->len == 0)
 		return (NULL);
