@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:31:25 by djean             #+#    #+#             */
-/*   Updated: 2016/10/24 16:49:29 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/24 17:38:11 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,11 @@ void	*array_get_last(const t_array *a)
 	if (a->len == 0)
 		return (NULL);
 	return (array_get_at(a, a->len - 1));
+}
+
+void	*array_get_first(const t_array *a)
+{
+	if (a->len > 0)
+		return (array_get_at(a, 0));
+	return (NULL);
 }

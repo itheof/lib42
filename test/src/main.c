@@ -44,7 +44,6 @@ int	main(void)
 	suite_string_truncate();
 	suite_string_remove_back();
 	suite_string_remove_back_chr();
-	suite_array_get_available();
 	suite_string_clone();
 	suite_string_merge();
 

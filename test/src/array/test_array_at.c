@@ -117,7 +117,6 @@ static void	test_03_array_at_OutOfRange(void)
 	VTS;
 }
 
-#include <stdio.h>
 static void	test_04_array_get_last_Int(void)
 {
 	int data[4] = {1, 2, 3, 4};
@@ -150,6 +149,25 @@ static void	test_04_array_get_last_Int(void)
 	teardown();
 	VTS;
 }
+
+static void	test_05_array_get_first_Int(void)
+{
+	int data[4] = {1, 2, 3, 4};
+	setup(data, sizeof(int), ARR_SIZ_MAX(data));
+
+	int *value = array_get_first(&array);
+	v_assert_int(data[0], ==, *value);
+
+	array.len = 0;
+
+	int *empty = array_get_first(&array);
+	v_assert_size_t(0, ==, array.len);
+	v_assert_ptr(NULL, ==, empty);
+
+	teardown();
+	VTS;
+}
+
 void	suite_array_at(void)
 {
 	test_00_array_at_Int();
@@ -157,6 +175,7 @@ void	suite_array_at(void)
 	test_02_array_at_Struct();
 	test_03_array_at_OutOfRange();
 	test_04_array_get_last_Int();
+	test_05_array_get_first_Int();
 
 	VSS;
 }
