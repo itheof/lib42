@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/18 14:06:00 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/24 16:21:51 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include "stdlib_42.h"
 # include "str_42.h"
 
-# define ARRAY_INIT_SIZE		(8U)
+# define ARRAY_INIT_SIZE	(8U)
+# define ARRAY_IS_EMPTY(a)	((a)->len == 0)
 
 /*
 ** `array_create` and `array_create_with_capacity` malloc a new `t_array`
