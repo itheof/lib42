@@ -69,6 +69,7 @@ int	main(void)
 	suite_cbuffer_pop();
 	suite_cbuffer_reserve();
 	suite_cbuffer_truncate();
+	suite_cbuffer_shrink_to_fit();
 
 	// error
 	suite_error();

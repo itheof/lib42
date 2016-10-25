@@ -40,6 +40,7 @@ void	suite_cbuffer_push(void);
 void	suite_cbuffer_pop(void);
 void	suite_cbuffer_reserve(void);
 void	suite_cbuffer_truncate(void);
+void	suite_cbuffer_shrink_to_fit(void);
 
 // String
 void	suite_string_macros(void);

@@ -58,6 +58,7 @@ SOURCES += test_cbuffer_push.c
 SOURCES += test_cbuffer_pop.c
 SOURCES += test_cbuffer_reserve.c
 SOURCES += test_cbuffer_truncate.c
+SOURCES += test_cbuffer_shrink_to_fit.c
 
 # String
 SRC_SUBDIR += string
