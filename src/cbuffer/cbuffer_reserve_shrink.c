@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cbuffer_resize.c                                   :+:      :+:    :+:   */
+/*   cbuffer_reserve_shrink.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/08 18:20:41 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/25 15:16:14 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_cbuffer			*cbuffer_reserve(t_cbuffer *b, size_t additional)
 		free(b->data);
 		b->data = new_data;
 		b->start = 0;
-		b->end = b->len == 0 ? 0 : b->len - 1;
+		b->end = (b->len == 0) ? 0 : (b->len - 1);
 		b->capacity = b->len + additional;
 	}
 	return (b);
