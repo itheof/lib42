@@ -2,7 +2,7 @@
 
 t_cbuffer	buffer;
 
-void		setup(size_t len, size_t elem_size, void (*del_func)(void *))
+static void		setup(size_t len, size_t elem_size, void (*del_func)(void *))
 {
 	buffer.data = malloc(len * elem_size);
 	buffer.len = 0;
@@ -13,7 +13,7 @@ void		setup(size_t len, size_t elem_size, void (*del_func)(void *))
 	buffer.end = 0;
 }
 
-void		teardown(void)
+static void		teardown(void)
 {
 	free(buffer.data);
 }

@@ -1,10 +1,26 @@
 #include "header.h"
 
+t_cbuffer	buffer;
+
+static void		setup(size_t len, size_t elem_size, void (*del_func)(void *))
+{
+	buffer.data = malloc(len * elem_size);
+	buffer.len = 0;
+	buffer.capacity = len;
+	buffer.elem_size = elem_size;
+	buffer.delete_func = del_func;
+	buffer.start = 0;
+	buffer.end = 0;
+}
+
+static void		teardown(void)
+{
+	free(buffer.data);
+}
+
 static void	test_00_cbuffer_reserveStartBeforeEnd(void)
 {
-	t_cbuffer	buffer;
-
-	cbuffer_init(&buffer, 10, sizeof(int), NULL);
+	setup(10, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(10, ==, buffer.capacity);
@@ -43,15 +59,13 @@ static void	test_00_cbuffer_reserveStartBeforeEnd(void)
 	v_assert_size_t(10, ==, buffer.len);
 	v_assert_size_t(20, ==, buffer.capacity);
 
-	cbuffer_shutdown(&buffer);
+	teardown();
 	VTS;
 }
 
 static void	test_01_cbuffer_reserveStartAfterEnd(void)
 {
-	t_cbuffer	buffer;
-
-	cbuffer_init(&buffer, 10, sizeof(int), NULL);
+	setup(10, sizeof(int), NULL);
 
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(10, ==, buffer.capacity);
@@ -90,15 +104,13 @@ static void	test_01_cbuffer_reserveStartAfterEnd(void)
 	v_assert_size_t(8, ==, buffer.len);
 	v_assert_size_t(18, ==, buffer.capacity);
 
-	cbuffer_shutdown(&buffer);
+	teardown();
 	VTS;
 }
 
 static void	test_02_cbuffer_reserveEmptyBuffer(void)
 {
-	t_cbuffer	buffer;
-
-	cbuffer_init(&buffer, 10, sizeof(int), NULL);
+	setup(10, sizeof(int), NULL);
 
 	v_assert_ptr(NULL, ==, cbuffer_get_back(&buffer));
 
@@ -112,7 +124,7 @@ static void	test_02_cbuffer_reserveEmptyBuffer(void)
 	v_assert_size_t(0, ==, buffer.len);
 	v_assert_size_t(20, ==, buffer.capacity);
 
-	cbuffer_shutdown(&buffer);
+	teardown();
 	VTS;
 }
 
