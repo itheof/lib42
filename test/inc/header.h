@@ -39,6 +39,7 @@ void 	suite_array_get_available(void);
 void	suite_cbuffer_push(void);
 void	suite_cbuffer_pop(void);
 void	suite_cbuffer_reserve(void);
+void	suite_cbuffer_truncate(void);
 
 // String
 void	suite_string_macros(void);

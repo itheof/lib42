@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/25 15:19:15 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/25 17:36:27 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,10 @@ static void		*cbuffer_truncate_from(t_cbuffer *buffer, size_t n,
 
 t_cbuffer		*cbuffer_truncate_from_back(t_cbuffer *buffer, size_t n)
 {
-	cbuffer_truncate_from(buffer, n, cbuffer_pop_back);
-	return (buffer);
+	return (cbuffer_truncate_from(buffer, n, cbuffer_pop_back));
 }
 
 t_cbuffer		*cbuffer_truncate_from_front(t_cbuffer *buffer, size_t n)
 {
-	cbuffer_truncate_from(buffer, n, cbuffer_pop_front);
-	return (buffer);
+	return (cbuffer_truncate_from(buffer, n, cbuffer_pop_front));
 }
