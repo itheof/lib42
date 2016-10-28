@@ -1,7 +1,7 @@
 #ifndef TEST_LIB42_H
 #define TEST_LIB42_H
 
-// #define _XOPEN_SOURCE 700
+#define _XOPEN_SOURCE 700
 #define _DEFAULT_SOURCE
 
 #include <unistd.h>
