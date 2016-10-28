@@ -1,4 +1,3 @@
 [submodule "test/vittf"]
 	path = test/vittf
-	url = https://github.com/Kerollmops/vittf.git
-	branch = duplicates_symbol_fix
+	url = https://github.com/dkrmr/vittf.git
