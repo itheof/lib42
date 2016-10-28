@@ -2,7 +2,7 @@
 #define TEST_LIB42_H
 
 // #define _XOPEN_SOURCE 700
-#define _DEFAUTL_SOURCE
+#define _DEFAULT_SOURCE
 
 #include <unistd.h>
 #include <ctype.h>
