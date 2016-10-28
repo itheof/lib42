@@ -8,7 +8,6 @@ static void	test_ctype_off(void)
 
 	while (i <= MAX_CTYPE)
 	{
-		v_assert_int(!!FT_ISASCII(i), ==, !!isascii(i));
 		v_assert_int(!!FT_ISBLANK(i), ==, !!isblank(i));
 		v_assert_int(!!FT_ISSPACE(i), ==, !!isspace(i));
 		v_assert_int(!!FT_ISLOWER(i), ==, !!islower(i));
@@ -23,6 +22,7 @@ static void	test_ctype_off(void)
 		v_assert_int(!!FT_TOLOWER(i), ==, !!tolower(i));
 		v_assert_int(!!FT_TOUPPER(i), ==, !!toupper(i));
 		v_assert_int(!!FT_ISXDIGIT(i), ==, !!isxdigit(i));
+		// v_assert_int(!!FT_ISASCII(i), ==, !!isascii(i));
 		++i;
 	}
 	v_test_success("Ctype");
