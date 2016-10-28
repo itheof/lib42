@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cbuffer_resize.c                                   :+:      :+:    :+:   */
+/*   cbuffer_reserve_shrink.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 16:12:42 by crenault          #+#    #+#             */
-/*   Updated: 2016/10/08 18:20:41 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/25 15:16:14 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,40 @@ inline static void	copy_data(t_cbuffer const *b, char *new_data)
 	}
 }
 
-t_cbuffer			*cbuffer_resize(t_cbuffer *b, size_t len)
+t_cbuffer			*cbuffer_reserve(t_cbuffer *b, size_t additional)
 {
 	char	*new_data;
 
-	if (len < b->len)
-		return (NULL);
-	if (len == b->capacity)
-		return (b);
-	if ((new_data = malloc(len * b->elem_size)) == NULL)
-		return (NULL);
-	copy_data(b, new_data);
-	free(b->data);
-	b->data = new_data;
-	b->start = 0;
-	b->end = b->len == 0 ? 0 : b->len - 1;
-	b->capacity = len;
+	if (b->capacity - b->len < additional)
+	{
+		if ((new_data = malloc((b->len + additional) * b->elem_size)) == NULL)
+			return (NULL);
+		copy_data(b, new_data);
+		free(b->data);
+		b->data = new_data;
+		b->start = 0;
+		b->end = (b->len == 0) ? 0 : (b->len - 1);
+		b->capacity = b->len + additional;
+	}
+	return (b);
+}
+
+t_cbuffer			*cbuffer_shrink_to_fit(t_cbuffer *b)
+{
+	size_t		new_capacity;
+	char		*new_data;
+
+	if (b->len != b->capacity || (b->len == 0 && b->capacity != 1))
+	{
+		new_capacity = b->len == 0 ? 1 : b->len;
+		if ((new_data = malloc(new_capacity * b->elem_size)) == NULL)
+			return (NULL);
+		copy_data(b, new_data);
+		free(b->data);
+		b->data = new_data;
+		b->start = 0;
+		b->end = b->len == 0 ? 0 : b->len - 1;
+		b->capacity = new_capacity;
+	}
 	return (b);
 }

@@ -15,7 +15,7 @@
 #include "typedefs_42.h"
 #include "cbuffer_42.h"
 
-void		*cbuffer_at(const t_cbuffer *buffer, size_t i)
+void		*cbuffer_get_at(const t_cbuffer *buffer, size_t i)
 {
 	if (i >= buffer->len || buffer->len == 0)
 		return (NULL);
@@ -24,14 +24,14 @@ void		*cbuffer_at(const t_cbuffer *buffer, size_t i)
 	return (CBUFFER_AT_INDEX(buffer, buffer->start + i));
 }
 
-void		*cbuffer_front(const t_cbuffer *buffer)
+void		*cbuffer_get_front(const t_cbuffer *buffer)
 {
 	if (buffer->len == 0)
 		return (NULL);
 	return (CBUFFER_AT_INDEX(buffer, buffer->start));
 }
 
-void		*cbuffer_back(const t_cbuffer *buffer)
+void		*cbuffer_get_back(const t_cbuffer *buffer)
 {
 	if (buffer->len == 0)
 		return (NULL);
