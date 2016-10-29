@@ -6,11 +6,10 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 12:14:45 by djean             #+#    #+#             */
-/*   Updated: 2016/10/10 19:57:53 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/20 14:46:24 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "str_42.h"
 
 static void		init_skip_table(const char *pattern, size_t len, size_t *table)
@@ -60,7 +59,7 @@ char			*ft_strrnstr(const char *big, const char *little, size_t len)
 					return ((char *)(uintptr_t)(big + skip - 1));
 				++i;
 			}
-			to_skip = skip_table[(size_t)big[skip - 1 + i]];
+			to_skip = skip_table[(size_t)big[skip - 1 + i]] - i;
 			skip = to_skip > skip ? 0 : skip - to_skip;
 		}
 	return (NULL);

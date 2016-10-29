@@ -133,8 +133,8 @@ OBJECTS = $(addprefix $(OBJ_PATH)/,$(SOURCES:%.c=%.o))
 # Lib42
 LIB42_PATH = ..
 LIB42 = $(LIB42_PATH)/lib42.a
-CFLAGS += -I $(LIB42_PATH)/inc
-LDFLAGS += -L $(LIB42_PATH) -l42
+CFLAGS += -I$(LIB42_PATH)/inc
+LDFLAGS += -L$(LIB42_PATH) -l42
 
 # Vittf
 VITTF_PATH = vittf
