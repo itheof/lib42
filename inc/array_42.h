@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/24 17:38:08 by djean            ###   ########.fr       */
+/*   Updated: 2016/10/29 14:35:46 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void		*array_get_first(const t_array *a);
 ** returns its pointer or NULL if an error occurs.
 */
 t_array		*array_insert_at(t_array *a, size_t i, const void *e);
-void		*array_replace_at(t_array *a, size_t i, const void *e, void *old);
+t_array		*array_replace_at(t_array *a, size_t i, const void *e, void *old);
 void		*array_get_available(t_array *a);
 
 /*
