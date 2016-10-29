@@ -3,6 +3,7 @@
 
 // #define _XOPEN_SOURCE 700
 #define _DEFAUTL_SOURCE
+#define BIG_CHUNKS (1 << 16) // 65Ko
 
 #include <unistd.h>
 #include <ctype.h>

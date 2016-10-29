@@ -1,8 +1,5 @@
 #include "header.h"
 
-// 134Mo
-#define BIG_CHUNKS	(1 << 27)
-
 static void	test_00_memcpy_AlignedSizeOfZero(void)
 {
 	size_t	buf_size = 20;
