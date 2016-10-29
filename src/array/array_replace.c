@@ -6,13 +6,13 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/07 11:02:40 by djean             #+#    #+#             */
-/*   Updated: 2016/10/16 14:48:07 by crenault         ###   ########.fr       */
+/*   Updated: 2016/10/29 14:36:18 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "array_42.h"
 
-void	*array_replace_at(t_array *a, size_t i, const void *e, void *old)
+t_array		*array_replace_at(t_array *a, size_t i, const void *e, void *old)
 {
 	void	*p;
 
@@ -24,5 +24,5 @@ void	*array_replace_at(t_array *a, size_t i, const void *e, void *old)
 		ft_memcpy(old, p, a->elem_size);
 	}
 	array_set_at(a, i, e);
-	return (old);
+	return (a);
 }
