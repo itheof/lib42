@@ -1,8 +1,5 @@
 #include "header.h"
 
-// 134Mo
-#define BIG_CHUNKS	(1 << 27)
-
 static void	test_00_memmove_SizeZero(void)
 {
 	char	s1[20];
