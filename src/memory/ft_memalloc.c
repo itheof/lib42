@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 15:03:46 by djean             #+#    #+#             */
-/*   Updated: 2016/08/09 16:14:38 by djean            ###   ########.fr       */
+/*   Updated: 2016/11/04 12:16:31 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	*malloc_or_die(size_t size)
 {
 	void	*p;
 
-	p = ft_memalloc(size);
+	p = malloc(size);
 	if (p == NULL)
 		fatal_malloc();
 	return (p);
