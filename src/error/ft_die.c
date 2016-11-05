@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_die.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
+/*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:35:17 by djean             #+#    #+#             */
-/*   Updated: 2016/08/10 16:35:18 by djean            ###   ########.fr       */
+/*   Updated: 2016/11/05 13:29:05 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ void	ft_die(const char *msg)
 	exit(1);
 }
 
-void	fatal_malloc(void)
+void	*fatal_malloc(void *ptr)
 {
-	ft_die(FATAL_MALLOC);
+	if (ptr == NULL)
+		ft_die(FATAL_MALLOC);
+	return (ptr);
 }

@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 15:03:46 by djean             #+#    #+#             */
-/*   Updated: 2016/11/04 12:16:31 by crenault         ###   ########.fr       */
+/*   Updated: 2016/11/05 14:35:54 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,5 @@ void	*ft_memalloc(size_t size)
 
 void	*malloc_or_die(size_t size)
 {
-	void	*p;
-
-	p = malloc(size);
-	if (p == NULL)
-		fatal_malloc();
-	return (p);
+	return (fatal_malloc(malloc(size)));
 }

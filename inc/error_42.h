@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:24:47 by crenault         ###   ########.fr       */
+/*   Updated: 2016/11/05 13:29:16 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ char	*ft_strerror(int errnum);
 void	ft_perror(const char *msg);
 void	ft_perrorn(const char *msg, int errnum);
 void	ft_die(const char *msg);
-void	fatal_malloc(void);
+void	*fatal_malloc(void *ptr);
 
 #endif
