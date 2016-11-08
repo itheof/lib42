@@ -46,17 +46,27 @@ t_string	*string_init_with_capacity(t_string *s, size_t capacity);
 void		string_shutdown(t_string *s);
 
 /*
-** `string_dup` and `string_ndup` init a new pointer of `t_string` with the
-** given 'str'. The new string capacity is the next power of 2 of the str length
+** `string_init_dup` and `string_init_ndup` init the `t_string` param
+** with the given 'str', duplicating it.
+** The new string capacity is the next power of 2 of the str length
 ** if not already a power of 2.
 **
+** `string_create_dup` and `string_create_ndup` malloc a new `t_string`
+** and call `string_init_dup` or `string_init_ndup`.
+** The new string capacity is the next power of 2 of the str length
+** if not already a power of 2.
+*/
+t_string	*string_init_dup(t_string *s, const char *str);
+t_string	*string_init_ndup(t_string *s, const char *str, size_t len);
+t_string	*string_create_dup(const char *str);
+t_string	*string_create_ndup(const char *str, size_t len);
+
+/*
 ** `t_string_clone` do the same as `string_dup` but with another `t_string`.
 **
 ** `string_merge` concatenate the two strings 'a' and 'b',
 ** in the string 's'. 's' will be init inside this function.
 */
-t_string	*string_dup(t_string *s, const char *str);
-t_string	*string_ndup(t_string *s, const char *str, size_t len);
 t_string	*string_clone(t_string *dst, const t_string *src);
 t_string	*string_merge(t_string *dst, const t_string *a, const t_string *b);
 

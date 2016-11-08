@@ -6,20 +6,20 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/09 15:33:13 by djean             #+#    #+#             */
-/*   Updated: 2016/10/17 16:58:09 by crenault         ###   ########.fr       */
+/*   Updated: 2016/11/08 15:47:48 by crenault         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "string_42.h"
 
-t_string	*string_dup(t_string *s, const char *str)
+t_string	*string_init_dup(t_string *s, const char *str)
 {
-	return (string_ndup(s, str, ft_strlen(str)));
+	return (string_init_ndup(s, str, ft_strlen(str)));
 }
 
-t_string	*string_ndup(t_string *s, const char *str, size_t len)
+t_string	*string_init_ndup(t_string *s, const char *str, size_t len)
 {
-	if ((string_init_with_capacity(s, len)) == NULL)
+	if (string_init_with_capacity(s, len) == NULL)
 		return (NULL);
 	ft_memcpy(s->str, str, len);
 	s->len = len;
@@ -27,21 +27,20 @@ t_string	*string_ndup(t_string *s, const char *str, size_t len)
 	return (s);
 }
 
-t_string	*string_clone(t_string *dst, const t_string *src)
+t_string	*string_create_dup(const char *str)
 {
-	return (string_ndup(dst, src->str, src->len));
+	return (string_create_ndup(str, ft_strlen(str)));
 }
 
-t_string	*string_merge(t_string *dst, const t_string *a, const t_string *b)
+t_string	*string_create_ndup(const char *str, size_t len)
 {
-	size_t		size;
+	t_string	*s;
 
-	size = a->len + b->len;
-	if (string_init_with_capacity(dst, size) == NULL)
+	if ((s = string_create_with_capacity(len)) == NULL)
 		return (NULL);
-	dst->len = a->len + b->len;
-	ft_memcpy(dst->str, a->str, a->len);
-	ft_memcpy(dst->str + a->len, b->str, b->len);
-	dst->str[dst->len] = '\0';
-	return (dst);
+	ft_memcpy(s->str, str, len);
+	s->len = len;
+	s->str[s->len] = '\0';
+	return (s);
+
 }
