@@ -93,7 +93,7 @@ static void	test_04_string_ncat_Simple(void)
 	t_string	string;
 	char		*s = " World!";
 
-	string_dup(&string, "Hello");
+	string_init_dup(&string, "Hello");
 
 	v_assert_size_t(STRING_INIT_SIZE, ==, string.capacity);
 	string_ncat(&string, s, 7);

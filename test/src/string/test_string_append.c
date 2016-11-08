@@ -10,8 +10,8 @@ static void	test_00_string_append_Simple(void)
 	size_t		l1 = strlen(s1);
 	size_t		l2 = strlen(s2);
 
-	string_ndup(&dst, s1, l1);
-	string_ndup(&src, s2, l2);
+	string_init_ndup(&dst, s1, l1);
+	string_init_ndup(&src, s2, l2);
 	strcpy(cat, s1);
 	strcpy(cat + l1, s2);
 	string_append(&dst, &src);
@@ -39,8 +39,8 @@ static void	test_01_string_append_Emptystring(void)
 	size_t		l1 = strlen(s1);
 	size_t		l2 = strlen(s2);
 
-	string_ndup(&dst, s1, l1);
-	string_ndup(&src, s2, l2);
+	string_init_ndup(&dst, s1, l1);
+	string_init_ndup(&src, s2, l2);
 	strcpy(cat, s1);
 	strcpy(cat + l1, s2);
 	string_append(&dst, &src);
