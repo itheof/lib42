@@ -70,7 +70,7 @@ static void	test_03_string_reserve_ExpandFor2Strings(void)
 	first_str = ft_memalloc(256); // '\0' everywhere
 	ft_memset(first_str, 'a', 255);
 
-	string_ndup(&string, first_str, 255);
+	string_init_ndup(&string, first_str, 255);
 	v_assert_size_t(256, ==, string.capacity);
 
 	second_str = ft_memalloc(258); // '\0' everywhere

@@ -14,8 +14,8 @@ static void	test_00_string_merge_NoRealloc(void)
 	s[0] = '\0';
 	strcat(s, s1);
 	strcat(s, s2);
-	string_dup(&b1, s1);
-	string_dup(&b2, s2);
+	string_init_dup(&b1, s1);
+	string_init_dup(&b2, s2);
 	string_merge(&merge, &b1, &b2);
 
 	v_assert_str(s1, b1.str);
@@ -43,8 +43,8 @@ static void	test_01_string_merge_Realloc(void)
 	memset(s1, '*', STRING_INIT_SIZE + 10);
 	memset(s2, '\0', 100);
 	memset(s2, '#', 6);
-	string_dup(&b1, s1);
-	string_dup(&b2, s2);
+	string_init_dup(&b1, s1);
+	string_init_dup(&b2, s2);
 	strcat(s1, s2);
 	string_merge(&merge, &b1, &b2);
 

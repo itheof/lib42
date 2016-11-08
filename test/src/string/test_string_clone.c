@@ -5,7 +5,7 @@ static void	test_00_string_clone_Simple(void)
 	t_string	origin;
 	t_string	cp;
 
-	string_dup(&origin, "Hello World!");
+	string_init_dup(&origin, "Hello World!");
 	string_clone(&cp, &origin);
 
 	v_assert_size_t(origin.len, ==, cp.len);
