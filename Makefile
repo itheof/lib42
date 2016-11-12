@@ -1,7 +1,7 @@
 NAME = lib42.a
 CC ?= clang
 CFLAGS = -Wall -Werror -Wextra
-CFLAGS += -std=c99 -pedantic -pedantic-errors
+CFLAGS += -std=c11 -pedantic -pedantic-errors
 ifeq ($(shell readlink $(shell command -v $(CC))),clang)
 	CFLAGS += -Weverything -Wno-missing-noreturn
 endif
