@@ -406,6 +406,22 @@ static void test_12_doubles_in_opts(void)
 	VTS;
 }
 
+static void	test_13_OPT_INIT(void)
+{
+	t_opt	o;
+
+	memset(&o, '*', sizeof(t_opt));
+	OPT_INIT(o);
+
+	v_assert_ptr(NULL, ==, o.optarg);
+	v_assert_int(0, ==, o.opterr);
+	v_assert_int(0, ==, o.optind);
+	v_assert_int(0, ==, o.optopt);
+	v_assert_int(0, ==, o.optoff);
+
+	VTS;
+}
+
 void suite_unistd_getopt(void)
 {
 	test_00_no_opts();
@@ -421,6 +437,7 @@ void suite_unistd_getopt(void)
 	test_10_unspecified_optstring_chars();
 	test_11_doubles_in_optstring();
 	test_12_doubles_in_opts();
+	test_13_OPT_INIT();
 
 	VSS;
 }

@@ -6,7 +6,7 @@
 /*   By: tvallee <tvallee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 14:38:45 by tvallee           #+#    #+#             */
-/*   Updated: 2016/10/14 10:24:14 by tvallee          ###   ########.fr       */
+/*   Updated: 2016/11/14 13:41:06 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include "string_42.h"
 # include "ft_printf.h"
 
+# define OPT_INIT(o) ((o) = (t_opt){NULL, 0, 0, 0, 0})
+
 typedef struct	s_opt
 {
 	char	*optarg;
@@ -42,7 +44,6 @@ enum e_opt_type
 	E_OPT_TYPE_OPERAND
 };
 
-int				ft_getopt(int ac, char *const av[], const char *optstring,
-		t_opt *state);
+int	ft_getopt(int ac, char *const av[], const char *optstring, t_opt *state);
 
 #endif
