@@ -36,6 +36,7 @@ SOURCES += ctype.c
 
 # Array
 SRC_SUBDIR += array
+SOURCES += test_array_find_from.c
 SOURCES += test_array_create.c
 SOURCES += test_array_init.c
 SOURCES += test_array_at.c

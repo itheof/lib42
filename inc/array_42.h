@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/10/29 14:35:46 by crenault         ###   ########.fr       */
+/*   Updated: 2016/11/15 15:39:04 by tvallee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,10 @@ t_array		*array_remove_elem(t_array *a, const void *e);
 */
 t_array		*array_push(t_array *a, const void *e);
 t_array		*array_pop(t_array *a, void *old);
+
+void		*array_find_from(t_array set, size_t n,
+		int (match)(const void *elem, const void *param), const void *param);
+void		*array_find(t_array set,
+		int (match)(const void *elem, const void *param), const void *param);
 
 #endif

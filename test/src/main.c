@@ -48,6 +48,7 @@ int	main(void)
 	suite_string_merge();
 
 	// array
+	suite_array_find_from();
 	suite_array_create();
 	suite_array_init();
 	suite_array_at();

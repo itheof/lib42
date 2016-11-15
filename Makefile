@@ -64,6 +64,7 @@ SOURCES += array_replace.c
 SOURCES += array_get_available.c
 SOURCES += array_remove.c
 SOURCES += array_stack.c
+SOURCES += array_find_from.c
 
 # Cbuffer
 SRC_SUBDIR += cbuffer
