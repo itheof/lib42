@@ -97,7 +97,6 @@ static void	test_04_array_find_from_param(void) {
 
 void		suite_array_find_from(void)
 {
-	printf("====================== RELLLLOOOHHH =======================\n");
 	test_00_array_find_from_simple();
 	test_01_array_find_from_empty();
 	test_02_array_find_from_no_matches();
