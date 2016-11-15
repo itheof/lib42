@@ -34,7 +34,7 @@ void	suite_array_remove_elem(void);
 void	suite_array_clone(void);
 void	suite_array_truncate_clear(void);
 void	suite_array_get_available(void);
-void	suite_array_nfind(void);
+void	suite_array_find_from(void);
 void	suite_array_filter(void);
 
 // Cbuffer
