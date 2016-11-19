@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:48 by djean             #+#    #+#             */
-/*   Updated: 2016/11/15 15:39:04 by tvallee          ###   ########.fr       */
+/*   Updated: 2016/11/19 12:06:00 by leonhart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,10 @@ void		*array_find_from(t_array set, size_t n,
 		int (match)(const void *elem, const void *param), const void *param);
 void		*array_find(t_array set,
 		int (match)(const void *elem, const void *param), const void *param);
+
+/*
+** `array_swap` switch the elements at the index `e1` and `e2`
+*/
+t_array		*array_swap(t_array *a, size_t e1, size_t e2);
 
 #endif
