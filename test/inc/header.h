@@ -36,6 +36,7 @@ void	suite_array_truncate_clear(void);
 void	suite_array_get_available(void);
 void	suite_array_find_from(void);
 void	suite_array_filter(void);
+void	suite_array_swap(void);
 
 // Cbuffer
 void	suite_cbuffer_push(void);

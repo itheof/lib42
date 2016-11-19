@@ -2,14 +2,11 @@
 
 t_array	*array_swap(t_array *a, size_t e1, size_t e2)
 {
-	void	*tmp;
-	void	*elem1;
-	void	*elem2;
+	unsigned char	tmp[a->elem_size];
+	void			*elem1;
+	void			*elem2;
 
 	if (e1 >= a->len || e2 >= a->len)
-		return (NULL);
-	tmp = malloc(a->elem_size);
-	if (tmp == NULL)
 		return (NULL);
 	elem1 = array_get_at(a, e1);
 	elem2 = array_get_at(a, e2);

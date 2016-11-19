@@ -63,6 +63,7 @@ int	main(void)
 	suite_array_clone();
 	suite_array_truncate_clear();
 	suite_array_get_available();
+	suite_array_swap();
 
 	// cbuffer
 	suite_cbuffer_push();
