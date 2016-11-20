@@ -2,7 +2,7 @@ NAME = lib42.a
 CC ?= clang
 CFLAGS = -Wall -Werror -Wextra
 CFLAGS += -std=c11 -pedantic -pedantic-errors
-ifeq ($(shell readlink $(shell command -v $(CC))),clang)
+ifeq ($(shell basename $(CC)),clang) # Need autoconf
 	CFLAGS += -Weverything -Wno-missing-noreturn
 endif
 CFLAGS += -fno-strict-aliasing
