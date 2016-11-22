@@ -77,10 +77,10 @@ int	main(void)
 
 	// pool
 	suite_pool_macros();
-	suite_pool_new();
-	suite_pool_obtain();
-	suite_pool_return();
-	suite_pool_reset();
+	suite_pool_init();
+	suite_pool_obtain_node();
+	suite_pool_release_node();
+	suite_pool_shutdown();
 
 	suite_unistd_getopt();
 

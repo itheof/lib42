@@ -106,12 +106,9 @@ SOURCES += ft_strtoupper.c
 
 # Pool
 SRC_SUBDIR += pool
-SOURCES += pool_new.c
+SOURCES += pool_create.c
+SOURCES += pool_init.c
 SOURCES += pool_chunk.c
-SOURCES += pool_obtain.c
-SOURCES += pool_return.c
-SOURCES += pool_reset.c
-SOURCES += pool_destroy.c
 
 # Error
 SRC_SUBDIR += error

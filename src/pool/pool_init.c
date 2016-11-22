@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pool.c                                             :+:      :+:    :+:   */
+/*   pool_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/01 18:56:58 by djean             #+#    #+#             */
-/*   Updated: 2016/10/04 12:00:02 by djean            ###   ########.fr       */
+/*   Created: 2016/11/22 11:25:01 by djean             #+#    #+#             */
+/*   Updated: 2016/11/22 16:27:17 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pool_42.h"
 
-t_pool	*pool_new(size_t elem_size, size_t chunk_capacity)
+t_pool	*pool_init(t_pool *p, size_t elem_size)
 {
-	t_pool	*p;
-
-	p = malloc(sizeof(t_pool));
-	if (p != NULL)
-	{
-		if (pool_init(p, elem_size, chunk_capacity) == NULL)
-		{
-			free(p);
-			p = NULL;
-		}
-	}
+	if (elem_size == 0)
+		return (NULL);
+	p->elem_size = ROUND_UP_8(elem_size);
+	p->chunk_capacity = CHUNK_CAPACITY(p->elem_size);
+	p->chunks_list = NULL;
+	p->free_list = NULL;
+	if (pool_add_chunk(p) == NULL)
+		return (NULL);
 	return (p);
 }
 
-t_pool	*pool_init(t_pool *p, size_t elem_size, size_t chunk_capacity)
+void	pool_shutdown(t_pool *p)
 {
-	if (elem_size == 0 || chunk_capacity == 0)
-		return (NULL);
-	p->chunk_capacity = chunk_capacity;
-	p->elem_size = ROUND_UP_8(elem_size);
-	p->free_list = NULL;
+	void	*ptr;
+
+	while (p->chunks_list)
+	{
+		ptr = p->chunks_list;
+		p->chunks_list = p->chunks_list->next;
+		free(ptr);
+	}
 	p->chunks_list = NULL;
-	return (p);
+	p->free_list = NULL;
 }

@@ -111,10 +111,10 @@ SOURCES += test_strrstr.c
 # Pool
 SRC_SUBDIR += pool
 SOURCES += test_pool_macros.c
-SOURCES += test_pool_new.c
-SOURCES += test_pool_obtain.c
-SOURCES += test_pool_return.c
-SOURCES += test_pool_reset.c
+SOURCES += test_pool_init.c
+SOURCES += test_pool_obtain_node.c
+SOURCES += test_pool_release_node.c
+SOURCES += test_pool_shutdown.c
 
 # Error
 SRC_SUBDIR += error

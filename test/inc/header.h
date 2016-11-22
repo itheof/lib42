@@ -93,10 +93,11 @@ void	suite_strrstr(void);
 
 // Pool
 void	suite_pool_macros(void);
-void	suite_pool_new(void);
-void	suite_pool_obtain(void);
-void	suite_pool_return(void);
-void	suite_pool_reset(void);
+void	suite_pool_create(void);
+void	suite_pool_init(void);
+void	suite_pool_obtain_node(void);
+void	suite_pool_release_node(void);
+void	suite_pool_shutdown(void);
 
 // Error
 void	suite_error(void);

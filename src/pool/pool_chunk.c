@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/01 18:55:26 by djean             #+#    #+#             */
-/*   Updated: 2016/10/04 14:10:30 by djean            ###   ########.fr       */
+/*   Updated: 2016/11/22 16:27:16 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,36 @@ inline static void	chunk_intern_link(void *ptr, size_t size, size_t count)
 	*next = NULL;
 }
 
-/*
-** - Alloue un nouveau chunk
-** - Link chaque node interne en freelist
-*/
-
-t_chunk				*pool_new_chunk(t_pool *p)
+t_chunk		*pool_add_chunk(t_pool *p)
 {
 	t_chunk	*chunk;
 
-	chunk = malloc(CHUNK_SIZE(p->elem_size, p->chunk_capacity));
+	chunk = malloc(MAX_CHUNK_SIZE);
 	if (chunk == NULL)
 		return (NULL);
-	chunk->next = NULL;
 	chunk_intern_link(&chunk->head, p->elem_size, p->chunk_capacity);
+	p->free_list = CHUNK_HEAD(chunk);
+	chunk->next = p->chunks_list;
+	p->chunks_list = chunk;
 	return (chunk);
+}
+
+void				*pool_obtain_node(t_pool *p)
+{
+	void	*node;
+
+	if (p->free_list == NULL)
+	{
+		if (pool_add_chunk(p) == NULL)
+			return (NULL);
+	}
+	node = p->free_list;
+	p->free_list = *(void**)p->free_list;
+	return (node);
+}
+
+void				pool_release_node(t_pool *p, void *node)
+{
+	*(void**)node = p->free_list;
+	p->free_list = node;
 }

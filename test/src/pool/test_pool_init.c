@@ -1,42 +1,43 @@
 #include "header.h"
 
+static t_pool	pool;
 static t_pool	*p;
 
 static void	teardown(void)
 {
-	free(p->chunks_list);
-	free(p);
-	p = NULL;
+	void	*tmp;
+
+	while (pool.chunks_list)
+	{
+		tmp = pool.chunks_list;
+		pool.chunks_list = pool.chunks_list->next;
+		free(tmp);
+	}
 }
 
-static void	test_00_pool_new_ArgEqualZero(void)
+static void	test_00_pool_init_ArgEqualZero(void)
 {
-	p = pool_new(0, 10);
-	v_assert_ptr(NULL, ==, p);
-
-	p = pool_new(10, 0);
+	p = pool_init(&pool, 0);
 	v_assert_ptr(NULL, ==, p);
 
 	VTS;
 }
 
-static void	test_01_pool_new_SizeOfInt(void)
+static void	test_01_pool_init_SizeOfInt(void)
 {
 	t_chunk		*chunk;
 	size_t		size;
 	unsigned	*n;
 
 	// setup
-	p = pool_new(sizeof(unsigned), 10);
+	p = pool_init(&pool, sizeof(unsigned));
 	size = ROUND_UP_8(sizeof(unsigned));
+
+	// tests
 	v_assert_size_t(size, ==, p->elem_size);
-	v_assert_size_t(10, ==, p->chunk_capacity);
-	v_assert_ptr(NULL, ==, p->free_list);
-	v_assert_ptr(NULL, ==, p->chunks_list);
-	chunk = pool_new_chunk(p);
-	p->free_list = CHUNK_HEAD(chunk);
-	chunk->next = p->chunks_list;
-	p->chunks_list = chunk;
+	v_assert_size_t(511, ==, p->chunk_capacity);
+	v_assert_ptr(NULL, !=, p->free_list);
+	v_assert_ptr(NULL, !=, p->chunks_list);
 
 	// linkage interne
 	uintptr_t	*pValue = p->free_list;
@@ -59,7 +60,7 @@ static void	test_01_pool_new_SizeOfInt(void)
 	VTS;
 }
 
-static void	test_02_pool_new_SizeOfArbitraryStruct(void)
+static void	test_02_pool_init_SizeOfArbitraryStruct(void)
 {
 	t_chunk		*chunk;
 	size_t		size;
@@ -68,21 +69,19 @@ static void	test_02_pool_new_SizeOfArbitraryStruct(void)
 	struct s_pool_test
 	{
 		void	*p[3];
-		int		i[2];
-		char	c[8];
+		int		i[1];
+		char	c[1];
 	} t;
 
 	// setup
-	p = pool_new(sizeof(struct s_pool_test), 100);
+	p = pool_init(&pool, sizeof(struct s_pool_test));
 	size = ROUND_UP_8(sizeof(struct s_pool_test));
+
+	// tests
 	v_assert_size_t(size, ==, p->elem_size);
-	v_assert_size_t(100, ==, p->chunk_capacity);
-	v_assert_ptr(NULL, ==, p->free_list);
-	v_assert_ptr(NULL, ==, p->chunks_list);
-	chunk = pool_new_chunk(p);
-	p->free_list = CHUNK_HEAD(chunk);
-	chunk->next = p->chunks_list;
-	p->chunks_list = chunk;
+	v_assert_size_t(127, ==, p->chunk_capacity);
+	v_assert_ptr(NULL, !=, p->free_list);
+	v_assert_ptr(NULL, !=, p->chunks_list);
 
 	// linkage interne
 	uintptr_t	*pValue = p->free_list;
@@ -106,11 +105,11 @@ static void	test_02_pool_new_SizeOfArbitraryStruct(void)
 	VTS;
 }
 
-void	suite_pool_new(void)
+void	suite_pool_init(void)
 {
-	test_00_pool_new_ArgEqualZero();
-	test_01_pool_new_SizeOfInt();
-	test_02_pool_new_SizeOfArbitraryStruct();
+	test_00_pool_init_ArgEqualZero();
+	test_01_pool_init_SizeOfInt();
+	test_02_pool_init_SizeOfArbitraryStruct();
 
 	VSS;
 }

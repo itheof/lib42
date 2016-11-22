@@ -2,9 +2,9 @@
 
 static t_pool	*p;
 
-static void	setup(size_t size, size_t count)
+static void	setup(size_t size)
 {
-	p = pool_new(size, count);
+	p = pool_create(size);
 }
 
 static void	teardown(void)
@@ -19,24 +19,23 @@ static void	teardown(void)
 	free(p);
 }
 
-static void	test_00_pool_obtain_UsageWithUnsignedInt(void)
+static void	test_00_pool_obtain_node_UsageWithUnsignedInt(void)
 {
 	size_t	elem_size = sizeof(unsigned);
-	size_t	count = 5;
 	void	*pValue;
 
-	setup(elem_size, count);
+	setup(elem_size);
 
-	for (size_t i = 0; i < count - 1; ++i)
+	for (size_t i = 0; i < p->chunk_capacity - 1; ++i)
 	{
-		pValue = pool_obtain(p);
+		pValue = pool_obtain_node(p);
 		v_assert_ptr(NULL, !=, pValue);
 		v_assert_ptr(*(uintptr_t*)pValue, ==, (char*)pValue + p->elem_size);
 		*(unsigned*)pValue = '*';
 		v_assert_uint('*', ==, *(unsigned*)pValue);
 	}
 	// last free node
-	pValue = pool_obtain(p);
+	pValue = pool_obtain_node(p);
 	v_assert_ptr(NULL, !=, pValue);
 	v_assert_uintptr(0, ==, *(uintptr_t*)pValue);
 	*(unsigned*)pValue = '*';
@@ -46,7 +45,7 @@ static void	test_00_pool_obtain_UsageWithUnsignedInt(void)
 	v_assert_ptr(NULL, ==, p->free_list);
 
 	// Creation d'un nouveau chunk
-	pValue = pool_obtain(p);
+	pValue = pool_obtain_node(p);
 	v_assert_ptr(NULL, !=, p->free_list);
 	v_assert_ptr(NULL, !=, pValue);
 	*(unsigned*)pValue = '*';
@@ -56,22 +55,21 @@ static void	test_00_pool_obtain_UsageWithUnsignedInt(void)
 	VTS;
 }
 
-static void	test_01_pool_obtain_UsageWithArbitratyStruct(void)
+static void	test_01_pool_obtain_node_UsageWithArbitratyStruct(void)
 {
 	struct s_pool_test {
 		void	*p;
 		long	l;
-		char	c[8];
+		char	c[3];
 	} t;
 	size_t	elem_size = sizeof(struct s_pool_test);
-	size_t	count = 100;
 	void	*pValue;
 
-	setup(elem_size, count);
+	setup(elem_size);
 
-	for (size_t i = 0; i < count - 1; ++i)
+	for (size_t i = 0; i < p->chunk_capacity - 1; ++i)
 	{
-		pValue = pool_obtain(p);
+		pValue = pool_obtain_node(p);
 		v_assert_ptr(NULL, !=, pValue);
 		v_assert_ptr(*(uintptr_t*)pValue, ==, (char*)pValue + p->elem_size);
 		*(struct s_pool_test*)pValue = (struct s_pool_test){
@@ -81,7 +79,7 @@ static void	test_01_pool_obtain_UsageWithArbitratyStruct(void)
 		v_assert_long(i, ==, ((struct s_pool_test*)pValue)->l);
 	}
 	// last free node
-	pValue = pool_obtain(p);
+	pValue = pool_obtain_node(p);
 	v_assert_ptr(NULL, !=, pValue);
 	v_assert_uintptr(0, ==, *(uintptr_t*)pValue);
 
@@ -89,7 +87,7 @@ static void	test_01_pool_obtain_UsageWithArbitratyStruct(void)
 	v_assert_ptr(NULL, ==, p->free_list);
 
 	// Creation d'un nouveau chunk
-	pValue = pool_obtain(p);
+	pValue = pool_obtain_node(p);
 	v_assert_ptr(NULL, !=, p->free_list);
 	v_assert_ptr(NULL, !=, pValue);
 	*(struct s_pool_test*)pValue = (struct s_pool_test){
@@ -102,10 +100,10 @@ static void	test_01_pool_obtain_UsageWithArbitratyStruct(void)
 	VTS;
 }
 
-void	suite_pool_obtain(void)
+void	suite_pool_obtain_node(void)
 {
-	test_00_pool_obtain_UsageWithUnsignedInt();
-	test_01_pool_obtain_UsageWithArbitratyStruct();
+	test_00_pool_obtain_node_UsageWithUnsignedInt();
+	test_01_pool_obtain_node_UsageWithArbitratyStruct();
 
 	VSS;
 }

@@ -31,18 +31,18 @@ static void test_00_pool_ROUND_UP_8(void)
 	VTS;
 }
 
-static void	test_01_pool_CHUNK_SIZE(void)
+static void	test_01_pool_CHUNK_CAPACITY(void)
 {
 	size_t	res;
 
-	res = CHUNK_SIZE(sizeof(int), 100);
-	v_assert_size_t(408, ==, res);
+	res = CHUNK_CAPACITY(ROUND_UP_8(sizeof(int)));
+	v_assert_size_t(511, ==, res);
 
-	res = CHUNK_SIZE(sizeof(void*), 100);
-	v_assert_size_t(808, ==, res);
+	res = CHUNK_CAPACITY(ROUND_UP_8(13));
+	v_assert_size_t(255, ==, res);
 
-	res = CHUNK_SIZE(24, 100);
-	v_assert_size_t(2408, ==, res);
+	res = CHUNK_CAPACITY(ROUND_UP_8(39));
+	v_assert_size_t(102, ==, res);
 
 	VTS;
 }
@@ -64,7 +64,7 @@ static void	test_02_pool_CHUNK_HEAD(void)
 void	suite_pool_macros(void)
 {
 	test_00_pool_ROUND_UP_8();
-	test_01_pool_CHUNK_SIZE();
+	test_01_pool_CHUNK_CAPACITY();
 	test_02_pool_CHUNK_HEAD();
 
 	VSS;
