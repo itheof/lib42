@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/11/22 11:21:36 by djean            ###   ########.fr       */
+/*   Updated: 2016/11/23 13:35:47 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,17 @@ struct	s_pool
 	size_t			elem_size;
 };
 
+struct	s_node
+{
+	struct s_node	*next;
+	void			*data;
+};
+
 struct	s_list
 {
 	struct s_pool	pool;
-	void			*start;
-	void			*end;
+	struct s_node 	*start;
+	struct s_node	*end;
 	size_t			len;
 	size_t			elem_size;
 };

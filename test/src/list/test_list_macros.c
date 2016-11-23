@@ -15,20 +15,14 @@ static void	test_01_list_macros_NODE_GET_DATA(void)
 	void	*p = malloc(NODE_SIZE(elem_size));
 
 	// setup
-	struct s_check
-	{
-		void		*next;
-		unsigned	a;
-		unsigned	b;
-	} check;
-	memset(&check, 0xFF, sizeof(struct s_check));
+	struct s_node node;
+	memset(&node, 0xFF, sizeof(struct s_node));
 
-	// test
-	unsigned *pu = NODE_GET_DATA(&check);
+	/* // test */
+	unsigned *pu = NODE_GET_DATA(&node);
 	*pu = 42U;
-	v_assert_ptr(0xFFFFFFFFFFFFFFFF, ==, check.next);
-	v_assert_uint(42, ==, check.a);
-	v_assert_uint(0xFFFFFFFF, ==, check.b);
+	v_assert_ptr(0xFFFFFFFFFFFFFFFF, ==, node.next);
+	v_assert_uint(42, ==, (unsigned)node.data);
 
 	// teardown
 	free(p);
