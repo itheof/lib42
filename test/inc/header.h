@@ -100,7 +100,9 @@ void	suite_pool_release_node(void);
 void	suite_pool_shutdown(void);
 
 // List
+void	suite_list_macros(void);
 void 	suite_list_init(void);
+/* void 	suite_list_get(void); */
 
 // Error
 void	suite_error(void);

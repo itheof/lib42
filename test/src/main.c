@@ -83,7 +83,9 @@ int	main(void)
 	suite_pool_shutdown();
 
 	// list
+	suite_list_macros();
 	suite_list_init();
+	/* suite_list_get(); */
 
 	// unistd
 	suite_unistd_getopt();

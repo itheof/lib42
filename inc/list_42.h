@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 10:20:34 by djean             #+#    #+#             */
-/*   Updated: 2016/11/23 10:51:01 by djean            ###   ########.fr       */
+/*   Updated: 2016/11/23 12:07:36 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "pool_42.h"
 
 # define NODE_SIZE(elem_size)	(sizeof(void*) + (elem_size))
+# define NODE_GET_DATA(n)		((void*)(((unsigned char*)(n)) + sizeof(void*)))
 
 /*
 ** `list_create` malloc a new `t_list`
@@ -44,20 +45,37 @@ void	list_shutdown(t_list *l);
 void	list_clear(t_list *l);
 
 /*
+** `list_get_available` gives a new unitialized space at the end of the list,
+** returns its pointer or NULL if an error occurs.
 **
+** `list_get_at` returns the pointer on the data at the specified index,
+** NULL if the index is out of range
+**
+** `list_set_at` copy the element 'e' in the list at the index specified,
+** returns the pointer on the element in the list,
+** NULL if the index is out of range.
+**
+** `list_index_of` returns the index of a given pointer, -1 if the pointer
+** is not inside the list.
+**
+** `list_get_last` returns the pointer on the data of the last index, or NULL
+** if the list is empty
+**
+** `list_get_first` returns the pointer on the data of the first index, or NULL
+** if the list is empty
 */
+void	*list_get_available(t_list *l);
 void	*list_get_at(const t_list *l, size_t i);
-void	*list_set_at(const t_list *l, size_t i, const void *e);
-ssize_t	list_index_of(const t_list *l, const void *e);
 void	*list_get_first(const t_list *l);
 void	*list_get_last(const t_list *l);
+void	*list_set_at(const t_list *l, size_t i, const void *e);
+ssize_t	list_index_of(const t_list *l, const void *e);
 
 /*
 **
 */
 t_list	*list_insert_at(t_list *l, size_t i, const void *e);
 t_list	*list_replace_at(t_list *l, size_t i, const void *e, void *old);
-void	*list_get_available(t_list *l);
 
 /*
 **
@@ -68,7 +86,8 @@ t_list	*list_remove_elem(t_list *l, const void *e);
 /*
 **
 */
-t_list	*list_push(t_list *l, const void *e);
+t_list	*list_push_back(t_list *l, const void *e);
+t_list	*list_push_front(t_list *l, const void *e);
 t_list	*list_pop(t_list *l, void *old);
 
 /*

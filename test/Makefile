@@ -118,7 +118,9 @@ SOURCES += test_pool_shutdown.c
 
 # List
 SRC_SUBDIR += list
+SOURCES += test_list_macros.c
 SOURCES += test_list_init.c
+# SOURCES += test_list_get.c
 
 # Error
 SRC_SUBDIR += error
