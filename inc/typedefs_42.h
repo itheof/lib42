@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:00:43 by crenault         ###   ########.fr       */
+/*   Updated: 2016/11/22 10:47:58 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 typedef struct s_chunk		t_chunk;
 typedef struct s_pool		t_pool;
+typedef struct s_list		t_list;
 typedef struct s_string		t_string;
 typedef struct s_array		t_array;
 typedef struct s_cbuffer	t_cbuffer;

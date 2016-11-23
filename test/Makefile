@@ -116,6 +116,10 @@ SOURCES += test_pool_obtain_node.c
 SOURCES += test_pool_release_node.c
 SOURCES += test_pool_shutdown.c
 
+# List
+SRC_SUBDIR += list
+SOURCES += test_list_init.c
+
 # Error
 SRC_SUBDIR += error
 SOURCES += test_error.c

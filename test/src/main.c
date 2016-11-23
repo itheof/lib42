@@ -82,6 +82,10 @@ int	main(void)
 	suite_pool_release_node();
 	suite_pool_shutdown();
 
+	// list
+	suite_list_init();
+
+	// unistd
 	suite_unistd_getopt();
 
 	v_full_success("Lib42");

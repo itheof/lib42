@@ -99,6 +99,9 @@ void	suite_pool_obtain_node(void);
 void	suite_pool_release_node(void);
 void	suite_pool_shutdown(void);
 
+// List
+void 	suite_list_init(void);
+
 // Error
 void	suite_error(void);
 

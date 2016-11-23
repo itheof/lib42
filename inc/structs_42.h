@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:28:49 by djean             #+#    #+#             */
-/*   Updated: 2016/10/11 02:00:28 by crenault         ###   ########.fr       */
+/*   Updated: 2016/11/22 11:21:36 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,15 @@ struct	s_pool
 	struct s_chunk	*chunks_list;
 	void			*free_list;
 	size_t			chunk_capacity;
+	size_t			elem_size;
+};
+
+struct	s_list
+{
+	struct s_pool	pool;
+	void			*start;
+	void			*end;
+	size_t			len;
 	size_t			elem_size;
 };
 

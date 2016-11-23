@@ -110,6 +110,11 @@ SOURCES += pool_create.c
 SOURCES += pool_init.c
 SOURCES += pool_chunk.c
 
+# List
+SRC_SUBDIR += list
+SOURCES += list_create.c
+SOURCES += list_init.c
+
 # Error
 SRC_SUBDIR += error
 SOURCES += ft_error.c
