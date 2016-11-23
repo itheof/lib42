@@ -14,3 +14,9 @@ t_list	*list_create(size_t elem_size)
 	}
 	return (list);
 }
+
+void	list_destroy(t_list *l)
+{
+	list_shutdown(l);
+	free(l);
+}

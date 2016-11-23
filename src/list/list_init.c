@@ -13,3 +13,8 @@ t_list	*list_init(t_list *l, size_t elem_size)
 	l->elem_size = elem_size;
 	return (l);
 }
+
+void	list_shutdown(t_list *l)
+{
+	pool_shutdown(&l->pool);
+}
