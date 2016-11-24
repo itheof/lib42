@@ -84,9 +84,36 @@ static void test_00_list_get_available(void)
 	VTS;
 }
 
+static void	test_01_list_get_at(void)
+{
+	setup(sizeof(char));
+	v_assert_size_t(0, ==, list.len);
+
+	char *c[4];
+	c[0] = (char*)list_get_available(&list);
+	c[1] = (char*)list_get_available(&list);
+	c[2] = (char*)list_get_available(&list);
+	c[3] = (char*)list_get_available(&list);
+	c[0][0] = 'a';
+	c[1][0] = 'b';
+	c[2][0] = 'c';
+	c[3][0] = 'd';
+
+	v_assert_size_t(4, ==, list.len);
+	v_assert_char('a', ==, *(char*)list_get_at(&list, 0));
+	v_assert_char('b', ==, *(char*)list_get_at(&list, 1));
+	v_assert_char('c', ==, *(char*)list_get_at(&list, 2));
+	v_assert_char('d', ==, *(char*)list_get_at(&list, 3));
+	v_assert_ptr(NULL, ==, list_get_at(&list, 4));
+
+	teardown();
+	VTS;
+}
+
 void	suite_list_get(void)
 {
 	test_00_list_get_available();
+	test_01_list_get_at();
 
 	VSS;
 }

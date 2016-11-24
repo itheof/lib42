@@ -15,19 +15,25 @@ void	*list_get_available(t_list *l)
 
 void	*list_get_at(const t_list *l, size_t i)
 {
-	(void)l;
-	(void)i;
-	return (NULL);
+	struct s_node	*ret;
+
+	if (i >= l->len)
+		return (NULL);
+	ret = l->start;
+	while (i > 0)
+	{
+		ret = ret->next;
+		i -= 1;
+	}
+	return (NODE_GET_DATA(ret));
 }
 
 void	*list_get_first(const t_list *l)
 {
-	(void)l;
-	return (NULL);
+	return (NODE_GET_DATA(l->start));
 }
 
 void	*list_get_last(const t_list *l)
 {
-	(void)l;
-	return (NULL);
+	return (NODE_GET_DATA(l->end));
 }
