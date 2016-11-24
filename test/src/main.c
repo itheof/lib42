@@ -85,7 +85,7 @@ int	main(void)
 	// list
 	suite_list_macros();
 	suite_list_init();
-	/* suite_list_get(); */
+	suite_list_get();
 
 	// unistd
 	suite_unistd_getopt();

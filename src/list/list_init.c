@@ -5,10 +5,11 @@ t_list	*list_init(t_list *l, size_t elem_size)
 {
 	if (elem_size == 0)
 		return (NULL);
-	if (pool_init(&l->pool, elem_size) == NULL)
+	if (pool_init(&l->pool, NODE_SIZE(elem_size)) == NULL)
 		return (NULL);
-	l->start = NULL;
-	l->end = NULL;
+	l->start = pool_obtain_node(&l->pool);
+	l->end = l->start;
+	l->end->next = l->start;
 	l->len = 0;
 	l->elem_size = elem_size;
 	return (l);

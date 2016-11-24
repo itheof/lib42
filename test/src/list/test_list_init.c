@@ -32,10 +32,8 @@ static void	test_01_list_init_ElemSizeValid(void)
 	v_assert_ptr(NULL, !=, ret);
 	v_assert_ptr(NULL, !=, list.pool.chunks_list);
 	v_assert_ptr(NULL, !=, list.pool.free_list);
-	v_assert_size_t(170, ==, list.pool.chunk_capacity);
-	v_assert_size_t(24, ==, list.pool.elem_size);
-	v_assert_ptr(NULL, ==, list.start);
-	v_assert_ptr(NULL, ==, list.end);
+	v_assert_size_t(127, ==, list.pool.chunk_capacity);
+	v_assert_size_t(32, ==, list.pool.elem_size);
 	v_assert_size_t(17, ==, list.elem_size);
 	v_assert_size_t(0, ==, list.len);
 

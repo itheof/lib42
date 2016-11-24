@@ -114,6 +114,7 @@ SOURCES += pool_chunk.c
 SRC_SUBDIR += list
 SOURCES += list_create.c
 SOURCES += list_init.c
+SOURCES += list_get.c
 
 # Error
 SRC_SUBDIR += error
