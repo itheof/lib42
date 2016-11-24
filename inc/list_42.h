@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 10:20:34 by djean             #+#    #+#             */
-/*   Updated: 2016/11/23 13:30:13 by djean            ###   ########.fr       */
+/*   Updated: 2016/11/24 11:55:52 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@ void	list_destroy(t_list *l);
 */
 t_list	*list_init(t_list *l, size_t elem_size);
 void	list_shutdown(t_list *l);
-
-/*
-** `list_clear` set the len of the list to 0 and free the pool
-*/
-void	list_clear(t_list *l);
 
 /*
 ** `list_get_available` gives a new unitialized space at the end of the list,
