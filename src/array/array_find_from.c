@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "array_42.h"
 
 void	*array_find_from(t_array set, size_t n,
