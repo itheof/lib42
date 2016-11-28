@@ -47,6 +47,7 @@ SRC_SUBDIR += stdlib
 SOURCES += ft_realloc.c
 SOURCES += ft_toa_base.c
 SOURCES += next_power2.c
+SOURCES += ft_abort.c
 
 # Array
 SRC_SUBDIR += array
