@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib_42.h"
 #ifdef __linux__
+# define _POSIX_C_SOURCE 1
 # include <sys/types.h>
-# define _POSIX_C_SOURCE
 #endif
 #include <signal.h>
+#include "stdlib_42.h"
 
 void	ft_abort(void)
 {
