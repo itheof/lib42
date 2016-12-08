@@ -6,7 +6,7 @@
 /*   By: djean <djean@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/22 10:20:34 by djean             #+#    #+#             */
-/*   Updated: 2016/11/24 11:55:52 by djean            ###   ########.fr       */
+/*   Updated: 2016/11/24 12:20:18 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,12 @@ void	*list_set_at(const t_list *l, size_t i, const void *e);
 ssize_t	list_index_of(const t_list *l, const void *e);
 
 /*
+** `list_insert_at` insert an element at the specified index,
+** returns NULL if the index is out of bounds.
 **
+** `list_replace_at` replace the element at the given index and
+** if old is not NULL, write the element inside it. Returns NULL if the index
+** is out of bounds.
 */
 t_list	*list_insert_at(t_list *l, size_t i, const void *e);
 t_list	*list_replace_at(t_list *l, size_t i, const void *e, void *old);
