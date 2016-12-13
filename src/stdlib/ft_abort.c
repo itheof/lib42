@@ -6,7 +6,7 @@
 /*   By: tvallee <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 16:13:03 by tvallee           #+#    #+#             */
-/*   Updated: 2016/11/28 17:54:44 by tvallee          ###   ########.fr       */
+/*   Updated: 2016/12/13 15:18:56 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 # include <sys/types.h>
 #endif
 #include <signal.h>
-#include "stdlib_42.h"
+#include <unistd.h>
+#include "str_42.h"
 
-void	ft_abort(void)
+void	ft_abort(const char *msg)
 {
+	write(STDERR_FILENO, msg, ft_strlen(msg));
 	kill(0, SIGABRT);
 }
