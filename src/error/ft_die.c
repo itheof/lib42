@@ -6,7 +6,7 @@
 /*   By: crenault <crenault@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/10 16:35:17 by djean             #+#    #+#             */
-/*   Updated: 2016/11/05 13:29:05 by crenault         ###   ########.fr       */
+/*   Updated: 2016/12/13 10:25:59 by djean            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ void	ft_die(const char *msg)
 void	*fatal_malloc(void *ptr)
 {
 	if (ptr == NULL)
-		ft_die(FATAL_MALLOC);
+	{
+		write(STDERR_FILENO, FATAL_MALLOC, ft_strlen(FATAL_MALLOC));
+		ft_abort();
+	}
 	return (ptr);
 }
