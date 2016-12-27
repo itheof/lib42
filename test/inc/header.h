@@ -75,6 +75,7 @@ void	suite_memchr(void);
 void	suite_realloc(void);
 void	suite_toa_base(void);
 void	suite_next_power_of_2(void);
+void	suite_ato_base(void);
 
 // Ctype
 void	suite_ctype(void);

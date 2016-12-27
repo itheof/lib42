@@ -45,6 +45,7 @@ SOURCES += ft_realloc.c
 SOURCES += ft_toa_base.c
 SOURCES += next_power2.c
 SOURCES += ft_abort.c
+SOURCES += ft_ato_base.c
 
 # Array
 SRC_SUBDIR += array

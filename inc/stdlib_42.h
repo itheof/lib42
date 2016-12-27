@@ -26,4 +26,8 @@ char	*ft_stoa_base(long long n, unsigned base);
 size_t	next_power_of_2(size_t n);
 void	ft_abort(const char *msg);
 
+int		ft_atou_base(size_t *n, const char *str, unsigned base);
+int		ft_atoi_base(ssize_t *n, const char *str, unsigned base);
+int		ft_atou(size_t *n, const char *str);
+
 #endif

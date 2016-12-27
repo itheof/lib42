@@ -17,6 +17,7 @@ int	main(void)
 	suite_realloc();
 	suite_toa_base();
 	suite_next_power_of_2();
+	suite_ato_base();
 
 	// str
 	suite_strcmp();

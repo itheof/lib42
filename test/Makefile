@@ -94,6 +94,7 @@ SRC_SUBDIR += stdlib
 SOURCES += test_realloc.c
 SOURCES += test_toa_base.c
 SOURCES += test_next_power2.c
+SOURCES += test_ato_base.c
 
 # Str
 SRC_SUBDIR += str
