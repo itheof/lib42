@@ -1,4 +1,5 @@
 #include "stdlib_42.h"
+#include "ctype_42.h"
 
 #define ERROR	0x1
 #define SUCCESS	0x0
@@ -21,7 +22,7 @@ int					ft_atou_base(size_t *n, const char *str, unsigned base)
 	size_t		ret;
 
 	ret = 0;
-	while (*str != '\0')
+	while (FT_ISXDIGIT(*str))
 	{
 		char_val = get_char_value(*str);
 		if (char_val == -1 || (unsigned)char_val >= base)
@@ -48,7 +49,7 @@ int					ft_atoi_base(ssize_t *n, const char *str, unsigned base)
 	}
 	else
 		sign = 1;
-	while (*str != '\0')
+	while (FT_ISXDIGIT(*str))
 	{
 		char_val = get_char_value(*str);
 		if (char_val == -1 || (unsigned)char_val >= base)
