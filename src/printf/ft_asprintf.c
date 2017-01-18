@@ -9,13 +9,21 @@
 
 int	ft_asprintf(char **ret, const char *format, ...)
 {
-	ssize_t	res;
+	int		res;
 	va_list	ap;
 
 	va_start(ap, format);
+	res = ft_vasprintf(ret, format, ap);
+	va_end(ap);
+	return (res);
+}
+
+int	ft_vasprintf(char **ret, const char *format, va_list ap)
+{
+	ssize_t	res;
+
 	*ret = NULL;
 	if ((res = ft_printf_core(format, ap, ret)) < 0)
 		*ret = NULL;
-	va_end(ap);
 	return ((int)res);
 }

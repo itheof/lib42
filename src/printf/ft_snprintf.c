@@ -10,11 +10,20 @@
 
 int	ft_snprintf(char *str, size_t size, const char *format, ...)
 {
-	char	*buf;
-	ssize_t	ret;
 	va_list	ap;
+	int		ret;
 
 	va_start(ap, format);
+	ret = ft_vsnprintf(str, size, format, ap);
+	va_end(ap);
+	return (ret);
+}
+
+int		ft_vsnprintf(char *str, size_t size, const char *format, va_list ap)
+{
+	char	*buf;
+	ssize_t	ret;
+
 	buf = NULL;
 	if ((ret = ft_printf_core(format, ap, &buf)) < 0)
 		return (-1);
@@ -30,6 +39,5 @@ int	ft_snprintf(char *str, size_t size, const char *format, ...)
 		ft_memcpy(str, buf, size - 1);
 		str[size] = '\0';
 	}
-	va_end(ap);
 	return ((int)ret);
 }
