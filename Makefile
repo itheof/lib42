@@ -123,6 +123,7 @@ SOURCES += ft_printf_core.c
 SOURCES += ft_dprintf.c
 SOURCES += ft_asprintf.c
 SOURCES += ft_snprintf.c
+SOURCES += safe_write.c
 SOURCES += conv_c.c
 SOURCES += conv_s.c
 SOURCES += conv_wc.c

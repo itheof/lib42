@@ -7,9 +7,9 @@
 ** If sufficient space cannot be allocated, return -1 & set ret to NULL
 */
 
-int	ft_asprintf(char **ret, const char *format, ...)
+ssize_t	ft_asprintf(char **ret, const char *format, ...)
 {
-	int		res;
+	ssize_t	res;
 	va_list	ap;
 
 	va_start(ap, format);
@@ -18,12 +18,12 @@ int	ft_asprintf(char **ret, const char *format, ...)
 	return (res);
 }
 
-int	ft_vasprintf(char **ret, const char *format, va_list ap)
+ssize_t	ft_vasprintf(char **ret, const char *format, va_list ap)
 {
 	ssize_t	res;
 
 	*ret = NULL;
 	if ((res = ft_printf_core(format, ap, ret)) < 0)
 		*ret = NULL;
-	return ((int)res);
+	return (res);
 }

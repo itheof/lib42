@@ -4,9 +4,9 @@
 ** Write output to the given file descriptor
 */
 
-int	ft_dprintf(int fd, const char *format, ...)
+ssize_t	ft_dprintf(int fd, const char *format, ...)
 {
-	int		ret;
+	ssize_t		ret;
 	va_list	ap;
 
 	va_start(ap, format);
@@ -15,7 +15,8 @@ int	ft_dprintf(int fd, const char *format, ...)
 	return (ret);
 }
 
-int	ft_vdprintf(int fd, const char *format, va_list ap)
+
+ssize_t	ft_vdprintf(int fd, const char *format, va_list ap)
 {
 	char	*buf;
 	ssize_t	ret;
@@ -23,7 +24,7 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 	buf = NULL;
 	if ((ret = ft_printf_core(format, ap, &buf)) < 0)
 		return (-1);
-	write(fd, buf, (size_t)ret);
+	ret = ft_printf_internal_safe_write(buf, (size_t)ret, fd);
 	free(buf);
-	return ((int)ret);
+	return (ret);
 }

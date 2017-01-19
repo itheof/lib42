@@ -8,10 +8,10 @@
 ** The output is always null-terminated, unless size is 0.
 */
 
-int	ft_snprintf(char *str, size_t size, const char *format, ...)
+ssize_t	ft_snprintf(char *str, size_t size, const char *format, ...)
 {
 	va_list	ap;
-	int		ret;
+	ssize_t	ret;
 
 	va_start(ap, format);
 	ret = ft_vsnprintf(str, size, format, ap);
@@ -19,7 +19,7 @@ int	ft_snprintf(char *str, size_t size, const char *format, ...)
 	return (ret);
 }
 
-int		ft_vsnprintf(char *str, size_t size, const char *format, va_list ap)
+ssize_t	ft_vsnprintf(char *str, size_t size, const char *format, va_list ap)
 {
 	char	*buf;
 	ssize_t	ret;
@@ -39,5 +39,5 @@ int		ft_vsnprintf(char *str, size_t size, const char *format, va_list ap)
 		ft_memcpy(str, buf, size - 1);
 		str[size] = '\0';
 	}
-	return ((int)ret);
+	return (ret);
 }
