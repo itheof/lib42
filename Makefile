@@ -104,6 +104,7 @@ SOURCES += ft_strstr.c
 SOURCES += ft_strrstr.c
 SOURCES += ft_strtolower.c
 SOURCES += ft_strtoupper.c
+SOURCES += ft_strisnum.c
 
 # Pool
 SRC_SUBDIR += pool

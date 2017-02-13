@@ -51,4 +51,6 @@ char		*ft_strrnstr(const char *big, const char *little, size_t len);
 char		*ft_strtoupper(char *str);
 char		*ft_strtolower(char *str);
 
+int			ft_strisnum(const char *str);
+
 #endif
