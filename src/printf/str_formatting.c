@@ -16,6 +16,6 @@ int				str_formatting(t_string *pb, t_format *fmt, size_t arglen)
 	fill = (fmt->f_zero) ? '0' : ' ';
 	if ((pad = get_padding(arglen, fmt->min_width, fmt->prec)) == 0)
 		return (0);
-	string_set(pb, 0, pad, fill);
+	string_set(pb, pb->len, pad, fill);
 	return ((int)pad);
 }
