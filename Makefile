@@ -47,6 +47,10 @@ SOURCES += next_power2.c
 SOURCES += ft_abort.c
 SOURCES += ft_ato_base.c
 
+# Stdio
+SRC_SUBDIR += stdio
+SOURCES += print_memory.c
+
 # Array
 SRC_SUBDIR += array
 SOURCES += array_create.c
