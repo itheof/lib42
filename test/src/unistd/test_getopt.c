@@ -35,7 +35,7 @@ static int	getopt_stderr_wrap(int argc, char *const argv[], const char *optstrin
 	if (!state)
 		ret = getopt(argc, argv, optstring);
 	else
-		ret = ft_getopt(argc, argv, optstring, state);
+		ret = ft_getopt(argc, (const char *const *)argv, optstring, state);
 
 	if (close(2) < 0 || close(fd) < 0)
 		panic_syscall_failed();
