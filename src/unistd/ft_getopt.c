@@ -6,13 +6,14 @@
 /*   By: tvallee <tvallee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/30 13:49:50 by tvallee           #+#    #+#             */
-/*   Updated: 2016/10/14 10:25:35 by tvallee          ###   ########.fr       */
+/*   Updated: 2017/03/06 17:11:47 by tvallee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unistd_42.h"
 
-static int	opt_get_type(char *const av[], const char *optstring, t_opt *state)
+static int	opt_get_type(const char *const *av,
+		const char *optstring, t_opt *state)
 {
 	char	*addr;
 	char	temp;
@@ -36,8 +37,8 @@ static int	opt_get_type(char *const av[], const char *optstring, t_opt *state)
 		return ((addr[1]) == ':' ? E_OPT_TYPE_OPERAND : E_OPT_TYPE_SIMPLE);
 }
 
-static int	parse_operand_opt(int ac, char *const av[], const char *optstring,
-		t_opt *state)
+static int	parse_operand_opt(int ac, const char *const *av,
+		const char *optstring, t_opt *state)
 {
 	int c;
 
@@ -47,7 +48,8 @@ static int	parse_operand_opt(int ac, char *const av[], const char *optstring,
 		state->optarg = av[state->optind + 1];
 		state->optind += 2;
 		state->optoff = 0;
-		if (state->optind > ac) {
+		if (state->optind > ac)
+		{
 			if (state->opterr && optstring[0] != ':')
 				ft_dprintf(2, GETOPT_MULT_ERR_FORMAT, av[0], c);
 			return ((optstring[0] == ':') ? ':' : '?');
@@ -62,7 +64,7 @@ static int	parse_operand_opt(int ac, char *const av[], const char *optstring,
 	return (c);
 }
 
-static int	parse_simple_opt(char *const av[], t_opt *state)
+static int	parse_simple_opt(const char *const *av, t_opt *state)
 {
 	int c;
 
@@ -77,12 +79,12 @@ static int	parse_simple_opt(char *const av[], t_opt *state)
 	return (c);
 }
 
-static int	is_opt_candidate(char *str)
+static int	is_opt_candidate(const char *str)
 {
 	return (str && str[0] == '-' && str[1]);
 }
 
-int			ft_getopt(int ac, char *const av[], const char *optstring,
+int			ft_getopt(int ac, const char *const *av, const char *optstring,
 		t_opt *state)
 {
 	int opt_type;
@@ -103,7 +105,6 @@ int			ft_getopt(int ac, char *const av[], const char *optstring,
 		}
 		return (-1);
 	}
-	// FUCKTON OF SIDE EFFECTS
 	opt_type = opt_get_type(av, optstring, state);
 	if (opt_type == E_OPT_TYPE_OPERAND)
 		return (parse_operand_opt(ac, av, optstring, state));
